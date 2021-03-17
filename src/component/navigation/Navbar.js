@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../img/logo-nobg2.png'
+import Logo from '../../img/logo-nobg2.png'
 import {Link} from 'react-router-dom'
 
 
@@ -8,7 +8,7 @@ const Navbar =  () => {
             <nav>
                 <div className="logo">
                 <Link to="/New">
-                <img src={Logo}></img>
+                <img src={Logo} alt="logo maison records"></img>
                 </Link>
                 </div>
                 <div className="link">
@@ -18,6 +18,9 @@ const Navbar =  () => {
                         </Link>
                         <Link to="/SecondHand">
                         <li>Second Hand</li>
+                        </Link>
+                        <Link to="/SellCollection">
+                        <li>Sell Your Collection</li>
                         </Link>
                         <Link to="/Merch">
                         <li>Merch</li>
@@ -38,7 +41,7 @@ const Navbar =  () => {
                 </div>
                 <div className="cart">
                 <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
-                <p>Cart</p>
+                
                 <span id="cart">0</span>
                 </div>
                 

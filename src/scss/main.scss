@@ -1,12 +1,53 @@
 @import './function.scss';
+@import './animations.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+  font-family: $roboto;
 }
+
+#app {
+  position: relative;
+  min-height: 100vh;
+}
+
+// ANIMATION TEXT
+.wrapper {
+  max-width: 100%;
+  min-height: 50px;
+  height: 100%;
+  max-height: 1180px;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  .header {
+      .secondary-slideshow {
+          display: flex;
+          align-items: center;
+      }
+      .job {
+          white-space: nowrap;
+      }
+  }
+  .secondary-slideshow {
+      border-bottom: 2px solid black;
+      border-top: 2px solid black;
+      padding: .38rem 0;
+      float: right;
+      animation: slideshow2 20s infinite linear;
+  }
+  .job {
+      font-size: 1rem;
+      margin-right: 0.69rem;
+  }
+}
+
+// HEADER TOP
 
 .header-top {
   display: flex;
@@ -15,7 +56,6 @@ html, body {
   align-items: center;
   width: 100%;
   height: 80px;
-  font-family: $roboto;
   
   p{
     font-size: 18px;
@@ -27,8 +67,8 @@ html, body {
     width: 146px;
     height: 25px;
     background-color: #C4C4C4;
-    outline: none
-    ;
+    outline: none;
+    margin: 0 50px;
 
   }
   .social {
@@ -36,17 +76,20 @@ html, body {
     flex-direction: row;
     margin: 0 50px;
     a {
-      
       i {
         margin: 0 15px;
         color: black;
-  
-      }
+        &:hover {
+          color: $yellow;
+        }
+      } 
     }
   }
   
 
 }
+//NAVBAR
+
 nav {
   width: 100%;
   height: 122px;
@@ -54,14 +97,12 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: $roboto;
   .logo {
     img {
       margin: 0 50px;
       background: $greymiddle;
       height: 112px;
       width: 112px;
-      
     }
   }
   .link {
@@ -71,13 +112,13 @@ nav {
           justify-content: space-between;
           align-items: center;
           list-style: none;
-          margin: 0 23px;   
+          
           a{
             text-decoration: none;    
                   li {
-                    font-style: $bold;
+                  
                     font-size: 20px;
-                    margin: 0 23px;
+                    margin-left: 24px;
                     color: black;
                     font-weight: $bold;
                     position: relative;
@@ -98,6 +139,9 @@ nav {
                         transform: scaleX(1);
                         transform-origin: left;
               }
+              @media screen and (min-width: 1200px) {
+                font-size: 20px;
+              }
             }
           }          
         }
@@ -105,34 +149,48 @@ nav {
       .cart {
         display: flex;
         justify-content: flex-end;
-        margin-right: 50px;
+        
         i {
           display: flex;
-          flex-direction: ro
+          flex-direction: row;
+          margin-right: 15px;
         }
-        p {
-          font-size: 20px;
-          margin: 0 10px;
-          font-family: $roboto;
-        }
+        
         #cart {
-          font-size: 20px;
+          font-size: 30px;
+          margin-right: 50px;
         }
       }
       }
-            
+
+//GRID VINYL
+.header-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 50px 0;
+  
+  h2 {
+    margin: 0 50px;
+    text-transform: uppercase;
+    border-bottom: 2px solid $yellow;
+    font-size: 32px;
+  }
+}
+
 .container {
-  max-width: 1440px;
-  margin: 0 auto;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0 50px;
   .playlist {
-    padding: 0 1.3rem;
+    
     margin-bottom: 1.3rem;
     margin-top: 1.3rem;
     
   }
   .entries {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 1.3rem;
     grid-column-gap: 3.9rem;
     .tile {
@@ -150,18 +208,172 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 
   .artistAndTitlePrice {
     display: flex;
     flex-direction: column;
+  
+    p{
+      margin: 3px;
+    }
 
   }
-.button {
-  display: flex;
-  flex-direction: column;
-  
+    button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px;
+      height: 25px;
+      margin: 3px;
+      
+      font-size: 12px;
+      outline: none;
+      &.showMore {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+//HOVER ON IMG
+
+  .hover-effect {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
 }
+
+.hover-effect .overlay {
+    position: absolute;
+    overflow: hidden;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    border-bottom: 1px solid $yellow;
+    border-top: 1px solid $yellow;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0, 1);
+    -ms-transform: scale(0, 1);
+    transform: scale(0, 1);
+}
+
+.hover-effect:hover .overlay {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.hover-effect img {
+    display: block;
+    position: relative;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+
+.hover-effect:hover img {
+    filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.6" /><feFuncG type="linear" slope="0.6" /><feFuncB type="linear" slope="0.6" /></feComponentTransfer></filter></svg>#filter');
+    filter: brightness(0.3);
+    -webkit-filter: brightness(0.2);
+}
+
+.overlay h2 {
+    text-align: left;
+    position: relative;
+    font-size: 18px;
+    background-color: transparent;
+    color: #fff;
+    
+    filter: alpha(opacity=0);
+    
+}
+  
+} 
+// SLIDE SELL VINIL 
+
+// .containerSlide {
+//   width: 500px;
+//   height: 500px;
+//   margin: auto;
+//   .each-slide {
+    
+//       .img-content {
+//         height: 400px;
+//         width: 400px;
+        
+//       }
+//     }
+// }
+
+
+//FOOTER
+
+.footer {
+  background: $greymiddle;
+  
+  bottom: 0;
+  width: 100%;
+  
+  p{
+    margin: 0;
+  }
+  .container-footer {
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .footerRow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 30px 0;
+      a {
+        font-size: 32px;
+        text-decoration: none;
+        color: black;
+        text-transform: uppercase;
+        font-style: $bold;
+        margin: 30px;
+        &:hover {
+          color: #ffed00;
+        }
+      }
+    } 
+    .footerRow.second {
+        justify-content: center;
+        width: 112px;
+        height: 112px;
+        margin: 0;
+        padding: 0;
+      
+      }
+    }
+  .extraInfos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #969595;
+    
+
+    .adress {
+      display: flex;
+      justify-content: flex-start;
+      margin: 20px 50px;
+      
+      }
+    .copyright {
+      margin: 20px 50px;
+    }
   }
   
-}      
+}
