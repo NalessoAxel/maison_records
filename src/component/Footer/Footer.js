@@ -7,15 +7,15 @@ const Footer = () => {
             <div className="container-footer">
                 <div className="footerRow first">
                     <a href="/TermsAndCondition">Term And Condition</a>
-                    <a href="/TermsAndCondition">About</a>
+                    <a href="/About">About</a>
                     
                 </div>
                 <div className="footerRow second">
                     <img src={Logo} alt="logo maison records"/>
                 </div>
                 <div className="footerRow third">
-                    <a href="/TermsAndCondition">Contact</a>
-                    <a href="/ShippingInfo">Shipping Info</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/ShippingInfos">Shipping Infos</a>
                     
                 </div>    
             </div>

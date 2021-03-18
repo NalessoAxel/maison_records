@@ -1,0 +1,74 @@
+//NAVBAR
+
+nav {
+    width: 100%;
+    height: 122px;
+    background: $greymiddle;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      img {
+        margin: 0 50px;
+        background: $greymiddle;
+        height: 112px;
+        width: 112px;
+      }
+    }
+    .link {
+          ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+                    li {
+                      font-size: 20px;
+                      margin-left: 24px;
+                      color: black;
+                      font-weight: $bold;
+                      position: relative;
+                      list-style: none;
+                      &::after {
+                          position: absolute;
+                          content: "";
+                          width: 100%;
+                          height: 3px;
+                          top: 100%;
+                          left: 0;
+                          background: #ffed00;
+                          transition: transform 0.5s;
+                          transform: scaleX(0);
+                          transform-origin: right;
+                      }
+                      &:hover::after {
+                          transform: scaleX(1);
+                          transform-origin: left;
+                }
+                @media screen and (min-width: 1200px) {
+                  font-size: 20px;
+                }
+                a{
+                  text-decoration: none;  
+                  color: black; 
+              }
+            }          
+          }
+        }
+        .cart {
+          display: flex;
+          justify-content: flex-end;
+          
+          i {
+            display: flex;
+            flex-direction: row;
+            margin-right: 15px;
+          }
+          
+          #cart {
+            font-size: 30px;
+            margin-right: 50px;
+          }
+        }
+        }
+  

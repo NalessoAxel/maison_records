@@ -1,0 +1,61 @@
+//FOOTER
+
+.footer {
+    background: $greymiddle;
+    width: 100%;
+    position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 130px;
+    p{
+      margin: 0;
+    }
+    .container-footer {
+    
+      max-width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .footerRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+       
+        a {
+          font-size: 32px;
+          text-decoration: none;
+          color: black;
+          text-transform: uppercase;
+          font-style: $bold;
+          margin: 30px;
+          &:hover {
+            color: #ffed00;
+          }
+        }
+      } 
+      .footerRow.second {
+          justify-content: center;
+          width: 112px;
+          height: 112px;
+          margin: 0;
+          padding: 0;
+        
+        }
+      }
+    .extraInfos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #969595;
+      .adress {
+        display: flex;
+        justify-content: flex-start;
+        margin: 20px 50px;
+        
+        }
+      .copyright {
+        margin: 20px 50px;
+      }
+    }
+  }

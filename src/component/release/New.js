@@ -5,6 +5,7 @@ import ImgVinyl3 from '../../img/test-vinyl3.jpg'
 const New = () => {
     return(
         <>
+        <main>
         <div className="header-container">
             <h2>NEW RELEASE</h2>
         </div>
@@ -329,6 +330,7 @@ const New = () => {
                     </div>
                 </div>
             </div>
+            </main>
         </>
     )
 }

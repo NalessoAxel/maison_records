@@ -1,12 +1,13 @@
 import React from 'react';
-import Slideshow from '../slide/Slide';
+import ImageSlider from '../slide/ImageSlider';
+import { SliderData } from '../slide/SliderData';
 
 const SellCollection = () => {
     return (
         <>
-        <div className="container">
-            <Slideshow />
-            </div>
+       
+            <ImageSlider slides={SliderData} />
+            
         </>
     );
 }
