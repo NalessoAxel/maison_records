@@ -1,5 +1,5 @@
 import React from 'react'
-import ImgVinyl1 from '../../img/test-vinyl1.jpg'
+import ImgVinyl1 from '../../../img/sellimg1.jpg'
 
 const SecondHand = () => {
     return(

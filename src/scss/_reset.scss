@@ -20,6 +20,10 @@ main {
     padding-right: 100px;
     padding-bottom: 160px;
 }
+#app {
+    position: relative;
+    // min-height: 100vh;
+  }
 
 @mixin wide-screen {
     @media screen and (min-width: 1600px) {

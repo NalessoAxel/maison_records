@@ -1,7 +1,8 @@
 import React from 'react'
-import ImgVinyl1 from '../../img/test-vinyl1.jpg'
-import ImgVinyl2 from '../../img/test-vinyl2.jpg'
-import ImgVinyl3 from '../../img/test-vinyl3.jpg'
+import ImgVinyl1 from '../../../img/test-vinyl1.jpg'
+import ImgVinyl2 from '../../../img/test-vinyl2.jpg'
+import ImgVinyl3 from '../../../img/test-vinyl3.jpg'
+import { Link } from 'react-router-dom'
 const New = () => {
     return(
         <>
@@ -36,7 +37,9 @@ const New = () => {
                                     </p>
                             </div>
                             <span className="button">
-                                        <button className="showMore">Show More</button>
+                                        <Link to='/ReleaseDetails'>
+                                        <button className="showMore" >Show More</button>
+                                        </Link>
                                         <button className="addToCart">Add to cart</button>
                                     </span>
                                     </div>

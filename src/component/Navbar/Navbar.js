@@ -19,9 +19,9 @@ const Navbar =  () => {
     const strToUrl = (str) => '/' + str.replace(' ', '')
 
     return (
-            <nav>
+            <nav id="nav">
                 <div className="logo">
-                <Link to="/">
+                <Link to="/New">
                 <img src={Logo} alt="logo maison records"></img>
                 </Link>
                 </div>

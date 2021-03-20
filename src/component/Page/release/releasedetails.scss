@@ -1,0 +1,62 @@
+.contentWrapper {
+    
+    .releasePage {
+
+        .release {
+            padding: 50px;
+            max-width: 100%;
+            max-height: 100%;
+            .informations  {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-row-gap: 5.3rem;
+                grid-column-gap: 3.9rem;
+                .left img{
+                    width: 100%;
+                }
+                .center {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    h1{
+                        font-weight: 600;
+                        font-size: 40px;
+                        text-transform: uppercase;
+                        line-height: 40px;
+                        margin-bottom: 10px;
+                    }
+                    h2 {
+                        font-weight: 300;
+                        font-size: 28px;
+                        line-height: 40px;
+                        margin-bottom: 30px;
+                    }
+                    #releaseInfo {
+                        .releaseInfo {
+                            font-weight: 600;
+                            span {
+                                font-weight: 300;
+                            }
+                        }
+                    }
+                }
+                .right {
+                    h1{
+                        font-weight: 600;
+                        font-size: 40px;
+                        text-transform: uppercase;
+                        line-height: 40px;
+                        margin-bottom: 10px;
+                    }
+                    .audioPlayer {
+                        p {
+                            margin: 10px;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
