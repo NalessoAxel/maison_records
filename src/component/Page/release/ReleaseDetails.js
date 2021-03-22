@@ -49,7 +49,6 @@ import Imgrelease from '../../../img/test-vinyl1.jpg'
                                        height="50px"
                                        playing={false}
                                        controls={true}
-                                       outline="none"
                                 />
                                     <p>
                                         <span>A1 - Bright Light Fading</span>
@@ -88,6 +87,12 @@ import Imgrelease from '../../../img/test-vinyl1.jpg'
                             </div>
                         </div>
                     </div>
+                <div id="suggestion">
+                    <h2>Suggestion</h2>
+                    <div className="tile">
+                        
+                    </div>
+                </div>
                 </div>
                 
             </div>

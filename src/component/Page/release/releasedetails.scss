@@ -50,8 +50,12 @@
                         margin-bottom: 10px;
                     }
                     .audioPlayer {
+                        
                         p {
                             margin: 10px;
+                        }
+                        audio {
+                            outline: none;
                         }
                     }
                 }
