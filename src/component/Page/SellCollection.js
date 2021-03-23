@@ -6,7 +6,7 @@ const SellCollection = () => {
     return (
         <>
        
-            <ImageSlider slides={sliderData} />
+            <ImageSlider key={sliderData} slides={sliderData} />
             
         </>
     );

@@ -12,8 +12,7 @@ const Navbar =  () => {
         'Merch',
         'Accessories',
         'Live',
-        'Sign Up',
-        'Sign In'
+        
     
     ]
     const strToUrl = (str) => '/' + str.replace(' ', '')
@@ -33,7 +32,14 @@ const Navbar =  () => {
                     </ul>
                 </div>
                 <div className="cart">
-                <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                    <div className="log">
+                        <Link to="/RegisterPage">
+                            <span>Log in</span>
+                        </Link>
+                    </div>
+                    <Link to="/Cart">
+                        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                    </Link>
                 <span id="cart">0</span>
                 </div>
                 
