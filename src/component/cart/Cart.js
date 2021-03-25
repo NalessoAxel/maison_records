@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import UserHeader from '../Page/User/UserHeader'
 import CartSummary from './cartsummary/CartSummary.jsx'
 import SummaryShipping from './summaryshipping/SummaryShipping'
 
@@ -10,14 +10,7 @@ import SummaryShipping from './summaryshipping/SummaryShipping'
     
     return (
         <>
-            <div className="userHeader">
-                <h1>Hello @username</h1>
-                   <div className="left">
-                   <Link to="/Orders">Your Orders</Link>
-                   <Link to="/Adress">Your Adress</Link>
-                   <Link to="/AccountDetails">Your Details</Link>
-                   </div>
-            </div>
+            <UserHeader />
             <div id="basketSummary">
                 <CartSummary cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />
                 <SummaryShipping cartItems={cartItems}  />

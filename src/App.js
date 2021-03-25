@@ -12,6 +12,8 @@ import Layout from './component/Layout'
 import SellCollection from './component/Page/SellCollection'
 import ReleaseDetails from './component/Page/release/ReleaseDetails'
 import Cart from './component/cart/Cart'
+import Orders from './component/Page/User/Orders'
+import Adress from './component/Page/User/UserAdress'
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -48,7 +50,7 @@ const App = () => {
     
     
     const LayoutNew = () => <Layout><New products={products} onAdd={onAdd}/></Layout>
-    const LayoutSecondHand = () => <Layout><SecondHand/></Layout>
+    const LayoutSecondHand = () => <Layout><SecondHand products={products} onAdd={onAdd}/></Layout>
     const LayoutSellCollection = () => <Layout><SellCollection/></Layout>
     const LayoutMerch = () => <Layout><Merch/></Layout>
     const LayoutAccessories = () => <Layout><Accessories/></Layout>
@@ -57,13 +59,14 @@ const App = () => {
     const LayoutAnimations = () => <Layout><Animations/></Layout>
     const LayoutReleaseDetails = () => <Layout><ReleaseDetails/></Layout>
     const LayoutCart = () => <Layout><Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} /></Layout>
-    
+    const LayoutOrders = () => <Layout><Orders /></Layout>
+    const LayoutAdress = () => <Layout><Adress /></Layout>
     
 
     return (
         
         <div id="App">
-            
+
         <Router>
             
             <Switch>
@@ -79,6 +82,8 @@ const App = () => {
             <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
             <Route path="/Cart"  exact component={LayoutCart} />
             <Route path="/RegisterPage" exact component={LayoutRegisterPage} />
+            <Route path="/Orders" exact component={LayoutOrders} />
+            <Route path="/Adress" exact component={LayoutAdress} />
             
             </Switch> 
             
