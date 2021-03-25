@@ -6,7 +6,7 @@
     margin-bottom: 10px;
     #cartHeader {
         display: grid;
-        grid-template-columns: 1fr 4fr 1fr 2fr 1fr;
+        grid-template-columns: 2fr 4fr 1fr 2fr 1fr;
         .itemDescription {
             margin-left: 20px;
             }
@@ -14,7 +14,7 @@
     }
     .cartEntry {
         display: grid;
-        grid-template-columns: 1fr 4fr 1fr 2fr 1fr;
+        grid-template-columns: 2fr 4fr 1fr 2fr 1fr;
         border-top: 1px solid black;
         padding-top: 10px;
         

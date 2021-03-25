@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+
 
 import Home from './component/Page/Home'
 import New from './component/Page/release/New'
@@ -17,25 +17,37 @@ import Cart from './component/cart/Cart'
 // import About from './component/Footer/About'
 // import Contact from './component/Footer/Contact'
 // import ShippingInfos from './component/Footer/ShipingInfos'
+
 import './scss/main.scss'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import data from './component/data/recordsData'
 
 const App = () => {
-    const { vinyls } = data
-    const [ cartItems, setCartItems ] = useState([2])
-    console.log(cartItems)
-    const onAdd = (vinyl) => {
-        const exist = cartItems.find(x => x.id === vinyl.id)
+
+    const { products } = data
+    const [ cartItems, setCartItems ] = useState([]) 
+
+    const onAdd = (product) => {
+        const exist = cartItems.find(x => x.id === product.id)
         if(exist) {
-            setCartItems(cartItems.map(x => x.id === vinyl.id ? {...exist, quantity: exist.quantity + 1 } : x))
-        } else  {
-            setCartItems([...cartItems, {...vinyl, quantity: 1}])
+            setCartItems(cartItems.map(x => x.id === product.id ? {...exist, quantity: exist.quantity + 1 } : x))
+    } else  {
+            setCartItems([...cartItems, {...product, quantity: 1}])
+        }
+    }
+    
+    const onRemove = (product) => {
+        const exist = cartItems.find(x => x.id === product.id)
+        if(exist.quantity === 1) {
+            setCartItems(cartItems.filter(x => x.id !== product.id))
+        } else {
+            setCartItems(cartItems.map(x => x.id === product.id ? {...exist, quantity: exist.quantity - 1 } : x))
         }
     }
     
     
-    const LayoutNew = () => <Layout><New vinyl={vinyls} onAdd={onAdd}/></Layout>
+    const LayoutNew = () => <Layout><New products={products} onAdd={onAdd}/></Layout>
     const LayoutSecondHand = () => <Layout><SecondHand/></Layout>
     const LayoutSellCollection = () => <Layout><SellCollection/></Layout>
     const LayoutMerch = () => <Layout><Merch/></Layout>
@@ -44,29 +56,35 @@ const App = () => {
     const LayoutRegisterPage = () => <Layout><RegisterPage/></Layout>
     const LayoutAnimations = () => <Layout><Animations/></Layout>
     const LayoutReleaseDetails = () => <Layout><ReleaseDetails/></Layout>
-    const LayoutCart = () => <Layout><Cart cartItems={cartItems} onAdd={onAdd}/></Layout>
+    const LayoutCart = () => <Layout><Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} /></Layout>
+    
+    
 
     return (
-        <>
+        
         <div id="App">
+            
         <Router>
+            
             <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/Animations" component={LayoutAnimations} />
-            <Route path="/New" component={LayoutNew} />
-            <Route path="/SecondHand" component={LayoutSecondHand} />
-            <Route path="/SellCollection" component={LayoutSellCollection} />
-            <Route path="/Merch" component={LayoutMerch} />
-            <Route path="/Accessories"  component={LayoutAccessories} />
-            <Route path="/Live"  component={LayoutLive} />
-            <Route path="/LogIn"  component={LayoutRegisterPage} />
-            <Route path="/ReleaseDetails"  component={LayoutReleaseDetails} />
-            <Route path="/Cart"  component={LayoutCart} />
-            <Route path="/RegisterPage" component={LayoutRegisterPage} />
+            <Route path="/Animations" exact component={LayoutAnimations} />
+            <Route path="/New" exact component={LayoutNew} />
+            <Route path="/SecondHand" exact component={LayoutSecondHand} />
+            <Route path="/SellCollection" exact component={LayoutSellCollection} />
+            <Route path="/Merch" exact component={LayoutMerch} />
+            <Route path="/Accessories"  exact component={LayoutAccessories} />
+            <Route path="/Live"  exact component={LayoutLive} />
+            <Route path="/LogIn"  exact component={LayoutRegisterPage} />
+            <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
+            <Route path="/Cart"  exact component={LayoutCart} />
+            <Route path="/RegisterPage" exact component={LayoutRegisterPage} />
+            
             </Switch> 
+            
         </Router>
         </div>
-        </>
+        
     )
 }
 

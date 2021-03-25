@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import CartSummary from './cartsummary/CartSummary'
+import CartSummary from './cartsummary/CartSummary.jsx'
 import SummaryShipping from './summaryshipping/SummaryShipping'
 
- const Cart = () => {
+ const Cart = (props) => {
+     const { cartItems, onAdd, onRemove } = props
+    
+    console.log(cartItems)
+    
     return (
         <>
             <div className="userHeader">
@@ -14,8 +18,10 @@ import SummaryShipping from './summaryshipping/SummaryShipping'
                    <Link to="/AccountDetails">Your Details</Link>
                    </div>
             </div>
-                <CartSummary />
-                <SummaryShipping />
+            <div id="basketSummary">
+                <CartSummary cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />
+                <SummaryShipping cartItems={cartItems}  />
+                </div>
             
         </>
     )

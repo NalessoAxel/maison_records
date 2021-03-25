@@ -1,19 +1,17 @@
 import React from 'react'
 import Logo from '../../img/logo-nobg2.png'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const Navbar =  () => {
+
     const links = [
-    
         'New',
         'Second Hand',
         'Sell Collection',
         'Merch',
         'Accessories',
-        'Live',
-        
-    
+        'Live',    
     ]
     const strToUrl = (str) => '/' + str.replace(' ', '')
 
@@ -38,9 +36,8 @@ const Navbar =  () => {
                         </Link>
                     </div>
                     <Link to="/Cart">
-                        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" ></i>
                     </Link>
-                <span id="cart">0</span>
                 </div>
                 
             </nav>

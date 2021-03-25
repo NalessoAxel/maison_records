@@ -7,7 +7,7 @@ import Animations from './Header/Animations'
 import FooterBottom from './Footer/FooterBottom';
 
 function Layout(props) {
-
+    
     return (
         <>
             <Animations />

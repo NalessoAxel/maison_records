@@ -33,3 +33,8 @@ border-bottom: 3px solid black;
         }
     }
 }
+#basketSummary {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    
+}

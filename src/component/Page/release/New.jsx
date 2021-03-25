@@ -2,18 +2,18 @@ import React from 'react'
 import Vinyl from './Vinyl'
 
 const New = (props) => {
-    const { vinyl, onAdd } = props
-    console.log('dans newait:', vinyl)
+    const { products, onAdd } = props
+    
     return(
         <>
-            <main vinyls={vinyl}>
+            <main products={products}>
                 <div className="header-container">
                     <h2>NEW RELEASE</h2>
                 </div>
             <div className="container">
                 <div className="entries">
-                {vinyl.map((vinyl) =>(
-                    <Vinyl key={vinyl.id} vinyl={vinyl} onAdd={onAdd}></Vinyl>
+                {products.map((product) =>(
+                    <Vinyl key={product.id} product={product} onAdd={onAdd} ></Vinyl>
                 ))}
                 </div>
             </div>

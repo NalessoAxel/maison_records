@@ -1,9 +1,10 @@
 const data = {
-    vinyls:[
+    products:[
         {
             id: '1',
             title: 'Various Artist',
             subTitle: 'Soma Dubs vol.4',
+            price: 20,
             label: 'Soma Records',
             catalogueNumber: 'Soma176',
             formats: '1x12',
@@ -16,6 +17,7 @@ const data = {
             id: '2',
             title: 'various Artist',
             subTitle: 'Soma Dubs vol.4',
+            price: 20,
             label: 'Soma Records',
             catalogueNumber: 'Soma176',
             formats: '1x12',
@@ -28,6 +30,7 @@ const data = {
             id: '3',
             title: 'various Artist',
             subTitle: 'Soma Dubs vol.4',
+            price: 20,
             label: 'Soma Records',
             catalogueNumber: 'Soma176',
             formats: '1x12',
@@ -40,6 +43,7 @@ const data = {
             id: '4',
             title: 'various Artist',
             subTitle: 'Soma Dubs vol.4',
+            price: 20,
             label: 'Soma Records',
             catalogueNumber: 'Soma176',
             formats: '1x12',
@@ -52,6 +56,7 @@ const data = {
             id: '5',
             title: 'various Artist',
             subTitle: 'Soma Dubs vol.4',
+            price: 20,
             label: 'Soma Records',
             catalogueNumber: 'Soma176',
             formats: '1x12',
