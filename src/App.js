@@ -6,7 +6,7 @@ import SecondHand from './component/Page/release/SecondHand'
 import Merch from './component/Page/Merch'
 import Accessories from './component/Page/Accessories'
 import Live from './component/Page/Live/Live'
-import RegisterPage from './component/Page/LogInForm/RegisterPage'
+import UserRegisterPage from './component/Page/LogInForm/UserRegisterPage'
 import Animations from './component/Header/Animations'
 import Layout from './component/Layout'
 import SellCollection from './component/Page/SellCollection'
@@ -55,7 +55,7 @@ const App = () => {
     const LayoutMerch = () => <Layout><Merch/></Layout>
     const LayoutAccessories = () => <Layout><Accessories/></Layout>
     const LayoutLive = () => <Layout><Live/></Layout>
-    const LayoutRegisterPage = () => <Layout><RegisterPage/></Layout>
+    const LayoutUserRegisterPage = () => <Layout><UserRegisterPage/></Layout>
     const LayoutAnimations = () => <Layout><Animations/></Layout>
     const LayoutReleaseDetails = () => <Layout><ReleaseDetails/></Layout>
     const LayoutCart = () => <Layout><Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} /></Layout>
@@ -78,10 +78,10 @@ const App = () => {
             <Route path="/Merch" exact component={LayoutMerch} />
             <Route path="/Accessories"  exact component={LayoutAccessories} />
             <Route path="/Live"  exact component={LayoutLive} />
-            <Route path="/LogIn"  exact component={LayoutRegisterPage} />
+            <Route path="/LogIn"  exact component={LayoutUserRegisterPage} />
             <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
             <Route path="/Cart"  exact component={LayoutCart} />
-            <Route path="/RegisterPage" exact component={LayoutRegisterPage} />
+            <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
             <Route path="/Orders" exact component={LayoutOrders} />
             <Route path="/Adress" exact component={LayoutAdress} />
             

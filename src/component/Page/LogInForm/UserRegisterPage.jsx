@@ -2,7 +2,7 @@ import React from 'react'
 import LogIn from './Signform/LogIn'
 import Register from './Signform/Register'
 
-const RegisterPage = () => {
+const UserRegisterPage = () => {
     return(
         <>
         <div className="registerForm">
@@ -13,4 +13,4 @@ const RegisterPage = () => {
     )
 }
 
-export default RegisterPage
+export default UserRegisterPage

@@ -31,7 +31,7 @@ const Navbar =  () => {
                 </div>
                 <div className="cart">
                     <div className="log">
-                        <Link to="/RegisterPage">
+                        <Link to="/UserRegisterPage">
                             <span>Log in</span>
                         </Link>
                     </div>

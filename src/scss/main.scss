@@ -48,7 +48,7 @@
         }
         input {
             padding: .5em;
-            width: 300px;
+            width: 400px;
             font-size: 15px;
             border: 1px solid $greymiddle;
         }
@@ -74,7 +74,7 @@
         }
         input {
             padding: .5em;
-            width: 300px;
+            width: 400px;
             font-size: 15px;
             border: 1px solid $greymiddle;
         }
@@ -127,5 +127,86 @@
 
 }
 
+.adress {
+    display: flex;
+    justify-content: center;
+    .billingAdress {
+        background-color: #BDBDBD ;
+        width: 434px;
+        height: 235px;
+        margin: 30px 50px;
+        padding: 10px;
+        .title {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;   
+        }
+        .userBillingAdress {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 30px;
+            font-style: italic;
+        }
+    }
+    .shippingAdress {
+        background-color: #BDBDBD ;
+        width: 434px;
+        height: 235px;
+        margin: 30px 50px;
+        padding: 10px;
+        .title {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;  
+        }
+        .userShippingAdress {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 30px;
+            font-style: italic;
+        }
+    }
+}
 
 
+.overlayModal {
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    .wrapperModal {
+        display: flex;
+        flex-direction: column;
+        width: 306px;
+        height: 650px;
+        background-color: #C4C4C4;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+}
+
+.error {
+    color: red;
+}
+
+.modalBillingForm {
+    .modalInput {
+        padding: 0 41px;
+        form {
+            display: flex;
+            flex-direction: column;
+            
+            input {
+                width: 100%;
+                height: 30px;
+            }
+        }
+    }
+}
