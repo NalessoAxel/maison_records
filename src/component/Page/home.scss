@@ -1,0 +1,30 @@
+.logoAnimation {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 86vh;
+    a {
+    .logo{
+        
+        width: 500px;
+        height: 500px;
+        animation: spin infinite 10s linear;
+        transform-origin: 50% 50%;
+        transform-box: fill-box;
+        transition-duration: 1s;
+        will-change: transform;
+        filter: invert(100%);
+            &:hover {
+                filter: invert(0);
+                width: 400px;
+                height: 400px;
+                
+            }
+            @include mobile {
+                max-width: 600px;
+            }
+        }
+    }   
+}

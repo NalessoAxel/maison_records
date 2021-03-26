@@ -1,39 +1,97 @@
-import React from 'react'
-import HeaderTop from './component/HeaderTop';
-import Navbar from './component/navigation/Navbar'
-import New from './component/release/New'
-import SecondHand from './component/release/SecondHand'
-import Merch from './component/navigation/Merch'
-import Accessories from './component/navigation/Accessories'
-import Live from './component/navigation/Live'
-import SignUp from './component/navigation/SignUp'
-import SignIn from './component/navigation/SignIn'
-import Footer from './component/Footer/Footer'
-import SellCollection from './component/navigation/SellCollection'
+import Home from './component/Page/Home'
+import New from './component/Page/release/New'
+import SecondHand from './component/Page/release/SecondHand'
+import Merch from './component/Page/Merch'
+import Accessories from './component/Page/Accessories'
+import Live from './component/Page/Live/Live'
+import UserRegisterPage from './component/Page/LogInForm/UserRegisterPage'
+import Animations from './component/Header/Animations'
+import Layout from './component/Layout'
+import SellCollection from './component/Page/SellCollection'
+import ReleaseDetails from './component/Page/release/ReleaseDetails'
+import Cart from './component/cart/Cart'
+import Orders from './component/Page/User/Orders'
+import Adress from './component/Page/User/UserAdress'
+import UserDetails from './component/Page/User/UserDetails'
+
+// import TermAndCondition from './component/Footer/TermAndCondition'
+// import About from './component/Footer/About'
+// import Contact from './component/Footer/Contact'
+// import ShippingInfos from './component/Footer/ShipingInfos'
+
 import './scss/main.scss'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import data from './component/data/recordsData'
 
 const App = () => {
+
+    const { products } = data
+    const [ cartItems, setCartItems ] = useState([]) 
+
+    const onAdd = (product) => {
+        const exist = cartItems.find(x => x.id === product.id)
+        if(exist) {
+            setCartItems(cartItems.map(x => x.id === product.id ? {...exist, quantity: exist.quantity + 1 } : x))
+    } else  {
+            setCartItems([...cartItems, {...product, quantity: 1}])
+        }
+    }
+    
+    const onRemove = (product) => {
+        const exist = cartItems.find(x => x.id === product.id)
+        if(exist.quantity === 1) {
+            setCartItems(cartItems.filter(x => x.id !== product.id))
+        } else {
+            setCartItems(cartItems.map(x => x.id === product.id ? {...exist, quantity: exist.quantity - 1 } : x))
+        }
+    }
+    
+    
+    const LayoutNew = () => <Layout><New products={products} onAdd={onAdd}/></Layout>
+    const LayoutSecondHand = () => <Layout><SecondHand products={products} onAdd={onAdd}/></Layout>
+    const LayoutSellCollection = () => <Layout><SellCollection/></Layout>
+    const LayoutMerch = () => <Layout><Merch/></Layout>
+    const LayoutAccessories = () => <Layout><Accessories/></Layout>
+    const LayoutLive = () => <Layout><Live/></Layout>
+    const LayoutUserRegisterPage = () => <Layout><UserRegisterPage/></Layout>
+    const LayoutAnimations = () => <Layout><Animations/></Layout>
+    const LayoutReleaseDetails = () => <Layout><ReleaseDetails/></Layout>
+    const LayoutCart = () => <Layout><Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} /></Layout>
+    const LayoutOrders = () => <Layout><Orders /></Layout>
+    const LayoutAdress = () => <Layout><Adress /></Layout>
+    const LayoutUserDetails = () => <Layout><UserDetails/></Layout>
+    
+
     return (
-        <>
+        
         <div id="App">
+
         <Router>
-            <HeaderTop />
-            <Navbar />
             
-            <Route path="/New" component={New} />
-            <Route path="/SecondHand" component={SecondHand} />
-            <Route path="/SellCollection" component={SellCollection} />
-            <Route path="/Merch" component={Merch} />
-            <Route path="/Accessories"  component={Accessories} />
-            <Route path="/Live"  component={Live} />
-            <Route path="/SignUp"  component={SignUp} />
-            <Route path="/SignIn"  component={SignIn} />
+            <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/Animations" exact component={LayoutAnimations} />
+            <Route path="/New" exact component={LayoutNew} />
+            <Route path="/SecondHand" exact component={LayoutSecondHand} />
+            <Route path="/SellCollection" exact component={LayoutSellCollection} />
+            <Route path="/Merch" exact component={LayoutMerch} />
+            <Route path="/Accessories"  exact component={LayoutAccessories} />
+            <Route path="/Live"  exact component={LayoutLive} />
+            <Route path="/LogIn"  exact component={LayoutUserRegisterPage} />
+            <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
+            <Route path="/Cart"  exact component={LayoutCart} />
+            <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
+            <Route path="/Orders" exact component={LayoutOrders} />
+            <Route path="/Adress" exact component={LayoutAdress} />
+            <Route path="/UserDetails" exact component={LayoutUserDetails} />
+            
+            </Switch> 
             
         </Router>
-        <Footer />
         </div>
-        </>
+        
     )
 }
+
 export default App
