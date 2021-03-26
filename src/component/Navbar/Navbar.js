@@ -34,6 +34,9 @@ const Navbar =  () => {
                         <Link to="/UserRegisterPage">
                             <span>Log in</span>
                         </Link>
+                        <Link to="/AdminPage">
+                            <span>Admin</span>
+                        </Link>
                     </div>
                     <Link to="/Cart">
                         <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" ></i>

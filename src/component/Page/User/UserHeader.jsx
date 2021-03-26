@@ -9,7 +9,7 @@ const UserHeader = () => {
                    <div className="left">
                    <Link to="/Orders">Your Orders</Link>
                    <Link to="/Adress">Your Adress</Link>
-                   <Link to="/AccountDetails">Your Details</Link>
+                   <Link to="/UserDetails">Your Details</Link>
                    </div>
             </div>
         </>

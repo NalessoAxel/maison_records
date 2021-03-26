@@ -1,5 +1,3 @@
-
-
 import Home from './component/Page/Home'
 import New from './component/Page/release/New'
 import SecondHand from './component/Page/release/SecondHand'
@@ -14,6 +12,7 @@ import ReleaseDetails from './component/Page/release/ReleaseDetails'
 import Cart from './component/cart/Cart'
 import Orders from './component/Page/User/Orders'
 import Adress from './component/Page/User/UserAdress'
+import UserDetails from './component/Page/User/UserDetails'
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -61,6 +60,7 @@ const App = () => {
     const LayoutCart = () => <Layout><Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} /></Layout>
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>
+    const LayoutUserDetails = () => <Layout><UserDetails/></Layout>
     
 
     return (
@@ -84,6 +84,7 @@ const App = () => {
             <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
             <Route path="/Orders" exact component={LayoutOrders} />
             <Route path="/Adress" exact component={LayoutAdress} />
+            <Route path="/UserDetails" exact component={LayoutUserDetails} />
             
             </Switch> 
             
