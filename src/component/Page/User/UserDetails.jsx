@@ -15,125 +15,121 @@ const LogIn = () => {
     return (
         <>
         <UserHeader />
-      <div id="ChangeUserInfos">
-        <h1>Your Personnal Infos</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="loginGroup">
-          <div className="createUserDetails">
-              <label>Your first name
-                <input 
-                 name="firstName"
-                placeholder='first name'
-                ref={register({
-                  required: true
-                })}
-                /> 
-                </label>
-            </div>
-            <div className="createUserDetails">
-                <label>Your last name
-                <input 
-                name="lastName"
-                placeholder='last name'
-                type="text"
-                ref={register({
-                  required: true
-                })}
-                /> 
-                </label>
-            </div>
-          <label>Enter your email
-            <input 
-            type="text"
-            name="email"
-            placeholder='your email here' 
-            ref={register
-              ({
-                pattern: {
-                  value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                },
-                required: true})}
-             /> 
-             {errors.email && <span className="error">Email invalid!</span>}
-           </label>
-           </div>
-           <div className="loginGroup">
-         
-        </div>
-        <div className="loginCheckbox">
-            <input className="checkbox" type="checkbox" name="rememberMe"/>
-            <p>Remember me</p>
-        </div>
-        <input disabled={isSubmitting} type="submit" value="Change Details"/>
-      </form>
-
-      <div id="changePassword">
-        <h1>Register your account</h1>
-          <form className="userCreate" onSubmit={handleSubmit(onSubmit)}>
+      <div id="userInfosChange">
+        <div id="changeUserInfos">
+          <h1>Your Personnal Infos</h1>
+          <form onSubmit={handleSubmit(onSubmit)}>
             
-            <div className="createUserDetails">
-              
-              <label>Current Password 
-        <input 
-        type="password"
-        name="password"
-        placeholder='your password' 
-        ref={register
-          ({
-            // pattern: {
-            //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
-            // },
-            // min: {
-            //   value: 8
-            // },
-            required: true})
-          }
-        />
-        {errors.password && <span className="error">Password is too short, 8 characters minimum!</span>}
-        </label>
-        <label>New password
-        <input 
-        type="password"
-        name="password"
-        placeholder='your password' 
-        ref={register
-          ({
-            // pattern: {
-            //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
-            // },
-            // min: {
-            //   value: 8
-            // },
-            required: true})
-          }
-        />
-        {errors.password && <span className="error">Password is too short, 8 characters minimum!</span>}
-        </label>
-        <label>Confirm new password
-        <input 
-        type="password"
-        name="password"
-        placeholder='your password' 
-        ref={register
-          ({
-            // pattern: {
-            //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
-            // },
-            // min: {
-            //   value: 8
-            // },
-            required: true})
-          }
-        />
-        {errors.password && <span className="error">Password is too short, 8 characters minimum!</span>}
-        </label>
-            </div> 
-            <input type="submit" value="Change Password"/>
-          </form>
+           
+                <label>Your first name</label>
+                  <input 
+                   name="firstName"
+                  placeholder='first name'
+                  ref={register({
+                    required: true
+                  })}
+                  /> 
+                  
+            
+                  <label>Your last name</label>
+                  <input 
+                  name="lastName"
+                  placeholder='last name'
+                  type="text"
+                  ref={register({
+                    required: true
+                  })}
+                  /> 
+                 
+           
+            <label>Enter your email</label>
+              <input 
+              type="text"
+              name="email"
+              placeholder='your email here' 
+              ref={register
+                ({
+                  pattern: {
+                    value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                  },
+                  required: true})}
+               /> 
+               {errors.email && <span className="error">Email invalid!</span>}
+            
+            
+            
           
-      </div>
+          <input disabled={isSubmitting} type="submit" value="Change Details"/>
+        </form>
+    </div>
+        <div id="changePassword">
+        <h1>Register your account</h1>
+            <form className="userCreate" onSubmit={handleSubmit(onSubmit)}>
+            
+             
+                
+                <label>Current Password</label> 
+          <input 
+          type="password"
+          name="password"
+          placeholder='your password' 
+          ref={register
+            ({
+              // pattern: {
+              //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+              // },
+              // min: {
+              //   value: 8
+              // },
+              required: true})
+            }
+          />
+          {errors.password && <span className="error">Password is too short, 8 characters minimum!</span>}
+        
+          <label>New password  </label>
+          <input 
+          type="password"
+          name="password"
+          placeholder='your password' 
+          ref={register
+            ({
+              // pattern: {
+              //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+              // },
+              // min: {
+              //   value: 8
+              // },
+              required: true})
+            }
+          />
+          {errors.password && <span className="error">Password is too short, 8 characters minimum!</span>}
+          
+          <label>Confirm new password</label>
+          <input 
+          type="password"
+          name="password"
+          placeholder='your password' 
+          ref={register
+            ({
+              // pattern: {
+              //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+              // },
+              // min: {
+              //   value: 8
+              // },
+              required: true})
+            }
+          />
+          {errors.password && <span className="error">Password is too short, 8 characters minimum!</span>}
       
-      </div>
+              
+              <input type="submit" value="Change Password"/>
+            </form>
+            
+        </div>
+        
+        </div>
+      
       </>
     )
   }
