@@ -24,6 +24,8 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import data from './component/data/recordsData'
 
+
+
 const App = () => {
 
     const { products } = data
