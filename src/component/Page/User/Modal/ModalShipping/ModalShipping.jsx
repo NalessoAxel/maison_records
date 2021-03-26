@@ -1,5 +1,5 @@
 import React from 'react'
-import ModalShippingForm from '../ModalShipping/ModalShippingForm'
+import ModalShippingForm from './ModalShippingForm'
 
 
 const ModalShipping= ({revel, cache}) => revel ? (

@@ -1,26 +1,49 @@
-import React from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import axios from 'axios';
 
 const Register = () => {
+    
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+
   const {register, handleSubmit, errors} = useForm({
-  
+    
   })
+  
+  const onSubmit = async (formAnswers) => {
+    
+    console.log(formAnswers) // renvoi un obj json
 
+    await axios({
+      method: "post",
+      url: `${process.env.REACT_APP_API_URL}api/user/register`,
+      withCredentials:true,
+      data: formAnswers // = email: formAnswer.email..
+    })
 
-
-  const onSubmit = (data) => {
-    console.log(data)
+      .then((res)=>{
+      if(res.data.errors){
+        console.log(res.data.errors);
+        setEmailError(res.data.errors.email);
+        setPasswordError(res.data.errors.password);
+      }
+    })
+      .catch((err)=>console.log(err));
   }
+  
     return (
       <div id="register">
         <h1>Register your account</h1>
-          <form className="userCreate" onSubmit={handleSubmit(onSubmit)}>
+          <form className="userCreate" onSubmit={handleSubmit(onSubmit)}>  
+          {/* handlesubmit renvoi un obj json de onSubmit*/}
             <div className="createUserDetails">
               <label>Your Email
                 <input 
                 name="email"
+                // name = meme nom que bdd
                 placeholder='your email here'
-                type="tesxt" 
+                type="text" 
                 ref={register
                   ({
                     pattern: {
@@ -30,11 +53,12 @@ const Register = () => {
                 /> 
                 {errors.email && <span className="error">Email invalid!</span>}
                 </label>
+                <div>{ emailError }</div>
             </div>
             <div className="createUserDetails">
               <label>Your first name
                 <input 
-                 name="firstName"
+                 name="first_name"
                 placeholder='first name'
                 ref={register({
                   required: true
@@ -45,7 +69,7 @@ const Register = () => {
             <div className="createUserDetails">
                 <label>Your last name
                 <input 
-                name="lastName"
+                name="last_name"
                 placeholder='last name'
                 type="text"
                 ref={register({
@@ -73,6 +97,7 @@ const Register = () => {
           }
         />
         {errors.password && <span className="error">Password is too short, 8 characters minimum!</span>}
+            <div>{ passwordError }</div>
         </label>
             </div> 
             <input type="submit"/>
