@@ -1,0 +1,27 @@
+.orderHeader {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 2fr 1fr 1fr .5fr;
+    margin: 0 50px;
+    align-items: center;
+    border-bottom: 1px solid black;
+    background-color: #BDBDBD;
+    
+}
+.orderItem {
+    
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 2fr 1fr 1fr .5fr;
+    margin: 10px 50px;
+    align-items: center;
+    padding: 10px 0;
+    .justify {
+        margin: 20px 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid black;
+    }
+    .detailsBtn {
+        margin-bottom: 10px;
+        outline: none;
+    }
+
+}

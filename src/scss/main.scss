@@ -16,197 +16,24 @@
 @import '../component/cart/cart.scss';
 @import '../component/cart/cartsummary/cartsummary.scss';
 @import '../component/cart/summaryshipping/summaryshipping.scss';
+@import '../component/Page/LogInForm/userregisterpage.scss';
+@import '../component/Page/LogInForm/Signform/Register.scss';
+@import '../component/Page/LogInForm/Signform/login.scss';
+@import '../component/Page/User/orderheader.scss';
+@import '../component/Page/User/useradress.scss';
+@import '../component/Page/User/Modal/modal.scss';
+@import '../component/Page/User/Modal/ModalBilling/modalbilling.scss';
 
 
 
 
-.registerForm {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 50vw;
-    margin: 100px auto;
-}
-#register {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 0 30px;
-    h1 {
-        padding-bottom: 20px;
-    }
-    .userCreate {
-        display: flex;
-        flex-direction: column;
-        label {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            margin-bottom: 20px;    
-        }
-        input {
-            padding: .5em;
-            width: 400px;
-            font-size: 15px;
-            border: 1px solid $greymiddle;
-        }
-    }
-}
-#login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    h1 {
-        padding-bottom: 20px;
-    }
-    .loginGroup {
-        display: flex;
-        flex-direction: column;
-
-        label {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            margin-bottom: 20px;    
-        }
-        input {
-            padding: .5em;
-            width: 400px;
-            font-size: 15px;
-            border: 1px solid $greymiddle;
-        }
-    }
-    .loginCheckbox {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 5px;
-        .checkbox {
-            width: auto;
-            
-        }
-        p{
-            margin-left: 3px;
-            
-        }
-    }
-    
-    
-}
 
 
 
-.orderHeader {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 2fr 1fr 1fr .5fr;
-    margin: 0 50px;
-    align-items: center;
-    border-bottom: 1px solid black;
-    background-color: #BDBDBD;
-    
-}
-.orderItem {
-    
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 2fr 1fr 1fr .5fr;
-    margin: 10px 50px;
-    align-items: center;
-    padding: 10px 0;
-    .justify {
-        margin: 20px 0;
-        padding-bottom: 10px;
-        border-bottom: 1px solid black;
-    }
-    .detailsBtn {
-        margin-bottom: 10px;
-        outline: none;
-    }
-
-}
-
-.adress {
-    display: flex;
-    justify-content: center;
-    .billingAdress {
-        background-color: #BDBDBD ;
-        width: 434px;
-        height: 235px;
-        margin: 30px 50px;
-        padding: 10px;
-        .title {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;   
-        }
-        .userBillingAdress {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-top: 30px;
-            font-style: italic;
-        }
-    }
-    .shippingAdress {
-        background-color: #BDBDBD ;
-        width: 434px;
-        height: 235px;
-        margin: 30px 50px;
-        padding: 10px;
-        .title {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;  
-        }
-        .userShippingAdress {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-top: 30px;
-            font-style: italic;
-        }
-    }
-}
 
 
-.overlayModal {
-    background-color: rgba(0,0,0,0.5);
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    .wrapperModal {
-        display: flex;
-        flex-direction: column;
-        width: 306px;
-        height: 650px;
-        background-color: #C4C4C4;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        
-    }
-}
 
-.error {
-    color: red;
-}
 
-.modalBillingForm {
-    .modalInput {
-        padding: 0 41px;
-        form {
-            display: flex;
-            flex-direction: column;
-            
-            input {
-                width: 100%;
-                height: 30px;
-            }
-        }
-    }
-}
+
+
+
