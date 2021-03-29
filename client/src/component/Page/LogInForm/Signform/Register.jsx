@@ -52,8 +52,8 @@ const Register = () => {
                     required: true})}
                 /> 
                 {errors.email && <span className="error">Email invalid!</span>}
-                </label>
                 <div>{ emailError }</div>
+                </label>
             </div>
             <div className="createUserDetails">
               <label>Your first name
