@@ -13,7 +13,7 @@ const Register = () => {
   
   const onSubmit = async (formAnswers) => {
     
-    console.log(formAnswers) // renvoi un obj json
+    // console.log(formAnswers) // renvoi un obj json
 
     await axios({
       method: "post",
