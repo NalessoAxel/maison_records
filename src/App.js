@@ -1,4 +1,6 @@
 import Home from './component/Page/Home'
+
+// PAGE
 import New from './component/Page/release/New'
 import SecondHand from './component/Page/release/SecondHand'
 import Merch from './component/Page/Merch'
@@ -10,9 +12,18 @@ import Layout from './component/Layout'
 import SellCollection from './component/Page/SellCollection'
 import ReleaseDetails from './component/Page/release/ReleaseDetails'
 import Cart from './component/cart/Cart'
+
+// USER
 import Orders from './component/Page/User/Orders'
 import Adress from './component/Page/User/UserAdress'
 import UserDetails from './component/Page/User/UserDetails'
+
+// ADMIN
+import AdminHeader from './component/Page/admin/AdminHeader'
+import AdminDashboard from './component/Page/admin/AdminDashboard'
+import AddReference from './component/Page/admin/AddReference'
+import AdminOrders from './component/Page/admin/AdminOrders'
+
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -23,6 +34,7 @@ import './scss/main.scss'
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import data from './component/data/recordsData'
+import AdminVisitors from './component/Page/admin/AdminVisitors'
 
 const App = () => {
 
@@ -61,6 +73,12 @@ const App = () => {
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>
     const LayoutUserDetails = () => <Layout><UserDetails/></Layout>
+    const LayoutAdminHeader = () => <Layout><AdminHeader/></Layout>
+    const LayoutAdminDashboard = () => <Layout><AdminDashboard/></Layout>
+    const LayoutAddReference = () => <Layout><AddReference/></Layout>
+    const LayoutAdminOrders = () => <Layout><AdminOrders/></Layout>
+    const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
+    
     
 
     return (
@@ -85,6 +103,12 @@ const App = () => {
             <Route path="/Orders" exact component={LayoutOrders} />
             <Route path="/Adress" exact component={LayoutAdress} />
             <Route path="/UserDetails" exact component={LayoutUserDetails} />
+            <Route path="/AdminHeader" exact component={LayoutAdminHeader} />
+            <Route path="/AdminDashboard" exact component={LayoutAdminDashboard} />
+            <Route path="/AddReference" exact component={LayoutAddReference} />
+            <Route path="/AdminOrders" exact component={LayoutAdminOrders} />
+            <Route path="/AdminVisitors" exact component={LayoutAdminVisitors} />
+            
             
             </Switch> 
             

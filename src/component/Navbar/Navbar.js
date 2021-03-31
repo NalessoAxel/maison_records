@@ -34,7 +34,7 @@ const Navbar =  () => {
                         <Link to="/UserRegisterPage">
                             <span>Log in</span>
                         </Link>
-                        <Link to="/AdminPage">
+                        <Link to="/AdminDashboard">
                             <span>Admin</span>
                         </Link>
                     </div>

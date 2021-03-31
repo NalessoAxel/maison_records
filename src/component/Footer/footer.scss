@@ -2,18 +2,20 @@
 
 .footer {
     width: 100%;  
-    height: 130px;
-    background: $greymiddle;
+    height: 100px;
+    // background: $greymiddle;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     p{
       margin: 0;
     }
     .container-footer {
-      
       width: 100%;
-     
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       .footerRow {
         display: flex;
         flex-direction: row;
@@ -37,8 +39,16 @@
           height: 112px;
           margin: 0;
           padding: 0;
+          
         
         }
+        .extraInfos {
+          margin: 0 40px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
       }
+      
     
   }

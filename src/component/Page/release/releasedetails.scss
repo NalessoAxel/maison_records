@@ -1,7 +1,8 @@
 .contentWrapper {
     
     .releasePage {
-
+        position: relative;
+        padding-bottom: 150px;
         .release {
             padding: 50px;
             max-width: 100%;
@@ -63,7 +64,9 @@
             
         }
         #suggestion {
+            position: relative;
             margin-top: 2.6rem;
+            margin: 50px;
             padding: 10px;
             h2 {
                 font-size: 28px;
