@@ -88,6 +88,7 @@ const App = () => {
             <Route path="/Adress" exact component={LayoutAdress} />
             <Route path="/UserDetails" exact component={LayoutUserDetails} />
             
+            
             </Switch> 
             
         </Router>

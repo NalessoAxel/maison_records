@@ -3,6 +3,7 @@ require("dotenv").config({path:"./config/.env"});
 require('./config/db')
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
+const {checkUser, requireAuth} = require('./middleware/auth.middleware');
 const cors = require('cors');
 
 
@@ -18,7 +19,7 @@ const corsOptions = {
     'preflightContinue': false
 }
 
-// voir requete dans console
+// See request on Terminal
 const demoLogger = (req, res, next) => {
     console.log(`[${new Date().toLocaleString()}] ${req.path}`)
     console.log(req.body)
@@ -31,6 +32,13 @@ app.use(cors(corsOptions));
 app.use(express.json()); // json body-parer
 app.use(cookieParser());
 app.use(demoLogger);
+
+
+// middleware jwt for cookie
+app.get('*', checkUser); //for all route -> start this middleware
+app.get('/jwtid', requireAuth, (req, res) => {
+    res.status(200).send(res.locals.user._id)
+});
 
 //routes
 app.use('/api/user', userRoutes);
