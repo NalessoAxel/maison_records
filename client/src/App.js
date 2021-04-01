@@ -42,24 +42,22 @@ import axios from 'axios'
 const App = () => {
 
     const [uid,setUid] = useState(null);
+    const [loading, setLoading] =  useState(false);
 
   useEffect(()=>{  
     const fetchToken = async () =>{
-      await axios ({
+      setLoading(true);
+      const res = await axios({
         method: "get",
         url: `${process.env.REACT_APP_API_URL}jwtid`,
         withCredentials: true
       })
-      .then((res)=>{
-        console.log(res);
         setUid(res.data);
-      })
-      .catch((err)=>console.log("No token"))
+        setLoading(false);
+      // .catch((err)=>console.log("No token"))
     };
     fetchToken();
   }, []); // no callback otherwise useEffect will loop [we take admin status]
-
-
 
 
     const { products } = data
@@ -106,7 +104,7 @@ const App = () => {
     
 
     return (
-          <UidContext.Provider value={uid}> 
+          <UidContext.Provider value={{uid, loading}}> 
            {/* // we place the UID at the top of our app so we don't have to put it in every page */}
       <div id="App">
 

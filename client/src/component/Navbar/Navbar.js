@@ -39,7 +39,7 @@ const Navbar =  () => {
                 
                 <div className="cart">
                     <div className="log">
-                    {uid ? (
+                    {uid == undefined? (
                         <>
                             <Logout/>
                         </>
