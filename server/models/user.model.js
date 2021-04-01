@@ -66,9 +66,10 @@ const userSchema = new mongoose.Schema(
                     type: String,
                 }
         },
-        status: {
-            admin : false
-        }
+       admin: {
+           type: Boolean,
+           default: false,
+       }
     },
     {
         timestamps: true,  

@@ -20,13 +20,34 @@ import UserDetails from './component/Page/User/UserDetails'
 // import ShippingInfos from './component/Footer/ShipingInfos'
 
 import './scss/main.scss'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import data from './component/data/recordsData'
-
-
+import {UidContext} from './component/AppContext'
+import axios from 'axios'
 
 const App = () => {
+
+    const [uid,setUid] = useState(null);
+
+  useEffect(()=>{  
+    const fetchToken = async () =>{
+      await axios ({
+        method: "get",
+        url: `${process.env.REACT_APP_API_URL}jwtid`,
+        withCredentials: true
+      })
+      .then((res)=>{
+        console.log(res);
+        setUid(res.data);
+      })
+      .catch((err)=>console.log("No token"))
+    };
+    fetchToken();
+  }, []); // no callback otherwise useEffect will loop [we take admin status]
+
+
+
 
     const { products } = data
     const [ cartItems, setCartItems ] = useState([]) 
@@ -63,10 +84,10 @@ const App = () => {
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>
     const LayoutUserDetails = () => <Layout><UserDetails/></Layout>
-    
+
 
     return (
-        
+      <UidContext.Provider value={uid}>  // we place the UID at the top of our app so we don't have to put it in every page
         <div id="App">
 
         <Router>
@@ -88,10 +109,13 @@ const App = () => {
             <Route path="/Adress" exact component={LayoutAdress} />
             <Route path="/UserDetails" exact component={LayoutUserDetails} />
             
+            
             </Switch> 
             
         </Router>
         </div>
+        
+      </UidContext.Provider>
         
     )
 }

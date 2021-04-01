@@ -3,17 +3,16 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios';
 
 const Register = () => {
-    
+    const [formSubmit, setFormSubmit] = useState(false);
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-  const {register, handleSubmit, errors} = useForm({
-    
-  })
+  const {register, handleSubmit, formState, errors} = useForm()
+  const {isSubmitting} = formState
   
   const onSubmit = async (formAnswers) => {
     
-    console.log(formAnswers) // renvoi un obj json
+    // console.log(formAnswers) // renvoi un obj json
 
     await axios({
       method: "post",
@@ -27,13 +26,19 @@ const Register = () => {
         console.log(res.data.errors);
         setEmailError(res.data.errors.email);
         setPasswordError(res.data.errors.password);
+      }else{
+        setFormSubmit(true)
       }
     })
       .catch((err)=>console.log(err));
   }
   
     return (
-      <div id="register">
+      <>
+      {formSubmit ? (
+        <h3>Welcome to Maison Records - please log in</h3>
+        ) : (
+          <div id="register">
         <h1>Register your account</h1>
           <form className="userCreate" onSubmit={handleSubmit(onSubmit)}>  
           {/* handlesubmit renvoi un obj json de onSubmit*/}
@@ -46,9 +51,9 @@ const Register = () => {
                 type="text" 
                 ref={register
                   ({
-                    pattern: {
-                      value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                    },
+                    // pattern: {
+                    //   value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    // },
                     required: true})}
                 /> 
                 {errors.email && <span className="error">Email invalid!</span>}
@@ -88,7 +93,7 @@ const Register = () => {
         ref={register
           ({
             // pattern: {
-            //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+            //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
             // },
             // min: {
             //   value: 8
@@ -96,14 +101,17 @@ const Register = () => {
             required: true})
           }
         />
-        {errors.password && <span className="error">Password is too short, 8 characters minimum!</span>}
+        {errors.password && <span className="error">Password is too short, 6 characters minimum!</span>}
             <div>{ passwordError }</div>
         </label>
             </div> 
-            <input type="submit"/>
+            <input disabled={isSubmitting} type="submit"/>
           </form>
           
       </div>
+
+        )}
+      </>
     )
   }
 

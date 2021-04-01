@@ -2,7 +2,7 @@ module.exports.signUpErrors = (err) => {
     let errors = { email: '', password: ''}
 
     if(err.message.includes('email'))
-        errors.email = "Incorrect email"
+        errors.email = "Incorrect email or already registered"
     
     if(err.message.includes('password'))
         errors.password = "The password must be 6 or more characters"
