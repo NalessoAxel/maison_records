@@ -13,8 +13,6 @@ import Cart from './component/cart/Cart'
 import Orders from './component/Page/User/Orders'
 import Adress from './component/Page/User/UserAdress'
 import UserDetails from './component/Page/User/UserDetails'
-import {UidContext} from './component/AppContext'
-import axios from 'axios'
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -25,12 +23,14 @@ import './scss/main.scss'
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import data from './component/data/recordsData'
+import {UidContext} from './component/AppContext'
+import axios from 'axios'
 
 const App = () => {
 
     const [uid,setUid] = useState(null);
 
-  useEffect(()=>{  // A chaque fois qu'on appel APP, il lancera le useEffect qui controle le token du user
+  useEffect(()=>{  
     const fetchToken = async () =>{
       await axios ({
         method: "get",
@@ -44,7 +44,7 @@ const App = () => {
       .catch((err)=>console.log("No token"))
     };
     fetchToken();
-  }, []);
+  }, []); // no callback otherwise useEffect will loop [we take admin status]
 
 
 
@@ -87,9 +87,7 @@ const App = () => {
 
 
     return (
-        <UidContext.Provider value={uid}>
-
-
+      <UidContext.Provider value={uid}>  // we place the UID at the top of our app so we don't have to put it in every page
         <div id="App">
 
         <Router>
@@ -116,7 +114,8 @@ const App = () => {
             
         </Router>
         </div>
-        </UidContext.Provider>
+        
+      </UidContext.Provider>
         
     )
 }
