@@ -34,12 +34,9 @@ import './scss/main.scss'
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import data from './component/data/recordsData'
-<<<<<<< HEAD:src/App.js
 import AdminVisitors from './component/Page/admin/AdminVisitors'
-=======
 import {UidContext} from './component/AppContext'
 import axios from 'axios'
->>>>>>> 548a2a3a46b65acc5997a8c73fe97e3f8f1c8f56:client/src/App.js
 
 const App = () => {
 
@@ -99,7 +96,6 @@ const App = () => {
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>
     const LayoutUserDetails = () => <Layout><UserDetails/></Layout>
-<<<<<<< HEAD:src/App.js
     const LayoutAdminHeader = () => <Layout><AdminHeader/></Layout>
     const LayoutAdminDashboard = () => <Layout><AdminDashboard/></Layout>
     const LayoutAddReference = () => <Layout><AddReference/></Layout>
@@ -107,9 +103,7 @@ const App = () => {
     const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
     
     
-=======
 
->>>>>>> 548a2a3a46b65acc5997a8c73fe97e3f8f1c8f56:client/src/App.js
 
     return (
       <UidContext.Provider value={uid}>  // we place the UID at the top of our app so we don't have to put it in every page
