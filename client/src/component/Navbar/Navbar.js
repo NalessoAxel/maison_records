@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import Logo from '../../img/logo-nobg2.png'
 import { Link } from 'react-router-dom'
+import { UidContext } from '../AppContext'
 import Logout from "../Page/LogInForm/Signform/LogOut"
 
 const Navbar =  () => {

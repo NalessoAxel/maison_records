@@ -16,8 +16,6 @@ import UserDetails from './component/Page/User/UserDetails'
 import {UidContext} from './component/AppContext'
 import axios from 'axios'
 
-
-
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
 // import Contact from './component/Footer/Contact'
@@ -27,8 +25,6 @@ import './scss/main.scss'
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import data from './component/data/recordsData'
-
-
 
 const App = () => {
 
@@ -48,7 +44,7 @@ const App = () => {
       .catch((err)=>console.log("No token"))
     };
     fetchToken();
-  }, [uid]);
+  }, []);
 
 
 

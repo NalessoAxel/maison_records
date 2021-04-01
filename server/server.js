@@ -37,7 +37,11 @@ app.use(demoLogger);
 // middleware jwt for cookie
 app.get('*', checkUser); //for all route -> start this middleware
 app.get('/jwtid', requireAuth, (req, res) => {
-    res.status(200).send(res.locals.user._id)
+    res.status(200).send(
+        {
+            id: res.locals.user._id,
+            admin: res.locals.user.admin
+        })
 });
 
 //routes
