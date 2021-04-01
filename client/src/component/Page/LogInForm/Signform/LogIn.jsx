@@ -28,7 +28,7 @@ const LogIn = () => {
       if (res.data.admin){
         window.location = '/AdminPage'
       }else{
-        window.location = '/New' // A MODIFIER SI ON VEUT 
+        window.location = '/Adre' // A MODIFIER SI ON VEUT 
         console.log(res.data);
       }
     })
@@ -37,7 +37,6 @@ const LogIn = () => {
     })
 
   }
-  https://prod.liveshare.vsengsaas.visualstudio.com/join?04CE76529922F5B71D65B72613B3052403F8
     return (
       <div id="login">
         <h1>Login</h1>
