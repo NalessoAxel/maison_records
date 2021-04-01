@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Logo from '../../img/logo-nobg2.png'
 import { Link } from 'react-router-dom'
-
+import { UidContext } from '../AppContext'
+import Logout from "../Page/LogInForm/Signform/LogOut"
 
 const Navbar =  () => {
 
+    
+    
     const links = [
         'New',
         'Second Hand',
@@ -14,7 +17,9 @@ const Navbar =  () => {
         'Live',    
     ]
     const strToUrl = (str) => '/' + str.replace(' ', '')
-
+    
+    const uid = useContext(UidContext);
+    
     return (
             <nav id="nav">
                 <div className="logo">
@@ -29,14 +34,27 @@ const Navbar =  () => {
                         ))}
                     </ul>
                 </div>
+    
+                
+                
                 <div className="cart">
                     <div className="log">
-                        <Link to="/UserRegisterPage">
+                    {uid ? (
+                        <>
+                            <Logout/>
+                        </>
+                    ) : (
+                        <>
+                        
+                         <Link to="/UserRegisterPage">
                             <span>Log in</span>
                         </Link>
                         <Link to="/AdminDashboard">
                             <span>Admin</span>
                         </Link>
+                        </>
+                    )}
+                            
                     </div>
                     <Link to="/Cart">
                         <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" ></i>
