@@ -106,8 +106,9 @@ const App = () => {
     
 
     return (
-      <UidContext.Provider value={uid}>  // we place the UID at the top of our app so we don't have to put it in every page
-        <div id="App">
+          <UidContext.Provider value={uid}> 
+           {/* // we place the UID at the top of our app so we don't have to put it in every page */}
+      <div id="App">
 
         <Router>
             
