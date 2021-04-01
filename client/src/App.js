@@ -13,6 +13,10 @@ import Cart from './component/cart/Cart'
 import Orders from './component/Page/User/Orders'
 import Adress from './component/Page/User/UserAdress'
 import UserDetails from './component/Page/User/UserDetails'
+import {UidContext} from './component/AppContext'
+import axios from 'axios'
+
+
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -20,13 +24,34 @@ import UserDetails from './component/Page/User/UserDetails'
 // import ShippingInfos from './component/Footer/ShipingInfos'
 
 import './scss/main.scss'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import data from './component/data/recordsData'
 
 
 
 const App = () => {
+
+    const [uid,setUid] = useState(null);
+
+  useEffect(()=>{  // A chaque fois qu'on appel APP, il lancera le useEffect qui controle le token du user
+    const fetchToken = async () =>{
+      await axios ({
+        method: "get",
+        url: `${process.env.REACT_APP_API_URL}jwtid`,
+        withCredentials: true
+      })
+      .then((res)=>{
+        console.log(res);
+        setUid(res.data);
+      })
+      .catch((err)=>console.log("No token"))
+    };
+    fetchToken();
+  }, [uid]);
+
+
+
 
     const { products } = data
     const [ cartItems, setCartItems ] = useState([]) 
@@ -63,10 +88,12 @@ const App = () => {
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>
     const LayoutUserDetails = () => <Layout><UserDetails/></Layout>
-    
+
 
     return (
-        
+        <UidContext.Provider value={uid}>
+
+
         <div id="App">
 
         <Router>
@@ -93,6 +120,7 @@ const App = () => {
             
         </Router>
         </div>
+        </UidContext.Provider>
         
     )
 }
