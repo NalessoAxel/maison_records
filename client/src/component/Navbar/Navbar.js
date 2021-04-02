@@ -15,7 +15,7 @@ const Navbar =  () => {
         'Merch',
         'Accessories',
         'Live',
-        'Profil'    
+        'Profile'    
     ]
     const strToUrl = (str) => '/' + str.replace(' ', '')
     
@@ -31,9 +31,14 @@ const Navbar =  () => {
                 </div>
                 <div className="link">
                     <ul>
-                        {links.map((link) => (
-                            <li><Link to={strToUrl(link)}>{link}</Link></li>
-                        ))}
+                        {links.map((link) => {
+                            if (link=="Profile" && uid && !uid.admin){
+                            return (<li><Link to={strToUrl(link)}>{link}</Link></li>)
+                            }
+                            else if (link != 'Profile') {
+                             return (<li><Link to={strToUrl(link)}>{link}</Link></li>)
+                            }
+                            })}
                     </ul>
                 </div>
     
@@ -42,6 +47,9 @@ const Navbar =  () => {
                     {uid ? (
                         <>
                             <Logout/>
+                            {!uid.admin ? (<Link to="/Cart"> 
+                             <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" ></i>
+                             </Link>):(<></>)}
                         </>
                     ) : (
                         <>
@@ -49,16 +57,14 @@ const Navbar =  () => {
                          <Link to="/UserRegisterPage">
                             <span>Log in</span>
                         </Link>
-                        <Link to="/AdminDashboard">
+                        {/* <Link to="/AdminDashboard">
                             <span>Admin</span>
-                        </Link>
+                        </Link> */}
                         </>
                     )}
                             
                     </div>
-                    <Link to="/Cart">
-                        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" ></i>
-                    </Link>
+                    
                 </div>
                 
             </nav>
