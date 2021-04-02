@@ -14,29 +14,30 @@ const LogIn = () => {
   const onSubmit = async (formAnswers) => {
     console.log(formAnswers)
 
-    await axios({
+    try {
+    const res = await axios({
       method: "post",
       url: `${process.env.REACT_APP_API_URL}api/user/login`,
       withCredentials: true,
       data: formAnswers
     })
-    .then((res)=>{
-      if(res.data.erros){
-        setEmailError(res.data.erros.email);
-        setPasswordError(res.data.erros.password);
+    if(res.data.errors){
+        setEmailError(res.data.errors.email);
+        setPasswordError(res.data.errors.password);
       }
-      if (res.data.admin){
+    if (res.data.admin){
         window.location = '/AdminDashboard'
       }else{
         window.location = '/Adress' // A MODIFIER SI ON VEUT 
         console.log(res.data);
      }
-    })
-    .catch((err)=>{
+    }
+    catch(err){
       console.log(err);
-    })
-
+    }
   }
+
+
     return (
       <div id="login">
         <h1>Login</h1>

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { UidContext } from '../AppContext'
 import Logout from "../Page/LogInForm/Signform/LogOut"
 
-const Navbar =  () => {
 
-    
+
+const Navbar =  () => {
     
     const links = [
         'New',
@@ -18,7 +18,8 @@ const Navbar =  () => {
     ]
     const strToUrl = (str) => '/' + str.replace(' ', '')
     
-    const uid = useContext(UidContext);
+    const { uid } = useContext(UidContext)
+ 
     
     return (
             <nav id="nav">
@@ -35,11 +36,9 @@ const Navbar =  () => {
                     </ul>
                 </div>
     
-                
-                
                 <div className="cart">
                     <div className="log">
-                    {uid == undefined? (
+                    {uid ? (
                         <>
                             <Logout/>
                         </>

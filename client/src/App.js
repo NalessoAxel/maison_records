@@ -41,11 +41,11 @@ import axios from 'axios'
 const App = () => {
 
     const [uid,setUid] = useState(null);
-    const [loading, setLoading] =  useState(false);
+    const [loading, setLoading] =  useState(true);
 
   useEffect(()=>{  
     const fetchToken = async () =>{
-      setLoading(true);
+      
       const res = await axios({
         method: "get",
         url: `${process.env.REACT_APP_API_URL}jwtid`,
@@ -55,6 +55,7 @@ const App = () => {
         setLoading(false);
       // .catch((err)=>console.log("No token"))
     };
+    console.log("valeur : " + uid);
     fetchToken();
   }, []); // no callback otherwise useEffect will loop [we take admin status]
 
@@ -101,9 +102,10 @@ const App = () => {
     const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
     
     return (
-          <UidContext.Provider value={{uid, loading}}> 
+      <UidContext.Provider value={{uid, loading}}> 
            {/* // we place the UID at the top of our app so we don't have to put it in every page */}
-      <div id="App">
+          
+          <div id="App">
 
         <Router>
             
