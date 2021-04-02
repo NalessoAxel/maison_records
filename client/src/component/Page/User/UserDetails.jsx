@@ -63,7 +63,7 @@ const LogIn = () => {
         </form>
     </div>
         <div id="changePassword">
-        <h1>Register your account</h1>
+        <h1>Modify your password</h1>
             <form className="userCreate" onSubmit={handleSubmit(onSubmit)}>
             
              
