@@ -1,0 +1,30 @@
+.orderHeader {
+    display: grid;
+    grid-template-columns: 0.7fr 0.8fr 0.9fr 1.2fr 1.4fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    
+    margin: 0 50px;
+    align-items: center;
+    border-bottom: 1px solid black;
+    background-color: #BDBDBD;
+    
+}
+.orderItem {
+    
+    display: grid;
+    grid-template-columns: 0.7fr 0.8fr 0.9fr 1.2fr 1.4fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin: 0 50px;
+    align-items: center;
+    padding: 10px 0;
+    .justify {
+        margin: 20px 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid black;
+    }
+    .detailsBtn {
+        margin-bottom: 10px;
+        outline: none;
+    }
+
+}

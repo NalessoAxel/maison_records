@@ -28,7 +28,7 @@ module.exports.signUp = async (req, res)=>{
 }
 
 
-// Function authentification for registered user 
+// Function connexion for registered user 
 module.exports.signIn = async (req, res) => {
     const { email, password } = req.body
 

@@ -1,0 +1,42 @@
+.adress {
+    display: flex;
+    justify-content: center;
+    .billingAdress {
+        background-color: #BDBDBD ;
+        width: 434px;
+        height: 235px;
+        margin: 30px 50px;
+        padding: 10px;
+        .title {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;   
+        }
+        .userBillingAdress {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 30px;
+            font-style: italic;
+        }
+    }
+    .shippingAdress {
+        background-color: #BDBDBD ;
+        width: 434px;
+        height: 235px;
+        margin: 30px 50px;
+        padding: 10px;
+        .title {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;  
+        }
+        .userShippingAdress {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 30px;
+            font-style: italic;
+        }
+    }
+}

@@ -29,14 +29,14 @@ const CartSummary = (props) => {
                                 <div className="itemPrice">
                                     <span>{item.price}€</span>
                                 </div>
-                                <div className="itemQuantiy">
+                                <div className="itemQuantity">
                                     <form>
                                         <div className="quantityEditor">
                                         <button onClick={() => onRemove(item)}  type="button">
                                             
                                         <i class="fas fa-minus"></i>
                                         </button>
-                                        
+                                        <span className="itemQty">{item.quantity}</span>
                                         <button onClick={() => onAdd(item)} type="button">
                                         <i class="fas fa-plus"></i>
                                         </button>
@@ -44,7 +44,7 @@ const CartSummary = (props) => {
                                     </form>
                                 </div>
                                 <div className="total">
-                                    {item.quantity} x {item.quantity*item.price}€
+                                    {item.quantity*item.price}€
                                 </div>
                             </div>
                             ))}

@@ -26,18 +26,17 @@ const LogIn = () => {
         setPasswordError(res.data.erros.password);
       }
       if (res.data.admin){
-        window.location = '/AdminPage'
+        window.location = '/AdminDashboard'
       }else{
-        window.location = '/New' // A MODIFIER SI ON VEUT 
+        window.location = '/Adress' // A MODIFIER SI ON VEUT 
         console.log(res.data);
-      }
+     }
     })
     .catch((err)=>{
       console.log(err);
     })
 
   }
-
     return (
       <div id="login">
         <h1>Login</h1>

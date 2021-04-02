@@ -1,0 +1,42 @@
+#login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    h1 {
+        padding-bottom: 20px;
+    }
+    .loginGroup {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 20px;    
+        }
+        input {
+            padding: .5em;
+            width: 400px;
+            font-size: 15px;
+            border: 1px solid $greymiddle;
+        }
+    }
+    .loginCheckbox {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 5px;
+        .checkbox {
+            width: auto;
+            
+        }
+        p{
+            margin-left: 3px;
+            
+        }
+    }
+    
+    
+}
