@@ -14,7 +14,8 @@ const Navbar =  () => {
         'Sell Collection',
         'Merch',
         'Accessories',
-        'Live',    
+        'Live',
+        'Profil'    
     ]
     const strToUrl = (str) => '/' + str.replace(' ', '')
     
