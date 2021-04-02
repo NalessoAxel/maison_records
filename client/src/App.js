@@ -38,7 +38,6 @@ import AdminVisitors from './component/Page/admin/AdminVisitors'
 import {UidContext} from './component/AppContext'
 import axios from 'axios'
 
-
 const App = () => {
 
     const [uid,setUid] = useState(null);
@@ -95,14 +94,12 @@ const App = () => {
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>
     const LayoutUserDetails = () => <Layout><UserDetails/></Layout>
-
     const LayoutAdminHeader = () => <Layout><AdminHeader/></Layout>
     const LayoutAdminDashboard = () => <Layout><AdminDashboard/></Layout>
     const LayoutAddReference = () => <Layout><AddReference/></Layout>
     const LayoutAdminOrders = () => <Layout><AdminOrders/></Layout>
     const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
     
-
     return (
           <UidContext.Provider value={{uid, loading}}> 
            {/* // we place the UID at the top of our app so we don't have to put it in every page */}
