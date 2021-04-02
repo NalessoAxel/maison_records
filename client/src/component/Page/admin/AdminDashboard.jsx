@@ -7,17 +7,18 @@ import visitorsLogo from '../../../img/visitors.svg'
 import { UidContext } from '../../AppContext';
 
 const AdminDashboard = () => {
+    
     const {uid, loading} = useContext(UidContext)
-    console.log(uid.admin);
-
-    if(loading){ return <div> LENY CHAMPION </div> }
-
+    
+    if(loading){ 
+        return <h3> Loading ...  </h3> }
+    
+    
     return (
-            <>
-        {/* {loading == false}     */}
+        <>
          {uid.admin ? (
-                <> 
-                <AdminHeader/>
+             <> 
+             <AdminHeader/>
                 <div className="adminWrapper">
                     <div className="addReference">
                         <Link to='/addReference'>
@@ -33,12 +34,12 @@ const AdminDashboard = () => {
                     <Link to='/AdminVisitors'>
                         <img src={visitorsLogo} alt=""/>
                         </Link>
-                    
+                        
                     </div>
                 </div>
                 </>
             ) : (
-                    <div>T'es un hacker TIO ?</div>            
+                    <h3>WARNING WARNING HACKER ATTACK</h3>            
             ) }
             
         </>
