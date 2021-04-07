@@ -7,7 +7,8 @@ const ModalShippingform = () => {
     const {register, handleSubmit, errors} = useForm()
     const { uid } = useContext(UidContext);
 
-    const [formValue, setFormValue]= useState([])
+    const [formValue, setFormValue]= useState([]) 
+    // test pour push
     
     const onSubmit = async (formAnswers) => {
         console.log(formAnswers)
@@ -53,7 +54,7 @@ const ModalShippingform = () => {
                         <input 
                          name="first_name"
                         
-                        value = {formValue.first_name}
+                        defaultValue = {formValue.first_name}
                         ref={register({
                           required: true
                         })}
