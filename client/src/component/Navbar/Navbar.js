@@ -48,7 +48,7 @@ const Navbar =  () => {
                         <>
                             <Logout/>
                             {!uid.admin ? (<Link to="/Cart"> 
-                             <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" ></i>
+                             <i className="fa fa-shopping-cart fa-2x" aria-hidden="true" ></i>
                              </Link>):(<></>)}
                         </>
                     ) : (

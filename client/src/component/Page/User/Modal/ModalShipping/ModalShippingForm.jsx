@@ -14,8 +14,8 @@ const ModalShippingform = () => {
         console.log(formAnswers)
         try {
             const res = await axios({
-                method:"PUT",
-                url: `${process.env.REACT_APP_API_URL}api/user/`+ uid.id,
+                method:"patch",
+                url: `${process.env.REACT_APP_API_URL}api/user/update/`+ uid.id,
                 withCredentials: true,
                 data: formAnswers
             })
