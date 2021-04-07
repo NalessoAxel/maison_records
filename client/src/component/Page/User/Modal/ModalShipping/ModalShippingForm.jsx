@@ -1,21 +1,60 @@
-import React from 'react'
+import React, {useState , useContext} from 'react'
 import {useForm} from 'react-hook-form'
+import { UidContext } from '../../../../AppContext';
+import axios from "axios"
 
 const ModalShippingform = () => {
     const {register, handleSubmit, errors} = useForm()
-    const onSubmit = (data) => {
-        console.log(data)
+    const { uid } = useContext(UidContext);
+
+    const [formValue, setFormValue]= useState([]) 
+    // test pour push
+    
+    const onSubmit = async (formAnswers) => {
+        console.log(formAnswers)
+        try {
+            const res = await axios({
+                method:"PUT",
+                url: `${process.env.REACT_APP_API_URL}api/user/`+ uid.id,
+                withCredentials: true,
+                data: formAnswers
+            })
+        }
+        catch(err){
+            console.log(err);
+        }
     }
+  
+    const getInfo = async () => {
+       try {
+            const res = await axios({
+            method:"get",
+            url: `${process.env.REACT_APP_API_URL}api/user/`+ uid.id,
+            withCredentials: true,
+      })
+      setFormValue(res.data)
+      // console.log(formValue.adress_shipping.street)      
+       }
+       catch(err){
+        console.log(err);
+    }
+    }
+    getInfo()
+    
+
     return (
         <>
+    
+            
             <div className="modalBillingForm">
                 <h1>Shipping Adress</h1>
                 <div className="modalInput">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label>Your first name</label>
                         <input 
-                         name="firstName"
-                        placeholder='first name'
+                         name="first_name"
+                        
+                        defaultValue = {formValue.first_name}
                         ref={register({
                           required: true
                         })}
@@ -23,8 +62,9 @@ const ModalShippingform = () => {
                         
                         <label>Your last name</label>
                         <input 
-                        name="lastName"
-                        placeholder='last name'
+                        name="last_name"
+                        
+                        value = {formValue.last_name}
                         type="text"
                         ref={register({
                           required: true
@@ -33,18 +73,19 @@ const ModalShippingform = () => {
                         
                         <label>Companie (optional)</label>
                         <input 
-                        name="lastName"
-                        placeholder='companie name'
+                        name="companie"
+                        
+                        // value = {formValue.companie}
                         type="text"
                         ref={register({
-                          required: true
+                          // required: true
                         })}
                         /> 
-                        
+          
                         <label>Street Name</label>
                         <input 
-                        name="lastName"
-                        placeholder='Rue Franz Merjay'
+                        name="street"
+                        // value = {formValue.adress_shipping.street}
                         type="text"
                         ref={register({
                           required: true
@@ -52,8 +93,8 @@ const ModalShippingform = () => {
                         /> 
                          <label>N°</label>
                         <input 
-                        name="streetNumber"
-                        placeholder='23'
+                        name="number"
+                        // value = {formValue.adress_shipping.number}
                         type="number"
                         ref={register({
                           required: true
@@ -62,7 +103,7 @@ const ModalShippingform = () => {
                         <label>Postcode/zip</label>
                         <input 
                         name="zip"
-                        placeholder='1040'
+                        // value = {formValue.adress_shipping.zip}
                         type="number"
                         ref={register({
                           required: true
@@ -71,13 +112,13 @@ const ModalShippingform = () => {
                         <label>Town/city</label>
                         <input 
                         name="city"
-                        placeholder='Brussels'
+                        // value = {formValue.adress_shipping.city}
                         type="text"
                         ref={register({
                           required: true
                         })}
                         /> 
-                        <label>Town/city</label>
+                        {/* <label>Town/city</label>
                         <input 
                         name="city"
                         placeholder='Brussels'
@@ -85,11 +126,11 @@ const ModalShippingform = () => {
                         ref={register({
                           required: true
                         })}
-                        />
+                        /> */}
                         <label>Your Email
                          <input 
                          name="email"
-                         placeholder='your email here'
+                        value = {formValue.email}
                          type="tesxt" 
                          ref={register
                            ({
@@ -102,19 +143,20 @@ const ModalShippingform = () => {
                          </label>
                          <label>Phone Number</label>
                         <input 
-                        name="zip"
-                        placeholder='+32 (0)4 65 43 42 52'
+                        name="phonenumber"
+                        value = {formValue.phonenumber}
                         type="number"
                         ref={register({
                           required: true
                         })}
                         /> 
-                        <input type="submit"/>
+                        <input  type="submit"/>
                     </form>
                 </div>
             </div>
+      
         </>
     )
-}
+}                   
 
 export default ModalShippingform

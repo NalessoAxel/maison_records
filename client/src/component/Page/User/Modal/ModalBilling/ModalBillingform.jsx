@@ -6,6 +6,11 @@ const ModalBillingform = () => {
     const onSubmit = (data) => {
         console.log(data)
     }
+
+
+    
+
+
     return (
         <>
             <div className="modalBillingForm">
@@ -77,15 +82,6 @@ const ModalBillingform = () => {
                           required: true
                         })}
                         /> 
-                        <label>Town/city</label>
-                        <input 
-                        name="city"
-                        placeholder='Brussels'
-                        type="text"
-                        ref={register({
-                          required: true
-                        })}
-                        />
                         <label>Your Email
                          <input 
                          name="email"

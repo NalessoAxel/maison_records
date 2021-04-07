@@ -118,6 +118,7 @@ const App = () => {
             <Route path="/Merch" exact component={LayoutMerch} />
             <Route path="/Accessories"  exact component={LayoutAccessories} />
             <Route path="/Live"  exact component={LayoutLive} />
+            <Route path="/Profile"  exact component={LayoutAdress} />
             <Route path="/LogIn"  exact component={LayoutUserRegisterPage} />
             <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
             <Route path="/Cart"  exact component={LayoutCart} />
