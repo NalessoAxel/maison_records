@@ -38,7 +38,6 @@ import AdminVisitors from './component/Page/admin/AdminVisitors'
 import {UidContext} from './component/AppContext'
 import axios from 'axios'
 
-
 const App = () => {
 
     const [uid,setUid] = useState(null);
@@ -56,7 +55,6 @@ const App = () => {
         setLoading(false);
       // .catch((err)=>console.log("No token"))
     };
-    console.log("valeur : " + uid);
     fetchToken();
   }, []); // no callback otherwise useEffect will loop [we take admin status]
 
@@ -81,7 +79,27 @@ const App = () => {
             setCartItems(cartItems.map(x => x.id === product.id ? {...exist, quantity: exist.quantity - 1 } : x))
         }
     }
+    // ______________________________________________________________________________________________   TEST
+    // const [formValue, setFormValue]= useState('') 
     
+    // const getInfo = async () => { 
+    //     try {
+    //          const res = await axios({
+    //          method:"get",
+    //          url: `${process.env.REACT_APP_API_URL}api/user/`+ uid.id,
+    //          withCredentials: true,
+    //    }) 
+    //    setFormValue(res.data)   
+    //    console.log(formValue)
+    //     }
+    //     catch(err){
+    //      console.log(err);
+    //  }
+    //  }
+    // //  getInfo()
+
+
+// ______________________________________________________________________________________________
     
     const LayoutNew = () => <Layout><New products={products} onAdd={onAdd}/></Layout>
     const LayoutSecondHand = () => <Layout><SecondHand products={products} onAdd={onAdd}/></Layout>
@@ -96,14 +114,12 @@ const App = () => {
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>
     const LayoutUserDetails = () => <Layout><UserDetails/></Layout>
-
     const LayoutAdminHeader = () => <Layout><AdminHeader/></Layout>
     const LayoutAdminDashboard = () => <Layout><AdminDashboard/></Layout>
     const LayoutAddReference = () => <Layout><AddReference/></Layout>
     const LayoutAdminOrders = () => <Layout><AdminOrders/></Layout>
     const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
     
-
     return (
       <UidContext.Provider value={{uid, loading}}> 
            {/* // we place the UID at the top of our app so we don't have to put it in every page */}

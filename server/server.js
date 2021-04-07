@@ -29,7 +29,7 @@ const demoLogger = (req, res, next) => {
 
 app.use(cors(corsOptions));
 
-app.use(express.json()); // json body-parer
+app.use(express.json()); // json body-parser
 app.use(cookieParser());
 app.use(demoLogger);
 
@@ -43,6 +43,8 @@ app.get('/jwtid', requireAuth, (req, res) => {
             admin: res.locals.user.admin  // to take the user's status and make the difference at the connection between admin and simple user
         })
 });
+
+
 
 //routes
 app.use('/api/user', userRoutes);

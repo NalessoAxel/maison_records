@@ -1,4 +1,4 @@
-import React, {useState , useContext} from 'react'
+import React, {useState , useContext, useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import { UidContext } from '../../../../AppContext';
 import axios from "axios"
@@ -14,7 +14,7 @@ const ModalShippingform = () => {
         console.log(formAnswers)
         try {
             const res = await axios({
-                method:"patch",
+                method:"PATCH",
                 url: `${process.env.REACT_APP_API_URL}api/user/update/`+ uid.id,
                 withCredentials: true,
                 data: formAnswers
@@ -24,22 +24,46 @@ const ModalShippingform = () => {
             console.log(err);
         }
     }
+
+    const [laValue, set_laValue]= useState({}) 
+
+
+    const [first_nameValue, setFirst_nameValue]= useState('') 
+    const [last_nameValue, setLast_nameValue]= useState('') 
+    const [streetValue, setStreetValue]= useState('') 
+    const [numberValue, setNumberValue]= useState('') 
+    const [zipValue, setZipValue]= useState('') 
+    const [cityValue, setCityValue]= useState('') 
+    const [emailValue, setEmailValue]= useState('') 
+
   
     const getInfo = async () => {
        try {
-            const res = await axios({
-            method:"get",
-            url: `${process.env.REACT_APP_API_URL}api/user/`+ uid.id,
-            withCredentials: true,
+        const res = await axios({
+        method:"get",
+        url: `${process.env.REACT_APP_API_URL}api/user/`+ uid.id,
+        withCredentials: true,
       })
-      setFormValue(res.data)
-      // console.log(formValue.adress_shipping.street)      
+      // set_laValue(res.data)
+      // console.log(res.data)   
+      // setFirst_nameValue(res.data.first_name)   
+      // setLast_nameValue(res.data.last_name)   
+      // setStreetValue(res.data.adress_shipping.street)   
+      // setNumberValue(res.data.adress_shipping.number)   
+      // setZipValue(res.data.adress_shipping.zip)   
+      // setCityValue(res.data.adress_shipping.city)  
+      // setEmailValue(res.data.email) 
        }
        catch(err){
         console.log(err);
     }
     }
-    getInfo()
+
+    useEffect(() => {
+      getInfo()
+ 
+    }, []) 
+    
     
 
     return (
@@ -54,7 +78,7 @@ const ModalShippingform = () => {
                         <input 
                          name="first_name"
                         
-                        defaultValue = {formValue.first_name}
+                        defaultValue = {first_nameValue}
                         ref={register({
                           required: true
                         })}
@@ -64,7 +88,7 @@ const ModalShippingform = () => {
                         <input 
                         name="last_name"
                         
-                        value = {formValue.last_name}
+                        defaultValue = {last_nameValue}
                         type="text"
                         ref={register({
                           required: true
@@ -85,7 +109,7 @@ const ModalShippingform = () => {
                         <label>Street Name</label>
                         <input 
                         name="street"
-                        // value = {formValue.adress_shipping.street}
+                        defaultValue = {streetValue}
                         type="text"
                         ref={register({
                           required: true
@@ -94,7 +118,7 @@ const ModalShippingform = () => {
                          <label>N°</label>
                         <input 
                         name="number"
-                        // value = {formValue.adress_shipping.number}
+                        defaultValue = {numberValue}
                         type="number"
                         ref={register({
                           required: true
@@ -103,7 +127,7 @@ const ModalShippingform = () => {
                         <label>Postcode/zip</label>
                         <input 
                         name="zip"
-                        // value = {formValue.adress_shipping.zip}
+                        defaultValue = {zipValue}
                         type="number"
                         ref={register({
                           required: true
@@ -112,7 +136,7 @@ const ModalShippingform = () => {
                         <label>Town/city</label>
                         <input 
                         name="city"
-                        // value = {formValue.adress_shipping.city}
+                        defaultValue = {cityValue}
                         type="text"
                         ref={register({
                           required: true
@@ -130,7 +154,7 @@ const ModalShippingform = () => {
                         <label>Your Email
                          <input 
                          name="email"
-                        value = {formValue.email}
+                         defaultValue = {emailValue}
                          type="tesxt" 
                          ref={register
                            ({
@@ -144,7 +168,7 @@ const ModalShippingform = () => {
                          <label>Phone Number</label>
                         <input 
                         name="phonenumber"
-                        value = {formValue.phonenumber}
+                        // value = {formValue.phonenumber}
                         type="number"
                         ref={register({
                           required: true
