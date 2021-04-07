@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+
 
 const LogicModal = () => {
     const [revel, changeRevel] = useState(false)
+
 
   function toggle(){
         changeRevel(!revel)
