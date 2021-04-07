@@ -28,6 +28,11 @@ const userSchema = new mongoose.Schema(
             max: 1024,
             minlength: 6
         },
+        phonenumber:{
+            type: Number,
+            max: 50,
+            minlength: 10
+        },
         adress_shipping: 
             { street: 
                 {
