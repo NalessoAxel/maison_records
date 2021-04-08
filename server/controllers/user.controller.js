@@ -66,7 +66,7 @@ module.exports.updateUser = async (req, res) => {
     try {
         await UserModel.findOneAndUpdate({ _id: req.params.id },  
             {
-                $setOnInsert: changes
+                $set: changes
             }, 
             {new: true, upsert: true, setDefaultsOnInsert: true},
             (err, docs) => {
