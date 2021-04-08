@@ -79,27 +79,6 @@ const App = () => {
             setCartItems(cartItems.map(x => x.id === product.id ? {...exist, quantity: exist.quantity - 1 } : x))
         }
     }
-    // ______________________________________________________________________________________________   TEST
-    // const [formValue, setFormValue]= useState('') 
-    
-    // const getInfo = async () => { 
-    //     try {
-    //          const res = await axios({
-    //          method:"get",
-    //          url: `${process.env.REACT_APP_API_URL}api/user/`+ uid.id,
-    //          withCredentials: true,
-    //    }) 
-    //    setFormValue(res.data)   
-    //    console.log(formValue)
-    //     }
-    //     catch(err){
-    //      console.log(err);
-    //  }
-    //  }
-    // //  getInfo()
-
-
-// ______________________________________________________________________________________________
     
     const LayoutNew = () => <Layout><New products={products} onAdd={onAdd}/></Layout>
     const LayoutSecondHand = () => <Layout><SecondHand products={products} onAdd={onAdd}/></Layout>

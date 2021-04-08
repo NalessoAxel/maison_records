@@ -6,9 +6,8 @@ import axios from "axios"
 const ModalShippingform = () => {
     const {register, handleSubmit, errors} = useForm()
     const { uid } = useContext(UidContext);
-
-    const [formValue, setFormValue]= useState([]) 
-    // test pour push
+ // ______________________________________________________________________________________________   TEST
+    // const [formValue, setFormValue]= useState('{}') 
     
     const onSubmit = async (formAnswers) => {
         console.log(formAnswers)
@@ -25,47 +24,27 @@ const ModalShippingform = () => {
         }
     }
 
-    const [laValue, set_laValue]= useState({}) 
-
-
-    const [first_nameValue, setFirst_nameValue]= useState('') 
-    const [last_nameValue, setLast_nameValue]= useState('') 
-    const [streetValue, setStreetValue]= useState('') 
-    const [numberValue, setNumberValue]= useState('') 
-    const [zipValue, setZipValue]= useState('') 
-    const [cityValue, setCityValue]= useState('') 
-    const [emailValue, setEmailValue]= useState('') 
-
-  
-    const getInfo = async () => {
-       try {
-        const res = await axios({
-        method:"get",
-        url: `${process.env.REACT_APP_API_URL}api/user/`+ uid.id,
-        withCredentials: true,
-      })
-      // set_laValue(res.data)
-      // console.log(res.data)   
-      // setFirst_nameValue(res.data.first_name)   
-      // setLast_nameValue(res.data.last_name)   
-      // setStreetValue(res.data.adress_shipping.street)   
-      // setNumberValue(res.data.adress_shipping.number)   
-      // setZipValue(res.data.adress_shipping.zip)   
-      // setCityValue(res.data.adress_shipping.city)  
-      // setEmailValue(res.data.email) 
-       }
-       catch(err){
-        console.log(err);
-    }
-    }
-
+  const getInfo = async () => { 
+      try {
+         const res = await axios({
+         method:"get",
+         url: `${process.env.REACT_APP_API_URL}api/user/`+ uid.id,
+         withCredentials: true,
+      }) 
+       setFormValue(res.data)   
+       console.log(formValue)
+        }
+        catch(err){
+         console.log(err);
+      }
+  }
+   
     useEffect(() => {
       getInfo()
  
     }, []) 
     
-    
-
+  
     return (
         <>
     
