@@ -65,14 +65,13 @@ const UserAdress = () => {
                             <h3>Billing adress</h3>
                             <button onClick={toggle}>Edit</button>
                             <ModalBilling
-                                // la?????!!???
                                 
                                 revel={revel}
                                 cache={toggle}
                             />
                         </div>
                         <div className="userBillingAdress">
-                            <p>Axel Nalesso</p>
+                            <p>Hola FLO</p>
                             <p>Avenue Ducpétiaux 30</p>
                             <p>1060 Saint Gilles</p>
                             <p>Belgium</p>
@@ -88,7 +87,7 @@ const UserAdress = () => {
                             />
                         </div>
                         <div className="userShippingAdress">
-                            <p>Axel Nalesso</p>
+                            <p>bliblibly</p>
                             <p>Avenue Ducpétiaux 30</p>
                             <p>1060 Saint Gilles</p>
                             <p>Belgium</p>

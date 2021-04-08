@@ -18,6 +18,7 @@ module.exports.userInfo = (req, res)=>{
     }).select('-password')
 };
 
+
 module.exports.updateUser = async (req, res) => {
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID unknown : ' +req.params.id)
@@ -27,10 +28,10 @@ module.exports.updateUser = async (req, res) => {
             req.params.id,
             {
                 $set:{
-                    first_name: req.body.first_name,
-                    last_name: req.body.last_name,
-                    email : req.body.email,
-                    password: req.body.password,
+                    // first_name: req.body.first_name,
+                    // last_name: req.body.last_name,
+                    // email : req.body.email,
+                    // password: req.body.password,
                     adress_shipping: 
                     {
                     street: req.body.street,
