@@ -25,7 +25,7 @@ module.exports.updateUser = async (req, res) => {
     
     try{
         await UserModel.findOneAndUpdate(
-            req.params.id,
+            {_id: req.params.id},
             {
                 $set:{
                     // first_name: req.body.first_name,
