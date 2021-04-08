@@ -18,45 +18,70 @@ module.exports.userInfo = (req, res)=>{
     }).select('-password')
 };
 
+//object.attributeTwo = testBoolean ? "attributeTwo" : "attributeTwoToo"
 
 module.exports.updateUser = async (req, res) => {
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID unknown : ' +req.params.id)
-    
-    try{
-        await UserModel.findOneAndUpdate(
-            {_id: req.params.id},
-            {
-                $set:{
-                    // first_name: req.body.first_name,
-                    // last_name: req.body.last_name,
-                    // email : req.body.email,
-                    // password: req.body.password,
-                    adress_shipping: 
-                    {
-                    street: req.body.street,
-                    number: req.body.number,
-                    zip: req.body.zip,
-                    city: req.body.city
-                    },
-                    adress_billing: 
-                    {
-                    street: req.body.street,
-                    number: req.body.number,
-                    zip: req.body.zip,
-                    city: req.body.city
-                    }
+
+  let changes = {}
+  
+    const {
+        first_name,
+        last_name,
+        email,
+        streetShipping,
+        numberShipping,
+        zipShipping,
+        cityShipping,
+        streetBilling,
+        numberBilling,
+        zipBilling,
+        cityBilling
+    } = req.body
+
+{(req.body.password) ? (
+ changes.password= req.body.password
+):(
+    changes = {
+                first_name,
+                last_name,
+                email,
+                adress_shipping:
+                {
+                    street: streetShipping,
+                    number: numberShipping,
+                    zip: zipShipping,
+                    city: cityShipping
+                },
+                adress_billing: 
+                {
+                    street: streetBilling,
+                    number: numberBilling,
+                    zip: zipBilling,
+                    city: cityBilling
                 }
-            },
-            { new: true, upsert: true, setDefaultsOnInsert: true },
+            }
+)}
+    try {
+        await UserModel.findOneAndUpdate({ _id: req.params.id },  
+            {
+                $setOnInsert: changes
+            }, 
+            {new: true, upsert: true, setDefaultsOnInsert: true},
             (err, docs) => {
-                if(!err) return res.send(docs);
-                if(err) return res.status(500).json({message: err});
+                if (!err) {
+                    docs.save();
+                    return res.send(docs);
+                }
+                if (err) return res.status(500).json({
+                    message: err
+                });
+               
             }
         )
     } catch (err) {
         return res.status(500).json({message: err}); //renvoi json car bdd en json
-     }
+    }
 };
 
-// update + delete

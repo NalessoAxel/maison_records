@@ -17,6 +17,7 @@ const ModalShippingform = () => {
         withCredentials: true,
         data: formAnswers,
       });
+      window.location =""  // reload page 
     } catch (err) {
       console.log(err);
     }
@@ -82,7 +83,7 @@ const ModalShippingform = () => {
 
                 <label>Street Name</label>
                 <input
-                  name="street"
+                  name="streetShipping"
                   defaultValue = {formValue.adress_shipping.street}
                   type="text"
                   ref={register({
@@ -91,7 +92,7 @@ const ModalShippingform = () => {
                 />
                 <label>N°</label>
                 <input
-                  name="number"
+                  name="numberShipping"
                   defaultValue = {formValue.adress_shipping.number}
                   type="number"
                   ref={register({
@@ -100,7 +101,7 @@ const ModalShippingform = () => {
                 />
                 <label>Postcode/zip</label>
                 <input
-                  name="zip"
+                  name="zipShipping"
                   defaultValue = {formValue.adress_shipping.zip}
                   type="number"
                   ref={register({
@@ -109,7 +110,7 @@ const ModalShippingform = () => {
                 />
                 <label>Town/city</label>
                 <input
-                  name="city"
+                  name="cityShipping"
                   defaultValue = {formValue.adress_shipping.city}
                   type="text"
                   ref={register({
@@ -139,7 +140,7 @@ const ModalShippingform = () => {
                   value = {formValue.phonenumber}
                   type="number"
                   ref={register({
-                    required: true,
+                    // required: true,
                   })}
                 />
                 <input type="submit" />

@@ -5,20 +5,42 @@ import UserHeader from './UserHeader'
 
 
 const LogIn = () => {
+
+  
   const {register, handleSubmit, formState, errors} = useForm()
   const {isSubmitting} = formState
 
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+  // const onSubmit = (formAnswers) => {
+  //   console.log(formAnswers);
+  //   try {
+  //     const res = await axios({
+  //       method: "patch",
+  //       url: `${process.env.REACT_APP_API_URL}api/user/update/` + uid.id,
+  //       withCredentials: true,
+  //       data: formAnswers,
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-    return (
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  return (
         <>
         <UserHeader />
       <div id="userInfosChange">
         <div id="changeUserInfos">
           <h1>Your Personnal Infos</h1>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit()}>
+          {/* <form onSubmit={handleSubmit(onSubmit)}> */}
             
            
                 <label>Your first name</label>
@@ -64,7 +86,8 @@ const LogIn = () => {
     </div>
         <div id="changePassword">
         <h1>Modify your password</h1>
-            <form className="userCreate" onSubmit={handleSubmit(onSubmit)}>
+            <form className="userCreate" onSubmit={handleSubmit()}>
+            {/* <form className="userCreate" onSubmit={handleSubmit(onSubmit)}> */}
             
              
                 

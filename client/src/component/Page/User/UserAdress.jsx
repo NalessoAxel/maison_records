@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState , useEffect} from 'react'
 import UserHeader from './UserHeader'
 import LogicModal from './Modal/LogicModal'
 import ModalBilling from './Modal/ModalBilling/ModalBilling'
@@ -43,18 +43,34 @@ const UserAdress = () => {
     // );
 
     const {revel, toggle} = LogicModal()
-
     const {uid} = useContext(UidContext)
+    
+    const [loading, setLoading] = useState(true);
+    const [formValue, setFormValue] = useState({});
 
-    // if(loading){ 
-    //     return <h3> Loading ...  </h3> }
+    useEffect(() => {
+      const getInfo = async () => {
+        try {
+          const res = await axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}api/user/` + uid.id,
+            withCredentials: true,
+          });
+          setFormValue(res.data);
+          setLoading(false);
+          console.log(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getInfo();
+    }, []);
     
 
-
-
-    
     return (
         <>
+        {!loading ? (
+            <>
         {uid ? (
             <>
                 {!uid.admin ? (<>
@@ -65,15 +81,14 @@ const UserAdress = () => {
                             <h3>Billing adress</h3>
                             <button onClick={toggle}>Edit</button>
                             <ModalBilling
-                                
                                 revel={revel}
                                 cache={toggle}
                             />
                         </div>
                         <div className="userBillingAdress">
-                            <p>Hola FLO</p>
-                            <p>Avenue Ducpétiaux 30</p>
-                            <p>1060 Saint Gilles</p>
+                            <p>{formValue.first_name} {formValue.last_name}</p>
+                            <p>{formValue.adress_billing.street} {formValue.adress_billing.number}</p>
+                            <p>{formValue.adress_billing.zip} {formValue.adress_billing.city}</p>
                             <p>Belgium</p>
                         </div>
                     </div>
@@ -87,9 +102,9 @@ const UserAdress = () => {
                             />
                         </div>
                         <div className="userShippingAdress">
-                            <p>bliblibly</p>
-                            <p>Avenue Ducpétiaux 30</p>
-                            <p>1060 Saint Gilles</p>
+                            <p>{formValue.first_name} {formValue.last_name}</p>
+                            <p>{formValue.adress_shipping.street} {formValue.adress_shipping.number}</p>
+                            <p>{formValue.adress_shipping.zip} {formValue.adress_shipping.city}</p>
                             <p>Belgium</p>
                         </div>
                     </div>
@@ -103,7 +118,9 @@ const UserAdress = () => {
         )}
         
         </>
-    )
+):(  <p>loading</p>)
+}
+   </>) 
 }
 
 export default UserAdress

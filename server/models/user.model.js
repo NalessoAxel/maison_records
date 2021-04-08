@@ -37,38 +37,57 @@ const userSchema = new mongoose.Schema(
             { street: 
                 {
                     type: String,
-                    lowercase: true
+                    lowercase: true,
+                    default : 'street'
                 },
               number : 
                 {
                     type: Number,
+                    default: 0
+                    
+
                 },
                 zip : 
                 {
                     type: Number,
+                    default: 0
+                    
                 },
                 city :
                 {
                     type: String,
+                    default: "city"
+                    
+
                 }
         },
         adress_billing: 
             { street: 
                 {
                     type: String,
-                    lowercase: true
+                    lowercase: true,
+                    default : 'street'
+
                 },
               number : 
                 {
                     type: Number,
+                    default: 0
+
                 },
                 zip : 
                 {
                     type: Number,
+                    default: 0
+                    
+
                 },
                 city :
                 {
                     type: String,
+                    default: "city"
+                    
+
                 }
         },
        admin: {
@@ -83,6 +102,7 @@ const userSchema = new mongoose.Schema(
 
 //function to crypt password before send to DB
 // va récupéré le mdp et va le crypté et le hashé
+
 userSchema.pre("save", async function(next){
     const salt = await bcrypt.genSalt();  // permet de salé le mdp
     this.password = await bcrypt.hash(this.password, salt);
@@ -96,7 +116,7 @@ userSchema.statics.login = async function(email, password) {
         if(auth) {
             return user;
         }
-        throw Error('incorect password');
+        throw Error('incorrect password');
     }
     throw Error('Incorrect email');
 };

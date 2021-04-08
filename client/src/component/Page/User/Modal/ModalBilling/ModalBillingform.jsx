@@ -14,12 +14,12 @@ const ModalBillingform = () => {
     return (
         <>
             <div className="modalBillingForm">
-                <h1>Billing Adress</h1>
+                <h1>COUCOU</h1>
                 <div className="modalInput">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label>Your first name</label>
                         <input 
-                         name="firstName"
+                         name="Ans"
                         placeholder='first name'
                         ref={register({
                           required: true
@@ -48,7 +48,7 @@ const ModalBillingform = () => {
                         
                         <label>Street Name</label>
                         <input 
-                        name="lastName"
+                        name="streetBilling"
                         placeholder='Rue Franz Merjay'
                         type="text"
                         ref={register({
