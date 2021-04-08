@@ -6,8 +6,7 @@ import axios from "axios"
 const ModalShippingform = () => {
     const {register, handleSubmit, errors} = useForm()
     const { uid } = useContext(UidContext);
- // ______________________________________________________________________________________________   TEST
-    // const [formValue, setFormValue]= useState('{}') 
+    const [formValue, setFormValue]= useState('{}') 
     
     const onSubmit = async (formAnswers) => {
         console.log(formAnswers)
