@@ -6,7 +6,7 @@ import axios from "axios"
 const ModalShippingform = () => {
     const {register, handleSubmit, errors} = useForm()
     const { uid } = useContext(UidContext);
-    const [formValue, setFormValue]= useState('{}') 
+    const [formValue, setFormValue]= useState({}) 
     
     const onSubmit = async (formAnswers) => {
         console.log(formAnswers)
@@ -16,7 +16,7 @@ const ModalShippingform = () => {
                 url: `${process.env.REACT_APP_API_URL}api/user/update/`+ uid.id,
                 withCredentials: true,
                 data: formAnswers
-            })
+              })
         }
         catch(err){
             console.log(err);
@@ -31,17 +31,16 @@ const ModalShippingform = () => {
          withCredentials: true,
       }) 
        setFormValue(res.data)   
-       console.log(formValue)
+       console.log(formValue.email)
         }
         catch(err){
          console.log(err);
       }
   }
    
-    useEffect(() => {
-      getInfo()
- 
-    }, []) 
+  useEffect(() => {
+    getInfo()
+  }, []) 
     
   
     return (
@@ -56,7 +55,7 @@ const ModalShippingform = () => {
                         <input 
                          name="first_name"
                         
-                        defaultValue = {first_nameValue}
+                        defaultValue = {formValue.first_name}
                         ref={register({
                           required: true
                         })}
@@ -66,7 +65,7 @@ const ModalShippingform = () => {
                         <input 
                         name="last_name"
                         
-                        defaultValue = {last_nameValue}
+                        defaultValue = {formValue.last_name}
                         type="text"
                         ref={register({
                           required: true
@@ -87,7 +86,7 @@ const ModalShippingform = () => {
                         <label>Street Name</label>
                         <input 
                         name="street"
-                        defaultValue = {streetValue}
+                        // defaultValue = {formValue.adress_shipping.street}
                         type="text"
                         ref={register({
                           required: true
@@ -96,7 +95,7 @@ const ModalShippingform = () => {
                          <label>N°</label>
                         <input 
                         name="number"
-                        defaultValue = {numberValue}
+                        // defaultValue = {numberValue}
                         type="number"
                         ref={register({
                           required: true
@@ -105,7 +104,7 @@ const ModalShippingform = () => {
                         <label>Postcode/zip</label>
                         <input 
                         name="zip"
-                        defaultValue = {zipValue}
+                        // defaultValue = {zipValue}
                         type="number"
                         ref={register({
                           required: true
@@ -114,25 +113,16 @@ const ModalShippingform = () => {
                         <label>Town/city</label>
                         <input 
                         name="city"
-                        defaultValue = {cityValue}
+                        // defaultValue = {cityValue}
                         type="text"
                         ref={register({
                           required: true
                         })}
                         /> 
-                        {/* <label>Town/city</label>
-                        <input 
-                        name="city"
-                        placeholder='Brussels'
-                        type="text"
-                        ref={register({
-                          required: true
-                        })}
-                        /> */}
                         <label>Your Email
                          <input 
                          name="email"
-                         defaultValue = {emailValue}
+                         defaultValue = {formValue.email}
                          type="tesxt" 
                          ref={register
                            ({
