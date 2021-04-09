@@ -7,10 +7,6 @@ const ModalBillingform = () => {
         console.log(data)
     }
 
-
-    
-
-
     return (
         <>
             <div className="modalBillingForm">

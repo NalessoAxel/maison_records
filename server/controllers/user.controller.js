@@ -23,8 +23,6 @@ module.exports.updateUser = async (req, res) => {
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID unknown : ' + req.params.id)
 
-  let changes = {}
-  
     const {
         first_name,
         last_name,
@@ -39,8 +37,10 @@ module.exports.updateUser = async (req, res) => {
         cityBilling
     } = req.body
 
+  let changes = {}
+
 {(req.body.password) ? (
-    changes.password = req.body.password
+    changes.password = await bcrypt.hash(req.body.password, 10)
 ):(
     changes = {
             first_name,
@@ -62,6 +62,7 @@ module.exports.updateUser = async (req, res) => {
             }
     }
 )}
+
     try {
         await UserModel.findOneAndUpdate({ _id: req.params.id },  
             {
@@ -70,7 +71,7 @@ module.exports.updateUser = async (req, res) => {
             {new: true, upsert: true, setDefaultsOnInsert: true},
             (err, docs) => {
                 if (!err) {
-                    docs.save();
+                    // docs.save();
                     return res.send(docs);
                 }
                 if (err) return res.status(500).json({
