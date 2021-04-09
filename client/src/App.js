@@ -23,7 +23,7 @@ import AdminHeader from './component/Page/admin/AdminHeader'
 import AdminDashboard from './component/Page/admin/AdminDashboard'
 import AddReference from './component/Page/admin/AddReference'
 import AdminOrders from './component/Page/admin/AdminOrders'
-
+import AdminVisitors from './component/Page/admin/AdminVisitors'
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -34,7 +34,6 @@ import './scss/main.scss'
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import data from './component/data/recordsData'
-import AdminVisitors from './component/Page/admin/AdminVisitors'
 import {UidContext} from './component/AppContext'
 import axios from 'axios'
 

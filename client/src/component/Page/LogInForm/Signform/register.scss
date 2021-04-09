@@ -1,0 +1,26 @@
+#register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 30px;
+    h1 {
+        padding-bottom: 20px;
+    }
+    .userCreate {
+        display: flex;
+        flex-direction: column;
+        label {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 20px;    
+        }
+        input {
+            padding: .5em;
+            width: 400px;
+            font-size: 15px;
+            border: 1px solid $greymiddle;
+        }
+    }
+}

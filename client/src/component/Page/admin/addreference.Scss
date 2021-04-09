@@ -1,0 +1,36 @@
+.referenceWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+    .formWrapper {
+        display: flex;
+        form {
+            display: flex;
+            flex-direction: row;
+            padding: 30px;
+            
+            input {
+                padding: 10px;
+                width: 300px;
+            }
+          .containerRight {
+              display: flex;
+              flex-direction: column;
+              margin-right: 20px;
+          }
+          .containerLeft {
+              display: flex;
+              flex-direction: column;
+
+          }
+        }
+    }
+    .btnRef {
+        text-align: center;
+        padding: 10px;
+        width: 300px;
+       
+    }
+}

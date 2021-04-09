@@ -1,0 +1,23 @@
+.overlayModal {
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    
+    .wrapperModal {
+        display: flex;
+        flex-direction: column;
+        width: 306px;
+        height: 650px;
+        background-color: #C4C4C4;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        
+    }
+}
