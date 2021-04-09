@@ -23,7 +23,7 @@ module.exports.updateUser = async (req, res) => {
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID unknown : ' + req.params.id)
 
-    const {
+    const {    /// const firstname : req.body.firstname, const lastname : req.body.lastname,... 
         first_name,
         last_name,
         email,
