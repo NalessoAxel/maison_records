@@ -1,17 +1,15 @@
-import React, { useState } from 'react'
+// import { useState } from 'react'
 
+// const LogicModal = () => {
+//     const [revel, changeRevel] = useState(false)
 
-const LogicModal = () => {
-    const [revel, changeRevel] = useState(false)
-
-
-  function toggle(){
-        changeRevel(!revel)
-    }
+//   function toggle(){
+//         changeRevel(!revel)
+//     }
     
-    return {
-        revel,
-        toggle
-    }
-}
-export default LogicModal
+//     return {
+//         revel,
+//         toggle
+//     }
+// }
+// export default LogicModal
