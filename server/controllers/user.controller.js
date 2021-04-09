@@ -39,30 +39,28 @@ module.exports.updateUser = async (req, res) => {
         cityBilling
     } = req.body
 
-{(req.body.password) ? (changes.password = req.body.password
-    // async function (next) {
-    //     changes.password = await bcrypt.hash(req.body.password, 10);
-    //     next()}
+{(req.body.password) ? (
+    changes.password = req.body.password
 ):(
     changes = {
-                first_name,
-                last_name,
-                email,
-                adress_shipping:
-                {
-                    street: streetShipping,
-                    number: numberShipping,
-                    zip: zipShipping,
-                    city: cityShipping
-                },
-                adress_billing: 
-                {
-                    street: streetBilling,
-                    number: numberBilling,
-                    zip: zipBilling,
-                    city: cityBilling
-                }
+            first_name,
+            last_name,
+            email,
+            adress_shipping:
+            {
+                street: streetShipping,
+                number: numberShipping,
+                zip: zipShipping,
+                city: cityShipping
+            },
+            adress_billing: 
+            {
+                street: streetBilling,
+                number: numberBilling,
+                zip: zipBilling,
+                city: cityBilling
             }
+    }
 )}
     try {
         await UserModel.findOneAndUpdate({ _id: req.params.id },  

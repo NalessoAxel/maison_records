@@ -104,18 +104,9 @@ const userSchema = new mongoose.Schema(
 // va récupéré le mdp et va le crypté et le hashé
 
 userSchema.pre("save", async function(next){
-    // const salt = await bcrypt.genSalt();  // permet de salé le mdp
     this.password = await bcrypt.hash(this.password, 10);
-    next(); // une fois que tu as finis passe à la suite
+    next(); 
 });
-
-// update password HASH
-// userSchema.pre("findOneAndUpdate", async function(next){
-//     const salt = await bcrypt.genSalt();  // permet de salé le mdp
-//     this.password = await bcrypt.hash(this.password, salt);
-//     next(); // une fois que tu as finis passe à la suite
-// });
-
 
 
 userSchema.statics.login = async function(email, password) {
