@@ -24,16 +24,18 @@ const LogIn = () => {
     if(res.data.errors){
         setEmailError(res.data.errors.email);
         setPasswordError(res.data.errors.password);
+        console.log("it's work");
       }
     if (res.data.admin){
         window.location = '/AdminDashboard'
+        console.log("coucou admin : ", res.data);
       }else{
         window.location = '/Adress' // A MODIFIER SI ON VEUT 
-        console.log(res.data);
+        console.log("je suis ici",res.data);
      }
     }
     catch(err){
-      console.log(err);
+      console.log("hello l'erreur : " + err);
     }
   }
 

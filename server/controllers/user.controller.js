@@ -1,7 +1,6 @@
 const UserModel = require('../models/user.model'); 
 const ObjectID = require('mongoose').Types.ObjectId; 
-
-
+const bcrypt = require('bcrypt');
 
 module.exports.getAllUsers = async (req, res) => {
     const users = await UserModel.find().select('-password'); 
@@ -22,7 +21,7 @@ module.exports.userInfo = (req, res)=>{
 
 module.exports.updateUser = async (req, res) => {
     if(!ObjectID.isValid(req.params.id))
-        return res.status(400).send('ID unknown : ' +req.params.id)
+        return res.status(400).send('ID unknown : ' + req.params.id)
 
   let changes = {}
   
@@ -40,8 +39,10 @@ module.exports.updateUser = async (req, res) => {
         cityBilling
     } = req.body
 
-{(req.body.password) ? (
- changes.password= req.body.password
+{(req.body.password) ? (changes.password = req.body.password
+    // async function (next) {
+    //     changes.password = await bcrypt.hash(req.body.password, 10);
+    //     next()}
 ):(
     changes = {
                 first_name,
