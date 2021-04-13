@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -31,11 +31,11 @@ const LogIn = () => {
         console.log("coucou admin : ", res.data);
       }else{
         window.location = '/Adress' // A MODIFIER SI ON VEUT 
-        console.log("je suis ici",res.data);
+        console.log("je suis ici", res.data);
      }
     }
     catch(err){
-      console.log("hello l'erreur : " + err);
+      console.log("Le catch est ici: " + err);
     }
   }
 

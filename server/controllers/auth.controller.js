@@ -1,6 +1,9 @@
 const UserModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const { signUpErrors, signInErrors } = require('../utils/errors.utils');
+const ObjectID = require('mongoose').Types.ObjectId; 
+const bcrypt = require('bcrypt');
+
 
 //function pour token de jwt
 const maxAge = 1 * 24 * 60 * 60 * 1000; // 1 jours de validité (3, 4, 5... jours)
@@ -27,7 +30,7 @@ module.exports.signUp = async (req, res)=>{
 }
 
 
-// Function connexion for registered user 
+// Function connexion for user
 module.exports.signIn = async (req, res) => {
     const { email, password } = req.body
 
@@ -42,6 +45,7 @@ module.exports.signIn = async (req, res) => {
         res.status(401).json({ errors })
     }
 }
+
 
 // function for deconnection
 module.exports.logout = (req, res) => {

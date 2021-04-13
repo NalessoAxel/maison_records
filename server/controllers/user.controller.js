@@ -18,6 +18,7 @@ module.exports.userInfo = (req, res)=>{
 };
 
 module.exports.updateUser = async (req, res) => {
+    // console.log("ceci est la req",req)
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID unknown : ' + req.params.id)
 
@@ -32,15 +33,35 @@ module.exports.updateUser = async (req, res) => {
         streetBilling,
         numberBilling,
         zipBilling,
-        cityBilling
+        cityBilling, 
+        password,
+        newPassword
     } = req.body
 
   let changes = {}
+    console.log("ceci est le password", password)
+let ready = false;  // 
 
-{(req.body.password) ? (
-    changes.password = await bcrypt.hash(req.body.password, 10)
-):(
-    changes = {
+if (password) {
+    // let passwordHash = await bcrypt.hash(password, 10)
+    //  console.log("ceci est le passwordHash", passwordHash)
+    
+    UserModel.findById(req.params.id, async (err,docs) => {
+        if (!err) {
+           const compare = await bcrypt.compare( password, docs.password); 
+           console.log("bdd password hash : ", docs.password)
+           console.log("compared = ", compare)
+           if (compare){
+               changes.password = await bcrypt.hash(newPassword, 10)
+               ready = true
+               console.log("changes?",changes.password)
+           }  
+        }
+        else {console.log('ID unknow : ' + err);}
+    })
+   
+} else if (streetShipping) {
+     changes = {
             first_name,
             last_name,
             email,
@@ -50,7 +71,14 @@ module.exports.updateUser = async (req, res) => {
                 number: numberShipping,
                 zip: zipShipping,
                 city: cityShipping
-            },
+            }
+        }
+    ready = true
+} else {
+    changes = {
+            first_name,
+            last_name,
+            email,
             adress_billing: 
             {
                 street: streetBilling,
@@ -59,8 +87,11 @@ module.exports.updateUser = async (req, res) => {
                 city: cityBilling
             }
     }
-)}
+ready = true
+}
 
+console.log('this is changes full ', changes)
+if (ready){ 
     try {
         await UserModel.findOneAndUpdate({ _id: req.params.id },  
             {
@@ -81,5 +112,6 @@ module.exports.updateUser = async (req, res) => {
     } catch (err) {
         return res.status(500).json({message: err}); //renvoi json car bdd en json
     }
-};
+}
+}
 

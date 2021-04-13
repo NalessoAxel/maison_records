@@ -59,7 +59,7 @@ const UserAdress = () => {
           });
           setFormValue(res.data);
           setLoading(false);
-          console.log(res.data);
+          console.log("helllllo",res.data);
         } catch (err) {
           console.log(err);
         }
