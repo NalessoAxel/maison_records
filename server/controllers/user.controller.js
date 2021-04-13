@@ -17,8 +17,6 @@ module.exports.userInfo = (req, res)=>{
     }).select('-password')
 };
 
-//object.attributeTwo = testBoolean ? "attributeTwo" : "attributeTwoToo"
-
 module.exports.updateUser = async (req, res) => {
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID unknown : ' + req.params.id)
