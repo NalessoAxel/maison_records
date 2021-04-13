@@ -18,10 +18,10 @@ module.exports.signInErrors = (err) => {
     let errors = { email : '', password: '' }
 
     if(err.message.includes('email'))
-        errors.email = "Email unknown"
+        errors.email = "Email or password unknown"
     
     if(err.message.includes('password'))
-        errors.password = "Password doesn't exist"
+        errors.password = "Email or password unknown"
 
     return errors
 }

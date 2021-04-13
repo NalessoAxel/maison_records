@@ -22,7 +22,7 @@ module.exports.signUp = async (req, res)=>{
     }
     catch(err) {
         const errors = signUpErrors(err);
-        res.status(404).json({ errors })
+        res.status(400).json({ errors })
     }
 }
 
