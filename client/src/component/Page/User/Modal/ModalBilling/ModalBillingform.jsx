@@ -1,22 +1,60 @@
-import React from 'react'
+import React, {useState , useContext, useEffect} from 'react'
 import {useForm} from 'react-hook-form'
+import { UidContext } from '../../../../AppContext';
+import axios from "axios"
 
 const ModalBillingform = () => {
     const {register, handleSubmit, errors} = useForm()
-    const onSubmit = (data) => {
-        console.log(data)
+    const { uid } = useContext(UidContext);
+    const [formValue, setFormValue] = useState({});
+    const [loading, setLoading] = useState(true);
+
+    const onSubmit = async (formAnswers) => {
+        console.log(formAnswers)
+        try {
+          const res = await axios({
+            method: "patch",
+            url: `${process.env.REACT_APP_API_URL}api/user/update/` + uid.id,
+            withCredentials: true,
+            data: formAnswers,
+          });
+          window.location =""  // reload page 
+        } catch (err) {
+          console.log(err);
+        }
     }
+
+    useEffect(() => {
+      const getInfo = async () => {
+        try {
+          const res = await axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}api/user/` + uid.id,
+            withCredentials: true,
+          });
+          setFormValue(res.data);
+          setLoading(false);
+          console.log(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getInfo();
+    }, []);
+
 
     return (
         <>
+        {!loading ? (
+          <>
             <div className="modalBillingForm">
-                <h1>COUCOU</h1>
+                <h1>Billing Adress</h1>
                 <div className="modalInput">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label>Your first name</label>
                         <input 
-                         name="Ans"
-                        placeholder='first name'
+                        name="first_name"
+                        defaultValue={formValue.first_name}
                         ref={register({
                           required: true
                         })}
@@ -24,8 +62,8 @@ const ModalBillingform = () => {
                         
                         <label>Your last name</label>
                         <input 
-                        name="lastName"
-                        placeholder='last name'
+                        name="last_name"
+                        defaultValue={formValue.last_name}
                         type="text"
                         ref={register({
                           required: true
@@ -34,18 +72,18 @@ const ModalBillingform = () => {
                         
                         <label>Companie (optional)</label>
                         <input 
-                        name="lastName"
-                        placeholder='companie name'
+                        name="companie"
+                         // value = {formValue.companie}
                         type="text"
                         ref={register({
-                          required: true
+                          // required: true
                         })}
                         /> 
                         
                         <label>Street Name</label>
                         <input 
                         name="streetBilling"
-                        placeholder='Rue Franz Merjay'
+                        defaultValue = {formValue.adress_billing.street}
                         type="text"
                         ref={register({
                           required: true
@@ -53,8 +91,8 @@ const ModalBillingform = () => {
                         /> 
                          <label>N°</label>
                         <input 
-                        name="streetNumber"
-                        placeholder='23'
+                        name="numberBilling"
+                        defaultValue = {formValue.adress_billing.number}
                         type="number"
                         ref={register({
                           required: true
@@ -62,8 +100,8 @@ const ModalBillingform = () => {
                         /> 
                         <label>Postcode/zip</label>
                         <input 
-                        name="zip"
-                        placeholder='1040'
+                        name="zipBilling"
+                        defaultValue = {formValue.adress_billing.zip}
                         type="number"
                         ref={register({
                           required: true
@@ -71,8 +109,8 @@ const ModalBillingform = () => {
                         /> 
                         <label>Town/city</label>
                         <input 
-                        name="city"
-                        placeholder='Brussels'
+                        name="cityBilling"
+                        defaultValue = {formValue.adress_billing.city}
                         type="text"
                         ref={register({
                           required: true
@@ -81,7 +119,7 @@ const ModalBillingform = () => {
                         <label>Your Email
                          <input 
                          name="email"
-                         placeholder='your email here'
+                         defaultValue={formValue.email}
                          type="tesxt" 
                          ref={register
                            ({
@@ -94,11 +132,11 @@ const ModalBillingform = () => {
                          </label>
                          <label>Phone Number</label>
                         <input 
-                        name="zip"
-                        placeholder='+32 (0)4 65 43 42 52'
+                        name="phonenumber"
+                        value = {formValue.phonenumber}
                         type="number"
                         ref={register({
-                          required: true
+                          // required: true
                         })}
                         /> 
                         <input type="submit"/>
@@ -106,6 +144,10 @@ const ModalBillingform = () => {
                 </div>
             </div>
         </>
+        ) : ( 
+          <p>loading</p>
+        )}
+      </>
     )
 }
 

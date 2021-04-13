@@ -1,8 +1,35 @@
-import React, { useState} from 'react'
+import React, { useState, useContext, useEffect} from 'react'
 import Modal from 'react-modal'
 import ModalBillingform from './ModalBillingform'
+import { UidContext } from '../../../../AppContext';
+import axios from 'axios'
+
+
 const ModalShipping = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
+    const { uid } = useContext(UidContext);
+    const [formValue, setFormValue] = useState({});
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const getInfo = async () => {
+          try {
+            const res = await axios({
+              method: "get",
+              url: `${process.env.REACT_APP_API_URL}api/user/` + uid.id,
+              withCredentials: true,
+            });
+            setFormValue(res.data);
+            setLoading(false);
+            console.log(res.data);
+          } catch (err) {
+            console.log(err);
+          }
+        };
+        getInfo();
+      }, []);
+
     return (
         <>
             <div className="billingAdress">
@@ -48,13 +75,16 @@ const ModalShipping = () => {
                         </div>
                     </Modal>
                 </div>
-                <div className="userBillingAdress">
-               <p>Axel Nalesso</p>
-               <p>Avenue Ducpétiaux 30</p>
-               <p>1060 Saint Gilles</p>
-               <p>Belgium</p>
-               </div>
-               
+                {!loading ? (
+                    <div className="userBillingAdress">
+                    <p>{formValue.first_name} {formValue.last_name}</p>
+                    <p>{formValue.adress_billing.street} {formValue.adress_billing.number}</p>
+                    <p>{formValue.adress_billing.zip} {formValue.adress_billing.city}</p>
+                    <p>Belgium</p>
+                    </div>
+                ) : (
+                    <p>Loading ... </p>
+                )}
             </div>
         </>
     )

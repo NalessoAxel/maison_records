@@ -7,6 +7,7 @@ const ModalShippingform = () => {
   const { register, handleSubmit, errors } = useForm();
   const { uid } = useContext(UidContext);
   const [formValue, setFormValue] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const onSubmit = async (formAnswers) => {
     console.log(formAnswers);
@@ -22,10 +23,7 @@ const ModalShippingform = () => {
       console.log(err);
     }
   };
-
  
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const getInfo = async () => {
       try {
@@ -44,6 +42,7 @@ const ModalShippingform = () => {
     getInfo();
   }, []);
 
+  
   return (
     <>
       {!loading ? (

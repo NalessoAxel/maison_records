@@ -43,7 +43,7 @@ const UserAdress = () => {
     // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐`
     // );
 
-    const {revel, toggle} = LogicModal()
+
     const {uid} = useContext(UidContext)
     
     const [loading, setLoading] = useState(true);
@@ -70,12 +70,25 @@ const UserAdress = () => {
 
     return (
         <>
-        <UserHeader />
-            <div className="adress">
+        {uid ? (
+          <>
+          {!uid.admin ? (
+            <> 
+            <UserHeader />
+              <div className="adress">
             
             <ModalBilling />
             <ModalShipping />
-            </div>
+            </div> 
+            </>
+          ) : (
+            <p>You're an admin so not supposed to be here</p>
+          )}
+          </>
+        ) : ( 
+        <p>Please login if you're attempting to reach your profile.</p>
+        )}
+        
         </>
 )}
 
