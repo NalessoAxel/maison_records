@@ -8,10 +8,10 @@ import { UidContext } from '../../AppContext';
 
 const LogIn = () => {
 
-  
+  const [formSubmit, setFormSubmit] = useState(false);
   const {register, handleSubmit, formState, errors} = useForm()
   const {isSubmitting} = formState
-  const [confirmNewPassword, setconfirmNewPassword] = useState("")
+  // const [confirmNewPassword, setconfirmNewPassword] = useState("")
 
   const {uid} = useContext(UidContext)
 
@@ -24,7 +24,8 @@ const LogIn = () => {
           withCredentials: true,
           data: formAnswers,
         })
-        setconfirmNewPassword("Password changed successfully")
+        setFormSubmit(true)
+        // setconfirmNewPassword("Password changed successfully")
       } catch (err) {
         console.log(err);
       } 
@@ -33,6 +34,10 @@ const LogIn = () => {
 
   return (
     <>
+    {formSubmit ? (
+        <h3>Password changed successfully</h3>
+        ) : (
+          <>
       <UserHeader />
       <div id="userInfosChange">
         <div id="changeUserInfos">
@@ -152,10 +157,12 @@ const LogIn = () => {
                 type="submit" 
                 value="Change password" />
               </form> 
-              <h3>{confirmNewPassword}</h3>
+              {/* <h3>{confirmNewPassword}</h3> */}
 
         </div>
       </div>
+      </>
+        )}
     </>
   );
   }
