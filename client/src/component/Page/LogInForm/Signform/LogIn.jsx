@@ -26,7 +26,6 @@ const LogIn = () => {
       }
     if (res.data.admin){
         window.location = '/AdminDashboard'
-        console.log("coucou admin : ", res.data);
       }else{
         window.location = '/Adress' // A MODIFIER SI ON VEUT 
      }
@@ -82,11 +81,11 @@ const LogIn = () => {
         <input disabled={isSubmitting} type="submit"/>
       </form>
      
-      <p>
+      {/* <p>
         <Link to="/resetPassword">
           Reset your password
         </Link>
-      </p>
+      </p> */}
       </div>
     )
   }
