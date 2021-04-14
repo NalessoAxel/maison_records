@@ -59,7 +59,6 @@ const UserAdress = () => {
           });
           setFormValue(res.data);
           setLoading(false);
-          console.log("helllllo",res.data);
         } catch (err) {
           console.log(err);
         }

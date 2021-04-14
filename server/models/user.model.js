@@ -33,61 +33,67 @@ const userSchema = new mongoose.Schema(
             max: 50,
             minlength: 10
         },
+        //adresse de livraison
         adress_shipping: 
-            { street: 
-                {
+            {
+                last_nameShipping: {
+                    type: String,
+                    trim: false,
+                    default: "last name"
+                },
+                first_nameShipping: {
+                    type: String,
+                    trim: false,
+                    default: "first name"
+                },
+
+                 streetShipping: {
                     type: String,
                     lowercase: true,
                     default : 'street'
                 },
-              number : 
-                {
+              numberShipping :  {
                     type: Number,
                     default: 0
-                    
-
                 },
-                zip : 
-                {
+                zipShipping : {
                     type: Number,
                     default: 0
-                    
                 },
-                city :
-                {
+                cityShipping : {
                     type: String,
                     default: "city"
-                    
-
                 }
         },
+        //adresse de facturation
         adress_billing: 
-            { street: 
-                {
+            {
+                last_nameBilling: {
+                    type: String,
+                    trim: false,
+                    default: "last name"
+                },
+                first_nameBilling: {
+                    type: String,
+                    trim: false,
+                    default: "first name"
+                },
+                streetBilling: {
                     type: String,
                     lowercase: true,
                     default : 'street'
-
                 },
-              number : 
-                {
+              numberBilling : {
                     type: Number,
                     default: 0
-
                 },
-                zip : 
-                {
+                zipBilling : {
                     type: Number,
                     default: 0
-                    
-
                 },
-                city :
-                {
+                cityBilling : {
                     type: String,
                     default: "city"
-                    
-
                 }
         },
        admin: {

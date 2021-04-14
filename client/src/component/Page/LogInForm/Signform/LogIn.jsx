@@ -12,8 +12,6 @@ const LogIn = () => {
   const [passwordError, setPasswordError] = useState('')
   
   const onSubmit = async (formAnswers) => {
-    console.log(formAnswers)
-
     try {
     const res = await axios({
       method: "post",
@@ -31,14 +29,12 @@ const LogIn = () => {
         console.log("coucou admin : ", res.data);
       }else{
         window.location = '/Adress' // A MODIFIER SI ON VEUT 
-        console.log("je suis ici", res.data);
      }
     }
     catch(err){
       console.log("Le catch est ici: " + err);
     }
   }
-
 
     return (
       <div id="login">

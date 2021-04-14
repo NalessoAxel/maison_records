@@ -53,8 +53,8 @@ const ModalBillingform = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label>Your first name</label>
                         <input 
-                        name="first_name"
-                        defaultValue={formValue.first_name}
+                        name="first_nameBilling"
+                        defaultValue={formValue.first_nameBilling}
                         ref={register({
                           required: true
                         })}
@@ -62,8 +62,8 @@ const ModalBillingform = () => {
                         
                         <label>Your last name</label>
                         <input 
-                        name="last_name"
-                        defaultValue={formValue.last_name}
+                        name="last_nameBilling"
+                        defaultValue={formValue.last_nameBilling}
                         type="text"
                         ref={register({
                           required: true
@@ -83,7 +83,7 @@ const ModalBillingform = () => {
                         <label>Street Name</label>
                         <input 
                         name="streetBilling"
-                        defaultValue = {formValue.adress_billing.street}
+                        defaultValue = {formValue.adress_billing.streetBilling}
                         type="text"
                         ref={register({
                           required: true
@@ -92,7 +92,7 @@ const ModalBillingform = () => {
                          <label>N°</label>
                         <input 
                         name="numberBilling"
-                        defaultValue = {formValue.adress_billing.number}
+                        defaultValue = {formValue.adress_billing.numberBilling}
                         type="number"
                         ref={register({
                           required: true
@@ -101,7 +101,7 @@ const ModalBillingform = () => {
                         <label>Postcode/zip</label>
                         <input 
                         name="zipBilling"
-                        defaultValue = {formValue.adress_billing.zip}
+                        defaultValue = {formValue.adress_billing.zipBilling}
                         type="number"
                         ref={register({
                           required: true
@@ -110,7 +110,7 @@ const ModalBillingform = () => {
                         <label>Town/city</label>
                         <input 
                         name="cityBilling"
-                        defaultValue = {formValue.adress_billing.city}
+                        defaultValue = {formValue.adress_billing.cityBilling}
                         type="text"
                         ref={register({
                           required: true

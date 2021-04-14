@@ -10,7 +10,7 @@ const ModalShippingform = () => {
   const [loading, setLoading] = useState(true);
 
   const onSubmit = async (formAnswers) => {
-    console.log(formAnswers);
+    
     try {
       const res = await axios({
         method: "patch",
@@ -34,8 +34,7 @@ const ModalShippingform = () => {
         });
         setFormValue(res.data);
         setLoading(false);
-        console.log(res.data);
-      } catch (err) {
+      } catch (err) { 
         console.log(err);
       }
     };
@@ -53,8 +52,8 @@ const ModalShippingform = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <label>Your first name</label>
                 <input
-                  name="first_name"
-                  defaultValue={formValue.first_name}
+                  name="first_nameShipping"
+                  defaultValue={formValue.adress_shipping.first_nameShipping}
                   ref={register({
                     required: true,
                   })}
@@ -62,8 +61,8 @@ const ModalShippingform = () => {
 
                 <label>Your last name</label>
                 <input
-                  name="last_name"
-                  defaultValue={formValue.last_name}
+                  name="last_nameShipping"
+                  defaultValue={formValue.adress_shipping.last_nameShipping}
                   type="text"
                   ref={register({
                     required: true,
@@ -83,7 +82,7 @@ const ModalShippingform = () => {
                 <label>Street Name</label>
                 <input
                   name="streetShipping"
-                  defaultValue = {formValue.adress_shipping.street}
+                  defaultValue = {formValue.adress_shipping.streetShipping}
                   type="text"
                   ref={register({
                     required: true,
@@ -92,7 +91,7 @@ const ModalShippingform = () => {
                 <label>N°</label>
                 <input
                   name="numberShipping"
-                  defaultValue = {formValue.adress_shipping.number}
+                  defaultValue = {formValue.adress_shipping.numberShipping}
                   type="number"
                   ref={register({
                     required: true,
@@ -101,7 +100,7 @@ const ModalShippingform = () => {
                 <label>Postcode/zip</label>
                 <input
                   name="zipShipping"
-                  defaultValue = {formValue.adress_shipping.zip}
+                  defaultValue = {formValue.adress_shipping.zipShipping}
                   type="number"
                   ref={register({
                     required: true,
@@ -110,7 +109,7 @@ const ModalShippingform = () => {
                 <label>Town/city</label>
                 <input
                   name="cityShipping"
-                  defaultValue = {formValue.adress_shipping.city}
+                  defaultValue = {formValue.adress_shipping.cityShipping}
                   type="text"
                   ref={register({
                     required: true,

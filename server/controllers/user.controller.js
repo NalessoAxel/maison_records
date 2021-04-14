@@ -26,10 +26,14 @@ module.exports.updateUser = async (req, res) => {
         first_name,
         last_name,
         email,
+        first_nameShipping,
+        last_nameShipping,
         streetShipping,
         numberShipping,
         zipShipping,
         cityShipping,
+        first_nameBilling,
+        last_nameBilling,
         streetBilling,
         numberBilling,
         zipBilling,
@@ -38,65 +42,14 @@ module.exports.updateUser = async (req, res) => {
         newPassword
     } = req.body
 
-  let changes = {}
-    console.log("ceci est le password", password)
-let ready = false;  // 
+    let changes = {}
 
-if (password) {
-    // let passwordHash = await bcrypt.hash(password, 10)
-    //  console.log("ceci est le passwordHash", passwordHash)
-    
-    UserModel.findById(req.params.id, async (err,docs) => {
-        if (!err) {
-           const compare = await bcrypt.compare( password, docs.password); 
-           console.log("bdd password hash : ", docs.password)
-           console.log("compared = ", compare)
-           if (compare){
-               changes.password = await bcrypt.hash(newPassword, 10)
-               ready = true
-               console.log("changes?",changes.password)
-           }  
-        }
-        else {console.log('ID unknow : ' + err);}
-    })
-   
-} else if (streetShipping) {
-     changes = {
-            first_name,
-            last_name,
-            email,
-            adress_shipping:
-            {
-                street: streetShipping,
-                number: numberShipping,
-                zip: zipShipping,
-                city: cityShipping
-            }
-        }
-    ready = true
-} else {
-    changes = {
-            first_name,
-            last_name,
-            email,
-            adress_billing: 
-            {
-                street: streetBilling,
-                number: numberBilling,
-                zip: zipBilling,
-                city: cityBilling
-            }
-    }
-ready = true
-}
-
-console.log('this is changes full ', changes)
-if (ready){ 
-    try {
-        await UserModel.findOneAndUpdate({ _id: req.params.id },  
-            {
-                $set: changes
-            }, 
+    const request = async (changes)=>{   
+        try {
+            await UserModel.findOneAndUpdate({ _id: req.params.id },  
+                {
+                    $set: changes
+                }, 
             {new: true, upsert: true, setDefaultsOnInsert: true},
             (err, docs) => {
                 if (!err) {
@@ -105,13 +58,56 @@ if (ready){
                 }
                 if (err) return res.status(500).json({
                     message: err
-                });
-               
+                }); 
             }
         )
     } catch (err) {
         return res.status(500).json({message: err}); //renvoi json car bdd en json
     }
+}
+
+if (password) {  
+     
+    UserModel.findById(req.params.id, async (err,docs) => {
+        const compare = await bcrypt.compare(password, docs.password); 
+        console.log(compare)
+        if(compare){
+            let hashing = async () => {
+                let passwordHash = await bcrypt.hash(newPassword, 10)
+                changes.password = passwordHash;
+                request(changes)
+            }
+            
+            hashing();
+        }
+    })
+} else if (streetShipping) {
+     changes = {
+            adress_shipping:
+            {
+                first_nameShipping,
+                last_nameShipping,
+                streetShipping,
+                numberShipping,
+                zipShipping,
+                cityShipping
+            }
+        }
+    request(changes)
+    
+} else {
+    changes = {
+            adress_billing: 
+            {
+                first_nameBilling,
+                last_nameBilling,
+                streetBilling,
+                numberBilling,
+                zipBilling,
+                cityBilling
+            }
+    }
+    request(changes)
 }
 }
 

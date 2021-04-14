@@ -11,6 +11,7 @@ const LogIn = () => {
   
   const {register, handleSubmit, formState, errors} = useForm()
   const {isSubmitting} = formState
+  const [confirmNewPassword, setconfirmNewPassword] = useState("")
 
   const {uid} = useContext(UidContext)
 
@@ -23,7 +24,7 @@ const LogIn = () => {
           withCredentials: true,
           data: formAnswers,
         })
-        console.log("request changing password sent", formAnswers);
+        setconfirmNewPassword("Password changed successfully")
       } catch (err) {
         console.log(err);
       } 
@@ -147,12 +148,12 @@ const LogIn = () => {
               </span>
             )}
 
-            <input
-              type="submit"
-              onSubmit={handleSubmit(onSubmit)}
-              value="Change Password"
-            />
-          </form>
+              <input disabled={isSubmitting} 
+                type="submit" 
+                value="Change password" />
+              </form> 
+              <h3>{confirmNewPassword}</h3>
+
         </div>
       </div>
     </>

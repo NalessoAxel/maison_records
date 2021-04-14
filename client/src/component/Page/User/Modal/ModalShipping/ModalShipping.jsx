@@ -22,7 +22,7 @@ const ModalShipping = () => {
           });
           setFormValue(res.data);
           setLoading(false);
-          console.log(res.data);
+
         } catch (err) {
           console.log(err);
         }
@@ -80,9 +80,9 @@ const ModalShipping = () => {
                </div>
                {!loading ? (
                    <div className="userShippingAdress">
-                   <p>{formValue.first_name} {formValue.last_name}</p>
-                   <p>{formValue.adress_shipping.street} {formValue.adress_shipping.number} </p>
-                   <p>{formValue.adress_shipping.zip} {formValue.adress_shipping.city}</p>
+                   <p>{formValue.adress_shipping.first_nameShipping} {formValue.adress_shipping.last_nameShipping}</p>
+                   <p>{formValue.adress_shipping.streetShipping} {formValue.adress_shipping.numberShipping} </p>
+                   <p>{formValue.adress_shipping.zipShipping} {formValue.adress_shipping.cityShipping}</p>
                    <p>Belgium</p>
                    </div>
                 ) : (
