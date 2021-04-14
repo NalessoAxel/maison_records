@@ -34,15 +34,24 @@ app.use(cookieParser());
 app.use(demoLogger);
 
 
+    
 // middleware jwt for cookie
 app.get('*', checkUser); //for all route -> start this middleware
 app.get('/jwtid', requireAuth, (req, res) => {
+    const {
+    _id,
+    admin,
+    email,
+    adress_shipping,
+    adress_billing } = res.locals.user
+
     res.status(200).send(
         {
             id: res.locals.user._id,
-            admin: res.locals.user.admin,  // to take the user's status and make the difference at the connection between admin and simple user
-            email : res.locals.user.email,
-            
+             admin,
+             email,
+             adress_shipping,
+             adress_billing
         })
 });
 

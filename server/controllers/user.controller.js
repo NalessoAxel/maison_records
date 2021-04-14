@@ -97,7 +97,7 @@ if (password) {
         }
     request(changes)
     
-} else {
+} else{
     changes = {
             adress_billing: 
             {

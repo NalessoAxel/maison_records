@@ -1,4 +1,4 @@
-import React, {useState , useContext, useEffect} from 'react'
+import React, {useContext} from 'react'
 import {useForm} from 'react-hook-form'
 import { UidContext } from '../../../../AppContext';
 import axios from "axios"
@@ -6,8 +6,8 @@ import axios from "axios"
 const ModalBillingform = () => {
     const {register, handleSubmit, errors} = useForm()
     const { uid } = useContext(UidContext);
-    const [formValue, setFormValue] = useState({});
-    const [loading, setLoading] = useState(true);
+    // const [formValue, setFormValue] = useState({});
+    // const [loading, setLoading] = useState(true);
 
     const onSubmit = async (formAnswers) => {
         try {
@@ -20,32 +20,12 @@ const ModalBillingform = () => {
           window.location =""  // reload page 
         } catch (err) {
           console.log(err);
+
         }
     }
 
-    useEffect(() => {
-      const getInfo = async () => {
-        try {
-          const res = await axios({
-            method: "get",
-            url: `${process.env.REACT_APP_API_URL}api/user/` + uid.id,
-            withCredentials: true,
-          });
-          setFormValue(res.data);
-          setLoading(false);
-          console.log(res.data);
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      getInfo();
-    }, []);
-
-
     return (
         <>
-        {!loading ? (
-          <>
             <div className="modalBillingForm">
                 <h1>Billing Adress</h1>
                 <div className="modalInput">
@@ -53,7 +33,7 @@ const ModalBillingform = () => {
                         <label>Your first name</label>
                         <input 
                         name="first_nameBilling"
-                        defaultValue={formValue.first_nameBilling}
+                        defaultValue={uid.adress_billing.first_nameBilling}
                         ref={register({
                           required: true
                         })}
@@ -62,7 +42,7 @@ const ModalBillingform = () => {
                         <label>Your last name</label>
                         <input 
                         name="last_nameBilling"
-                        defaultValue={formValue.last_nameBilling}
+                        defaultValue={uid.adress_billing.last_nameBilling}
                         type="text"
                         ref={register({
                           required: true
@@ -82,7 +62,7 @@ const ModalBillingform = () => {
                         <label>Street Name</label>
                         <input 
                         name="streetBilling"
-                        defaultValue = {formValue.adress_billing.streetBilling}
+                        defaultValue = {uid.adress_billing.streetBilling}
                         type="text"
                         ref={register({
                           required: true
@@ -91,7 +71,7 @@ const ModalBillingform = () => {
                          <label>N°</label>
                         <input 
                         name="numberBilling"
-                        defaultValue = {formValue.adress_billing.numberBilling}
+                        defaultValue = {uid.adress_billing.numberBilling}
                         type="number"
                         ref={register({
                           required: true
@@ -100,7 +80,7 @@ const ModalBillingform = () => {
                         <label>Postcode/zip</label>
                         <input 
                         name="zipBilling"
-                        defaultValue = {formValue.adress_billing.zipBilling}
+                        defaultValue = {uid.adress_billing.zipBilling}
                         type="number"
                         ref={register({
                           required: true
@@ -109,7 +89,7 @@ const ModalBillingform = () => {
                         <label>Town/city</label>
                         <input 
                         name="cityBilling"
-                        defaultValue = {formValue.adress_billing.cityBilling}
+                        defaultValue = {uid.adress_billing.cityBilling}
                         type="text"
                         ref={register({
                           required: true
@@ -118,7 +98,7 @@ const ModalBillingform = () => {
                         <label>Your Email
                          <input 
                          name="email"
-                         defaultValue={formValue.email}
+                         defaultValue={uid.email}
                          type="tesxt" 
                          ref={register
                            ({
@@ -129,24 +109,20 @@ const ModalBillingform = () => {
                          /> 
                          {errors.email && <span className="error">Email invalid!</span>}
                          </label>
-                         <label>Phone Number</label>
+                         {/* <label>Phone Number</label>
                         <input 
                         name="phonenumber"
-                        value = {formValue.phonenumber}
+                        value = {uid.phonenumber}
                         type="number"
                         ref={register({
                           // required: true
                         })}
-                        /> 
+                        />  */}
                         <input type="submit"/>
                     </form>
                 </div>
             </div>
         </>
-        ) : ( 
-          <p>loading</p>
-        )}
-      </>
     )
 }
 
