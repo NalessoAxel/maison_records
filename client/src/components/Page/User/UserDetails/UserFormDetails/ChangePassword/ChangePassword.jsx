@@ -1,12 +1,12 @@
 import React, { useContext, useState , useEffect} from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import UserHeader from './UserHeader'
+import UserHeader from '../../../UserHeader'
 import axios from 'axios'
-import { UidContext } from '../../AppContext';
+import { UidContext } from '../../../../../AppContext';
 
 
-const LogIn = () => {
+const ChangePassword = () => {
 
   const [formSubmit, setFormSubmit] = useState(false);
   const {register, handleSubmit, formState, errors} = useForm()
@@ -25,7 +25,7 @@ const LogIn = () => {
           data: formAnswers,
         })
         setFormSubmit(true)
-        window.location=""
+        // window.location=""
         // setconfirmNewPassword("Password changed successfully")
       } catch (err) {
         console.log(err);
@@ -38,54 +38,7 @@ const LogIn = () => {
     {formSubmit ? (
         <h3>Password changed successfully</h3>
         ) : (
-          <>
-      <UserHeader />
-      <div id="userInfosChange">
-        <div id="changeUserInfos">
-          <h1>Your Personnal Infos</h1>
-          {/* <form onSubmit={handleSubmit(onSubmit)}>
-            
-           
-            <label>Your first name</label>
-              <input 
-               name="firstName"
-              placeholder='first name'
-              ref={register({
-                required: true
-              })}
-              /> 
-              
-        
-              <label>Your last name</label>
-              <input 
-              name="lastName"
-              placeholder='last name'
-              type="text"
-              ref={register({
-                required: true
-              })}
-              /> 
-             
-       
-        <label>Enter your email</label>
-          <input 
-          type="text"
-          name="email"
-          placeholder='your email here' 
-          ref={register
-            ({
-              pattern: {
-                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-              },
-              required: true})}
-           /> 
-           {errors.email && <span className="error">Email invalid!</span>}
-        
-      <input disabled={isSubmitting} type="submit" value="Change Details"/>
-    </form> */}
-
-
-        </div>
+    
         <div id="changePassword">
           <h1>Modify your password</h1>
           <form className="userCreate" onSubmit={handleSubmit(onSubmit)}>
@@ -161,12 +114,11 @@ const LogIn = () => {
               {/* <h3>{confirmNewPassword}</h3> */}
 
         </div>
-      </div>
-      </>
+      
         )}
     </>
   );
   }
 
 
-export default LogIn
+export default ChangePassword
