@@ -2,24 +2,28 @@
 
 .footer {
     width: 100%;  
-    height: 100px;
-    // background: $greymiddle;
+    height: 150px;
+    background: $greymiddle;
     position: absolute;
     bottom: 0;
     left: 0;
-    p{
-      margin: 0;
-    }
+   
+      
+      
+    
     .container-footer {
-      width: 100%;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      
+
       .footerRow {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+      justify-content: space-between;
+      align-items: center;
+        img {
+          width: 150px;
+          height: 150px;
+        }
        
         a {
           font-size: 32px;
@@ -33,22 +37,13 @@
           }
         }
       } 
-      .footerRow.second {
-          justify-content: center;
-          width: 112px;
-          height: 112px;
-          margin: 0;
-          padding: 0;
-          
-        
-        }
+      
         .extraInfos {
           margin: 0 40px;
           display: flex;
-          flex-direction: row;
           justify-content: space-between;
+
+         
         }
-      }
-      
-    
+      } 
   }

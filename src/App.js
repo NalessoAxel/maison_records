@@ -1,29 +1,30 @@
-import Home from './component/Page/Home'
+import Home from './components/Page/Home'
 
 // PAGE
-import New from './component/Page/release/New'
-import SecondHand from './component/Page/release/SecondHand'
-import Merch from './component/Page/Merch'
-import Accessories from './component/Page/Accessories'
-import Live from './component/Page/Live/Live'
-import UserRegisterPage from './component/Page/LogInForm/UserRegisterPage'
-import Animations from './component/Header/Animations'
-import Layout from './component/Layout'
-import SellCollection from './component/Page/SellCollection'
-import ReleaseDetails from './component/Page/release/ReleaseDetails'
-import Cart from './component/cart/Cart'
+import New from './components/Page/release/New'
+import ReleaseDetails from './components/Page/release/ReleaseDetails'
+import SecondHand from './components/Page/release/SecondHand'
+import Merch from './components/Page/Merch'
+import Accessories from './components/Page/Accessories'
+import Live from './components/Page/Live/Live'
+import UserRegisterPage from './components/Page/LogInForm/UserRegisterPage'
+import Animations from './components/Header/Animations'
+import Layout from './components/Layout'
+import SellCollection from './components/Page/SellCollection'
+
+import Cart from './components/cart/Cart'
 
 // USER
-import Orders from './component/Page/User/Orders'
-import Adress from './component/Page/User/UserAdress'
-import UserDetails from './component/Page/User/UserDetails'
+import Orders from './components/Page/User/Orders'
+import Adress from './components/Page/User/UserAdress.jsx'
+import UserDetails from './components/Page/User/UserDetails/UserDetails'
 
 // ADMIN
-import AdminHeader from './component/Page/admin/AdminHeader'
-import AdminDashboard from './component/Page/admin/AdminDashboard'
-import AddReference from './component/Page/admin/AddReference'
-import AdminOrders from './component/Page/admin/AdminOrders'
-
+import AdminHeader from './components/Page/admin/AdminHeader'
+import AdminDashboard from './components/Page/admin/AdminDashboard'
+import AddReference from './components/Page/admin/AddReference'
+import AdminOrders from './components/Page/admin/AdminOrders'
+import AdminVisitors from './components/Page/admin/AdminVisitors'
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -33,8 +34,8 @@ import AdminOrders from './component/Page/admin/AdminOrders'
 import './scss/main.scss'
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import data from './component/data/recordsData'
-import AdminVisitors from './component/Page/admin/AdminVisitors'
+import data from './components/data/recordsData'
+
 
 const App = () => {
 
