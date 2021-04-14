@@ -25,6 +25,7 @@ const LogIn = () => {
           data: formAnswers,
         })
         setFormSubmit(true)
+        window.location=""
         // setconfirmNewPassword("Password changed successfully")
       } catch (err) {
         console.log(err);
