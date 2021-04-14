@@ -8,8 +8,9 @@ const LogIn = () => {
   const {register, handleSubmit, formState, errors} = useForm()
   const {isSubmitting} = formState
 
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('')
+  const [error, setError] = useState('');
+  
+
   
   const onSubmit = async (formAnswers) => {
     try {
@@ -19,11 +20,6 @@ const LogIn = () => {
       withCredentials: true,
       data: formAnswers
     })
-    if(res.data.errors){
-        setEmailError(res.data.errors.email);
-        setPasswordError(res.data.errors.password);
-        console.log("it's work");
-      }
     if (res.data.admin){
         window.location = '/AdminDashboard'
       }else{
@@ -32,6 +28,7 @@ const LogIn = () => {
     }
     catch(err){
       console.log("Le catch est ici: " + err);
+      setError("Email or password unknown")
     }
   }
 
@@ -53,7 +50,6 @@ const LogIn = () => {
                 required: true})}
              /> 
              {errors.email && <span className="error">Email invalid!</span>}
-             <div>{ emailError }</div>
            </label>
            </div>
            <div className="loginGroup">
@@ -71,7 +67,7 @@ const LogIn = () => {
             required: true})}
         />
         {errors.password && <span className="error">Wrong password</span>}
-        <div>{ passwordError }</div>
+        <div className="error">{ error }</div>
         </label>
         </div>
         <div className="loginCheckbox">

@@ -12,6 +12,7 @@ const ChangePassword = () => {
   const {register, handleSubmit, formState, errors} = useForm()
   const {isSubmitting} = formState
   // const [confirmNewPassword, setconfirmNewPassword] = useState("")
+  const [wrongPassword, setWrongPassword] = useState("")
 
   const {uid} = useContext(UidContext)
 
@@ -27,8 +28,8 @@ const ChangePassword = () => {
         setFormSubmit(true)
         // window.location=""
         // setconfirmNewPassword("Password changed successfully")
-      } catch (err) {
-        console.log(err);
+      } catch(err) {
+        setWrongPassword("Unknown password")
       } 
   
   };
@@ -64,6 +65,7 @@ const ChangePassword = () => {
                 Password is too short, 8 characters minimum!
               </span>
             )}
+            <div className="error">{wrongPassword}</div>
 
             <label>New password </label>
             <input
@@ -114,6 +116,8 @@ const ChangePassword = () => {
               {/* <h3>{confirmNewPassword}</h3> */}
 
         </div>
+       
+
       
         )}
     </>

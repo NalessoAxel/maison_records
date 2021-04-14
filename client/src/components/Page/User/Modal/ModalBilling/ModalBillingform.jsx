@@ -10,7 +10,6 @@ const ModalBillingform = () => {
     const [loading, setLoading] = useState(true);
 
     const onSubmit = async (formAnswers) => {
-        console.log(formAnswers)
         try {
           const res = await axios({
             method: "patch",

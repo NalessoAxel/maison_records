@@ -41,7 +41,8 @@ app.get('/jwtid', requireAuth, (req, res) => {
         {
             id: res.locals.user._id,
             admin: res.locals.user.admin,  // to take the user's status and make the difference at the connection between admin and simple user
-            email : res.locals.user.email
+            email : res.locals.user.email,
+            
         })
 });
 

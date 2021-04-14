@@ -24,8 +24,7 @@ module.exports.signUp = async (req, res)=>{
         res.status(201).json({ userMessage : user._id})    
     }
     catch(err) {
-        const errors = signUpErrors(err);
-        res.status(400).json({ errors })
+        res.status(400).json({ message : 'error' })
     }
 }
 
@@ -41,8 +40,8 @@ module.exports.signIn = async (req, res) => {
         res.status(200).json({user:user._id, admin: user.admin});  // recupéré le status de l'admin
     }
     catch (err) {
-        const errors = signInErrors(err);
-        res.status(401).json({ errors })
+        // const errors = signInErrors(err);
+        res.status(401).json({ message: "error" })
     }
 }
 

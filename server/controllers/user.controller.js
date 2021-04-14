@@ -56,13 +56,13 @@ module.exports.updateUser = async (req, res) => {
                     // docs.save();
                     return res.send(docs);
                 }
-                if (err) return res.status(500).json({
+                if (err) return res.status(403).json({
                     message: err
                 }); 
             }
         )
     } catch (err) {
-        return res.status(500).json({message: err}); //renvoi json car bdd en json
+        return res.status(403).json({message: err}); //renvoi json car bdd en json
     }
 }
 
@@ -70,15 +70,17 @@ if (password) {
      
     UserModel.findById(req.params.id, async (err,docs) => {
         const compare = await bcrypt.compare(password, docs.password); 
-        console.log(compare)
+        console.log("le resultat est : " , compare)
         if(compare){
             let hashing = async () => {
                 let passwordHash = await bcrypt.hash(newPassword, 10)
                 changes.password = passwordHash;
                 request(changes)
             }
-            
             hashing();
+        }else{
+            return res.status(403).json({message: "error"}); 
+            
         }
     })
 } else if (streetShipping) {
