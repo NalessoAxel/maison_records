@@ -125,7 +125,7 @@ import { Link } from 'react-router-dom'
                         <div className="tile">
                         <div className="hover-effect">
                             <img src={Imgrelease} alt=""></img>
-                            <div class="overlay">
+                            <div className="overlay">
                                 <h2>Description of the records when hove the img</h2>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@ import { Link } from 'react-router-dom'
                         <div className="tile">
                         <div className="hover-effect">
                             <img src={Imgrelease} alt=""></img>
-                            <div class="overlay">
+                            <div className="overlay">
                                 <h2>Description of the records when hove the img</h2>
                                 </div>
                             </div>
@@ -218,7 +218,7 @@ import { Link } from 'react-router-dom'
                         <div className="tile">
                         <div className="hover-effect">
                             <img src={Imgrelease} alt=""></img>
-                            <div class="overlay">
+                            <div className="overlay">
                                 <h2>Description of the records when hove the img</h2>
                                 </div>
                             </div>

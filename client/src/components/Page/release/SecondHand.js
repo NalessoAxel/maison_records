@@ -14,7 +14,7 @@ const SecondHand = () => {
                         <div className="tile">
                             <div className="hover-effect">
                             <img src={ImgVinyl1} alt=""></img>
-                            <div class="overlay">
+                            <div className="overlay">
                                 <h2>Description of the records when hove the img</h2>
                                 </div>
                             </div>
