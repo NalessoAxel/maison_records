@@ -32,15 +32,15 @@ const Navbar =  () => {
                 </div>
                 <div className="link">
                     <ul>
-                        {links.map((link) => {
+                        {links.map((link, index) => {
                             if (link=="Profile" && uid && !uid.admin){
-                            return (<li><Link to={strToUrl(link)}>{link}</Link></li>)
+                            return (<li><Link key={index} to={strToUrl(link)}>{link}</Link></li>)
                             }
                             else if (link != 'Profile' && link != 'Dashboard') {
-                             return (<li><Link to={strToUrl(link)}>{link}</Link></li>)
+                             return (<li><Link key={index} to={strToUrl(link)}>{link}</Link></li>)
                             }
                             else if(link=="Dashboard" && uid && uid.admin){
-                                return (<li><Link to={strToUrl(link)}>{link}</Link></li>)
+                                return (<li><Link key={index} to={strToUrl(link)}>{link}</Link></li>)
                                 }
                             })}
                     </ul>
