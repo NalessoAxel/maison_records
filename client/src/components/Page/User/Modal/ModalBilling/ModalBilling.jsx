@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect} from 'react'
+import React, { useState, useContext} from 'react'
 import Modal from 'react-modal'
 import ModalBillingform from './ModalBillingform'
 import { UidContext } from '../../../../AppContext';
@@ -8,27 +8,7 @@ import axios from 'axios'
 const ModalShipping = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const { uid } = useContext(UidContext);
-    const [formValue, setFormValue] = useState({});
-
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const getInfo = async () => {
-          try {
-            const res = await axios({
-              method: "get",
-              url: `${process.env.REACT_APP_API_URL}api/user/` + uid.id,
-              withCredentials: true,
-            });
-            setFormValue(res.data);
-            setLoading(false);
-          } catch (err) {
-            console.log(err);
-          }
-        };
-        getInfo();
-      }, []);
-
+   
     return (
         <>
             <div className="billingAdress">
@@ -74,16 +54,14 @@ const ModalShipping = () => {
                         </div>
                     </Modal>
                 </div>
-                {!loading ? (
+               
                     <div className="userBillingAdress">
-                    <p>{formValue.adress_billing.first_nameBilling} {formValue.adress_billing.last_nameBilling}</p>
-                    <p>{formValue.adress_billing.streetBilling} {formValue.adress_billing.numberBilling}</p>
-                    <p>{formValue.adress_billing.zipBilling} {formValue.adress_billing.cityBilling}</p>
+                    <p>{uid.adress_billing.first_nameBilling} {uid.adress_billing.last_nameBilling}</p>
+                    <p>{uid.adress_billing.streetBilling} {uid.adress_billing.numberBilling}</p>
+                    <p>{uid.adress_billing.zipBilling} {uid.adress_billing.cityBilling}</p>
                     <p>Belgium</p>
                     </div>
-                ) : (
-                    <p>Loading ... </p>
-                )}
+                
             </div>
         </>
     )

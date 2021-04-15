@@ -103,6 +103,9 @@ const App = () => {
     const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
     
     return (
+      
+
+    
       <UidContext.Provider value={{uid, loading}}> 
            {/* // we place the UID at the top of our app so we don't have to put it in every page */}
           
@@ -112,18 +115,25 @@ const App = () => {
             
             <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/Animations" exact component={LayoutAnimations} />
             <Route path="/New" exact component={LayoutNew} />
+            <Route path="/Animations" exact component={LayoutAnimations} />
             <Route path="/SecondHand" exact component={LayoutSecondHand} />
             <Route path="/SellCollection" exact component={LayoutSellCollection} />
             <Route path="/Merch" exact component={LayoutMerch} />
             <Route path="/Accessories"  exact component={LayoutAccessories} />
             <Route path="/Live"  exact component={LayoutLive} />
-            <Route path="/Profile"  exact component={LayoutAdress} />
+            <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
             <Route path="/LogIn"  exact component={LayoutUserRegisterPage} />
+            <>
+      
+      {(loading) ? (
+        <div>Loading...</div>
+        ):(
+          
+          <>
+            <Route path="/Profile"  exact component={LayoutAdress} />
             <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
             <Route path="/Cart"  exact component={LayoutCart} />
-            <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
             <Route path="/Orders" exact component={LayoutOrders} />
             <Route path="/Adress" exact component={LayoutAdress} />
             <Route path="/UserDetails" exact component={LayoutUserDetails} />
@@ -133,7 +143,9 @@ const App = () => {
             <Route path="/AdminOrders" exact component={LayoutAdminOrders} />
             <Route path="/AdminVisitors" exact component={LayoutAdminVisitors} />
             
-            
+            </>
+        )}
+      </>
             </Switch> 
             
             

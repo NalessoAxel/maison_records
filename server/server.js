@@ -40,6 +40,8 @@ app.get('*', checkUser); //for all route -> start this middleware
 app.get('/jwtid', requireAuth, (req, res) => {
     const {
     _id,
+    first_name,
+    last_name,
     admin,
     email,
     adress_shipping,
@@ -48,10 +50,12 @@ app.get('/jwtid', requireAuth, (req, res) => {
     res.status(200).send(
         {
             id: res.locals.user._id,
-             admin,
-             email,
-             adress_shipping,
-             adress_billing
+            first_name,
+            last_name,
+            admin,
+            email,
+            adress_shipping,
+            adress_billing
         })
 });
 
@@ -59,11 +63,6 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 //routes
 app.use('/api/user', userRoutes);
-
-
-
-
-
 
 
 app.listen(process.env.PORT, ()=> console.log(`Listening on port ${process.env.PORT}`));

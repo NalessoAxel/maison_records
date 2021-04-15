@@ -8,27 +8,7 @@ import axios from "axios"
 const ModalShipping = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const { uid } = useContext(UidContext);
-    const [formValue, setFormValue] = useState({});
 
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-      const getInfo = async () => {
-        try {
-          const res = await axios({
-            method: "get",
-            url: `${process.env.REACT_APP_API_URL}api/user/` + uid.id,
-            withCredentials: true,
-          });
-          setFormValue(res.data);
-          setLoading(false);
-
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      getInfo();
-    }, []);
   
     return (
         <>
@@ -78,16 +58,14 @@ const ModalShipping = () => {
                </div>
                    </Modal>
                </div>
-               {!loading ? (
+            
                    <div className="userShippingAdress">
-                   <p>{formValue.adress_shipping.first_nameShipping} {formValue.adress_shipping.last_nameShipping}</p>
-                   <p>{formValue.adress_shipping.streetShipping} {formValue.adress_shipping.numberShipping} </p>
-                   <p>{formValue.adress_shipping.zipShipping} {formValue.adress_shipping.cityShipping}</p>
+                   <p>{uid.adress_shipping.first_nameShipping} {uid.adress_shipping.last_nameShipping}</p>
+                   <p>{uid.adress_shipping.streetShipping} {uid.adress_shipping.numberShipping} </p>
+                   <p>{uid.adress_shipping.zipShipping} {uid.adress_shipping.cityShipping}</p>
                    <p>Belgium</p>
                    </div>
-                ) : (
-                    <p>Loading ... </p>
-                ) }
+               
                </div>
                </div>
         </>

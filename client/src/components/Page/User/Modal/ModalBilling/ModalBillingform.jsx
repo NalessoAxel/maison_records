@@ -6,9 +6,7 @@ import axios from "axios"
 const ModalBillingform = () => {
     const {register, handleSubmit, errors} = useForm()
     const { uid } = useContext(UidContext);
-    // const [formValue, setFormValue] = useState({});
-    // const [loading, setLoading] = useState(true);
-
+  
     const onSubmit = async (formAnswers) => {
         try {
           const res = await axios({
@@ -46,16 +44,6 @@ const ModalBillingform = () => {
                         type="text"
                         ref={register({
                           required: true
-                        })}
-                        /> 
-                        
-                        <label>Companie (optional)</label>
-                        <input 
-                        name="companie"
-                         // value = {formValue.companie}
-                        type="text"
-                        ref={register({
-                          // required: true
                         })}
                         /> 
                         
@@ -109,15 +97,7 @@ const ModalBillingform = () => {
                          /> 
                          {errors.email && <span className="error">Email invalid!</span>}
                          </label>
-                         {/* <label>Phone Number</label>
-                        <input 
-                        name="phonenumber"
-                        value = {uid.phonenumber}
-                        type="number"
-                        ref={register({
-                          // required: true
-                        })}
-                        />  */}
+                        <br/>
                         <input type="submit"/>
                     </form>
                 </div>

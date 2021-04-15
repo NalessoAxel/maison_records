@@ -1,73 +1,57 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import { useForm} from 'react-hook-form'
 import { UidContext } from '../../../../../AppContext';
 import axios from "axios"
 
 
-const ChangeInfos = () => {
+const ChangeInfos = () =>  {
     const {register, handleSubmit, formState, errors} = useForm()
     const {isSubmitting} = formState
-    const [formValue, setFormValue] = useState({});
+
+    const [formSubmit, setFormSubmit] = useState(false);
     const { uid } = useContext(UidContext);
-
-    const [loading, setLoading] = useState(true);
-
+    
     const onSubmit = async (formAnswers) => {
       try{
-        const res = await ({
+        const res = await axios({
           method: "patch",
-          url: `${process.env.REACT_APP_API_URL}api/user/update/` + uid.id,
+          url:`${process.env.REACT_APP_API_URL}api/user/update/`+uid.id,
           withCredentials: true,
           data: formAnswers,
-        })
-        console.log(formAnswers)
-        console.log(uid)
+        });
+        setTimeout(() => {
+          window.location = ''
+        }, 1500);
+        
+        setFormSubmit(true)
+
       } catch (err){
         console.log(err)
       }
       
     }
-
-    useEffect(() => {
-      const getInfo = async () => {
-        try {
-          const res = await axios({
-            method: "get",
-            url: `${process.env.REACT_APP_API_URL}api/user/` + uid.id,
-            withCredentials: true,
-          });
-          setFormValue(res.data);
-          setLoading(false);
-
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      getInfo();
-    }, []);
-  
-    
-  
-    return (
+   
+    return ( 
         <>
-                {!loading ? (
+      {formSubmit ? (
+          <h3>Your personnal infos changed successfully</h3>
+        ) : (               
                   <div id="changeUserInfos">
                   <h1>Your Personnal Infos</h1>
                   <form onSubmit={handleSubmit(onSubmit)}>
                    <label>Your first name</label>
+    
                      <input 
                       name="first_name"
-                      defaultValue={formValue.first_name}
+                      defaultValue={uid.first_name}
                      ref={register({
                        required: true
-                     })}
-                     /> 
-                     
-               
+                     })}/>
+
                      <label>Your last name</label>
                      <input 
                      name="last_name"
-                     defaultValue={formValue.last_name}
+                     defaultValue={uid.last_name}
                      type="text"
                      ref={register({
                        required: true
@@ -77,7 +61,7 @@ const ChangeInfos = () => {
                  <input 
                  type="text"
                  name="email"
-                 defaultValue={formValue.email} 
+                 defaultValue={uid.email} 
                  ref={register
                    ({
                      pattern: {
@@ -89,10 +73,8 @@ const ChangeInfos = () => {
               <input disabled={isSubmitting} type="submit" value="Change Details"/>
           </form>
           </div>
-                ) : (
-                  <p>Loading ... </p>
-                )}
-                    
+              
+        )}     
             
         </>
     )

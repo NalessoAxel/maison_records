@@ -28,11 +28,7 @@ const userSchema = new mongoose.Schema(
             max: 1024,
             minlength: 6
         },
-        phonenumber:{
-            type: Number,
-            max: 50,
-            minlength: 10
-        },
+        
         //adresse de livraison
         adress_shipping: 
             {
@@ -63,6 +59,12 @@ const userSchema = new mongoose.Schema(
                 cityShipping : {
                     type: String,
                     default: "city"
+                },
+                phonenumberShipping: {
+                    type: String,
+                    default: "0",
+                    max: 50,
+                    minlength: 10
                 }
         },
         //adresse de facturation

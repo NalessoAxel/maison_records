@@ -1,4 +1,4 @@
-import React, { useContext, useState , useEffect} from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import UserHeader from '../../../UserHeader'
@@ -11,9 +11,8 @@ const ChangePassword = () => {
   const [formSubmit, setFormSubmit] = useState(false);
   const {register, handleSubmit, formState, errors} = useForm()
   const {isSubmitting} = formState
-  // const [confirmNewPassword, setconfirmNewPassword] = useState("")
-  const [wrongPassword, setWrongPassword] = useState("")
 
+  const [wrongPassword, setWrongPassword] = useState("")
   const {uid} = useContext(UidContext)
 
   const onSubmit = async (formAnswers) => {
@@ -25,9 +24,10 @@ const ChangePassword = () => {
           withCredentials: true,
           data: formAnswers,
         })
+        setTimeout(() => {
+          window.location = ''
+        }, 1500);
         setFormSubmit(true)
-        // window.location=""
-        // setconfirmNewPassword("Password changed successfully")
       } catch(err) {
         setWrongPassword("Unknown password")
       } 
@@ -43,7 +43,6 @@ const ChangePassword = () => {
         <div id="changePassword">
           <h1>Modify your password</h1>
           <form className="userCreate" onSubmit={handleSubmit(onSubmit)}>
-              {/* <form className="userCreate" onSubmit={handleSubmit(onSubmit)}> */}
 
             <label>Current Password</label>
             <input
@@ -51,12 +50,6 @@ const ChangePassword = () => {
               name="password"
               placeholder="your password"
               ref={register({
-                // pattern: {
-                //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
-                // },
-                // min: {
-                //   value: 8
-                // },
                 required: true,
               })}
             />
@@ -113,7 +106,6 @@ const ChangePassword = () => {
                 type="submit" 
                 value="Change password" />
               </form> 
-              {/* <h3>{confirmNewPassword}</h3> */}
 
         </div>
        

@@ -83,9 +83,9 @@ const Register = () => {
         placeholder='your password' 
         ref={register
           ({
-            pattern: {
-              value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
-            },
+            // pattern: {
+            //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
+            // },
             min: {
               value: 6
             },

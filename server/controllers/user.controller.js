@@ -32,6 +32,7 @@ module.exports.updateUser = async (req, res) => {
         numberShipping,
         zipShipping,
         cityShipping,
+        phonenumberShipping,
         first_nameBilling,
         last_nameBilling,
         streetBilling,
@@ -41,8 +42,12 @@ module.exports.updateUser = async (req, res) => {
         password,
         newPassword
     } = req.body
-
+    
+    // let essai = Object.entries(req.body)
+    // console.log("essai", essai)
     let changes = {}
+    
+    console.log("reqbody2", req.body)
 
     const request = async (changes)=>{   
         try {
@@ -84,6 +89,7 @@ if (password) {
         }
     })
 } else if (streetShipping) {
+
      changes = {
             adress_shipping:
             {
@@ -92,12 +98,13 @@ if (password) {
                 streetShipping,
                 numberShipping,
                 zipShipping,
-                cityShipping
+                cityShipping,
+                phonenumberShipping
             }
         }
     request(changes)
     
-} else{
+} else if (streetBilling) {
     changes = {
             adress_billing: 
             {
@@ -110,6 +117,15 @@ if (password) {
             }
     }
     request(changes)
+} else if (first_name){
+    console.log("test")
+    changes = {
+        first_name,
+        last_name,
+        email
+    }
+    request(changes)
 }
 }
 
+ 
