@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { isEmail } = require('validator');
+const { isEmail, isMobilePhone } = require('validator');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema(
@@ -48,7 +48,7 @@ const userSchema = new mongoose.Schema(
                     lowercase: true,
                     default : 'street'
                 },
-              numberShipping :  {
+                numberShipping :  {
                     type: Number,
                     default: 0
                 },
@@ -62,9 +62,8 @@ const userSchema = new mongoose.Schema(
                 },
                 phonenumberShipping: {
                     type: String,
-                    default: "0",
-                    max: 50,
-                    minlength: 10
+                    
+                 //goooooo   
                 }
         },
         //adresse de facturation

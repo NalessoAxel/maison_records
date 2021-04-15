@@ -127,7 +127,7 @@ const App = () => {
             <>
       
       {(loading) ? (
-        <div>Loading...</div>
+        <h1>Loading...</h1>
         ):(
           
           <>
@@ -139,6 +139,7 @@ const App = () => {
             <Route path="/UserDetails" exact component={LayoutUserDetails} />
             <Route path="/AdminHeader" exact component={LayoutAdminHeader} />
             <Route path="/AdminDashboard" exact component={LayoutAdminDashboard} />
+            <Route path="/Dashboard" exact component={LayoutAdminDashboard} />
             <Route path="/AddReference" exact component={LayoutAddReference} />
             <Route path="/AdminOrders" exact component={LayoutAdminOrders} />
             <Route path="/AdminVisitors" exact component={LayoutAdminVisitors} />

@@ -15,7 +15,8 @@ const Navbar =  () => {
         'Merch',
         'Accessories',
         'Live',
-        'Profile'    
+        'Profile', 
+        'Dashboard'   
     ]
     const strToUrl = (str) => '/' + str.replace(' ', '')
     
@@ -35,9 +36,12 @@ const Navbar =  () => {
                             if (link=="Profile" && uid && !uid.admin){
                             return (<li><Link to={strToUrl(link)}>{link}</Link></li>)
                             }
-                            else if (link != 'Profile') {
+                            else if (link != 'Profile' && link != 'Dashboard') {
                              return (<li><Link to={strToUrl(link)}>{link}</Link></li>)
                             }
+                            else if(link=="Dashboard" && uid && uid.admin){
+                                return (<li><Link to={strToUrl(link)}>{link}</Link></li>)
+                                }
                             })}
                     </ul>
                 </div>
@@ -57,9 +61,7 @@ const Navbar =  () => {
                          <Link to="/UserRegisterPage">
                             <span>Log in</span>
                         </Link>
-                        {/* <Link to="/AdminDashboard">
-                            <span>Admin</span>
-                        </Link> */}
+                    
                         </>
                     )}
                             

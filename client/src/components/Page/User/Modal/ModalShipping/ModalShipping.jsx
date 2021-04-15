@@ -64,6 +64,7 @@ const ModalShipping = () => {
                    <p>{uid.adress_shipping.streetShipping} {uid.adress_shipping.numberShipping} </p>
                    <p>{uid.adress_shipping.zipShipping} {uid.adress_shipping.cityShipping}</p>
                    <p>Belgium</p>
+                   <p>{uid.adress_shipping.phonenumberShipping}</p>
                    </div>
                
                </div>

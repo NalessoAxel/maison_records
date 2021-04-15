@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Vinyl = (props) => {
     const {product, onAdd} = props;
-    console.log(onAdd)
+    // console.log(onAdd)
 
     return (
         <>

@@ -45,28 +45,7 @@ const UserAdress = () => {
 
 
     const {uid} = useContext(UidContext)
-    
-    // const [loading, setLoading] = useState(true);
-    // const [formValue, setFormValue] = useState({});
-
-    // useEffect(() => {
-    //   const getInfo = async () => {
-    //     try {
-    //       const res = await axios({
-    //         method: "get",
-    //         url: `${process.env.REACT_APP_API_URL}api/user/` + uid.id,
-    //         withCredentials: true,
-    //       });
-    //       setFormValue(res.data);
-    //       setLoading(false);
-    //     } catch (err) {
-    //       console.log(err);
-    //     }
-    //   };
-    //   getInfo();
-    // }, []);
-    
-
+ 
     return (
         <>
         {uid ? (
