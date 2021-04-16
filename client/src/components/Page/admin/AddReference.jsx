@@ -10,6 +10,11 @@ const AddReference = () => {
                         <div className="formWrapper">
                             <form>
                                 <div className="containerRight">
+                                    <label>Choose an option</label>
+                                    <select name="product_type">
+                                        <option value="new">New</option>
+                                        <option value="second hand">Second hand</option>
+                                    </select>
                                     <label>Title</label>
                                     <input name="title" type="text"></input>
                                     <label>label</label>
@@ -42,6 +47,7 @@ const AddReference = () => {
                                     <input name="audio" type="text"></input>
                                     <label>Audio</label>
                                     <input name="audio" type="text"></input>
+                                    
                                 </div>
                                 
                             </form>

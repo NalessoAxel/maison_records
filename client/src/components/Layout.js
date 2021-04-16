@@ -14,7 +14,7 @@ function Layout(props) {
             <HeaderTop />
             <Navbar />
             {props.children}
-            <Footer />
+            {/* <Footer /> */}
             <FooterBottom />
         </>
     )
