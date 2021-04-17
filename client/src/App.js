@@ -1,29 +1,30 @@
-import Home from './component/Page/Home'
+import Home from './components/Page/Home'
 
 // PAGE
-import New from './component/Page/release/New'
-import SecondHand from './component/Page/release/SecondHand'
-import Merch from './component/Page/Merch'
-import Accessories from './component/Page/Accessories'
-import Live from './component/Page/Live/Live'
-import UserRegisterPage from './component/Page/LogInForm/UserRegisterPage'
-import Animations from './component/Header/Animations'
-import Layout from './component/Layout'
-import SellCollection from './component/Page/SellCollection'
-import ReleaseDetails from './component/Page/release/ReleaseDetails'
-import Cart from './component/cart/Cart'
+import New from './components/Page/release/New'
+import ReleaseDetails from './components/Page/release/ReleaseDetails'
+import SecondHand from './components/Page/release/SecondHand'
+import Merch from './components/Page/Merch'
+import Accessories from './components/Page/Accessories'
+import Live from './components/Page/Live/Live'
+import UserRegisterPage from './components/Page/LogInForm/UserRegisterPage'
+import Animations from './components/Header/Animations'
+import Layout from './components/Layout'
+import SellCollection from './components/Page/SellCollection'
+
+import Cart from './components/cart/Cart'
 
 // USER
-import Orders from './component/Page/User/Orders'
-import Adress from './component/Page/User/UserAdress'
-import UserDetails from './component/Page/User/UserDetails'
+import Orders from './components/Page/User/Orders'
+import Adress from './components/Page/User/UserAdress.jsx'
+import UserDetails from './components/Page/User/UserDetails/UserDetails'
 
 // ADMIN
-import AdminHeader from './component/Page/admin/AdminHeader'
-import AdminDashboard from './component/Page/admin/AdminDashboard'
-import AddReference from './component/Page/admin/AddReference'
-import AdminOrders from './component/Page/admin/AdminOrders'
-
+import AdminHeader from './components/Page/admin/AdminHeader'
+import AdminDashboard from './components/Page/admin/AdminDashboard'
+import AddReference from './components/Page/admin/AddReference'
+import AdminOrders from './components/Page/admin/AdminOrders'
+import AdminVisitors from './components/Page/admin/AdminVisitors'
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -31,11 +32,13 @@ import AdminOrders from './component/Page/admin/AdminOrders'
 // import ShippingInfos from './component/Footer/ShipingInfos'
 
 import './scss/main.scss'
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import data from './component/data/recordsData'
-import AdminVisitors from './component/Page/admin/AdminVisitors'
-import {UidContext} from './component/AppContext'
+import data from './components/data/recordsData'
+
+
+
+import {UidContext} from './components/AppContext'
 import axios from 'axios'
 
 const App = () => {
@@ -100,6 +103,9 @@ const App = () => {
     const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
     
     return (
+      
+
+    
       <UidContext.Provider value={{uid, loading}}> 
            {/* // we place the UID at the top of our app so we don't have to put it in every page */}
           
@@ -109,30 +115,40 @@ const App = () => {
             
             <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/Animations" exact component={LayoutAnimations} />
             <Route path="/New" exact component={LayoutNew} />
+            <Route path="/Animations" exact component={LayoutAnimations} />
             <Route path="/SecondHand" exact component={LayoutSecondHand} />
             <Route path="/SellCollection" exact component={LayoutSellCollection} />
             <Route path="/Merch" exact component={LayoutMerch} />
             <Route path="/Accessories"  exact component={LayoutAccessories} />
             <Route path="/Live"  exact component={LayoutLive} />
-            <Route path="/Profile"  exact component={LayoutAdress} />
+            <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
             <Route path="/LogIn"  exact component={LayoutUserRegisterPage} />
+            <>
+      
+      {(loading) ? (
+        <h1>Loading...</h1>
+        ):(
+          
+          <>
+            <Route path="/Profile"  exact component={LayoutAdress} />
             <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
             <Route path="/Cart"  exact component={LayoutCart} />
-            <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
             <Route path="/Orders" exact component={LayoutOrders} />
             <Route path="/Adress" exact component={LayoutAdress} />
             <Route path="/UserDetails" exact component={LayoutUserDetails} />
             <Route path="/AdminHeader" exact component={LayoutAdminHeader} />
             <Route path="/AdminDashboard" exact component={LayoutAdminDashboard} />
+            <Route path="/Dashboard" exact component={LayoutAdminDashboard} />
             <Route path="/AddReference" exact component={LayoutAddReference} />
             <Route path="/AdminOrders" exact component={LayoutAdminOrders} />
             <Route path="/AdminVisitors" exact component={LayoutAdminVisitors} />
             
-            
-            
+            </>
+        )}
+      </>
             </Switch> 
+            
             
         </Router>
         </div>

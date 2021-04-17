@@ -1,6 +1,5 @@
 const UserModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
-const { signUpErrors, signInErrors } = require('../utils/errors.utils');
 
 //function pour token de jwt
 const maxAge = 1 * 24 * 60 * 60 * 1000; // 1 jours de validité (3, 4, 5... jours)
@@ -14,21 +13,21 @@ const createToken = (id) => {
 // Create new user
 module.exports.signUp = async (req, res)=>{
     const {email, first_name, last_name, password, admin} = req.body
-    console.log(req.body);
+    console.log("ici pouet pouet" , req.body);
 
     try {
+    console.log("ici pouet pouet 3" , req.body);
         const user = await UserModel.create({email, first_name, last_name, password, admin});
-        res.status(201).json({ userMessage : user._id})
-        
+         console.log("ici pouet pouet 4", req.body);
+        res.status(201).json({ userMessage : user._id})    
     }
     catch(err) {
-        const errors = signUpErrors(err);
-        res.status(404).json({ errors })
+        res.status(400).json({ message : 'error' })
     }
 }
 
 
-// Function connexion for registered user 
+// Function connexion for user
 module.exports.signIn = async (req, res) => {
     const { email, password } = req.body
 
@@ -39,10 +38,11 @@ module.exports.signIn = async (req, res) => {
         res.status(200).json({user:user._id, admin: user.admin});  // recupéré le status de l'admin
     }
     catch (err) {
-        const errors = signInErrors(err);
-        res.status(404).json({ errors })
+        // const errors = signInErrors(err);
+        res.status(401).json({ message: "error" })
     }
 }
+
 
 // function for deconnection
 module.exports.logout = (req, res) => {

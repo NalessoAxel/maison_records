@@ -1,0 +1,154 @@
+.contentWrapper {
+    
+    .releasePage {
+        position: relative;
+        padding-bottom: 150px;
+        .release {
+            padding: 50px;
+            max-width: 100%;
+            max-height: 100%;
+            .informations  {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-row-gap: 5.3rem;
+                grid-column-gap: 3.9rem;
+                .left img{
+                    width: 100%;
+                }
+                .center {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    h1{
+                        font-weight: 600;
+                        font-size: 40px;
+                        text-transform: uppercase;
+                        line-height: 40px;
+                        margin-bottom: 10px;
+                    }
+                    h2 {
+                        font-weight: 300;
+                        font-size: 28px;
+                        line-height: 40px;
+                        margin-bottom: 30px;
+                    }
+                    #releaseInfo {
+                        .releaseInfo {
+                            font-weight: 600;
+                            span {
+                                font-weight: 300;
+                            }
+                        }
+                    }
+                }
+                .right {
+                    h1{
+                        font-weight: 600;
+                        font-size: 40px;
+                        text-transform: uppercase;
+                        line-height: 40px;
+                        margin-bottom: 10px;
+                    }
+                    .audioPlayer {
+                        
+                        p {
+                            margin: 10px;
+                        }
+                        audio {
+                            outline: none;
+                        }
+                    }
+                }
+            }
+            
+        }
+        #suggestion {
+            position: relative;
+            margin-top: 2.6rem;
+            margin: 50px;
+            padding: 10px;
+            h2 {
+                font-size: 28px;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+            .suggestionEntries {
+                display: grid;
+                grid-template-columns: repeat(6,minmax(100px,1fr));
+                grid-row-gap: 1.3rem;
+                grid-gap: 1.3rem;
+
+                .hover-effect {
+                    width: 100%;
+                    overflow: hidden;
+                    position: relative;
+                    text-align: center;
+                    cursor: default;
+                }
+                
+                .hover-effect .overlay {
+                    position: absolute;
+                    overflow: hidden;
+                    width: 80%;
+                    height: 70%;
+                    left: 10%;
+                    top: 10%;
+                    border-bottom: 1px solid $yellow;
+                    border-top: 1px solid $yellow;
+                    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+                    transition: opacity 0.35s, transform 0.35s;
+                    -webkit-transform: scale(0, 1);
+                    -ms-transform: scale(0, 1);
+                    transform: scale(0, 1);
+                }
+                
+                .hover-effect:hover .overlay {
+                    opacity: 1;
+                    filter: alpha(opacity=100);
+                    -webkit-transform: scale(1);
+                    -ms-transform: scale(1);
+                    transform: scale(1);
+                }
+                
+                .hover-effect img {
+                    display: block;
+                    position: relative;
+                    -webkit-transition: all 0.35s;
+                    transition: all 0.35s;
+                }
+                
+                .hover-effect:hover img {
+                    filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.6" /><feFuncG type="linear" slope="0.6" /><feFuncB type="linear" slope="0.6" /></feComponentTransfer></filter></svg>#filter');
+                    filter: brightness(0.3);
+                    -webkit-filter: brightness(0.2);
+                }
+                
+                .overlay h2 {
+                    text-align: left;
+                    position: relative;
+                    font-size: 18px;
+                    background-color: transparent;
+                    color: #fff;
+                    
+                    filter: alpha(opacity=0);
+                    
+                }
+                .tile img {
+                    width: 100%;
+                    position: relative;
+                    border: 2px solid #9A9999;
+                }
+                .infos-record{
+                    margin: 5px 0;
+                }
+                .button {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 10px 0;
+                    
+                }
+            }
+        }
+    }
+}

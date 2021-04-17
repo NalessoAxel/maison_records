@@ -3,41 +3,35 @@
 @import './reset.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-@import '../component/Footer/footer.scss';
-@import '../component/Header/header.scss';
-@import '../component/Navbar/navbar.scss';
-@import '../../src/component/Page/release/vinylgrid.scss';
-@import '../../src/component/Page/slide/slider.scss';
-@import '../../src/component/Page/Live/live.scss';
-@import '../../src/component/Header/animations.scss';
-@import '../../src/component/Footer/footerbottom.scss';
-@import '../../src/component/Page/home.scss';
-@import '../../src/component/Page/release/releasedetails.scss';
-@import '../component/cart/cart.scss';
-@import '../component/cart/cartsummary/cartsummary.scss';
-@import '../component/cart/summaryshipping/summaryshipping.scss';
-@import '../component/Page/LogInForm/userregisterpage.scss';
-@import '../component/Page/LogInForm/Signform/Register.scss';
-@import '../component/Page/LogInForm/Signform/login.scss';
-@import '../component/Page/User/orderheader.scss';
-@import '../component/Page/User/useradress.scss';
-@import '../component/Page/User/Modal/modal.scss';
-@import '../component/Page/User/Modal/ModalBilling/modalbilling.scss';
-@import '../component/Page/User/userdetails.scss';
-@import '../component/Page/admin/admindashboard.scss';
-@import '../component/Page/admin/addreference.scss';
-@import '../component/Page/admin/adminvistors.scss';
-@import '../component/Page/admin/adminorders.scss';
+@import '../components/Footer/footer.scss';
+@import '../components/Header/header.scss';
+@import '../components/Navbar/navbar.scss';
+@import '../components/Page/release/vinylgrid.scss';
+@import '../components/Page/slide/slider.scss';
+@import '../components/Page/Live/live.scss';
+@import '../components/Header/animations.scss';
 
+@import '../components/Page/home.scss';
+@import '../components/Page/release/releasedetails.scss';
 
+@import '../components/cart/cart.scss';
+@import '../components/cart/cartsummary/cartsummary.scss';
+@import '../components/cart/summaryshipping/summaryshipping.scss';
 
+@import '../components/Page/LogInForm/userregisterpage.scss';
+@import '../components/Page/LogInForm/Signform/login.scss';
+@import '../components/Page/LogInForm/Signform/register.scss';
+@import '../components/Page/LogInForm/Signform/login.scss';
 
+@import '../components/Page/user/orderheader.scss';
+@import '../components/Page/User/useradress.scss';
+@import '../components/Page/User/Modal/modal.scss';
+@import '../components/Page/User/Modal/ModalBilling/modalbilling.scss';
+@import '../components/Page/User/UserDetails/userdetails.scss';
+@import '../components/Page/User/UserDetails/UserFormDetails/ChangePassword/changepassword.scss';
+@import '../components/Page/User/UserDetails/UserFormDetails/PersonalInfos/personnalinfos.scss';
 
-
-
-
-
-
-
-
-
+@import '../components/Page/admin/admindashboard.scss';
+@import '../components/Page/admin/addreference.scss';
+@import '../components/Page/admin/adminvistors.scss';
+@import '../components/Page/admin/adminorders.scss';
