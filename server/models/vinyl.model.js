@@ -4,62 +4,63 @@ const vinylSchema = new mongoose.Schema(
     {
         product_type:{
             type: String,
-            default: "Second hand"
+            default: 'New'
         },
         title:{
             type: String,
-            required: true,
             trim: false,
-            default: "Title"
+            default: 'Title'
+        },
+        artist_name:{
+            type: String,
         },
         label:{
             type: String,
-            required: true,
             trim: false,
-            default: "label"
+            default: 'label'
         },
         catNumber:{
-            type: Number,
-            required: true,
+            type: String,
             minlength: 1,
-            default: "CatNumber"
+            default: 'CatNumber'
         },
         year:{
             type: Number,
-            required: true,
             minLength: 4,
             maxlength: 4,
             default: 1900
         },
         country:{
             type: String,
-            required: true,
-            default: "Country"
+            default: 'Country'
         },
         style:{
             type: String,
-            required: true,
-            default: "Style"
+            default: 'Style'
         },
         format:{
             type: String,
-            required: true,
-            default:"format"
+            default:'format'
+        },
+        description:{
+            type: String,
+            default:'description'
+        },
+        price:{
+            type: Number,
+            default: 0
         },
         quantity:{
             type: Number,
-            required: true,
             default: 1
         },
-        option:{
-            type: Boolean,
-            default: true
-        },
         image:{
-            type: String
+            type: String, 
+            default: 'Empty image'
         },
         audio:{
-            type: String
+            type: String,
+            default:'Empty audio'
         }
     },
     {

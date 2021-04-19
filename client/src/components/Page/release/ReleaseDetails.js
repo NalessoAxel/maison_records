@@ -4,6 +4,9 @@ import Imgrelease from '../../../img/test-vinyl1.jpg'
 import { Link } from 'react-router-dom'
 
  const ReleaseDetails = () => {
+
+
+    
     return (
         <>
             <div className="contentWrapper">
@@ -23,7 +26,7 @@ import { Link } from 'react-router-dom'
                                     <p className="releaseInfo">Catno:
                                         <span>Soma176</span>
                                     </p>
-                                    <p className="releaseInfo">Formats:
+                                    <p className="releaseInfo">Format:
                                         <span>1x12"</span>
                                     </p>
                                     <p className="releaseInfo">Country:

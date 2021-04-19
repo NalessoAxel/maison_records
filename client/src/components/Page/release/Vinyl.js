@@ -11,7 +11,9 @@ const Vinyl = (props) => {
                             <div className="hover-effect">
                                 <img src={product.image} alt={product.name}></img>
                                     <div class="overlay">
-                                        <h2>Description of the records when hove the img</h2>
+                                        {product.description}  
+                                        {/* a mettre en H2 */}
+                                        {/* <h2>Description of the records when hove the img</h2> */}
                                     </div>
                                     <div className="infos-record">
                                     <div className="artistAndTitlePrice">
@@ -20,12 +22,12 @@ const Vinyl = (props) => {
                                             </span>
                                         <p>
                                         <span>
-                                            <span>{product.subTitle}</span>
+                                            <span>{product.artist_name}</span>
                                         </span>   
                                         </p>
                                         <p>
                                         <span>
-                                            <span>{product.price}</span>
+                                            <span>{product.price} €</span>
                                         </span>  
                                     </p>
                                 </div>

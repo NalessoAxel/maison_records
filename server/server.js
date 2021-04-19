@@ -3,6 +3,7 @@ require("dotenv").config({path:"./config/.env"});
 require('./config/db')
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
+const vinylRoutes = require('./routes/vinyl.routes');
 const {checkUser, requireAuth} = require('./middleware/auth.middleware');
 const cors = require('cors');
 
@@ -63,6 +64,7 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 //routes
 app.use('/api/user', userRoutes);
+app.use('/api/vinyl', vinylRoutes);
 
 
 app.listen(process.env.PORT, ()=> console.log(`Listening on port ${process.env.PORT}`));

@@ -32,6 +32,7 @@ const ModalBillingform = () => {
                         <input 
                         name="first_nameBilling"
                         defaultValue={uid.adress_billing.first_nameBilling}
+                        type="text"
                         ref={register({
                           required: true
                         })}
@@ -87,7 +88,7 @@ const ModalBillingform = () => {
                          <input 
                          name="email"
                          defaultValue={uid.email}
-                         type="tesxt" 
+                         type="text" 
                          ref={register
                            ({
                              pattern: {

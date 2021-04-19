@@ -124,6 +124,7 @@ const App = () => {
             <Route path="/Live"  exact component={LayoutLive} />
             <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
             <Route path="/LogIn"  exact component={LayoutUserRegisterPage} />
+            <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
             <>
       
       {(loading) ? (
@@ -132,7 +133,6 @@ const App = () => {
           
           <>
             <Route path="/Profile"  exact component={LayoutAdress} />
-            <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
             <Route path="/Cart"  exact component={LayoutCart} />
             <Route path="/Orders" exact component={LayoutOrders} />
             <Route path="/Adress" exact component={LayoutAdress} />
