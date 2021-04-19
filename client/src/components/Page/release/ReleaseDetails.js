@@ -66,6 +66,12 @@ import axios from 'axios'
                                             <p className="releaseInfo">Price: 
                                                 <span>{vinylInfos.price}€</span>
                                             </p>
+                                            <p className="releaseInfo">Type: 
+                                                <span>{vinylInfos.product_type}</span>
+                                            </p>
+                                            <p className="releaseInfo">Description: 
+                                                <span>{vinylInfos.description}</span>
+                                            </p>
                                         </div>
                                     </div>
                                     <div className="right">

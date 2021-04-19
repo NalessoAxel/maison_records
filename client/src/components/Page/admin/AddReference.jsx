@@ -31,8 +31,8 @@ const AddReference = () => {
               <div className="containerRight">
                 <label>Choose an option</label>
                 <select name="product_type" ref={register({ required: true })}>
-                  <option value="new">New</option>
-                  <option value="second hand">Second hand</option>
+                  <option value="New">New</option>
+                  <option value="Second hand">Second hand</option>
                 </select>
                 <label>Title</label>
                 <input

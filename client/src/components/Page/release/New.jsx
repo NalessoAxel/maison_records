@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Vinyl from './Vinyl'
-import axios from 'axios'
+
 
 const New = (props) => {
     const { products, onAdd } = props
@@ -10,7 +10,7 @@ const New = (props) => {
               <>
                 <main products={products}>
                 <div className="header-container">
-                    <h2>NEW RELEASE</h2>
+                    <h2>NEW</h2>
                 </div>
             <div className="container">
                 <div className="entries">

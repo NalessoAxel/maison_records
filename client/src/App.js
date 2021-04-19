@@ -25,6 +25,7 @@ import AdminDashboard from './components/Page/admin/AdminDashboard'
 import AddReference from './components/Page/admin/AddReference'
 import AdminOrders from './components/Page/admin/AdminOrders'
 import AdminVisitors from './components/Page/admin/AdminVisitors'
+import VinylDashboard from './components/Page/admin/VinylDashboard'
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -127,6 +128,7 @@ const products = allVinyls
     const LayoutAddReference = () => <Layout><AddReference/></Layout>
     const LayoutAdminOrders = () => <Layout><AdminOrders/></Layout>
     const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
+    const LayoutVynilDashboard = () => <Layout><VinylDashboard products={products}/></Layout>
     
     return (
       
@@ -140,7 +142,7 @@ const products = allVinyls
         <Router>
             
             <Switch>
-{(loadingVinyls && loading) ? (
+{(loadingVinyls) ? (
         <h1>Loading...</h1>
         ):(<>
             <Route path="/" exact component={Home} />
@@ -165,6 +167,7 @@ const products = allVinyls
             <Route path="/AddReference" exact component={LayoutAddReference} />
             <Route path="/AdminOrders" exact component={LayoutAdminOrders} />
             <Route path="/AdminVisitors" exact component={LayoutAdminVisitors} />
+            <Route path="/VinylDashboard" exact component={LayoutVynilDashboard} />
             </>
         )}
       

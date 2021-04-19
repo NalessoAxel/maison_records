@@ -1,0 +1,23 @@
+.boardVinylBox{
+    width: fit-content;
+    margin: 0 auto;
+}
+.boardVinylBox>div{
+    width: fit-content;
+    height: 60vh;
+    border: solid rgba(0, 0, 0, 0.301) 1px;
+}
+.boardVinylBox>div>h4{
+    background-color: rgb(134, 134, 134);
+    color: white;
+    text-align: center;
+}
+td, tr {
+    width: 100px;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+  }
+ 

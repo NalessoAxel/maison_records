@@ -36,4 +36,15 @@ module.exports.vinylInfo = (req, res)=>{
 
 }
 
+module.exports.deleteVinyl = async (req, res)=>{
+    if(!ObjectID.isValid(req.params.id))
+        return res.status(400).send('ID unknown : ' + req.params.id)
+
+    try{
+        await VinylModel.remove({_id: req.params.id}).exec();
+        res.status(200).json({ message: "Successfully deleted. "});
+    } catch(err){
+        return res.status(400).send({message : 'Error to delete'})
+    }
+}
 
