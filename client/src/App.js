@@ -34,7 +34,7 @@ import AdminVisitors from './components/Page/admin/AdminVisitors'
 import './scss/main.scss'
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import data from './components/data/recordsData'
+// import AllVinyls from './components/data/recordsData'
 
 
 
@@ -45,24 +45,50 @@ const App = () => {
 
     const [uid,setUid] = useState(null);
     const [loading, setLoading] =  useState(true);
+    
 
   useEffect(()=>{  
     const fetchToken = async () =>{
-      
-      const res = await axios({
-        method: "get",
-        url: `${process.env.REACT_APP_API_URL}jwtid`,
-        withCredentials: true
-      })
-        setUid(res.data);
-        setLoading(false);
-      // .catch((err)=>console.log("No token"))
+      try{
+        const res = await axios({
+          method: "get",
+          url: `${process.env.REACT_APP_API_URL}jwtid`,
+          withCredentials: true
+        })
+          setUid(res.data);
+          setLoading(false);
+      }catch(err){
+        console.log("No token", err);
+      }
     };
     fetchToken();
   }, []); // no callback otherwise useEffect will loop [we take admin status]
 
 
-    const { products } = data
+    const [allVinyls, setAllVinyls] = useState({})
+    const [loadingVinyls, setLoadingVinyls] =  useState(true);
+
+  useEffect(()=>{
+    const getAllVinyls = async () => {
+      try{
+        const res = await axios ({
+          method: "get",
+          url: `${process.env.REACT_APP_API_URL}api/vinyl/New/`,
+          withCredentials: true, 
+      });
+      setAllVinyls(res.data);
+      setLoadingVinyls(false);
+      } catch (err){
+        console.log(err);
+      }
+    }
+    getAllVinyls()
+  }, []);
+
+
+const products = allVinyls
+
+
     const [ cartItems, setCartItems ] = useState([]) 
 
     const onAdd = (product) => {
@@ -91,7 +117,7 @@ const App = () => {
     const LayoutLive = () => <Layout><Live/></Layout>
     const LayoutUserRegisterPage = () => <Layout><UserRegisterPage/></Layout>
     const LayoutAnimations = () => <Layout><Animations/></Layout>
-    const LayoutReleaseDetails = () => <Layout><ReleaseDetails/></Layout>
+    const LayoutReleaseDetails = () => < Layout > < ReleaseDetails/></Layout>
     const LayoutCart = () => <Layout><Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} /></Layout>
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>
@@ -114,6 +140,9 @@ const App = () => {
         <Router>
             
             <Switch>
+{(loadingVinyls && loading) ? (
+        <h1>Loading...</h1>
+        ):(<>
             <Route path="/" exact component={Home} />
             <Route path="/New" exact component={LayoutNew} />
             <Route path="/Animations" exact component={LayoutAnimations} />
@@ -124,14 +153,7 @@ const App = () => {
             <Route path="/Live"  exact component={LayoutLive} />
             <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
             <Route path="/LogIn"  exact component={LayoutUserRegisterPage} />
-            <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
-            <>
-      
-      {(loading) ? (
-        <h1>Loading...</h1>
-        ):(
-          
-          <>
+            <Route path="/ReleaseDetails/:id"  exact component={LayoutReleaseDetails} />
             <Route path="/Profile"  exact component={LayoutAdress} />
             <Route path="/Cart"  exact component={LayoutCart} />
             <Route path="/Orders" exact component={LayoutOrders} />
@@ -143,10 +165,18 @@ const App = () => {
             <Route path="/AddReference" exact component={LayoutAddReference} />
             <Route path="/AdminOrders" exact component={LayoutAdminOrders} />
             <Route path="/AdminVisitors" exact component={LayoutAdminVisitors} />
-            
             </>
         )}
-      </>
+      
+      {/* {(loading) ? (
+        <h1>Loading...</h1>
+        ):(
+          
+          <>
+            
+            </>
+        )} */}
+    
             </Switch> 
             
             

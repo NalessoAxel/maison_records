@@ -1,5 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {BrowserRouter as Router,Route, Link } from 'react-router-dom'
+import ReleaseDetails from './ReleaseDetails'
+
 
 const Vinyl = (props) => {
     const {product, onAdd} = props;
@@ -31,9 +33,11 @@ const Vinyl = (props) => {
                                         </span>  
                                     </p>
                                 </div>
+                                            
                             <span className="button">
-                                        <Link to='/ReleaseDetails'>
-                                        <button className="showMore" >Show More</button>
+                                        <Link to = {'/ReleaseDetails/'+ product._id}> 
+                                        <button className="showMore">Show More</button>
+                                        
                                         </Link>
                                         <button onClick={() => onAdd(product)} className="addToCart">Add to cart</button>
                                     </span>
