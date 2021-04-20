@@ -8,13 +8,11 @@ import ModalVinylForm from './ModalVinylForm'
 const VinylDashboard = (props) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
-
-
     const { products } = props
-    console.log(products, "produit");
+    const [uniqueVinyl, setuniqueVinyl]= useState({})       
 
     const deleteVinyl = async (id) =>{
-        console.log(id)
+     
         
         try{
             const res = await axios({
@@ -27,6 +25,7 @@ const VinylDashboard = (props) => {
             console.log("nop")
         }
     }
+
 
     return (
         <>
@@ -45,8 +44,8 @@ const VinylDashboard = (props) => {
                             <td>Country</td> 
                             <td>Style</td> 
                             <td>Price</td> 
-                            <td>EDIT</td>
                             <td>Quantity</td>
+                            <td>EDIT</td>
                             <td>Delete</td>
 
                         </tr>
@@ -65,46 +64,11 @@ const VinylDashboard = (props) => {
                             <td>{product.style}</td>
                             <td>{product.price}€</td>
                             <td>{product.quantity}</td>
-                            <td>
-                                
-                            <button onClick={() => setModalIsOpen(true) }>Edit</button>
-                            <Modal 
-                            style={{
-                                overlay: {
-                                    backgroundColor: 'rgba(0,0,0,0.5)',
-                                    position: 'absolute',
-                                    top: 0,
-                                    right: 0,
-                                    left: 0,
-                                    bottom: 0,
-                                    overflow: 'hidden',
-                                },
-                                content: {
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    width: '306px',
-                                    height: '650px',
-                                    backgroundColor: '#C4C4C4',
-                                    position: 'absolute',
-                                    top: '50%',
-                                    left: '50%',
-                                    transform: 'translate(-50%, -50%)',
-                                    overflow: 'hidden',
-                                }
-                              }}
-                            
-                            isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                                <div className="overlayModal">
-                                    <div className="wrapperModal">
-                                        <div className="modal">
-                                            <button type="button" onClick={() => setModalIsOpen(false)}>
-                                                <span>&times;</span>
-                                            </button>
-                                        <ModalVinylForm/>
-                                </div>
-                            </div>
-                        </div>
-                    </Modal>
+                            <td>                            
+                            <button onClick={()=>{
+                                setuniqueVinyl(product);
+                                setModalIsOpen(true)
+                            }}>Edit</button>         
                             </td>
                             <td><button onClick={()=>{deleteVinyl(product._id)}}>DELETE</button></td>
                             
@@ -151,7 +115,10 @@ const VinylDashboard = (props) => {
                             <td>{product.style}</td>
                             <td>{product.price}€</td>
                             <td>{product.quantity}</td>
-                            <td><button>EDIT</button></td>
+                            <td><button onClick={()=>{
+                                setuniqueVinyl(product);
+                                setModalIsOpen(true)
+                            }}>EDIT</button></td>
                             <td><button onClick={()=>{deleteVinyl(product._id)}}>DELETE</button></td>
                             </>
                         ) : (
@@ -161,6 +128,47 @@ const VinylDashboard = (props) => {
                     </tr>
                         ))}
                     </table>
+                    <Modal 
+            
+                            style={{
+                                overlay: {
+                                    backgroundColor: 'rgba(0,0,0,0.5)',
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 0,
+                                    left: 0,
+                                    bottom: 0,
+                                    overflow: 'hidden',
+                                },
+                                content: {
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    width: '306px',
+                                    height: '650px',
+                                    backgroundColor: '#C4C4C4',
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    overflow: 'hidden',
+                                }
+                              }}
+                            
+                                    isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                                        <div className="overlayModal">
+                                            <div className="wrapperModal">
+                                                <div className="modal">
+                                                    <button type="button" onClick={() => setModalIsOpen(false)}>
+                                                        <span>&times;</span>
+                                                    </button>
+                                                <ModalVinylForm 
+                                                   product={uniqueVinyl}
+                                                />
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </Modal>
                 </div>
             </div>
         </>

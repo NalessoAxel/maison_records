@@ -48,3 +48,57 @@ module.exports.deleteVinyl = async (req, res)=>{
     }
 }
 
+module.exports.updateVinyl = async (req, res)=>{
+    if(!ObjectID.isValid(req.params.id))
+        return res.status(400).send('ID unknown : ' + req.params.id)
+    
+    const {
+        product_type,
+        title,
+        artist_name,
+        label,
+        catNumber,
+        year,
+        country,
+        style,
+        format,
+        description,
+        price,
+        quantity
+    } = req.body
+
+      const request = async ()=>{
+        try{
+            await VinylModel.findOneAndUpdate({_id: req.params.id},
+                {
+                    $set: {product_type,
+                            title,
+                            artist_name,
+                            label,
+                            catNumber,
+                            year,
+                            country,
+                            style,
+                            format,
+                            description,
+                            price,
+                            quantity
+                
+                        }
+                },
+                {new: true, upsert: true, setDefaultsOnInsert: true},
+                (err, docs)=>{
+                    if(!err){
+                        return res.send(docs);
+                    }
+                    if(err) return res.status(403).json({message : 'Update error', err})
+                }
+            )
+        } catch (err) {
+            return res.status(403).json({message : 'Update error', err})
+        }
+    }
+    
+    request();
+}   
+

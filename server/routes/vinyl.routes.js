@@ -5,6 +5,7 @@ router.post('/addReference', vinylController.addReference);
 router.get('/New', vinylController.getAllVinyls);
 router.get('/:id', vinylController.vinylInfo);
 router.delete('/:id', vinylController.deleteVinyl)
+router.patch('/update/:id', vinylController.updateVinyl)
 
 
 module.exports = router;
