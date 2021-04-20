@@ -4,7 +4,7 @@
 }
 .boardVinylBox>div{
     width: fit-content;
-    height: 60vh;
+    margin-bottom: 50px;
     border: solid rgba(0, 0, 0, 0.301) 1px;
 }
 .boardVinylBox>div>h4{
@@ -13,11 +13,15 @@
     text-align: center;
 }
 td, tr {
-    width: 100px;
+    width: 10%;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
     text-align: center;
     font-size: 15px;
-    padding: 10px;
+    padding: 5px;
+    overflow: auto;
   }
+.tr0>td{
+    background-color: rgba(255, 253, 106, 0.835)
+}  
  
