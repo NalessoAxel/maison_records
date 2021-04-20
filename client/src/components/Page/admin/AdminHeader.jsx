@@ -31,7 +31,7 @@ const AdminHeader = () => {
             <div className="userHeader">
                 <h1>Hello { admin }!</h1>
                    <div className="left">
-                    <Link to="/AdminDashboard">Dashboard</Link>
+                   <Link to="/AdminDashboard">Dashboard</Link>
                    <Link to="/AddReference">Add a reference</Link>
                    <Link to="/AdminOrders">Orders</Link>
                    <Link to="/AdminVisitors">Visitors</Link>

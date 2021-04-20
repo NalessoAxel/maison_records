@@ -1,11 +1,11 @@
 import React from 'react'
 import {BrowserRouter as Router,Route, Link } from 'react-router-dom'
-import ReleaseDetails from './ReleaseDetails'
+
 
 
 const Vinyl = (props) => {
     const {product, onAdd} = props;
-    // console.log(onAdd)
+
 
     return (
         <>

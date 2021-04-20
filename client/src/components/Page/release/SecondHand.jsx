@@ -2,7 +2,7 @@ import React from 'react'
 import Vinyl from './Vinyl'
 
 
-const New = (props) => {
+const SecondHand = (props) => {
     const { products, onAdd } = props
 
             
@@ -10,20 +10,20 @@ const New = (props) => {
               <>
                 <main products={products}>
                 <div className="header-container">
-                    <h2>NEW</h2>
+                    <h2>Second hand</h2>
                 </div>
             <div className="container">
                 <div className="entries">
                 {products.map((product) =>(
                     <>
-                    {product.product_type == "New" ? (
+                    {product.product_type == "Second hand" ? (
                         <>
                         <Vinyl key={product._id} product={product} onAdd={onAdd}></Vinyl> 
                         </>
                         ) : (
                         <>
                         </>
-                    )}
+                 )}
                 </>
                 ))}
                 </div>
@@ -36,4 +36,4 @@ const New = (props) => {
 
 
 
-export default New
+export default SecondHand
