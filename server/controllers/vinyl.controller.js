@@ -2,47 +2,44 @@ const VinylModel = require ('../models/vinyl.model');
 const ObjectID = require('mongoose').Types.ObjectId;
 const multer = require('multer');
 
-const fileStorageEngine = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "./images");
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + "--" + file.originalname);
-    }
-})
 
-module.exports.addReference = () => {
-   const addImage= addImage = multer({
-        storage: fileStorageEngine
-    })
+
+module.exports.addReference = async (req,res) => {
+//    const addImage =() => { multer({
+//         storage: fileStorageEngine
+//     })}
     
-  const addFromForm =  async (req, res) => {
+//   const addVinylFromForm =  async (req, res) => {
+    //  let upload= multer({
+    //         storage: fileStorageEngine
+    //     }).single("image");
+
  const { product_type, title, artist_name, label, catNumber, year, country, style, format, description,image, quantity, price, audio } = req.body
  
  console.log("coucou",req.body)
-let upload= multer({
-        storage: fileStorageEngine
-    }).single("image");
-    
+ imageFile = './images/'+image
+ 
     try {
-
-   
     const vinylCreated = await VinylModel.create({
-    product_type, title, artist_name, label, catNumber, year, country, style, format, description,image, quantity, price, audio
+    product_type, title, artist_name, label, catNumber, year, country, style, format, description,image:imageFile, quantity, price, audio
     });
     res.status(201).json({
         vinyl_created: vinylCreated._id
     })
-    console.log(req.body);
+    // console.log(req.body);
   } catch (err) {
       res.status(400).json({
           message: 'error vinyl'
       })
   }
 }
-addFromForm();
 
-}
+
+// addImage();
+// addVinylFromForm(req,res);
+
+
+// }
 
 // router.post('/upload', vinylController.addImage.single("image"), (req, res) => {
 //     console.log(req.file)
@@ -135,14 +132,15 @@ module.exports.updateVinyl = async (req, res)=>{
 
 
 
-//  const fileStorageEngine = multer.diskStorage({
-//      destination: (req, file, cb) => {
-//          cb(null, "./images");
-//      },
-//      filename: (req, file, cb) => {
-//          cb(null, Date.now() + "--" + file.originalname);
-//      }
-//  })
+const fileStorageEngine = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./images");
+    },
+    filename: (req, file, cb) => {
+        // cb(null, Date.now() + "--" + file.originalname);
+        cb(null, file.originalname);
+    }
+})
   module.exports.addImage = multer({
         storage: fileStorageEngine
     })

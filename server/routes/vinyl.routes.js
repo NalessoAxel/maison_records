@@ -8,8 +8,7 @@ router.delete('/:id', vinylController.deleteVinyl)
 router.patch('/update/:id', vinylController.updateVinyl)
 
 
-router.post('/upload', vinylController.addImage.single("image"), (req, res) => {
-    console.log(req.file)
+router.post('/upload', vinylController.addImage.single("image"), (req,res) => {
     res.send("single file upload success")
 })
 
