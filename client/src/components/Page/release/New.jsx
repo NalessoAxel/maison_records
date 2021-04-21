@@ -2,6 +2,7 @@ import React from 'react'
 import Vinyl from './Vinyl'
 
 
+
 const New = (props) => {
     const { products, onAdd } = props
 

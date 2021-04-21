@@ -5,24 +5,20 @@ import axios from "axios"
 
 const AddReference = () => {
     const {register, handleSubmit,formState, errors} = useForm()
-      const {isSubmitting} = formState
-      // let formAnswers= new FormData();
-
-
+    const {isSubmitting} = formState
+    
     const onSubmit = async (formAnswers) => {
-       
-      console.log(formAnswers.image[0].stream());
-      console.log(formAnswers.image[0].text());
-
-
-      // formAnswers.append("image", formAnswers.image);
+      let imageName
+      {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
+                  
         try {
             const resAddRef = await axios ({
                 method: "post",
                 url: `${process.env.REACT_APP_API_URL}api/vinyl/addReference/`,
                 withCredentials: true,
                 data: {
-                  image: formAnswers.image[0].name,
+            
+                  image: imageName,
                   product_type: formAnswers.product_type,
                   title: formAnswers.title,
                   artist_name: formAnswers.artist_name,
@@ -37,8 +33,10 @@ const AddReference = () => {
                   price: formAnswers.price,
                 }, 
             });
+            // create a fake form with good encryption with new Formdata
             const imageToUpload = new FormData();
             imageToUpload.append("image",formAnswers.image[0])
+            // Fake form = {image: formAnwsers.image(name in form)[0]}
 
             const resUploadImage = await axios({
               method: "post",
@@ -47,11 +45,11 @@ const AddReference = () => {
               headers: { "Content-Type": "multipart/form-data" },
               data: imageToUpload
             });
-            // window.location = ''
             
-        } catch (err) {
+          } catch (err) {
             console.log(err);
-        }
+          }
+          window.location = ''
     }
 
     // fetch post => upload => imageNameFromForm dans /images 
@@ -144,6 +142,7 @@ const AddReference = () => {
                 <input
                   name="image"
                   type="file"
+                  // defaultValue="default"
                   // accept=".jpg"
                   ref={register({
                     // required: true

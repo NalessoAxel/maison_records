@@ -63,7 +63,7 @@ app.get('/jwtid', requireAuth, (req, res) => {
         })
 });
 
-
+app.use('/images', express.static('images'))
 
 //routes
 app.use('/api/user', userRoutes);

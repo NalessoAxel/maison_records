@@ -57,7 +57,7 @@ const vinylSchema = new mongoose.Schema(
         },
         image:{
             type: String, 
-            default: 'Empty image'
+            default: 'default'
         },
         audio:{
             type: String,

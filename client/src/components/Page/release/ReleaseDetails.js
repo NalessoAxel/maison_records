@@ -27,7 +27,7 @@ import axios from 'axios'
         }
         getVinylInfos()
     }, [])
-
+    console.log(vinylInfos);
     return (   
         <>
             <div className="contentWrapper">
@@ -39,7 +39,7 @@ import axios from 'axios'
                                     <>
 
                                     <div className="left">
-                                        <img src={Imgrelease} alt=""></img>
+                                        <img src={`${process.env.REACT_APP_API_URL}images/${vinylInfos.image}.png`}  alt=""></img>
                                     </div>
                                     <div className="center">                                  
                                         <h1>{vinylInfos.artist_name}</h1>

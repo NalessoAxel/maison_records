@@ -1,21 +1,16 @@
 import React from 'react'
 import {BrowserRouter as Router,Route, Link } from 'react-router-dom'
 
-
-
 const Vinyl = (props) => {
     const {product, onAdd} = props;
-
-
+    
     return (
         <>
                         <div className="tile">
                             <div className="hover-effect">
-                                <img src={product.image} alt={product.name}></img>
+                                < img src = {`${process.env.REACT_APP_API_URL}images/${product.image}.png`} alt={product.name}></img>
                                     <div class="overlay">
-                                        {product.description}  
-                                        {/* a mettre en H2 */}
-                                        {/* <h2>Description of the records when hove the img</h2> */}
+                                        <h2>{product.description}</h2>
                                     </div>
                                     <div className="infos-record">
                                     <div className="artistAndTitlePrice">
