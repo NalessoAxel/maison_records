@@ -11,10 +11,12 @@ router.patch('/update/:id', vinylController.updateVinyl)
 router.post('/upload', vinylController.addImage.single("image"), (req,res) => {
     res.send("single file upload success")
 })
+
+router.patch('/updateImage/:id', vinylController.addImage.single("image"), (req,res) => {
+    res.send("single file update success")
+})
 // vinylController.addImage = multer in vynilController
 //single image = search one file with image name
-
-
 
 
 module.exports = router;

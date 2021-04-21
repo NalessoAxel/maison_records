@@ -36,7 +36,7 @@ const ModalVinylForm = (props) => {
     return (
       <>
         <div className="modalBillingForm">
-          <h1>EDIT VINYL</h1>
+          <h1 style={{textAlign: "center"}}>EDIT VINYL</h1>
           <div className="modalInput">
             <form onSubmit={handleSubmit(onSubmit)}>
               <label>Product Type</label>

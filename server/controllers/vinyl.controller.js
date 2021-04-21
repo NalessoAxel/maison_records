@@ -5,14 +5,14 @@ const multer = require('multer');
 
 
 let nameOfImage 
-// module to create a new reference and create an image to stock in server
-module.exports.addReference = async (req,res) => {
-
 const changeNameOfImage = () =>{
     let date = new Date()
     let change = date.getDate()+"d"+(date.getMonth()+1)+'m'+date.getFullYear()+'y'+Math.floor(Math.random()*1000000);
     return nameOfImage = change
 }
+// module to create a new reference and create an image to stock in server
+module.exports.addReference = async (req,res) => {
+
 
  const { product_type, title, artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
  
@@ -33,20 +33,6 @@ const changeNameOfImage = () =>{
         }
 }
 
-// object stockage with multer
-const fileStorageEngine = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "./images");  // send image to images folder
-    },
-    filename: (req, file, cb) => {
-        cb(null,nameOfImage+".png");
-    }
-})
-
-//middlewire
-module.exports.addImage = multer({
-    storage: fileStorageEngine
-})
 
 
 
@@ -81,7 +67,7 @@ module.exports.deleteVinyl = async (req, res)=>{
 module.exports.updateVinyl = async (req, res)=>{
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID unknown : ' + req.params.id)
-    
+
     const {
         product_type,
         title,
@@ -131,3 +117,45 @@ module.exports.updateVinyl = async (req, res)=>{
     
     request();
 } 
+
+module.exports.updateVinylImage = async (req, res)=>{
+    changeNameOfImage()
+    console.log(nameOfImage,"change img")
+    if(!ObjectID.isValid(req.params.id))
+    return res.status(400).send('ID unknown : ' + req.params.id)
+    
+    try{
+        await VinylModel.findOneAndUpdate({_id: req.params.id},
+            {
+                $set: {
+                    image : nameOfImage   
+                }
+            },
+            {new: true, upsert: true, setDefaultsOnInsert: true},
+            (err, docs)=>{
+                if(!err){
+                    return res.send(docs);
+                }
+                if(err) return res.status(403).json({message : 'Update error', err})
+            }
+        )
+    } catch (err) {
+        return res.status(403).json({message : 'Update image error', err})
+    }
+    
+}
+
+// object stockage with multer
+const fileStorageEngine = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./images");  // send image to images folder
+    },
+    filename: (req, file, cb) => {
+        cb(null,nameOfImage+".png");
+    }
+})
+
+//middlewire
+module.exports.addImage = multer({
+    storage: fileStorageEngine
+})

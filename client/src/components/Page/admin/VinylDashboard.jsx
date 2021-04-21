@@ -3,6 +3,7 @@ import AdminHeader from './AdminHeader'
 import Modal from 'react-modal'
 import axios from 'axios'
 import ModalVinylForm from './ModalVinylForm'
+import ModalVinylFormImage from './ModalVinylFormImage'
 
 
 const VinylDashboard = (props) => {
@@ -140,10 +141,14 @@ const VinylDashboard = (props) => {
                                     bottom: 0,
                                     overflow: 'hidden',
                                 },
+                                img : {
+                                    width : "50px",
+                                    height : "50px",
+                                },
                                 content: {
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    width: '306px',
+                                    width: '500px',
                                     height: '650px',
                                     backgroundColor: '#C4C4C4',
                                     position: 'absolute',
@@ -151,6 +156,7 @@ const VinylDashboard = (props) => {
                                     left: '50%',
                                     transform: 'translate(-50%, -50%)',
                                     overflow: 'hidden',
+                                    
                                 }
                               }}
                             
@@ -162,6 +168,9 @@ const VinylDashboard = (props) => {
                                                         <span>&times;</span>
                                                     </button>
                                                 <ModalVinylForm 
+                                                   product={uniqueVinyl}
+                                                />
+                                               <ModalVinylFormImage
                                                    product={uniqueVinyl}
                                                 />
                                         </div>

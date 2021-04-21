@@ -63,12 +63,12 @@ app.get('/jwtid', requireAuth, (req, res) => {
         })
 });
 
-app.use('/images', express.static('images'))
 
 //routes
 app.use('/api/user', userRoutes);
 app.use('/api/vinyl', vinylRoutes);
+app.use('/images', express.static('images'))
+// express => if url /images go to images in server   <- Jean: "C'est une sorte de route..."" https://expressjs.com/en/starter/static-files.html
 
 
 app.listen(process.env.PORT, ()=> console.log(`Listening on port ${process.env.PORT}`));
-;
