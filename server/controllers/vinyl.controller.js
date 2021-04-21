@@ -1,24 +1,55 @@
 const VinylModel = require ('../models/vinyl.model');
 const ObjectID = require('mongoose').Types.ObjectId;
+const multer = require('multer');
 
+const fileStorageEngine = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./images");
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + "--" + file.originalname);
+    }
+})
 
-module.exports.addReference = async (req, res) => {
- const {product_type, title, artist_name, label, catNumber, year, country, style, format, description, quantity, price, image, audio } = req.body
+module.exports.addReference = () => {
+   const addImage= addImage = multer({
+        storage: fileStorageEngine
+    })
+    
+  const addFromForm =  async (req, res) => {
+ const { product_type, title, artist_name, label, catNumber, year, country, style, format, description,image, quantity, price, audio } = req.body
+ 
+ console.log("coucou",req.body)
+let upload= multer({
+        storage: fileStorageEngine
+    }).single("image");
+    
+    try {
 
-  try {
-      const vinylCreated = await VinylModel.create({
-       product_type, title, artist_name, label, catNumber, year, country, style, format, description, quantity, price, image, audio
-      });
-      res.status(201).json({
-          vinyl_created: vinylCreated._id
-      })
-      console.log(req.body);
+   
+    const vinylCreated = await VinylModel.create({
+    product_type, title, artist_name, label, catNumber, year, country, style, format, description,image, quantity, price, audio
+    });
+    res.status(201).json({
+        vinyl_created: vinylCreated._id
+    })
+    console.log(req.body);
   } catch (err) {
       res.status(400).json({
           message: 'error vinyl'
       })
   }
 }
+addFromForm();
+
+}
+
+// router.post('/upload', vinylController.addImage.single("image"), (req, res) => {
+//     console.log(req.file)
+//     res.send("single file upload success")
+// })
+
+
 
 module.exports.getAllVinyls = async (req, res) =>{
     const vinyls = await VinylModel.find()
@@ -100,5 +131,20 @@ module.exports.updateVinyl = async (req, res)=>{
     }
     
     request();
-}   
+} 
 
+
+
+//  const fileStorageEngine = multer.diskStorage({
+//      destination: (req, file, cb) => {
+//          cb(null, "./images");
+//      },
+//      filename: (req, file, cb) => {
+//          cb(null, Date.now() + "--" + file.originalname);
+//      }
+//  })
+  module.exports.addImage = multer({
+        storage: fileStorageEngine
+    })
+
+    

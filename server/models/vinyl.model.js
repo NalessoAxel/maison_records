@@ -13,11 +13,12 @@ const vinylSchema = new mongoose.Schema(
         },
         artist_name:{
             type: String,
+            default:'Artiste name'
         },
         label:{
             type: String,
             trim: false,
-            default: 'label'
+            default: 'Label'
         },
         catNumber:{
             type: String,
@@ -40,11 +41,11 @@ const vinylSchema = new mongoose.Schema(
         },
         format:{
             type: String,
-            default:'format'
+            default:'Format'
         },
         description:{
             type: String,
-            default:'description'
+            default:'Description'
         },
         price:{
             type: Number,

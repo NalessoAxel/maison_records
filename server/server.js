@@ -6,8 +6,8 @@ const userRoutes = require('./routes/user.routes');
 const vinylRoutes = require('./routes/vinyl.routes');
 const {checkUser, requireAuth} = require('./middleware/auth.middleware');
 const cors = require('cors');
-
-
+// const multer = require('multer');
+// const upload = multer();
 const app = express();
 
 // specify request autorisation
@@ -28,9 +28,12 @@ const demoLogger = (req, res, next) => {
     next();
 };
 
+
 app.use(cors(corsOptions));
 
 app.use(express.json()); // json body-parser
+// app.use(upload.single("image"));
+// app.use(express.static('public'));
 app.use(cookieParser());
 app.use(demoLogger);
 
@@ -68,3 +71,4 @@ app.use('/api/vinyl', vinylRoutes);
 
 
 app.listen(process.env.PORT, ()=> console.log(`Listening on port ${process.env.PORT}`));
+;
