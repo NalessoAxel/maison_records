@@ -5,11 +5,14 @@ const multer = require('multer');
 
 
 let nameOfFile 
-let nameOfFileSong 
+let nameOfFileSong1
+let nameOfFileSong2
+let nameOfFileSong3 
+let nameOfFileSong4
 
 const changenameOfFile = (x) =>{
     let date = new Date()
-    let change = date.getDate()+"d"+(date.getMonth()+1)+'m'+date.getFullYear()+'y'+Math.floor(Math.random()*1000000);
+    let change ="AT"+date.getMinutes()+"TO"+ date.getDate()+"d"+(date.getMonth()+1)+'m'+date.getFullYear()+'y'+Math.floor(Math.random()*1000000);
     x = change
     return x
 }
@@ -19,14 +22,39 @@ module.exports.addReference = async (req,res) => {
 
  const { product_type, title, artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
 
-    console.log(audio)
+    console.log(audio, "hello")
     if (image !== "default") {nameOfFile= changenameOfFile(nameOfFile)}
-    if (audio !== "default") {nameOfFileSong=changenameOfFile(nameOfFileSong)}
+    if (audio.preview1.path !== "default") {nameOfFileSong1=changenameOfFile(nameOfFileSong1) 
+        console.log('nameOfFileSong1')}
+    if (audio.preview2.path !== "default") {nameOfFileSong2=changenameOfFile(nameOfFileSong2) 
+        console.log('nameOfFileSong2')}
+    if (audio.preview3.path !== "default") {nameOfFileSong3=changenameOfFile(nameOfFileSong3) 
+        console.log('nameOfFileSong3')}
+    if (audio.preview4.path !== "default") {nameOfFileSong4=changenameOfFile(nameOfFileSong4) 
+        console.log('nameOfFileSong4')}
 
     
         try {
             const vinylCreated = await VinylModel.create({
-            product_type, title, artist_name, label, catNumber, year, country, style, format, description, image:nameOfFile, audio:nameOfFileSong, quantity, price
+            product_type, 
+            title, 
+            artist_name, 
+            label, 
+            catNumber, 
+            year, 
+            country,
+            style,
+            format,
+            description,
+            image:nameOfFile,
+            audio: {
+                preview1: {path: nameOfFileSong1},
+                preview2: {path: nameOfFileSong2},
+                preview3: {path: nameOfFileSong3},
+                preview4: {path: nameOfFileSong4},
+            },
+            quantity,
+            price
             });
             res.status(201).json({
             vinyl_created: vinylCreated._id
@@ -170,11 +198,25 @@ module.exports.addImage = multer({
 // object stockage with multer___________________________     Song storage
 const fileSongPreviewStorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "./songs");  // send image to images folder
+        cb(null, "./songs");  
     },
     filename: (req, file, cb) => {
-        cb(null,nameOfFileSong+".mp3");
-    }
+        cb(null,nameOfFileSong1+".mp3");
+        console.log("filename1 OK")
+    },
+    filename: (req, file, cb) => {
+        cb(null,nameOfFileSong2+".mp3");
+        console.log("filename2 OK")
+    },
+    filename: (req, file, cb) => {
+        cb(null,nameOfFileSong3+".mp3");
+        console.log("filename3 OK")
+    },
+    filename: (req, file, cb) => {
+        cb(null,nameOfFileSong4+".mp3");
+        console.log("filename4 OK")
+}
+    
 })
 
 //middlewire

@@ -60,8 +60,46 @@ const vinylSchema = new mongoose.Schema(
             default: 'default'
         },
         audio:{
-            type: String,
-            default:'Empty audio'
+            preview1: {
+                name:{
+                    type: String,
+                    default: 'default'
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview2: {
+                name:{
+                    type: String,
+                    default: 'default'
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview3: {
+                name:{
+                    type: String,
+                    default: 'default'
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview4: {
+                name:{
+                    type: String,
+                    default: 'default'
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
         }
     },
     {

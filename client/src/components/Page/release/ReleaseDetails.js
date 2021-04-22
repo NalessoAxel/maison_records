@@ -27,7 +27,7 @@ import axios from 'axios'
         }
         getVinylInfos()
     }, [])
-    console.log(vinylInfos);
+    // console.log(vinylInfos);
     return (   
         <>
             <div className="contentWrapper">

@@ -6,14 +6,28 @@ import axios from "axios"
 const AddReference = () => {
     const {register, handleSubmit,formState, errors} = useForm()
     const {isSubmitting} = formState
-    
+    console.log('ok')
     const onSubmit = async (formAnswers) => {
       let imageName
-      let songName
-      {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
-      {(formAnswers.audio[0]==undefined) ? (songName="default") : (songName =formAnswers.audio[0].name)}
+      let songName1
+      let songName2
+      let songName3
+      let songName4
+
+      // console.log(formAnswers.preview1[0].name,  "formAnswers est ici");
+      // console.log(formAnswers.preview2[0].name,  "formAnswers est ici");
+      // console.log(formAnswers.preview3[0].name,  "formAnswers est ici");
+      // console.log(formAnswers.preview4[0].name,  "formAnswers est ici");
       
-      console.log(formAnswers.audio,  "formAnswers est ici");
+      
+
+      {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
+
+      {(formAnswers.preview1[0]==undefined) ? (songName1="default") : (songName1 =formAnswers.preview1[0].name)}
+      {(formAnswers.preview2[0]==undefined) ? (songName2="default") : (songName2 =formAnswers.preview2[0].name)}
+      {(formAnswers.preview3[0]==undefined) ? (songName3="default") : (songName3 =formAnswers.preview3[0].name)}
+      {(formAnswers.preview4[0]==undefined) ? (songName4="default") : (songName4 =formAnswers.preview4[0].name)}
+      
                   
         try {
             const resAddRef = await axios ({
@@ -35,42 +49,56 @@ const AddReference = () => {
                   quantity: formAnswers.quantity,
                   price: formAnswers.price,
                   image: imageName,
-                  audio: songName
-                }, 
+                  audio:
+                  { 
+                    preview1: {path: songName1},
+                    preview2: {path: songName2},
+                    preview3: {path: songName3},
+                    preview4: {path: songName4},
+                  },
+                }
             });
             // create a fake form with good encryption with new Formdata
             const imageToUpload = new FormData();
-            const songToUpload = new FormData();
-
+            
             imageToUpload.append("image",formAnswers.image[0])
-            songToUpload.append("song",formAnswers.audio[0])
             // Fake form = {image: formAnwsers.image(name in form)[0]}
-
             const resUploadImage = await axios({
               method: "post",
               url: `${process.env.REACT_APP_API_URL}api/vinyl/upload/`,
               withCredentials: true,
               headers: { "Content-Type": "multipart/form-data" },
-              data: imageToUpload
+              data: imageToUpload,
             });
 
-            const resUploadAudio = await axios({
-              method: "post",
-              url: `${process.env.REACT_APP_API_URL}api/vinyl/uploadSong/`,
-              withCredentials: true,
-              headers: { "Content-Type": "multipart/form-data" },
-              data: songToUpload
-            });
-            
-          } catch (err) {
+            const previews = [formAnswers.preview1[0],formAnswers.preview2[0],formAnswers.preview3[0],formAnswers.preview4[0]]
+            for(let preview of previews){
+              const songToUpload = new FormData();
+              songToUpload.append("song", preview)
+              console.log("TESTEUR 20000")
+
+              const resUploadAudio = await axios({
+                method: "post",
+                url: `${process.env.REACT_APP_API_URL}api/vinyl/uploadSong/`,
+                withCredentials: true,
+                headers: { "Content-Type": "multipart/form-data" },
+                data: songToUpload
+              });
+            }
+
+  
+          
+        
+        } catch (err) {
             console.log(err);
-          }
+        }
           window.location = ''
     }
 
     // fetch post => upload => imageNameFromForm dans /images 
 //
     return (
+      
       <>
         <AdminHeader />
         <div className="referenceWrapper">
@@ -82,7 +110,7 @@ const AddReference = () => {
             >
               <div className="containerRight">
                 <label>Choose an option</label>
-                <select name="product_type" ref={register({ required: true })}>
+                <select name="product_type" ref={register({ })}>
                   <option value="New">New</option>
                   <option value="Second hand">Second hand</option>
                 </select>
@@ -90,69 +118,91 @@ const AddReference = () => {
                 <input
                   name="title"
                   type="text"
-                  ref={register({ required: true })}
+                  value='FLO'
+                  ref={register({ })}
                 />
                 <label>Artist name</label>
                 <input
                   name="artist_name"
                   type="text"
-                  ref={register({ required: true })}
+                  value='FLO'
+
+                  ref={register({ })}
                 />
                 <label>label</label>
                 <input
                   name="label"
                   type="text"
-                  ref={register({ required: true })}
+                  value='FLO'
+
+                  ref={register({ })}
                 />
                 <label>Cat number</label>
                 <input
                   name="catNumber"
                   type="text"
-                  ref={register({ required: true })}
+                  value='flo'
+
+                  ref={register({ })}
                 />
                 <label>Year</label>
                 <input
                   name="year"
                   type="text"
-                  ref={register({ required: true })}
+                  value='1000'
+
+                  ref={register({ })}
                 />
                 <label>Country</label>
                 <input
                   name="country"
                   type="text"
-                  ref={register({ required: true })}
+                  value='FLO'
+
+
+                  ref={register({ })}
                 />
                 <label>Style</label>
                 <input
                   name="style"
                   type="text"
-                  ref={register({ required: true })}
+                  value='FLO'
+
+                  ref={register({ })}
                 />
                 <label>Format</label>
                 <input
                   name="format"
                   type="text"
-                  ref={register({ required: true })}
+                  value='FLO'
+
+                  ref={register({ })}
                 />
                 <label>Description</label>
                 <input
                   name="description"
                   type="text"
-                  ref={register({ required: true })}
+                  value='FLO'
+
+                  ref={register({ })}
                 />
               </div>
               <div className="containerLeft">
                 <label>Price</label>
                 <input
                   name="price"
+                  value='10'
+                  
                   type="text"
-                  ref={register({ required: true })}
+                  ref={register({ })}
                 />
                 <label>Quantity</label>
                 <input
                   name="quantity"
+                  value='10'
                   type="text"
-                  ref={register({ required: true })}
+
+                  ref={register({ })}
                 />
                 <label>Image</label>
                 <input
@@ -164,46 +214,45 @@ const AddReference = () => {
                     // required: true
                   })}
                 />
-                <label>Audio</label>
+                <label>Preview 1</label>
                 <input
-                  name="audio"
+                  name="preview1"
                   type="file"
+         
+
                   ref={register({
                     // required: true
                   })}
                 />
-                {/* <label>Audio</label>
+                <label>Preview 2</label>
                 <input
-                  name="audio"
+                  name="preview2"
                   type="file"
+       
                   ref={register({
                     // required: true
                   })}
                 />
-                <label>Audio</label>
+                <label>Preview 3</label>
                 <input
-                  name="audio"
+                  name="preview3"
                   type="file"
+           
+
                   ref={register({
                     // required: true
                   })}
                 />
-                <label>Audio</label>
+                <label>Preview 4</label>
                 <input
-                  name="audio"
+                  name="preview4"
                   type="file"
+        
+
                   ref={register({
                     // required: true
                   })}
                 />
-                <label>Audio</label>
-                <input
-                  name="audio"
-                  type="file"
-                  ref={register({
-                    // required: true
-                  })}
-                /> */}
               </div>
               <input
                 disabled={isSubmitting}

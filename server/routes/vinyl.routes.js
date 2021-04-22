@@ -23,9 +23,9 @@ router.post('/uploadSong', vinylController.addSongPreview.single("song"), (req,r
     res.send("single song upload success")
 })
 
-router.patch('/updateSongPreview/:id', vinylController.addSongPreview.single("song"), (req,res) => {
-    res.send("single song update success")
-})
+// router.patch('/updateSongPreview/:id', vinylController.addSongPreview.single("song"), (req,res) => {
+//     res.send("single song update success")
+// })
 
 
 
