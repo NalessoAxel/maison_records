@@ -19,4 +19,14 @@ router.patch('/updateImage/:id', vinylController.addImage.single("image"), (req,
 //single image = search one file with image name
 
 
+router.post('/uploadSong', vinylController.addSongPreview.single("song"), (req,res) => {
+    res.send("single song upload success")
+})
+
+router.patch('/updateSongPreview/:id', vinylController.addSongPreview.single("song"), (req,res) => {
+    res.send("single song update success")
+})
+
+
+
 module.exports = router;

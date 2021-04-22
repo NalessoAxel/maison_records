@@ -9,7 +9,11 @@ const AddReference = () => {
     
     const onSubmit = async (formAnswers) => {
       let imageName
+      let songName
       {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
+      {(formAnswers.audio[0]==undefined) ? (songName="default") : (songName =formAnswers.audio[0].name)}
+      
+      console.log(formAnswers.audio,  "formAnswers est ici");
                   
         try {
             const resAddRef = await axios ({
@@ -17,8 +21,7 @@ const AddReference = () => {
                 url: `${process.env.REACT_APP_API_URL}api/vinyl/addReference/`,
                 withCredentials: true,
                 data: {
-            
-                  image: imageName,
+          
                   product_type: formAnswers.product_type,
                   title: formAnswers.title,
                   artist_name: formAnswers.artist_name,
@@ -31,11 +34,16 @@ const AddReference = () => {
                   description: formAnswers.description,
                   quantity: formAnswers.quantity,
                   price: formAnswers.price,
+                  image: imageName,
+                  audio: songName
                 }, 
             });
             // create a fake form with good encryption with new Formdata
             const imageToUpload = new FormData();
+            const songToUpload = new FormData();
+
             imageToUpload.append("image",formAnswers.image[0])
+            songToUpload.append("song",formAnswers.audio[0])
             // Fake form = {image: formAnwsers.image(name in form)[0]}
 
             const resUploadImage = await axios({
@@ -44,6 +52,14 @@ const AddReference = () => {
               withCredentials: true,
               headers: { "Content-Type": "multipart/form-data" },
               data: imageToUpload
+            });
+
+            const resUploadAudio = await axios({
+              method: "post",
+              url: `${process.env.REACT_APP_API_URL}api/vinyl/uploadSong/`,
+              withCredentials: true,
+              headers: { "Content-Type": "multipart/form-data" },
+              data: songToUpload
             });
             
           } catch (err) {
@@ -74,54 +90,65 @@ const AddReference = () => {
                 <input
                   name="title"
                   type="text"
+
+                  value='flo'
+
                   ref={register({ required: true })}
                 />
                 <label>Artist name</label>
                 <input
                   name="artist_name"
                   type="text"
+                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>label</label>
                 <input
                   name="label"
                   type="text"
+                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>Cat number</label>
                 <input
                   name="catNumber"
                   type="text"
+                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>Year</label>
                 <input
                   name="year"
                   type="text"
+                  value='1000'
                   ref={register({ required: true })}
                 />
                 <label>Country</label>
                 <input
                   name="country"
                   type="text"
+                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>Style</label>
                 <input
                   name="style"
                   type="text"
+                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>Format</label>
                 <input
                   name="format"
                   type="text"
+                  value='Mp3'
                   ref={register({ required: true })}
                 />
                 <label>Description</label>
                 <input
                   name="description"
                   type="text"
+                  value='flo'
                   ref={register({ required: true })}
                 />
               </div>
@@ -130,12 +157,14 @@ const AddReference = () => {
                 <input
                   name="price"
                   type="text"
+                  value='10'
                   ref={register({ required: true })}
                 />
                 <label>Quantity</label>
                 <input
                   name="quantity"
                   type="text"
+                  value='50'
                   ref={register({ required: true })}
                 />
                 <label>Image</label>
@@ -151,7 +180,15 @@ const AddReference = () => {
                 <label>Audio</label>
                 <input
                   name="audio"
-                  type="text"
+                  type="file"
+                  ref={register({
+                    // required: true
+                  })}
+                />
+                {/* <label>Audio</label>
+                <input
+                  name="audio"
+                  type="file"
                   ref={register({
                     // required: true
                   })}
@@ -159,7 +196,7 @@ const AddReference = () => {
                 <label>Audio</label>
                 <input
                   name="audio"
-                  type="text"
+                  type="file"
                   ref={register({
                     // required: true
                   })}
@@ -167,7 +204,7 @@ const AddReference = () => {
                 <label>Audio</label>
                 <input
                   name="audio"
-                  type="text"
+                  type="file"
                   ref={register({
                     // required: true
                   })}
@@ -175,19 +212,11 @@ const AddReference = () => {
                 <label>Audio</label>
                 <input
                   name="audio"
-                  type="text"
+                  type="file"
                   ref={register({
                     // required: true
                   })}
-                />
-                <label>Audio</label>
-                <input
-                  name="audio"
-                  type="text"
-                  ref={register({
-                    // required: true
-                  })}
-                />
+                /> */}
               </div>
               <input
                 disabled={isSubmitting}

@@ -82,7 +82,7 @@ import axios from 'axios'
                                         </p>
                                     <ReactPlayer
                                     config={{ file: { attributes: { controlsList: 'nodownload' } } }}
-                                           url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
+                                           url={`${process.env.REACT_APP_API_URL}songs/${vinylInfos.audio}.mp3`}
                                            width="400px"
                                            height="50px"
                                            playing={false}
