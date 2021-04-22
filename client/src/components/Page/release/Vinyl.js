@@ -8,7 +8,7 @@ const Vinyl = (props) => {
         <>
                         <div className="tile">
                             <div className="hover-effect">
-                                < img src = {`${process.env.REACT_APP_API_URL}images/${product.image}.png`} alt={product.name}></img>
+                                < img src = {`${process.env.REACT_APP_API_URL}images/${product.image}.png`} alt="VinylImage"></img>
                                     <div class="overlay">
                                         <h2>{product.description}</h2>
                                     </div>
