@@ -27,6 +27,8 @@ import axios from 'axios'
         }
         getVinylInfos()
     }, [])
+    // console.log(vinylInfos.audio.preview1)
+
     // console.log(vinylInfos);
     return (   
         <>
@@ -77,50 +79,75 @@ import axios from 'axios'
                                     <div className="right">
                                     <h1>Tracklist</h1>
                                     <div className="audioPlayer">
-                                        <p>
-                                            <span>A1 - Bright Light Fading</span>
-                                        </p>
-                                    <ReactPlayer
-                                    config={{ file: { attributes: { controlsList: 'nodownload' } } }}
-                                           url={`${process.env.REACT_APP_API_URL}songs/${vinylInfos.audio}.mp3`}
-                                           width="400px"
-                                           height="50px"
-                                           playing={false}
-                                           controls={true}
-                                    />
-                                        <p>
-                                            <span>A1 - Bright Light Fading</span>
-                                        </p>
-                                    <ReactPlayer
-                                    config={{ file: { attributes: { controlsList: 'nodownload' } } }}
-                                           url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                           width="400px"
-                                           height="50px"
-                                           playing={false}
-                                           controls={true}
-                                    />
-                                        <p>
-                                            <span>A1 - Bright Light Fading</span>
-                                        </p>
-                                    <ReactPlayer
-                                    config={{ file: { attributes: { controlsList: 'nodownload' } } }}
-                                           url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                           width="400px"
-                                           height="50px"
-                                           playing={false}
-                                           controls={true}
-                                    />
-                                        <p>
-                                            <span>A1 - Bright Light Fading</span>
-                                        </p>
-                                    <ReactPlayer
-                                    config={{ file: { attributes: { controlsList: 'nodownload' } } }}
-                                           url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                           width="400px"
-                                           height="50px"
-                                           playing={false}
-                                           controls={true}
-                                    />
+                                    {vinylInfos.audio.preview1.path !== 'default' ? (
+                                            <>
+                                            <span>A1 - {vinylInfos.audio.preview1.name}</span>
+                                            <ReactPlayer
+                                            
+                                            config={{ file: { attributes: { controlsList: 'nodownload' } } }}
+                                                    url={`${process.env.REACT_APP_API_URL}songs/${vinylInfos.audio.preview1.path}.mp3`}
+                                                    width="400px"
+                                                    height="50px"
+                                                    playing={false}
+                                                    controls={true}       
+                                            />
+                                            </>
+                                        ) : (
+                                            <>
+                                            </>
+                                        )}  
+                                {vinylInfos.audio.preview3.path !== 'default' ? (
+                                            <>
+                                            <span>A2 - {vinylInfos.audio.preview2.name}</span>
+                                            <ReactPlayer
+                                            
+                                            config={{ file: { attributes: { controlsList: 'nodownload' } } }}
+                                                    url={`${process.env.REACT_APP_API_URL}songs/${vinylInfos.audio.preview2.path}.mp3`}
+                                                    width="400px"
+                                                    height="50px"
+                                                    playing={false}
+                                                    controls={true}       
+                                            />
+                                            </>
+                                        ) : (
+                                            <>
+                                            </>
+                                        )}
+                                        
+                                        {vinylInfos.audio.preview3.path !== 'default' ? (
+                                            <>
+                                            <span>A3 - {vinylInfos.audio.preview3.name}</span>
+                                            <ReactPlayer
+                                            
+                                            config={{ file: { attributes: { controlsList: 'nodownload' } } }}
+                                                    url={`${process.env.REACT_APP_API_URL}songs/${vinylInfos.audio.preview3.path}.mp3`}
+                                                    width="400px"
+                                                    height="50px"
+                                                    playing={false}
+                                                    controls={true}       
+                                            />
+                                            </>
+                                        ) : (
+                                            <>
+                                            </>
+                                        )}
+                                        {vinylInfos.audio.preview4.path !== 'default' ? (
+                                            <>
+                                            <span>A4 - {vinylInfos.audio.preview4.name}</span>
+                                            <ReactPlayer
+                                            
+                                            config={{ file: { attributes: { controlsList: 'nodownload' } } }}
+                                                    url={`${process.env.REACT_APP_API_URL}songs/${vinylInfos.audio.preview4.path}.mp3`}
+                                                    width="400px"
+                                                    height="50px"
+                                                    playing={false}
+                                                    controls={true}       
+                                            />
+                                            </>
+                                        ) : (
+                                            <>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                                     </>

@@ -75,8 +75,6 @@ const AddReference = () => {
             for(let preview of previews){
               const songToUpload = new FormData();
               songToUpload.append("song", preview)
-              console.log("TESTEUR 20000")
-
               const resUploadAudio = await axios({
                 method: "post",
                 url: `${process.env.REACT_APP_API_URL}api/vinyl/uploadSong/`,
@@ -118,14 +116,14 @@ const AddReference = () => {
                 <input
                   name="title"
                   type="text"
-                  value='FLO'
+                  
                   ref={register({ })}
                 />
                 <label>Artist name</label>
                 <input
                   name="artist_name"
                   type="text"
-                  value='FLO'
+                  
 
                   ref={register({ })}
                 />
@@ -133,7 +131,7 @@ const AddReference = () => {
                 <input
                   name="label"
                   type="text"
-                  value='FLO'
+                  
 
                   ref={register({ })}
                 />
@@ -141,7 +139,7 @@ const AddReference = () => {
                 <input
                   name="catNumber"
                   type="text"
-                  value='flo'
+                  
 
                   ref={register({ })}
                 />
@@ -149,7 +147,7 @@ const AddReference = () => {
                 <input
                   name="year"
                   type="text"
-                  value='1000'
+                  
 
                   ref={register({ })}
                 />
@@ -157,7 +155,7 @@ const AddReference = () => {
                 <input
                   name="country"
                   type="text"
-                  value='FLO'
+                  
 
 
                   ref={register({ })}
@@ -166,7 +164,7 @@ const AddReference = () => {
                 <input
                   name="style"
                   type="text"
-                  value='FLO'
+                  
 
                   ref={register({ })}
                 />
@@ -174,7 +172,7 @@ const AddReference = () => {
                 <input
                   name="format"
                   type="text"
-                  value='FLO'
+                  
 
                   ref={register({ })}
                 />
@@ -182,7 +180,7 @@ const AddReference = () => {
                 <input
                   name="description"
                   type="text"
-                  value='FLO'
+                  
 
                   ref={register({ })}
                 />
@@ -191,7 +189,7 @@ const AddReference = () => {
                 <label>Price</label>
                 <input
                   name="price"
-                  value='10'
+                  
                   
                   type="text"
                   ref={register({ })}
@@ -199,7 +197,7 @@ const AddReference = () => {
                 <label>Quantity</label>
                 <input
                   name="quantity"
-                  value='10'
+                  
                   type="text"
 
                   ref={register({ })}

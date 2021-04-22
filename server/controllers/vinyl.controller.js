@@ -26,12 +26,16 @@ module.exports.addReference = async (req,res) => {
     if (image !== "default") {nameOfFile= changenameOfFile(nameOfFile)}
     if (audio.preview1.path !== "default") {nameOfFileSong1=changenameOfFile(nameOfFileSong1) 
         console.log('nameOfFileSong1')}
+        else{nameOfFileSong1 = "default"}
     if (audio.preview2.path !== "default") {nameOfFileSong2=changenameOfFile(nameOfFileSong2) 
         console.log('nameOfFileSong2')}
+        else{nameOfFileSong2 = "default"}
     if (audio.preview3.path !== "default") {nameOfFileSong3=changenameOfFile(nameOfFileSong3) 
         console.log('nameOfFileSong3')}
+        else{nameOfFileSong3 = "default"}
     if (audio.preview4.path !== "default") {nameOfFileSong4=changenameOfFile(nameOfFileSong4) 
         console.log('nameOfFileSong4')}
+        else{nameOfFileSong4 = "default"}
 
     
         try {
@@ -196,26 +200,18 @@ module.exports.addImage = multer({
 
 
 // object stockage with multer___________________________     Song storage
+
 const fileSongPreviewStorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "./songs");  
     },
     filename: (req, file, cb) => {
         cb(null,nameOfFileSong1+".mp3");
-        console.log("filename1 OK")
-    },
-    filename: (req, file, cb) => {
         cb(null,nameOfFileSong2+".mp3");
-        console.log("filename2 OK")
-    },
-    filename: (req, file, cb) => {
         cb(null,nameOfFileSong3+".mp3");
-        console.log("filename3 OK")
-    },
-    filename: (req, file, cb) => {
         cb(null,nameOfFileSong4+".mp3");
-        console.log("filename4 OK")
-}
+        console.log("filename1 OK")
+    }
     
 })
 
