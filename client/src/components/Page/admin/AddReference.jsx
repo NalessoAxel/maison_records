@@ -90,65 +90,54 @@ const AddReference = () => {
                 <input
                   name="title"
                   type="text"
-
-                  value='flo'
-
                   ref={register({ required: true })}
                 />
                 <label>Artist name</label>
                 <input
                   name="artist_name"
                   type="text"
-                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>label</label>
                 <input
                   name="label"
                   type="text"
-                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>Cat number</label>
                 <input
                   name="catNumber"
                   type="text"
-                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>Year</label>
                 <input
                   name="year"
                   type="text"
-                  value='1000'
                   ref={register({ required: true })}
                 />
                 <label>Country</label>
                 <input
                   name="country"
                   type="text"
-                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>Style</label>
                 <input
                   name="style"
                   type="text"
-                  value='flo'
                   ref={register({ required: true })}
                 />
                 <label>Format</label>
                 <input
                   name="format"
                   type="text"
-                  value='Mp3'
                   ref={register({ required: true })}
                 />
                 <label>Description</label>
                 <input
                   name="description"
                   type="text"
-                  value='flo'
                   ref={register({ required: true })}
                 />
               </div>
@@ -157,14 +146,12 @@ const AddReference = () => {
                 <input
                   name="price"
                   type="text"
-                  value='10'
                   ref={register({ required: true })}
                 />
                 <label>Quantity</label>
                 <input
                   name="quantity"
                   type="text"
-                  value='50'
                   ref={register({ required: true })}
                 />
                 <label>Image</label>
