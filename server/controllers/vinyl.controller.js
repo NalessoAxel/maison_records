@@ -90,6 +90,7 @@ module.exports.vinylInfo = (req, res)=>{
 
 }
 
+
 module.exports.deleteVinyl = async (req, res)=>{
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID unknown : ' + req.params.id)
@@ -101,6 +102,8 @@ module.exports.deleteVinyl = async (req, res)=>{
         return res.status(400).send({message : 'Error to delete'})
     }
 }
+
+
 
 module.exports.updateVinyl = async (req, res)=>{
     if(!ObjectID.isValid(req.params.id))
@@ -137,7 +140,6 @@ module.exports.updateVinyl = async (req, res)=>{
                             description,
                             price,
                             quantity
-                
                         }
                 },
                 {new: true, upsert: true, setDefaultsOnInsert: true},
@@ -183,7 +185,8 @@ module.exports.updateVinylImage = async (req, res)=>{
     
 }
 
-// object stockage with multer___________________________     image storage
+
+// IMAGE STORAGE
 const fileStorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "./images");  // send image to images folder
@@ -193,7 +196,6 @@ const fileStorageEngine = multer.diskStorage({
     }
 })
 
-//middlewire
 module.exports.addImage = multer({
     storage: fileStorageEngine
 })

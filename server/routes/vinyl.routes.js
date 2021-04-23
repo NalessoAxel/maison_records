@@ -20,20 +20,44 @@ router.patch('/updateImage/:id', vinylController.addImage.single("image"), (req,
 
 // ROUTE FOR SONGS
 
+// let routes = ["/uploadSong1","/uploadSong2","/uploadSong3","/uploadSong4"]
+let routesObj = [
+            {
+                lien: "/uploadSong1",
+                uploadFunction: vinylController.addSongPreview1
+            },
+            {
+                lien: "/uploadSong2",
+                uploadFunction: vinylController.addSongPreview2
+            },
+            {
+                lien: "/uploadSong3",
+                uploadFunction: vinylController.addSongPreview3
+            },
+            {
+                lien: "/uploadSong4",
+                uploadFunction: vinylController.addSongPreview4
+            }
+        ]
 
+for (let route of routesObj) {
+router.post(route.lien, route.uploadFunction.single("song"), (req, res) => {
+    res.send("single song upload success")
+})
+}
 
-router.post('/uploadSong1', vinylController.addSongPreview1.single("song"), (req,res) => {
-    res.send("single song upload success")
-})
-router.post('/uploadSong2', vinylController.addSongPreview2.single("song"), (req,res) => {
-    res.send("single song upload success")
-})
-router.post('/uploadSong3', vinylController.addSongPreview3.single("song"), (req,res) => {
-    res.send("single song upload success")
-})
-router.post('/uploadSong4', vinylController.addSongPreview4.single("song"), (req,res) => {
-    res.send("single song upload success")
-})
+// router.post('/uploadSong1', vinylController.addSongPreview1.single("song"), (req,res) => {
+//     res.send("single song upload success")
+// })
+// router.post('/uploadSong2', vinylController.addSongPreview2.single("song"), (req,res) => {
+//     res.send("single song upload success")
+// })
+// router.post('/uploadSong3', vinylController.addSongPreview3.single("song"), (req,res) => {
+//     res.send("single song upload success")
+// })
+// router.post('/uploadSong4', vinylController.addSongPreview4.single("song"), (req,res) => {
+//     res.send("single song upload success")
+// })
 
 // router.patch('/updateSongPreview/:id', vinylController.addSongPreview.single("song"), (req,res) => {
 //     res.send("single song update success")
