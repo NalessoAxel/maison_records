@@ -72,15 +72,17 @@ const AddReference = () => {
             });
 
             const previews = [formAnswers.preview1[0],formAnswers.preview2[0],formAnswers.preview3[0],formAnswers.preview4[0]]
-            for(let preview of previews){
+            const routes = ["uploadSong1","uploadSong2","uploadSong3","uploadSong4"];
+            
+            for(let i = 0; i <= previews.length; i++){
               const songToUpload = new FormData();
-              songToUpload.append("song", preview)
+              songToUpload.append("song", previews[i])
               const resUploadAudio = await axios({
                 method: "post",
-                url: `${process.env.REACT_APP_API_URL}api/vinyl/uploadSong/`,
+                url: `${process.env.REACT_APP_API_URL}api/vinyl/${routes[i]}/`,
                 withCredentials: true,
                 headers: { "Content-Type": "multipart/form-data" },
-                data: songToUpload
+                data: songToUpload,
               });
             }
 

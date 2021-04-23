@@ -199,23 +199,56 @@ module.exports.addImage = multer({
 })
 
 
-// object stockage with multer___________________________     Song storage
-
-const fileSongPreviewStorageEngine = multer.diskStorage({
+// SONGS STORAGE
+const fileSongPreviewStorageEngine1 = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "./songs");  
     },
     filename: (req, file, cb) => {
         cb(null,nameOfFileSong1+".mp3");
+        console.log("filename1 OK")
+    }
+})
+
+const fileSongPreviewStorageEngine2 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./songs");  
+    },
+    filename: (req, file, cb) => {
         cb(null,nameOfFileSong2+".mp3");
+        console.log("filename1 OK")
+    }  
+})
+
+const fileSongPreviewStorageEngine3 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./songs");  
+    },
+    filename: (req, file, cb) => {
         cb(null,nameOfFileSong3+".mp3");
+        console.log("filename1 OK")
+    }  
+})
+const fileSongPreviewStorageEngine4 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./songs");  
+    },
+    filename: (req, file, cb) => {
         cb(null,nameOfFileSong4+".mp3");
         console.log("filename1 OK")
     }
-    
 })
 
 //middlewire
-module.exports.addSongPreview = multer({
-    storage: fileSongPreviewStorageEngine
+module.exports.addSongPreview1 = multer({
+    storage: fileSongPreviewStorageEngine1
+})
+module.exports.addSongPreview2 = multer({
+    storage: fileSongPreviewStorageEngine2
+})
+module.exports.addSongPreview3 = multer({
+    storage: fileSongPreviewStorageEngine3
+})
+module.exports.addSongPreview4 = multer({
+    storage: fileSongPreviewStorageEngine4
 })
