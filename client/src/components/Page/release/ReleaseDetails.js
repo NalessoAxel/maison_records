@@ -96,7 +96,7 @@ import axios from 'axios'
                                             <>
                                             </>
                                         )}  
-                                {vinylInfos.audio.preview3.path !== 'default' ? (
+                                {vinylInfos.audio.preview2.path !== 'default' ? (
                                             <>
                                             <span>A2 - {vinylInfos.audio.preview2.name}</span>
                                             <ReactPlayer

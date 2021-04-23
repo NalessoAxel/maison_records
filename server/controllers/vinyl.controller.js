@@ -9,6 +9,7 @@ let nameOfFileSong1
 let nameOfFileSong2
 let nameOfFileSong3 
 let nameOfFileSong4
+let nameOfFileSong = []
 
 const changenameOfFile = (x) =>{
     let date = new Date()
@@ -22,21 +23,19 @@ module.exports.addReference = async (req,res) => {
 
  const { product_type, title, artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
 
-    console.log(audio, "hello")
+    
     if (image !== "default") {nameOfFile= changenameOfFile(nameOfFile)}
-    if (audio.preview1.path !== "default") {nameOfFileSong1=changenameOfFile(nameOfFileSong1) 
-        console.log('nameOfFileSong1')}
+    
+    if (audio.preview1.path !== "default") {nameOfFileSong1=changenameOfFile(nameOfFileSong1)}
         else{nameOfFileSong1 = "default"}
-    if (audio.preview2.path !== "default") {nameOfFileSong2=changenameOfFile(nameOfFileSong2) 
-        console.log('nameOfFileSong2')}
+    if (audio.preview2.path !== "default") {nameOfFileSong2=changenameOfFile(nameOfFileSong2)}
         else{nameOfFileSong2 = "default"}
-    if (audio.preview3.path !== "default") {nameOfFileSong3=changenameOfFile(nameOfFileSong3) 
-        console.log('nameOfFileSong3')}
+    if (audio.preview3.path !== "default") {nameOfFileSong3=changenameOfFile(nameOfFileSong3)}
         else{nameOfFileSong3 = "default"}
-    if (audio.preview4.path !== "default") {nameOfFileSong4=changenameOfFile(nameOfFileSong4) 
-        console.log('nameOfFileSong4')}
+    if (audio.preview4.path !== "default") {nameOfFileSong4=changenameOfFile(nameOfFileSong4)}
         else{nameOfFileSong4 = "default"}
 
+    nameOfFileSong.push(nameOfFileSong1, nameOfFileSong2, nameOfFileSong3, nameOfFileSong4)
     
         try {
             const vinylCreated = await VinylModel.create({
@@ -202,55 +201,21 @@ module.exports.addImage = multer({
 
 
 // SONGS STORAGE
-const fileSongPreviewStorageEngine1 = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "./songs");  
-    },
-    filename: (req, file, cb) => {
-        cb(null,nameOfFileSong1+".mp3");
-        console.log("filename1 OK")
-    }
-})
 
-const fileSongPreviewStorageEngine2 = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "./songs");  
-    },
-    filename: (req, file, cb) => {
-        cb(null,nameOfFileSong2+".mp3");
-        console.log("filename1 OK")
-    }  
-})
+let filePreviewStorageEngines = [];
+for (let i = 0; i < 4; i++) {
+    filePreviewStorageEngines.push({ multerConfig : multer({ storage: multer.diskStorage({
+            destination: (req, file, cb) => {
+                 cb(null, "./songs");
+                },
+            filename: (req, file, cb) => {
+                 cb(null, nameOfFileSong[i] + ".mp3");
+                 console.log("filename1 OK")
+             }
+         })
+        })
+    })
+}
 
-const fileSongPreviewStorageEngine3 = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "./songs");  
-    },
-    filename: (req, file, cb) => {
-        cb(null,nameOfFileSong3+".mp3");
-        console.log("filename1 OK")
-    }  
-})
-const fileSongPreviewStorageEngine4 = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "./songs");  
-    },
-    filename: (req, file, cb) => {
-        cb(null,nameOfFileSong4+".mp3");
-        console.log("filename1 OK")
-    }
-})
-
-//middlewire
-module.exports.addSongPreview1 = multer({
-    storage: fileSongPreviewStorageEngine1
-})
-module.exports.addSongPreview2 = multer({
-    storage: fileSongPreviewStorageEngine2
-})
-module.exports.addSongPreview3 = multer({
-    storage: fileSongPreviewStorageEngine3
-})
-module.exports.addSongPreview4 = multer({
-    storage: fileSongPreviewStorageEngine4
-})
+module.exports.addSong = filePreviewStorageEngines 
+// filePreviewStorageEngines = [{configMulter1},{configMulter2},{configMulter3},{configMulter4}]

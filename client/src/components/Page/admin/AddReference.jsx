@@ -14,13 +14,6 @@ const AddReference = () => {
       let songName3
       let songName4
 
-      // console.log(formAnswers.preview1[0].name,  "formAnswers est ici");
-      // console.log(formAnswers.preview2[0].name,  "formAnswers est ici");
-      // console.log(formAnswers.preview3[0].name,  "formAnswers est ici");
-      // console.log(formAnswers.preview4[0].name,  "formAnswers est ici");
-      
-      
-
       {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
 
       {(formAnswers.preview1[0]==undefined) ? (songName1="default") : (songName1 =formAnswers.preview1[0].name)}
@@ -126,6 +119,7 @@ const AddReference = () => {
                   name="artist_name"
                   type="text"
                   
+                  
 
                   ref={register({ })}
                 />
@@ -149,7 +143,7 @@ const AddReference = () => {
                 <input
                   name="year"
                   type="text"
-                  
+                 
 
                   ref={register({ })}
                 />
@@ -191,17 +185,15 @@ const AddReference = () => {
                 <label>Price</label>
                 <input
                   name="price"
-                  
-                  
                   type="text"
+                  
                   ref={register({ })}
                 />
                 <label>Quantity</label>
                 <input
                   name="quantity"
-                  
                   type="text"
-
+                  
                   ref={register({ })}
                 />
                 <label>Image</label>
