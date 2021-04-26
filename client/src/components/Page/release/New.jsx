@@ -5,7 +5,7 @@ import Vinyl from './Vinyl'
 
 const New = (props) => {
     const { products, onAdd } = props
-
+           
             
         return (
               <>

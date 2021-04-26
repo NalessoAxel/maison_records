@@ -28,9 +28,7 @@ import axios from 'axios'
         }
         getVinylInfos()
     }, [])
-    // console.log(vinylInfos.audio.preview1)
-
-    // console.log(vinylInfos);
+   
     return (   
         <>
             <div className="contentWrapper">
@@ -81,7 +79,8 @@ import axios from 'axios'
                                     <h1>Tracklist</h1>
                                     <div className="audioPlayer">
                                         
-                                {Object.entries(vinylInfos.audio).map((preview)=> {                      
+                                {Object.entries(vinylInfos.audio).map((preview)=> {  
+                                    // console.log(Object.entries(vinylInfos.audio), "object in array");                    
                                 //^^^^ object.entries = transform an object in array
                                     if (preview[1].path !== "default") {
                                         return (

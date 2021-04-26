@@ -77,7 +77,7 @@ const App = () => {
           url: `${process.env.REACT_APP_API_URL}api/vinyl/New/`,
           withCredentials: true, 
       });
-      setAllVinyls(res.data);
+      setAllVinyls(res.data); 
       setLoadingVinyls(false);
       } catch (err){
         console.log(err);
@@ -142,8 +142,8 @@ const products = allVinyls
         <Router>
             
             <Switch>
-{(loadingVinyls) ? (
-        <h1>Loading...</h1>
+        {(loadingVinyls) ? (
+          <h1>Loading...</h1>
         ):(<>
             <Route path="/" exact component={Home} />
             <Route path="/New" exact component={LayoutNew} />
@@ -170,15 +170,6 @@ const products = allVinyls
             <Route path="/VinylDashboard" exact component={LayoutVynilDashboard} />
             </>
         )}
-      
-      {/* {(loading) ? (
-        <h1>Loading...</h1>
-        ):(
-          
-          <>
-            
-            </>
-        )} */}
     
             </Switch> 
             
