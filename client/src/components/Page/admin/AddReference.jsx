@@ -10,7 +10,7 @@ const AddReference = () => {
   const {isSubmitting} = formState
   
   let inputPreviewForm = ["preview1","preview2","preview3","preview4"]
-  let count = inputPreviewForm.length-inputPreviewForm.length;
+  let count = inputPreviewForm.length-inputPreviewForm.length; // = 0 
 
     const onSubmit = async (formAnswers) => {
       let imageName
