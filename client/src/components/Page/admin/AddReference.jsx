@@ -3,33 +3,42 @@ import {useForm} from 'react-hook-form'
 import AdminHeader from './AdminHeader'
 import axios from "axios"
 
+
+
 const AddReference = () => {
-    const {register, handleSubmit,formState, errors} = useForm()
-    const {isSubmitting} = formState
-    console.log('ok')
-    
+  const {register, handleSubmit,formState, errors} = useForm()
+  const {isSubmitting} = formState
+  
+  let inputPreviewForm = ["preview1","preview2","preview3","preview4"]
+  let count = inputPreviewForm.length-inputPreviewForm.length;
+
     const onSubmit = async (formAnswers) => {
       let imageName
-      let songName1
-      let songName2
-      let songName3
-      let songName4
+
+      // for ( let i=0; i < 4, i++ ){
+      //   let songName 
+      //   listSongName.push(songname)
+      // }
+      
+      let songName1,songName2,songName3,songName4
+      
+      let listSongName =[songName1,songName2,songName3,songName4]
+      let listPreview =[formAnswers.preview1,formAnswers.preview2,formAnswers.preview3,formAnswers.preview4]
+      
+      for (let i = 0; i < listSongName.length; i++){
+        {(listPreview[i][0]==undefined) ? (listSongName[i]="default") : (listSongName[i] = listPreview[i][0].name)}
+      // {(formAnswers.preview1[0]==undefined) ? (songName1="default") : (songName1 =formAnswers.preview1[0].name)}
+      }
 
       {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
 
-      {(formAnswers.preview1[0]==undefined) ? (songName1="default") : (songName1 =formAnswers.preview1[0].name)}
-      {(formAnswers.preview2[0]==undefined) ? (songName2="default") : (songName2 =formAnswers.preview2[0].name)}
-      {(formAnswers.preview3[0]==undefined) ? (songName3="default") : (songName3 =formAnswers.preview3[0].name)}
-      {(formAnswers.preview4[0]==undefined) ? (songName4="default") : (songName4 =formAnswers.preview4[0].name)}
-      
-                  
+        
         try {
             const resAddRef = await axios ({
                 method: "post",
                 url: `${process.env.REACT_APP_API_URL}api/vinyl/addReference/`,
                 withCredentials: true,
                 data: {
-          
                   product_type: formAnswers.product_type,
                   title: formAnswers.title,
                   artist_name: formAnswers.artist_name,
@@ -45,10 +54,10 @@ const AddReference = () => {
                   image: imageName,
                   audio:
                   { 
-                    preview1: {path: songName1},
-                    preview2: {path: songName2},
-                    preview3: {path: songName3},
-                    preview4: {path: songName4},
+                    preview1: {path: listSongName[0]},
+                    preview2: {path: listSongName[1]},
+                    preview3: {path: listSongName[2]},
+                    preview4: {path: listSongName[3]},
                   },
                 }
             });
@@ -79,9 +88,6 @@ const AddReference = () => {
                 data: songToUpload,
               });
             }
-
-  
-          
         
         } catch (err) {
             console.log(err);
@@ -112,73 +118,54 @@ const AddReference = () => {
                 <input
                   name="title"
                   type="text"
-                  
                   ref={register({ })}
                 />
                 <label>Artist name</label>
                 <input
                   name="artist_name"
                   type="text"
-                  
-                  
-
                   ref={register({ })}
                 />
                 <label>label</label>
                 <input
                   name="label"
                   type="text"
-                  
-
                   ref={register({ })}
                 />
                 <label>Cat number</label>
                 <input
                   name="catNumber"
                   type="text"
-                  
-
                   ref={register({ })}
                 />
                 <label>Year</label>
                 <input
                   name="year"
                   type="text"
-                 
-
                   ref={register({ })}
                 />
                 <label>Country</label>
                 <input
                   name="country"
                   type="text"
-                  
-
-
                   ref={register({ })}
                 />
                 <label>Style</label>
                 <input
                   name="style"
                   type="text"
-                  
-
                   ref={register({ })}
                 />
                 <label>Format</label>
                 <input
                   name="format"
                   type="text"
-                  
-
                   ref={register({ })}
                 />
                 <label>Description</label>
                 <input
                   name="description"
                   type="text"
-                  
-
                   ref={register({ })}
                 />
               </div>
@@ -187,14 +174,12 @@ const AddReference = () => {
                 <input
                   name="price"
                   type="text"
-                  
                   ref={register({ })}
                 />
                 <label>Quantity</label>
                 <input
                   name="quantity"
                   type="text"
-                  
                   ref={register({ })}
                 />
                 <label>Image</label>
@@ -207,45 +192,25 @@ const AddReference = () => {
                     // required: true
                   })}
                 />
-                <label>Preview 1</label>
-                <input
-                  name="preview1"
-                  type="file"
-         
+                {
+                 inputPreviewForm.map((insertForm)=>{
+                   count += 1
+                   
+                    return (
+                      <>
+                        <label>Preview {count}</label>
+                        <input
+                        name={insertForm}
+                        type="file"
+                        ref={register({
+                          // required: true
+                        })}
+                        />
+                      </>
+                    )
+                })
+                }
 
-                  ref={register({
-                    // required: true
-                  })}
-                />
-                <label>Preview 2</label>
-                <input
-                  name="preview2"
-                  type="file"
-       
-                  ref={register({
-                    // required: true
-                  })}
-                />
-                <label>Preview 3</label>
-                <input
-                  name="preview3"
-                  type="file"
-           
-
-                  ref={register({
-                    // required: true
-                  })}
-                />
-                <label>Preview 4</label>
-                <input
-                  name="preview4"
-                  type="file"
-        
-
-                  ref={register({
-                    // required: true
-                  })}
-                />
               </div>
               <input
                 disabled={isSubmitting}

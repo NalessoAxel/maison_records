@@ -5,11 +5,11 @@ const multer = require('multer');
 
 
 let nameOfFile 
-let nameOfFileSong1
-let nameOfFileSong2
-let nameOfFileSong3 
-let nameOfFileSong4
-let nameOfFileSong = []
+let nameOfFileSong1,nameOfFileSong2,nameOfFileSong3,nameOfFileSong4
+
+let nameOfFileSong = [nameOfFileSong1, nameOfFileSong2, nameOfFileSong3, nameOfFileSong4]
+
+
 
 const changenameOfFile = (x) =>{
     let date = new Date()
@@ -25,18 +25,16 @@ module.exports.addReference = async (req,res) => {
 
     
     if (image !== "default") {nameOfFile= changenameOfFile(nameOfFile)}
-    
-    if (audio.preview1.path !== "default") {nameOfFileSong1=changenameOfFile(nameOfFileSong1)}
-        else{nameOfFileSong1 = "default"}
-    if (audio.preview2.path !== "default") {nameOfFileSong2=changenameOfFile(nameOfFileSong2)}
-        else{nameOfFileSong2 = "default"}
-    if (audio.preview3.path !== "default") {nameOfFileSong3=changenameOfFile(nameOfFileSong3)}
-        else{nameOfFileSong3 = "default"}
-    if (audio.preview4.path !== "default") {nameOfFileSong4=changenameOfFile(nameOfFileSong4)}
-        else{nameOfFileSong4 = "default"}
 
-    nameOfFileSong.push(nameOfFileSong1, nameOfFileSong2, nameOfFileSong3, nameOfFileSong4)
+    for (let i = 0; i < nameOfFileSong.length; i++ ){
+        
+        if (Object.entries(audio)[i][1].path !== "default") {
+            //   Object.entries(audio)= [['preview1',   {path:"song.mp3"}],  ['preview2', {path:"song.mp3"}], ['preview3', {path:"song.mp3"}]]
+            nameOfFileSong[i]= changenameOfFile(nameOfFileSong[i])
+        } else {nameOfFileSong[i]="default"}
+    }
     
+
         try {
             const vinylCreated = await VinylModel.create({
             product_type, 
@@ -51,10 +49,10 @@ module.exports.addReference = async (req,res) => {
             description,
             image:nameOfFile,
             audio: {
-                preview1: {path: nameOfFileSong1},
-                preview2: {path: nameOfFileSong2},
-                preview3: {path: nameOfFileSong3},
-                preview4: {path: nameOfFileSong4},
+                preview1: {path: nameOfFileSong[0]},
+                preview2: {path: nameOfFileSong[1]},
+                preview3: {path: nameOfFileSong[2]},
+                preview4: {path: nameOfFileSong[3]}
             },
             quantity,
             price
@@ -203,7 +201,7 @@ module.exports.addImage = multer({
 // SONGS STORAGE
 
 let filePreviewStorageEngines = [];
-for (let i = 0; i < 4; i++) {
+for (let i = 0; i < nameOfFileSong.length; i++) {
     filePreviewStorageEngines.push({ multerConfig : multer({ storage: multer.diskStorage({
             destination: (req, file, cb) => {
                  cb(null, "./songs");
