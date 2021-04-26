@@ -15,11 +15,6 @@ const AddReference = () => {
     const onSubmit = async (formAnswers) => {
       let imageName
 
-      // for ( let i=0; i < 4, i++ ){
-      //   let songName 
-      //   listSongName.push(songname)
-      // }
-      
       let songName1,songName2,songName3,songName4
       
       let listSongName =[songName1,songName2,songName3,songName4]
