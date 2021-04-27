@@ -13,8 +13,6 @@ const onSubmit = async (formAnswers) => {
     const routes =   ["uploadSong1", "uploadSong2", "uploadSong3", "uploadSong4"];
     let path =      [product.audio.preview1.path, product.audio.preview2.path,product.audio.preview3.path,product.audio.preview4.path]
 
-    console.log(previews,"cocou")
-
     
  for(let i = 0 ; i < previews.length; i++){
     if (previews[i] !== undefined){
@@ -23,7 +21,6 @@ const onSubmit = async (formAnswers) => {
         } //ChangeName in VinylController
       } 
     }
-    
       
         const res = await axios({
         method: "patch",
