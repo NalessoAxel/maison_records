@@ -20,10 +20,10 @@ const onSubmit = async (formAnswers) => {
     if (previews[i] !== undefined){
         if (path[i] === "default") {
             path[i]="changeName"
-        } 
+        } //ChangeName in VinylController
       } 
     }
-    //
+    
       
         const res = await axios({
         method: "patch",
@@ -32,8 +32,7 @@ const onSubmit = async (formAnswers) => {
         data: path,  
     }) 
 
-    
-    
+
  
       for(let i = 0 ; i < previews.length; i++){
           const songToUpload = new FormData();
@@ -45,16 +44,9 @@ const onSubmit = async (formAnswers) => {
           headers: { "Content-Type": "multipart/form-data" },
           data: songToUpload,
         });
-  
-          console.log("test")
         
     }
-
-        
-   
     window.location =""
-    
-    
 };
 
     return(
