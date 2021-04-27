@@ -155,8 +155,11 @@ module.exports.updateVinyl = async (req, res)=>{
 } 
 
 module.exports.updateVinylImage = async (req, res)=>{
-    changenameOfFile()
+
+    nameOfFile = changenameOfFile(nameOfFile)
+
     console.log(nameOfFile,"change img")
+
     if(!ObjectID.isValid(req.params.id))
     return res.status(400).send('ID unknown : ' + req.params.id)
     
@@ -180,6 +183,38 @@ module.exports.updateVinylImage = async (req, res)=>{
     }
     
 }
+
+// module.exports.updateVinylSong= async (req, res)=>{
+//     changenameOfFile()
+    // console.log(nameOfFile,"change song")
+//     if(!ObjectID.isValid(req.params.id))
+//     return res.status(400).send('ID unknown : ' + req.params.id)
+    
+//     try{
+//         await VinylModel.findOneAndUpdate({_id: req.params.id},
+//             {
+//                 $set: {
+//                     audio: {
+//                         preview1: {path: nameOfFileSong[0]},
+//                         preview2: {path: nameOfFileSong[1]},
+//                         preview3: {path: nameOfFileSong[2]},
+//                         preview4: {path: nameOfFileSong[3]}
+//                     }, 
+//                 }
+//             },
+//             {new: true, upsert: true, setDefaultsOnInsert: true},
+//             (err, docs)=>{
+//                 if(!err){
+//                     return res.send(docs);
+//                 }
+//                 if(err) return res.status(403).json({message : 'Update error', err})
+//             }
+//         )
+//     } catch (err) {
+//         return res.status(403).json({message : 'Update image error', err})
+//     }
+    
+// }
 
 
 // IMAGE STORAGE

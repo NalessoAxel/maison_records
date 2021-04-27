@@ -90,7 +90,7 @@ const AddReference = () => {
           window.location = ''
     }
 
-    // fetch post => upload => imageNameFromForm dans /images 
+    // MERCH ENCORE A FAIRE 
 //
     return (
       
@@ -108,6 +108,7 @@ const AddReference = () => {
                 <select name="product_type" ref={register({ })}>
                   <option value="New">New</option>
                   <option value="Second hand">Second hand</option>
+                  {/* <option value="Merch">Merch</option> */}
                 </select>
                 <label>Title</label>
                 <input

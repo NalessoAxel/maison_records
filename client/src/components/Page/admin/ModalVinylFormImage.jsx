@@ -14,6 +14,7 @@ const ModalVinylFormImage = (props) => {
         withCredentials: true,
         data: formAnswers,
       });
+      console.log(formAnswers, 'ici beeetch');
 
         const imageToUpload = new FormData();
         imageToUpload.append("image",formAnswers.image[0])
@@ -54,7 +55,7 @@ const ModalVinylFormImage = (props) => {
             />
 
             <br />
-            <input type="submit" />
+            <input type="submit" value="Upload image"/>
           </form>
         </div>
       </div>
