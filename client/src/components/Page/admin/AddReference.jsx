@@ -27,7 +27,6 @@ const AddReference = () => {
 
       {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
 
-        
         try {
             const resAddRef = await axios ({
                 method: "post",

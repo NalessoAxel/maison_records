@@ -4,6 +4,8 @@ import Modal from 'react-modal'
 import axios from 'axios'
 import ModalVinylForm from './ModalVinylForm'
 import ModalVinylFormImage from './ModalVinylFormImage'
+import ModalVinylFormSong from './ModalVinylFormSong'
+
 
 
 const VinylDashboard = (props) => {
@@ -173,6 +175,10 @@ const VinylDashboard = (props) => {
                                                <ModalVinylFormImage
                                                    product={uniqueVinyl}
                                                 />
+                                                <ModalVinylFormSong
+                                                   product={uniqueVinyl}
+                                                />
+                                   
                                         </div>
                                     </div>
                                 </div>

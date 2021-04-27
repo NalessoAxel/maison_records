@@ -27,6 +27,7 @@ const ModalVinylFormImage = (props) => {
             headers: { "Content-Type": "multipart/form-data" },
             data: imageToUpload
         });
+        
             
             
       window.location = "";

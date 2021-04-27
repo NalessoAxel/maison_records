@@ -85,7 +85,7 @@ import axios from 'axios'
                                     if (preview[1].path !== "default") {
                                         return (
                                             <>
-                                        <span>A1 - {preview[1].name}</span>
+                                        <span>{preview[1].name}</span>
                                             <ReactPlayer
                                                     config={{ file: { attributes: { controlsList: 'nodownload' } } }}
                                                     url = {`${process.env.REACT_APP_API_URL}songs/${preview[1].path}.mp3`}

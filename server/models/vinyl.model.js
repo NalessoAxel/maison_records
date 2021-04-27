@@ -63,7 +63,7 @@ const vinylSchema = new mongoose.Schema(
             preview1: {
                 name:{
                     type: String,
-                    default: 'Preview 1'
+                    default: 'A1 Preview 1'
                 },
                 path: {
                     type: String,
@@ -73,7 +73,7 @@ const vinylSchema = new mongoose.Schema(
             preview2: {
                 name:{
                     type: String,
-                    default: 'Preview 2'
+                    default: 'A2 Preview 2'
                 },
                 path: {
                     type: String,
@@ -83,7 +83,7 @@ const vinylSchema = new mongoose.Schema(
             preview3: {
                 name:{
                     type: String,
-                    default: 'Preview 3'
+                    default: 'A3 Preview 3'
                 },
                 path: {
                     type: String,
@@ -93,7 +93,7 @@ const vinylSchema = new mongoose.Schema(
             preview4: {
                 name:{
                     type: String,
-                    default: 'Preview 4'
+                    default: 'A4 Preview 4'
                 },
                 path: {
                     type: String,

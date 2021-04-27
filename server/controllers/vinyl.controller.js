@@ -184,37 +184,50 @@ module.exports.updateVinylImage = async (req, res)=>{
     
 }
 
-// module.exports.updateVinylSong= async (req, res)=>{
-//     changenameOfFile()
-    // console.log(nameOfFile,"change song")
-//     if(!ObjectID.isValid(req.params.id))
-//     return res.status(400).send('ID unknown : ' + req.params.id)
+module.exports.updateVinylSong= async (req, res)=>{
+
+
+    for (let i = 0; i < nameOfFileSong.length; i++) {
+
+        // console.log(Object.entries(req.body)[i], "tester")
+        console.log(Object.entries(req.body)[i][1], "testeur2")
+
+        if (Object.entries(req.body)[i][1] == "changeName") {
+            nameOfFileSong[i] = changenameOfFile(nameOfFileSong[i])
+        } else {
+            nameOfFileSong[i] =  nameOfFileSong[i]}
+        console.log(nameOfFileSong, "tester resulting namefilesong")
+    } 
+
+
+    if(!ObjectID.isValid(req.params.id))
+    return res.status(400).send('ID unknown : ' + req.params.id)
     
-//     try{
-//         await VinylModel.findOneAndUpdate({_id: req.params.id},
-//             {
-//                 $set: {
-//                     audio: {
-//                         preview1: {path: nameOfFileSong[0]},
-//                         preview2: {path: nameOfFileSong[1]},
-//                         preview3: {path: nameOfFileSong[2]},
-//                         preview4: {path: nameOfFileSong[3]}
-//                     }, 
-//                 }
-//             },
-//             {new: true, upsert: true, setDefaultsOnInsert: true},
-//             (err, docs)=>{
-//                 if(!err){
-//                     return res.send(docs);
-//                 }
-//                 if(err) return res.status(403).json({message : 'Update error', err})
-//             }
-//         )
-//     } catch (err) {
-//         return res.status(403).json({message : 'Update image error', err})
-//     }
+    try{
+        await VinylModel.findOneAndUpdate({_id: req.params.id},
+            {
+                $set: {
+                    audio: {
+                        preview1: {path: nameOfFileSong[0]},
+                        preview2: {path: nameOfFileSong[1]},
+                        preview3: {path: nameOfFileSong[2]},
+                        preview4: {path: nameOfFileSong[3]}
+                    }, 
+                }
+            },
+            {new: true, upsert: true, setDefaultsOnInsert: true},
+            (err, docs)=>{
+                if(!err){
+                    return res.send(docs);
+                }
+                if(err) return res.status(403).json({message : 'Update error', err})
+            }
+        )
+    } catch (err) {
+        return res.status(403).json({message : 'Update image error', err})
+    }
     
-// }
+}
 
 
 // IMAGE STORAGE
@@ -238,11 +251,12 @@ let filePreviewStorageEngines = [];
 for (let i = 0; i < nameOfFileSong.length; i++) {
     filePreviewStorageEngines.push({ multerConfig : multer({ storage: multer.diskStorage({
             destination: (req, file, cb) => {
+                // console.log(filePreviewStorageEngines[i] , ' filePreviewStorageEngines '+i)
                  cb(null, "./songs");
                 },
-            filename: (req, file, cb) => {
+            filename: (req, file, cb) => {        
                  cb(null, nameOfFileSong[i] + ".mp3");
-                 console.log("filename1 OK")
+                // console.log(nameOfFileSong[i], ' nameOfFileSong'+i)
              }
          })
         })
