@@ -4,15 +4,21 @@ import ReactPlayer from 'react-player'
 import { Link,useParams} from "react-router-dom";
 
  const ReleaseDetails = (props) => {
-    let countSuggestion = 0
+   
 
     let { id } = useParams();
     const {products, onAdd} = props
+    let countSuggestion = 0
+ 
+    let tabSuggestion = []
 
     return (   
         <>
+        
         {Object.entries(products).map((vinylInfos) => {
+
          if (vinylInfos[1]._id === id) {
+
             return (
                 <div className="contentWrapper">
                     <div className="releasePage">
@@ -83,44 +89,42 @@ import { Link,useParams} from "react-router-dom";
                         <h2>Suggestion</h2>
                         <div className="suggestionEntries">
                             {Object.entries(products).map((suggestion) => {
-                                countSuggestion++
-                                console.log(countSuggestion)
-                                if(countSuggestion <= 100 ){
-                                    
-                                    if (suggestion[1].style === vinylInfos[1].style) {
-        
-                                        if (suggestion[1]._id !== vinylInfos[1]._id) {
-                                            return (
-                                                <div className="tile">
-                                                    <div className="hover-effect">
-                                                    <img src={`${process.env.REACT_APP_API_URL}images/${suggestion[1].image}.png`}  alt="VinylImage"></img>
-                                                            <div className="overlay">
-                                                                <h2> {suggestion[1].description} </h2>
+                                if (suggestion[1].style === vinylInfos[1].style) {
+                                        countSuggestion++
+                                        if(countSuggestion <= 6){ // show 5 
+                                            if (suggestion[1]._id !== vinylInfos[1]._id) {
+                                                return (
+                                                    <div className="tile">
+                                                        <div className="hover-effect">
+                                                        <img src={`${process.env.REACT_APP_API_URL}images/${suggestion[1].image}.png`}  alt="VinylImage"></img>
+                                                                <div className="overlay">
+                                                                    <h2> {suggestion[1].description} </h2>
+                                                                </div>
                                                             </div>
+                                                            <div className="infos-record">
+                                                                <div className="artistAndTitlePrice">
+                                                                    <span className="artistName">
+                                                                    <span>{suggestion[1].title}</span>
+                                                                    </span>
+                                                                    <br/>
+                                                                        <span>{suggestion[1].artist_name}</span>
+                                                                        
+                                                                    <br/>
+                                                                        <span>{suggestion[1].price}€</span>
+                                                                </div>
+                                                            <span className="button">
+                                                                <Link to = {'/ReleaseDetails/'+ suggestion[1]._id}> 
+                                                                <button className="showMore" >Show More</button>                                                                         
+                                                                </Link>
+                                                                <button onClick={() => onAdd(suggestion[1])} className="addToCart">Add to cart</button>
+                                                            </span>
                                                         </div>
-                                                        <div className="infos-record">
-                                                            <div className="artistAndTitlePrice">
-                                                                <span className="artistName">
-                                                                <span>{suggestion[1].title}</span>
-                                                                </span>
-                                                                <br/>
-                                                                    <span>{suggestion[1].artist_name}</span>
-                                                                    
-                                                                <br/>
-                                                                    <span>{suggestion[1].price}€</span>
-                                                            </div>
-                                                        <span className="button">
-                                                            <Link to = {'/ReleaseDetails/'+ suggestion[1]._id}> 
-                                                            <button className="showMore" >Show More</button>                                                                         
-                                                            </Link>
-                                                            <button onClick={() => onAdd(suggestion[1])} className="addToCart">Add to cart</button>
-                                                        </span>
                                                     </div>
-                                                </div>
-                                                )               
+                                                    )               
+                                            }
                                         }
                                     }
-                                }
+                                
                                     })}        
                                 </div>
                             </div>
