@@ -91,7 +91,7 @@ import { Link,useParams} from "react-router-dom";
                             {Object.entries(products).map((suggestion) => {
                                 if (suggestion[1].style === vinylInfos[1].style) {
                                         countSuggestion++
-                                        if(countSuggestion <= 6){ // show 5 
+                                        if(countSuggestion <= 21){ // show 20
                                             if (suggestion[1]._id !== vinylInfos[1]._id) {
                                                 return (
                                                     <div className="tile">

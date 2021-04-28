@@ -4,9 +4,10 @@ const multer = require('multer');
 
 
 let nameOfFile 
-let nameOfFileSong1,nameOfFileSong2,nameOfFileSong3,nameOfFileSong4
+let nameOfFileSong1,nameOfFileSong2,nameOfFileSong3,nameOfFileSong4,nameOfFileSong5,nameOfFileSong6,nameOfFileSong7,nameOfFileSong8,nameOfFileSong9,nameOfFileSong10,nameOfFileSong11,nameOfFileSong12,nameOfFileSong13,nameOfFileSong14,nameOfFileSong15,nameOfFileSong16,nameOfFileSong17,nameOfFileSong18,nameOfFileSong19,nameOfFileSong20
 
-let nameOfFileSong = [nameOfFileSong1, nameOfFileSong2, nameOfFileSong3, nameOfFileSong4]
+let nameOfFileSong = [nameOfFileSong1,nameOfFileSong2,nameOfFileSong3,nameOfFileSong4,nameOfFileSong5,nameOfFileSong6,nameOfFileSong7,nameOfFileSong8,nameOfFileSong9,nameOfFileSong10,nameOfFileSong11,nameOfFileSong12,nameOfFileSong13,nameOfFileSong14,nameOfFileSong15,nameOfFileSong16,nameOfFileSong17,nameOfFileSong18,nameOfFileSong19,nameOfFileSong20
+]
 
 
 
@@ -51,7 +52,24 @@ module.exports.addReference = async (req,res) => {
                 preview1: {path: nameOfFileSong[0]},
                 preview2: {path: nameOfFileSong[1]},
                 preview3: {path: nameOfFileSong[2]},
-                preview4: {path: nameOfFileSong[3]}
+                preview4: {path: nameOfFileSong[3]},
+                preview5: {path: nameOfFileSong[4]},
+                preview6: {path: nameOfFileSong[5]},
+                preview7: {path: nameOfFileSong[6]},
+                preview8: {path: nameOfFileSong[7]},
+                preview9: {path: nameOfFileSong[8]},
+                preview10: {path: nameOfFileSong[9]},
+                preview11: {path: nameOfFileSong[10]},
+                preview12: {path: nameOfFileSong[11]},
+                preview13: {path: nameOfFileSong[12]},
+                preview14: {path: nameOfFileSong[13]},
+                preview15: {path: nameOfFileSong[14]},
+                preview16: {path: nameOfFileSong[15]},
+                preview17: {path: nameOfFileSong[16]},
+                preview17: {path: nameOfFileSong[17]},
+                preview18: {path: nameOfFileSong[18]},
+                preview19: {path: nameOfFileSong[19]},
+                preview20: {path: nameOfFileSong[20]}
             },
             quantity,
             price
@@ -208,10 +226,27 @@ module.exports.updateVinylSong= async (req, res)=>{
             {
                 $set: {
                     audio: {
-                        preview1: {path: nameOfFileSong[0]},
-                        preview2: {path: nameOfFileSong[1]},
-                        preview3: {path: nameOfFileSong[2]},
-                        preview4: {path: nameOfFileSong[3]}
+                        preview1:  {path: nameOfFileSong[0]},
+                        preview2:  {path: nameOfFileSong[1]},
+                        preview3:  {path: nameOfFileSong[2]},
+                        preview4:  {path: nameOfFileSong[3]},
+                        preview5:  {path: nameOfFileSong[4]},
+                        preview6:  {path: nameOfFileSong[5]},
+                        preview7:  {path: nameOfFileSong[6]},
+                        preview8:  {path: nameOfFileSong[7]},
+                        preview9:  {path: nameOfFileSong[8]},
+                        preview10: {path: nameOfFileSong[9]},
+                        preview11: {path: nameOfFileSong[10]},
+                        preview12: {path: nameOfFileSong[11]},
+                        preview13: {path: nameOfFileSong[12]},
+                        preview14: {path: nameOfFileSong[13]},
+                        preview15: {path: nameOfFileSong[14]},
+                        preview16: {path: nameOfFileSong[15]},
+                        preview17: {path: nameOfFileSong[16]},
+                        preview17: {path: nameOfFileSong[17]},
+                        preview18: {path: nameOfFileSong[18]},
+                        preview19: {path: nameOfFileSong[19]},
+                        preview20: {path: nameOfFileSong[20]}
                     }, 
                 }
             },

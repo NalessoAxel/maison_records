@@ -60,20 +60,25 @@ const vinylSchema = new mongoose.Schema(
             default: 'default'
         },
         audio:{
+                        // _________________________________________________ FACE A
             preview1: {
                 name:{
                     type: String,
-                    default: 'A1 Preview 1'
+                    default: 'A1 Preview 1',
+                    faceA: true
                 },
                 path: {
                     type: String,
-                    default:'default'
+                    default:'default',
                 }
             },
             preview2: {
                 name:{
                     type: String,
-                    default: 'A2 Preview 2'
+                    default: 'A2 Preview 2',
+                    face: "B",
+                    faceA: true
+
                 },
                 path: {
                     type: String,
@@ -83,7 +88,9 @@ const vinylSchema = new mongoose.Schema(
             preview3: {
                 name:{
                     type: String,
-                    default: 'A3 Preview 3'
+                    default: 'A3 Preview 3',
+                    faceA: true
+
                 },
                 path: {
                     type: String,
@@ -93,7 +100,202 @@ const vinylSchema = new mongoose.Schema(
             preview4: {
                 name:{
                     type: String,
-                    default: 'A4 Preview 4'
+                    default: 'A4 Preview 4',
+                    faceA: true
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview5: {
+                name:{
+                    type: String,
+                    default: 'A1 Preview 1',
+                    faceA: true
+                },
+                path: {
+                    type: String,
+                    default:'default',
+                }
+            },
+            preview6: {
+                name:{
+                    type: String,
+                    default: 'A2 Preview 2',
+                    face: "B",
+                    faceA: true
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview7: {
+                name:{
+                    type: String,
+                    default: 'A3 Preview 3',
+                    faceA: true
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview9: {
+                name:{
+                    type: String,
+                    default: 'A4 Preview 4',
+                    faceA: true
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview7: {
+                name:{
+                    type: String,
+                    default: 'A3 Preview 3',
+                    faceA: true
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview10: {
+                name:{
+                    type: String,
+                    default: 'A4 Preview 4',
+                    faceA: true
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            // _________________________________________________ FACE B
+            preview11: {
+                name:{
+                    type: String,
+                    default: 'A1 Preview 1',
+                    faceA: false
+                },
+                path: {
+                    type: String,
+                    default:'default',
+                }
+            },
+            preview12: {
+                name:{
+                    type: String,
+                    default: 'A2 Preview 2',
+                    face: "B",
+                    faceA: false
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview13: {
+                name:{
+                    type: String,
+                    default: 'A3 Preview 3',
+                    faceA: false
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview14: {
+                name:{
+                    type: String,
+                    default: 'A4 Preview 4',
+                    faceA: false
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview15: {
+                name:{
+                    type: String,
+                    default: 'A1 Preview 1',
+                    faceA: false
+                },
+                path: {
+                    type: String,
+                    default:'default',
+                }
+            },
+            preview16: {
+                name:{
+                    type: String,
+                    default: 'A2 Preview 2',
+                    face: "B",
+                    faceA: false
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview17: {
+                name:{
+                    type: String,
+                    default: 'A3 Preview 3',
+                    faceA: false
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview18: {
+                name:{
+                    type: String,
+                    default: 'A4 Preview 4',
+                    faceA: false
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview19: {
+                name:{
+                    type: String,
+                    default: 'A3 Preview 3',
+                    faceA: false
+
+                },
+                path: {
+                    type: String,
+                    default:'default'
+                }
+            },
+            preview20: {
+                name:{
+                    type: String,
+                    default: 'A4 Preview 4',
+                    faceA: false
+
                 },
                 path: {
                     type: String,
