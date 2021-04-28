@@ -43,7 +43,7 @@ const onSubmit = async (formAnswers) => {
         });
         console.log(resUploadAudio, "song to upload");
     }
-    // window.location =""
+    window.location =""
 };
 
     return(

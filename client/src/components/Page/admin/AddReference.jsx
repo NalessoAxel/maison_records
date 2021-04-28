@@ -86,7 +86,7 @@ const AddReference = () => {
         } catch (err) {
             console.log(err);
         }
-          // window.location = ''
+          window.location = ''
     }
 
     // MERCH ENCORE A FAIRE 

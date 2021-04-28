@@ -5,6 +5,7 @@ import { Link,useParams} from "react-router-dom";
 
  const ReleaseDetails = (props) => {
     let countSuggestion = 0
+    
     let { id } = useParams();
     const {products, onAdd} = props
 
