@@ -71,7 +71,7 @@ const AddReference = () => {
             const previews = [formAnswers.preview1[0],formAnswers.preview2[0],formAnswers.preview3[0],formAnswers.preview4[0]]
             const routes = ["uploadSong1","uploadSong2","uploadSong3","uploadSong4"];
             
-            for(let i = 0; i <= previews.length; i++){
+            for(let i = 0; i < previews.length; i++){
               const songToUpload = new FormData();
               songToUpload.append("song", previews[i])
               const resUploadAudio = await axios({
@@ -86,7 +86,7 @@ const AddReference = () => {
         } catch (err) {
             console.log(err);
         }
-          window.location = ''
+          // window.location = ''
     }
 
     // MERCH ENCORE A FAIRE 

@@ -7,7 +7,6 @@ router.get('/:id', vinylController.vinylInfo);
 router.delete('/:id', vinylController.deleteVinyl)
 router.patch('/update/:id', vinylController.updateVinyl)
 
-router.patch('/updateSong/:id', vinylController.updateVinylSong)
 
 // Image upload
 router.post('/upload', vinylController.addImage.single("image"), (req,res) => {
@@ -16,21 +15,23 @@ router.post('/upload', vinylController.addImage.single("image"), (req,res) => {
 router.patch('/updateImage/:id', vinylController.updateVinylImage)
 
 // router.patch('/updateImage/:id', vinylController.addImage.single("image"), (req,res) => {
-//     res.send("single file update success")
-// })
-// vinylController.addImage = multer in vynilController
-//single image = search one file with image name
+    //     res.send("single file update success")
+    // })
+    // vinylController.addImage = multer in vynilController
+    //single image = search one file with image name
+    
+    
+    // ROUTE FOR SONGS
+    router.patch('/updateSong/:id', vinylController.updateVinylSong)
 
-
-// ROUTE FOR SONGS
-for (let i = 0; i < vinylController.addSong.length; i++) {
-    router.post('/uploadSong' + (i + 1), vinylController.addSong[i].multerConfig.single("song"), (req, res) => {
-        res.send("single song upload success")})
-// equivaut à router.post('/uploadSong1', arrayofConfigsMulter.single("song"), (req,res) => {
-//     res.send("single song upload success")
-// }) with arrayofConfigsMulter = [{configMulter1},{configMulter2},{configMulter3},{configMulter4}]
-}
-
+    for (let i = 0; i < vinylController.addSong.length; i++) {
+        router.post('/uploadSong' + (i + 1), vinylController.addSong[i].multerConfig.single("song"), (req, res) => {
+            res.send("song",i,"upload success")})
+            // equivaut à router.post('/uploadSong1', arrayofConfigsMulter.single("song"), (req,res) => {
+                //     res.send("single song upload success")
+                // }) with arrayofConfigsMulter = [{configMulter1},{configMulter2},{configMulter3},{configMulter4}]
+            }
+            
 
 
 

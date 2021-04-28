@@ -118,7 +118,7 @@ const products = allVinyls
     const LayoutLive = () => <Layout><Live/></Layout>
     const LayoutUserRegisterPage = () => <Layout><UserRegisterPage/></Layout>
     const LayoutAnimations = () => <Layout><Animations/></Layout>
-    const LayoutReleaseDetails = () => < Layout > < ReleaseDetails/></Layout>
+    const LayoutReleaseDetails = () => < Layout > < ReleaseDetails products={products} onAdd={onAdd}/> </Layout>
     const LayoutCart = () => <Layout><Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} /></Layout>
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>

@@ -32,7 +32,7 @@ const onSubmit = async (formAnswers) => {
 
  
       for(let i = 0 ; i < previews.length; i++){
-          const songToUpload = new FormData();
+        const songToUpload = new FormData();
         songToUpload.append("song", previews[i])
         const resUploadAudio = await axios({
           method: "post",
@@ -41,9 +41,9 @@ const onSubmit = async (formAnswers) => {
           headers: { "Content-Type": "multipart/form-data" },
           data: songToUpload,
         });
-        
+        console.log(resUploadAudio, "song to upload");
     }
-    window.location =""
+    // window.location =""
 };
 
     return(

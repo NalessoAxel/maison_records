@@ -5,9 +5,11 @@ import {Link, useParams} from "react-router-dom";
 import axios from 'axios'
 
 
- const ReleaseDetails = () => {
+ const ReleaseDetails = (props) => {
     
     let { id } = useParams();
+    const {products, onAdd} = props
+
     const [vinylInfos, setVinylInfos] = useState('')
     const [loading, setLoading] = useState(true)
     
@@ -110,192 +112,50 @@ import axios from 'axios'
                 <div id="suggestion">
                     <h2>Suggestion</h2>
                     <div className="suggestionEntries">
-                        <div className="tile">
-                        <div className="hover-effect">
-                            <img src={Imgrelease} alt=""></img>
-                            <div class="overlay">
-                                <h2>Description of the records when hove the img</h2>
-                                </div>
-                            </div>
-                            <div className="infos-record">
-                            <div className="artistAndTitlePrice">
-                                <span className="artistName">
-                                    <span>Various Artist</span>
-                                </span>
-                                    <p>
-                                        <span>
-                                            <span>Soma Dubs Vol.4</span>
-                                        </span>   
-                                    </p>
-                                    <p>
-                                        <span>
-                                            <span>20€</span>
-                                        </span>  
-                                    </p>
-                            </div>
-                            <span className="button">
-                                        <Link to='/ReleaseDetails'>
+                        {/* {console.log(Object.entries(products))} */}
+                        {Object.entries(products).map((suggestion) => {
+                            if (suggestion[1].style === vinylInfos.style) {
+                                return (
+                                    <div className="tile">
+                                        <div className="hover-effect">
+                                        <img src={`${process.env.REACT_APP_API_URL}images/${suggestion[1].image}.png`}  alt="VinylImage"></img>
+                                                <div className="overlay">
+                                                    <h2> {suggestion[1].description} </h2>
+                                                </div>
+                                            </div>
+                                            <div className="infos-record">
+                                                <div className="artistAndTitlePrice">
+                                                    <span className="artistName">
+                                                        <span>{suggestion[1].artist_name}</span>
+                                                    </span>
+                                                <p>
+                                                    <span>
+                                                        <span>{suggestion[1].title}</span>
+                                                    </span>   
+                                                </p>
+                                                <p>
+                                                    <span>
+                                                        <span>{suggestion[1].price}</span>
+                                                    </span>  
+                                                </p>
+                                            </div>
+                                            <span className="button">
+                    
+                                        <Link to = {'/ReleaseDetails/'+ suggestion[1]._id}> 
                                         <button className="showMore" >Show More</button>
+                                        {/* <button className="showMore" onClick={()=> window.location=suggestion[1]._id}>Show More</button> */}
+                                                                          
                                         </Link>
-                                        <button className="addToCart">Add to cart</button>
+                                        <button onClick={() => onAdd(suggestion[1])} className="addToCart">Add to cart</button>
                                     </span>
                                     </div>
                         </div>
-                        <div className="tile">
-                        <div className="hover-effect">
-                            <img src={Imgrelease} alt=""></img>
-                            <div className="overlay">
-                                <h2>Description of the records when hove the img</h2>
-                                </div>
-                            </div>
-                            <div className="infos-record">
-                            <div className="artistAndTitlePrice">
-                                <span className="artistName">
-                                    <span>Various Artist</span>
-                                </span>
-                                    <p>
-                                        <span>
-                                            <span>Soma Dubs Vol.4</span>
-                                        </span>   
-                                    </p>
-                                    <p>
-                                        <span>
-                                            <span>20€</span>
-                                        </span>  
-                                    </p>
-                            </div>
-                            <span className="button">
-                                        <Link to='/ReleaseDetails'>
-                                        <button className="showMore" >Show More</button>
-                                        </Link>
-                                        <button className="addToCart">Add to cart</button>
-                                    </span>
-                                    </div>
-                        </div>
-                        <div className="tile">
-                        <div className="hover-effect">
-                            <img src={Imgrelease} alt=""></img>
-                            <div class="overlay">
-                                <h2>Description of the records when hove the img</h2>
-                                </div>
-                            </div>
-                            <div className="infos-record">
-                            <div className="artistAndTitlePrice">
-                                <span className="artistName">
-                                    <span>Various Artist</span>
-                                </span>
-                                    <p>
-                                        <span>
-                                            <span>Soma Dubs Vol.4</span>
-                                        </span>   
-                                    </p>
-                                    <p>
-                                        <span>
-                                            <span>20€</span>
-                                        </span>  
-                                    </p>
-                            </div>
-                            <span className="button">
-                                        <Link to='/ReleaseDetails'>
-                                        <button className="showMore" >Show More</button>
-                                        </Link>
-                                        <button className="addToCart">Add to cart</button>
-                                    </span>
-                                    </div>
-                        </div>
-                        <div className="tile">
-                        <div className="hover-effect">
-                            <img src={Imgrelease} alt=""></img>
-                            <div className="overlay">
-                                <h2>Description of the records when hove the img</h2>
-                                </div>
-                            </div>
-                            <div className="infos-record">
-                            <div className="artistAndTitlePrice">
-                                <span className="artistName">
-                                    <span>Various Artist</span>
-                                </span>
-                                    <p>
-                                        <span>
-                                            <span>Soma Dubs Vol.4</span>
-                                        </span>   
-                                    </p>
-                                    <p>
-                                        <span>
-                                            <span>20€</span>
-                                        </span>  
-                                    </p>
-                            </div>
-                            <span className="button">
-                                        <Link to='/ReleaseDetails'>
-                                        <button className="showMore" >Show More</button>
-                                        </Link>
-                                        <button className="addToCart">Add to cart</button>
-                                    </span>
-                                    </div>
-                        </div>
-                        <div className="tile">
-                        <div className="hover-effect">
-                            <img src={Imgrelease} alt=""></img>
-                            <div className="overlay">
-                                <h2>Description of the records when hove the img</h2>
-                                </div>
-                            </div>
-                            <div className="infos-record">
-                            <div className="artistAndTitlePrice">
-                                <span className="artistName">
-                                    <span>Various Artist</span>
-                                </span>
-                                    <p>
-                                        <span>
-                                            <span>Soma Dubs Vol.4</span>
-                                        </span>   
-                                    </p>
-                                    <p>
-                                        <span>
-                                            <span>20€</span>
-                                        </span>  
-                                    </p>
-                            </div>
-                            <span className="button">
-                                        <Link to='/ReleaseDetails'>
-                                        <button className="showMore" >Show More</button>
-                                        </Link>
-                                        <button className="addToCart">Add to cart</button>
-                                    </span>
-                                    </div>
-                        </div>
-                        <div className="tile">
-                        <div className="hover-effect">
-                            <img src={Imgrelease} alt=""></img>
-                            <div class="overlay">
-                                <h2>Description of the records when hove the img</h2>
-                                </div>
-                            </div>
-                            <div className="infos-record">
-                            <div className="artistAndTitlePrice">
-                                <span className="artistName">
-                                    <span>Various Artist</span>
-                                </span>
-                                    <p>
-                                        <span>
-                                            <span>Soma Dubs Vol.4</span>
-                                        </span>   
-                                    </p>
-                                    <p>
-                                        <span>
-                                            <span>20€</span>
-                                        </span>  
-                                    </p>
-                            </div>
-                            <span className="button">
-                                        <Link to='/ReleaseDetails'>
-                                        <button className="showMore" >Show More</button>
-                                        </Link>
-                                        <button className="addToCart">Add to cart</button>
-                                    </span>
-                                    </div>
-                        </div>
+                                )
+                            }
+                        })}
+                       
+                       
+                       
                         
                     </div>
                 </div>
