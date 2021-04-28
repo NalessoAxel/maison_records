@@ -5,7 +5,7 @@ import { Link,useParams} from "react-router-dom";
 
  const ReleaseDetails = (props) => {
     let countSuggestion = 0
-    
+
     let { id } = useParams();
     const {products, onAdd} = props
 
@@ -22,8 +22,8 @@ import { Link,useParams} from "react-router-dom";
                                     <img src={`${process.env.REACT_APP_API_URL}images/${vinylInfos[1].image}.png`}  alt="VinylImage"></img>
                                 </div>
                                 <div className="center">                                  
-                                    <h1>{vinylInfos[1].artist_name}</h1>
                                     <h2>{vinylInfos[1].title}</h2>
+                                    <h1>{vinylInfos[1].artist_name}</h1>
                                     <div id="releaseInfo">
                                         <p className="releaseInfo">Label:
                                             <span>{vinylInfos[1].label}</span>
@@ -101,10 +101,11 @@ import { Link,useParams} from "react-router-dom";
                                                         <div className="infos-record">
                                                             <div className="artistAndTitlePrice">
                                                                 <span className="artistName">
-                                                                    <span>{suggestion[1].artist_name}</span>
+                                                                <span>{suggestion[1].title}</span>
                                                                 </span>
                                                                 <br/>
-                                                                    <span>{suggestion[1].title}</span>
+                                                                    <span>{suggestion[1].artist_name}</span>
+                                                                    
                                                                 <br/>
                                                                     <span>{suggestion[1].price}€</span>
                                                             </div>
