@@ -6,9 +6,11 @@ const multer = require('multer');
 let nameOfFile 
 let nameOfFileSong1,nameOfFileSong2,nameOfFileSong3,nameOfFileSong4,nameOfFileSong5,nameOfFileSong6,nameOfFileSong7,nameOfFileSong8,nameOfFileSong9,nameOfFileSong10,nameOfFileSong11,nameOfFileSong12,nameOfFileSong13,nameOfFileSong14,nameOfFileSong15,nameOfFileSong16,nameOfFileSong17,nameOfFileSong18,nameOfFileSong19,nameOfFileSong20
 
-let nameOfFileSong = [nameOfFileSong1,nameOfFileSong2,nameOfFileSong3,nameOfFileSong4,nameOfFileSong5,nameOfFileSong6,nameOfFileSong7,nameOfFileSong8,nameOfFileSong9,nameOfFileSong10,nameOfFileSong11,nameOfFileSong12,nameOfFileSong13,nameOfFileSong14,nameOfFileSong15,nameOfFileSong16,nameOfFileSong17,nameOfFileSong18,nameOfFileSong19,nameOfFileSong20
-]
+let name1,name2,name3,name4,name5,name6,name7,name8,name9,name10,name11,name12,name13,name14,name15,name16,name17,name18,name19,name20
 
+let nameOfFileSong = [nameOfFileSong1,nameOfFileSong2,nameOfFileSong3,nameOfFileSong4,nameOfFileSong5,nameOfFileSong6,nameOfFileSong7,nameOfFileSong8,nameOfFileSong9,nameOfFileSong10,nameOfFileSong11,nameOfFileSong12,nameOfFileSong13,nameOfFileSong14,nameOfFileSong15,nameOfFileSong16,nameOfFileSong17,nameOfFileSong18,nameOfFileSong19,nameOfFileSong20]
+
+let listNameSong = [name1,name2,name3,name4,name5,name6,name7,name8,name9,name10,name11,name12,name13,name14,name15,name16,name17,name18,name19,name20]
 
 
 const changenameOfFile = (x) =>{
@@ -18,16 +20,17 @@ const changenameOfFile = (x) =>{
     return x
 }
 
+
 // module to create a new reference and create an image to stock in server
 module.exports.addReference = async (req,res) => {
 
  const { product_type, title, artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
-
+//audio = listPreviewClien = {{name: bhdhd, path: bajdjal}}
     
     if (image !== "default") {nameOfFile= changenameOfFile(nameOfFile)}
 
     for (let i = 0; i < nameOfFileSong.length; i++ ){
-        
+        console.log(Object.entries(audio)[i])
         if (Object.entries(audio)[i][1].path !== "default") {
             //   Object.entries(audio)= [['preview1',   {path:"song.mp3"}],  ['preview2', {path:"song.mp3"}], ['preview3', {path:"song.mp3"}]]
             nameOfFileSong[i]= changenameOfFile(nameOfFileSong[i])
@@ -49,27 +52,26 @@ module.exports.addReference = async (req,res) => {
             description,
             image:nameOfFile,
             audio: {
-                preview1: {path: nameOfFileSong[0]},
-                preview2: {path: nameOfFileSong[1]},
-                preview3: {path: nameOfFileSong[2]},
-                preview4: {path: nameOfFileSong[3]},
-                preview5: {path: nameOfFileSong[4]},
-                preview6: {path: nameOfFileSong[5]},
-                preview7: {path: nameOfFileSong[6]},
-                preview8: {path: nameOfFileSong[7]},
-                preview9: {path: nameOfFileSong[8]},
-                preview10: {path: nameOfFileSong[9]},
-                preview11: {path: nameOfFileSong[10]},
-                preview12: {path: nameOfFileSong[11]},
-                preview13: {path: nameOfFileSong[12]},
-                preview14: {path: nameOfFileSong[13]},
-                preview15: {path: nameOfFileSong[14]},
-                preview16: {path: nameOfFileSong[15]},
-                preview17: {path: nameOfFileSong[16]},
-                preview17: {path: nameOfFileSong[17]},
-                preview18: {path: nameOfFileSong[18]},
-                preview19: {path: nameOfFileSong[19]},
-                preview20: {path: nameOfFileSong[20]}
+                preview1: {name: listNameSong[0],path: nameOfFileSong[0]},
+                preview2: {name: listNameSong[1],path: nameOfFileSong[1]},
+                preview3: {name: listNameSong[2],path: nameOfFileSong[2]},
+                preview4: {name: listNameSong[3],path: nameOfFileSong[3]},
+                preview5: {name: listNameSong[4],path: nameOfFileSong[4]},
+                preview6: {name: listNameSong[5],path: nameOfFileSong[5]},
+                preview7: {name: listNameSong[6],path: nameOfFileSong[6]}, 
+                preview8: {name: listNameSong[7],path: nameOfFileSong[7]},
+                preview9: {name: listNameSong[8],path: nameOfFileSong[8]},
+                preview10: {name: listNameSong[9],path: nameOfFileSong[9]},
+                preview11: {name: listNameSong[10],path: nameOfFileSong[10]},
+                preview12: {name: listNameSong[11],path: nameOfFileSong[11]},
+                preview13: {name: listNameSong[12],path: nameOfFileSong[12]},
+                preview14: {name: listNameSong[13],path: nameOfFileSong[13]},
+                preview15: {name: listNameSong[14],path: nameOfFileSong[14]},
+                preview16: {name: listNameSong[15],path: nameOfFileSong[15]},
+                preview17: {name: listNameSong[16],path: nameOfFileSong[16]},
+                preview18: {name: listNameSong[17],path: nameOfFileSong[17]},
+                preview19: {name: listNameSong[18],path: nameOfFileSong[18]},
+                preview20: {name: listNameSong[19],path: nameOfFileSong[19]},
             },
             quantity,
             price
@@ -77,7 +79,7 @@ module.exports.addReference = async (req,res) => {
             res.status(201).json({
             vinyl_created: vinylCreated._id
             })
-            // console.log(req.body);e
+            // console.log(req.body);
         } catch (err) {
             res.status(400).json({
             message: 'error vinyl'
@@ -203,7 +205,6 @@ module.exports.updateVinylImage = async (req, res)=>{
 }
 
 module.exports.updateVinylSong= async (req, res)=>{
-
 
     for (let i = 0; i < nameOfFileSong.length; i++) {
 

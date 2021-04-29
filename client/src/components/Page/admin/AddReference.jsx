@@ -33,7 +33,8 @@ const AddReference = () => {
         { name: formAnswers.name1, path: formAnswers.preview1 },
         { name: formAnswers.name2, path: formAnswers.preview2 },
         { name: formAnswers.name3, path: formAnswers.preview3 },
-        { name: formAnswers.name4, path: formAnswers.preview5 },
+        { name: formAnswers.name4, path: formAnswers.preview4 },
+        { name: formAnswers.name5, path: formAnswers.preview5 },
         { name: formAnswers.name6, path: formAnswers.preview6 },
         { name: formAnswers.name7, path: formAnswers.preview7 },
         { name: formAnswers.name8, path: formAnswers.preview8 },
@@ -49,6 +50,8 @@ const AddReference = () => {
         { name: formAnswers.name18, path: formAnswers.preview18 },
         { name: formAnswers.name19, path: formAnswers.preview19 },
         { name: formAnswers.name20, path: formAnswers.preview20 },
+        
+
       ];
 
       // let listPreview =
@@ -79,19 +82,20 @@ const AddReference = () => {
         
       
       for (let i = 0; i < listSongName.length; i++){
-        if(listPreview[i][0]==undefined){
+
+        if(listPreview[i].path[0]==undefined){
           listSongName[i].path="default";
           listSongName[i].name="default";
         }else{
           listSongName[i].path = listPreview[i].path[0].name // name of file
           listSongName[i].name = listPreview[i].name
+          // console.log(listSongName[i])
         }
-        console.log(listPreview[i],"coucou")
-        console.log(listPreview[i].name,"1")
-        console.log(listPreview[i].path[0].name, "cul")
+ 
    
-        // {(formAnswers.preview1[0]==undefined) ? (songName1="default") : (songName1 =formAnswers.preview1[0].name)}
       }
+      // console.log(listSongName)
+
 
       {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
 
@@ -132,10 +136,9 @@ const AddReference = () => {
                         preview15: listSongName[14],
                         preview16: listSongName[15],
                         preview17: listSongName[16],
-                        preview17: listSongName[17],
-                        preview18: listSongName[18],
-                        preview19: listSongName[19],
-                        preview20: listSongName[20]
+                        preview18: listSongName[17],
+                        preview19: listSongName[18],
+                        preview20: listSongName[19]
                   }
                     
                   },
