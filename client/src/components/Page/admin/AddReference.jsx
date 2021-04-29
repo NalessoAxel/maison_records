@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {useForm} from 'react-hook-form'
 import AdminHeader from './AdminHeader'
 import axios from "axios"
@@ -30,7 +30,7 @@ const AddReference = () => {
       // let listSongName =[songName1,songName2,songName3,songName4]
       
       let listPreview = [
-        { name: formAnswers.name1, path: formAnswers.preview1 },
+        { name: formAnswers.name1, path: formAnswers.preview1 }, // name in input / path : name of file  
         { name: formAnswers.name2, path: formAnswers.preview2 },
         { name: formAnswers.name3, path: formAnswers.preview3 },
         { name: formAnswers.name4, path: formAnswers.preview4 },
@@ -53,33 +53,7 @@ const AddReference = () => {
         
 
       ];
-
-      // let listPreview =
-      // [
-      //   formAnswers.preview1,
-      //   formAnswers.preview2,
-      //   formAnswers.preview3,
-      //   formAnswers.preview4,
-      //   formAnswers.preview5,
-      //   formAnswers.preview6,
-      //   formAnswers.preview7,
-      //   formAnswers.preview8,
-      //   formAnswers.preview9,
-      //   formAnswers.preview10,
-      //   formAnswers.preview11,
-      //   formAnswers.preview12,
-      //   formAnswers.preview13,
-      //   formAnswers.preview14,
-      //   formAnswers.preview15,
-      //   formAnswers.preview16,
-      //   formAnswers.preview17,
-      //   formAnswers.preview18,
-      //   formAnswers.preview19,
-      //   formAnswers.preview20
-      // ]
-     
-
-        
+       
       
       for (let i = 0; i < listSongName.length; i++){
 
@@ -118,29 +92,7 @@ const AddReference = () => {
                   quantity: formAnswers.quantity,
                   price: formAnswers.price,
                   image: imageName,
-                  audio:
-                  {     preview1: listSongName[0],
-                        preview2:  listSongName[1],
-                        preview3:  listSongName[2],
-                        preview4:  listSongName[3],
-                        preview5:  listSongName[4],
-                        preview6:  listSongName[5],
-                        preview7:  listSongName[6],
-                        preview8:  listSongName[7],
-                        preview9:  listSongName[8],
-                        preview10: listSongName[9],
-                        preview11: listSongName[10],
-                        preview12: listSongName[11],
-                        preview13: listSongName[12],
-                        preview14: listSongName[13],
-                        preview15: listSongName[14],
-                        preview16: listSongName[15],
-                        preview17: listSongName[16],
-                        preview18: listSongName[17],
-                        preview19: listSongName[18],
-                        preview20: listSongName[19]
-                  }
-                    
+                  audio:listSongName
                   },
             });
             // create a fake form with good encryption with new Formdata

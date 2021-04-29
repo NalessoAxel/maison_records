@@ -4,14 +4,12 @@ const multer = require('multer');
 
 
 let nameOfFile 
-let nameOfFileSong1,nameOfFileSong2,nameOfFileSong3,nameOfFileSong4,nameOfFileSong5,nameOfFileSong6,nameOfFileSong7,nameOfFileSong8,nameOfFileSong9,nameOfFileSong10,nameOfFileSong11,nameOfFileSong12,nameOfFileSong13,nameOfFileSong14,nameOfFileSong15,nameOfFileSong16,nameOfFileSong17,nameOfFileSong18,nameOfFileSong19,nameOfFileSong20
 
-let name1,name2,name3,name4,name5,name6,name7,name8,name9,name10,name11,name12,name13,name14,name15,name16,name17,name18,name19,name20
-
-let nameOfFileSong = [nameOfFileSong1,nameOfFileSong2,nameOfFileSong3,nameOfFileSong4,nameOfFileSong5,nameOfFileSong6,nameOfFileSong7,nameOfFileSong8,nameOfFileSong9,nameOfFileSong10,nameOfFileSong11,nameOfFileSong12,nameOfFileSong13,nameOfFileSong14,nameOfFileSong15,nameOfFileSong16,nameOfFileSong17,nameOfFileSong18,nameOfFileSong19,nameOfFileSong20]
-
-let listNameSong = [name1,name2,name3,name4,name5,name6,name7,name8,name9,name10,name11,name12,name13,name14,name15,name16,name17,name18,name19,name20]
-
+let nameOfFileSong = []
+for (let i =0; i < 20; i++){
+    let fillingWithDumbVariable  // = array of 20 empty entries
+    nameOfFileSong.push({name: fillingWithDumbVariable, path: fillingWithDumbVariable})
+}
 
 const changenameOfFile = (x) =>{
     let date = new Date()
@@ -20,23 +18,18 @@ const changenameOfFile = (x) =>{
     return x
 }
 
-
 // module to create a new reference and create an image to stock in server
 module.exports.addReference = async (req,res) => {
 
  const { product_type, title, artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
-//audio = listPreviewClien = {{name: bhdhd, path: bajdjal}}
     
     if (image !== "default") {nameOfFile= changenameOfFile(nameOfFile)}
 
     for (let i = 0; i < nameOfFileSong.length; i++ ){
-        console.log(Object.entries(audio)[i])
         if (Object.entries(audio)[i][1].path !== "default") {
-            //   Object.entries(audio)= [['preview1',   {path:"song.mp3"}],  ['preview2', {path:"song.mp3"}], ['preview3', {path:"song.mp3"}]]
-            nameOfFileSong[i]= changenameOfFile(nameOfFileSong[i])
-        } else {nameOfFileSong[i]="default"}
-    }
-    
+            nameOfFileSong[i]={name: Object.entries(audio)[i][1].name, path: changenameOfFile(nameOfFileSong[i].path)}                       
+        } else {
+             nameOfFileSong[i]={name: "default", path: "default"}
 
         try {
             const vinylCreated = await VinylModel.create({
@@ -52,27 +45,28 @@ module.exports.addReference = async (req,res) => {
             description,
             image:nameOfFile,
             audio: {
-                preview1: {name: listNameSong[0],path: nameOfFileSong[0]},
-                preview2: {name: listNameSong[1],path: nameOfFileSong[1]},
-                preview3: {name: listNameSong[2],path: nameOfFileSong[2]},
-                preview4: {name: listNameSong[3],path: nameOfFileSong[3]},
-                preview5: {name: listNameSong[4],path: nameOfFileSong[4]},
-                preview6: {name: listNameSong[5],path: nameOfFileSong[5]},
-                preview7: {name: listNameSong[6],path: nameOfFileSong[6]}, 
-                preview8: {name: listNameSong[7],path: nameOfFileSong[7]},
-                preview9: {name: listNameSong[8],path: nameOfFileSong[8]},
-                preview10: {name: listNameSong[9],path: nameOfFileSong[9]},
-                preview11: {name: listNameSong[10],path: nameOfFileSong[10]},
-                preview12: {name: listNameSong[11],path: nameOfFileSong[11]},
-                preview13: {name: listNameSong[12],path: nameOfFileSong[12]},
-                preview14: {name: listNameSong[13],path: nameOfFileSong[13]},
-                preview15: {name: listNameSong[14],path: nameOfFileSong[14]},
-                preview16: {name: listNameSong[15],path: nameOfFileSong[15]},
-                preview17: {name: listNameSong[16],path: nameOfFileSong[16]},
-                preview18: {name: listNameSong[17],path: nameOfFileSong[17]},
-                preview19: {name: listNameSong[18],path: nameOfFileSong[18]},
-                preview20: {name: listNameSong[19],path: nameOfFileSong[19]},
+                preview1: nameOfFileSong[0],
+                preview2: nameOfFileSong[1],
+                preview3: nameOfFileSong[2],
+                preview4: nameOfFileSong[3],
+                preview5: nameOfFileSong[4],
+                preview6: nameOfFileSong[5],
+                preview7: nameOfFileSong[6],
+                preview8: nameOfFileSong[7],
+                preview9: nameOfFileSong[8],
+                preview10: nameOfFileSong[9],
+                preview11: nameOfFileSong[10],
+                preview12: nameOfFileSong[11],
+                preview13: nameOfFileSong[12],
+                preview14: nameOfFileSong[13],
+                preview15: nameOfFileSong[14],
+                preview16: nameOfFileSong[15],
+                preview17: nameOfFileSong[16],
+                preview18: nameOfFileSong[17],
+                preview19: nameOfFileSong[18],
+                preview20: nameOfFileSong[19],
             },
+
             quantity,
             price
             });
@@ -291,7 +285,7 @@ for (let i = 0; i < nameOfFileSong.length; i++) {
                  cb(null, "./songs");
                 },
             filename: (req, file, cb) => {        
-                 cb(null, nameOfFileSong[i] + ".mp3");
+                 cb(null, nameOfFileSong[i].path + ".mp3");
                 // console.log(nameOfFileSong[i], ' nameOfFileSong'+i)
              }
          })
