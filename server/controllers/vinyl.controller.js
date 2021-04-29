@@ -22,15 +22,18 @@ const changenameOfFile = (x) =>{
 module.exports.addReference = async (req,res) => {
 
  const { product_type, title, artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
-    
+
     if (image !== "default") {nameOfFile= changenameOfFile(nameOfFile)}
+    else{image == 'default'}
 
     for (let i = 0; i < nameOfFileSong.length; i++ ){
         if (Object.entries(audio)[i][1].path !== "default") {
-            nameOfFileSong[i]={name: Object.entries(audio)[i][1].name, path: changenameOfFile(nameOfFileSong[i].path)}                       
+            nameOfFileSong[i]={name: Object.entries(audio)[i][1].name, path: changenameOfFile(nameOfFileSong[i].path)}           
         } else {
              nameOfFileSong[i]={name: "default", path: "default"}
-
+        }
+    }
+    
         try {
             const vinylCreated = await VinylModel.create({
             product_type, 
@@ -66,7 +69,6 @@ module.exports.addReference = async (req,res) => {
                 preview19: nameOfFileSong[18],
                 preview20: nameOfFileSong[19],
             },
-
             quantity,
             price
             });
@@ -88,6 +90,7 @@ module.exports.getAllVinyls = async (req, res) =>{
     const vinyls = await VinylModel.find()
     res.status(200).json(vinyls)
 }
+
 
 module.exports.vinylInfo = (req, res)=>{
     if(!ObjectID.isValid(req.params.id))

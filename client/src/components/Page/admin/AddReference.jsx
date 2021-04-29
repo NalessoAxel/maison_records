@@ -97,9 +97,9 @@ const AddReference = () => {
             });
             // create a fake form with good encryption with new Formdata
             const imageToUpload = new FormData();
-            
             imageToUpload.append("image",formAnswers.image[0])
             // Fake form = {image: formAnwsers.image(name in form)[0]}
+            
             const resUploadImage = await axios({
               method: "post",
               url: `${process.env.REACT_APP_API_URL}api/vinyl/upload/`,
