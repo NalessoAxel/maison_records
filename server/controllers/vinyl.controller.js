@@ -4,12 +4,8 @@ const multer = require('multer');
 
 
 let nameOfFile 
-
+let numberOfPreviews = 20
 let nameOfFileSong = []
-for (let i =0; i < 20; i++){
-    let fillingWithDumbVariable  // = array of 20 empty entries
-    nameOfFileSong.push({name: fillingWithDumbVariable, path: fillingWithDumbVariable})
-}
 
 const changenameOfFile = (x) =>{
     let date = new Date()
@@ -26,12 +22,14 @@ module.exports.addReference = async (req,res) => {
     if (image !== "default") {nameOfFile= changenameOfFile(nameOfFile)}
     else{image == 'default'}
 
-    for (let i = 0; i < nameOfFileSong.length; i++ ){
+    for (let i = 0; i < numberOfPreviews; i++ ){
         if (Object.entries(audio)[i][1].path !== "default") {
-            nameOfFileSong[i]={name: Object.entries(audio)[i][1].name, path: changenameOfFile(nameOfFileSong[i].path)}           
+            let fillingWithDumbVariable
+            nameOfFileSong.push({name: Object.entries(audio)[i][1].name, path: changenameOfFile(fillingWithDumbVariable)})           
         } else {
-             nameOfFileSong[i]={name: "default", path: "default"}
-        }
+             nameOfFileSong.push({name: "default", path: "default"})
+            }
+        
     }
     
         try {
@@ -203,7 +201,7 @@ module.exports.updateVinylImage = async (req, res)=>{
 
 module.exports.updateVinylSong= async (req, res)=>{
 
-    for (let i = 0; i < nameOfFileSong.length; i++) {
+    for (let i = 0; i < numberOfPreviews; i++) {
 
         // console.log(Object.entries(req.body)[i], "tester")
         console.log(Object.entries(req.body)[i][1], "testeur2")
@@ -281,7 +279,7 @@ module.exports.addImage = multer({
 // SONGS STORAGE
 
 let filePreviewStorageEngines = [];
-for (let i = 0; i < nameOfFileSong.length; i++) {
+for (let i = 0; i < numberOfPreviews; i++) {
     filePreviewStorageEngines.push({ multerConfig : multer({ storage: multer.diskStorage({
             destination: (req, file, cb) => {
                 // console.log(filePreviewStorageEngines[i] , ' filePreviewStorageEngines '+i)
