@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
 
 const ModalVinylFormSong = (props) => {
     const { register, handleSubmit, errors } = useForm();
-    const { product } = props;
+    const { product, numberOfPreviews} = props;
 
 
 const onSubmit = async (formAnswers) => {

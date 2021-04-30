@@ -1,99 +1,69 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import AdminHeader from './AdminHeader'
 import axios from "axios"
 
 
 
-const AddReference = () => {
+const AddReference = (props) => {
   const {register, handleSubmit,formState, errors} = useForm()
   const {isSubmitting} = formState
+  const {numberOfPreviews} = props
 
-  const numberOfSong = 20
+  // const numberOfPreviews = 20
   
-  let inputPreviewForm = []
-  for (let i = 1; i <= numberOfSong; i++){
-    inputPreviewForm.push({ name: "name" + i, audioRef : "preview"+i}) //preview1, preview2...
+  let listSongName = [];
+  let listSongFiles =[];
+  for (let i = 1; i <= numberOfPreviews; i++) {
+    listSongName.push({ name: "default", path: "default" });
+    listSongFiles.push("")
   }
+
+  const [listSongNameHook, setListSongNameHook] = useState(listSongName);
+  const [listOfFilesSongs, setListOfFilesSongs] = useState(listSongName);
   
-  let count = inputPreviewForm.length-inputPreviewForm.length; // = 0 
+  // function for DB -> geré les noms dans la db 
+  const fillListSongNameHook = (value, i, type) => {
+      const newValues = [...listSongNameHook]
+      if (type == "name"){newValues[i].name = value}
+      else {newValues[i].path = value}
+      return setListSongNameHook(newValues)
+    }
 
-    const onSubmit = async (formAnswers) => {
-      let imageName
-      let listSongName=[]
-
-      for (let i = 1; i<=numberOfSong; i++){
-        let songName
-        let titleSong
-        listSongName.push({name: titleSong, path: songName})
-      }
-      // let listSongName =[songName1,songName2,songName3,songName4]
-      
-      let listPreview = [
-        { name: formAnswers.name1, path: formAnswers.preview1 }, // name in input / path : name of file  
-        { name: formAnswers.name2, path: formAnswers.preview2 },
-        { name: formAnswers.name3, path: formAnswers.preview3 },
-        { name: formAnswers.name4, path: formAnswers.preview4 },
-        { name: formAnswers.name5, path: formAnswers.preview5 },
-        { name: formAnswers.name6, path: formAnswers.preview6 },
-        { name: formAnswers.name7, path: formAnswers.preview7 },
-        { name: formAnswers.name8, path: formAnswers.preview8 },
-        { name: formAnswers.name9, path: formAnswers.preview9 },
-        { name: formAnswers.name10, path: formAnswers.preview10 },
-        { name: formAnswers.name11, path: formAnswers.preview11 },
-        { name: formAnswers.name12, path: formAnswers.preview12 },
-        { name: formAnswers.name13, path: formAnswers.preview13 },
-        { name: formAnswers.name14, path: formAnswers.preview14 },
-        { name: formAnswers.name15, path: formAnswers.preview15 },
-        { name: formAnswers.name16, path: formAnswers.preview16 },
-        { name: formAnswers.name17, path: formAnswers.preview17 },
-        { name: formAnswers.name18, path: formAnswers.preview18 },
-        { name: formAnswers.name19, path: formAnswers.preview19 },
-        { name: formAnswers.name20, path: formAnswers.preview20 },
-        
-
-      ];
-       
-      
-      for (let i = 0; i < listSongName.length; i++){
-
-        if(listPreview[i].path[0]==undefined){
-          listSongName[i].path="default";
-          listSongName[i].name="default";
-        }else{
-          listSongName[i].path = listPreview[i].path[0].name // name of file
-          listSongName[i].name = listPreview[i].name
-          // console.log(listSongName[i])
-        }
+    // function for multer -> géré l'envoi de notre file 
+  const songToMulter = (file, i)=>{
+      const newValues = [...listOfFilesSongs];
+      newValues[i] = file
+      return setListOfFilesSongs(newValues)
+  }
  
-   
-      }
-      // console.log(listSongName)
-
+  const onSubmit = async (formAnswers) => {
+    let imageName    
+    // console.log(listSongNameHook,'state evolution');
 
       {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
 
         try {
-            const resAddRef = await axios ({
-                method: "post",
-                url: `${process.env.REACT_APP_API_URL}api/vinyl/addReference/`,
-                withCredentials: true,
-                data: {
-                  product_type: formAnswers.product_type,
-                  title: formAnswers.title,
-                  artist_name: formAnswers.artist_name,
-                  label: formAnswers.label,
-                  catNumber: formAnswers.catNumber,
-                  year: formAnswers.year,
-                  country: formAnswers.country,
-                  style: formAnswers.style,
-                  format: formAnswers.format,
-                  description: formAnswers.description,
-                  quantity: formAnswers.quantity,
-                  price: formAnswers.price,
-                  image: imageName,
-                  audio:listSongName
-                  },
+            const resAddRef = await axios({
+              method: "post",
+              url: `${process.env.REACT_APP_API_URL}api/vinyl/addReference/`,
+              withCredentials: true,
+              data: {
+                product_type: formAnswers.product_type,
+                title: formAnswers.title,
+                artist_name: formAnswers.artist_name,
+                label: formAnswers.label,
+                catNumber: formAnswers.catNumber,
+                year: formAnswers.year,
+                country: formAnswers.country,
+                style: formAnswers.style,
+                format: formAnswers.format,
+                description: formAnswers.description,
+                quantity: formAnswers.quantity,
+                price: formAnswers.price,
+                image: imageName,
+                audio: listSongNameHook
+              },
             });
             // create a fake form with good encryption with new Formdata
             const imageToUpload = new FormData();
@@ -108,37 +78,13 @@ const AddReference = () => {
               data: imageToUpload,
             });
 
-            const previews = 
-            [
-            formAnswers.preview1[0],
-            formAnswers.preview2[0],
-            formAnswers.preview3[0],
-            formAnswers.preview4[0],
-            formAnswers.preview5[0],
-            formAnswers.preview6[0],
-            formAnswers.preview7[0],
-            formAnswers.preview8[0],
-            formAnswers.preview9[0],
-            formAnswers.preview10[0],
-            formAnswers.preview11[0],
-            formAnswers.preview12[0],
-            formAnswers.preview13[0],
-            formAnswers.preview14[0],
-            formAnswers.preview15[0],
-            formAnswers.preview16[0],
-            formAnswers.preview17[0],
-            formAnswers.preview18[0],
-            formAnswers.preview19[0],
-            formAnswers.preview20[0]
-            ]
-
             const routes = [];
-            for (let i = 1; i <= numberOfSong; i++){
+            for (let i = 1; i <= numberOfPreviews; i++){
               routes.push("uploadSong"+i) //preview1, preview2...
             }
-            for(let i = 0; i < previews.length; i++){
+            for(let i = 0; i < listOfFilesSongs.length; i++){
               const songToUpload = new FormData();
-              songToUpload.append("song", previews[i])
+              songToUpload.append("song", listOfFilesSongs[i])
               const resUploadAudio = await axios({
                 method: "post",
                 url: `${process.env.REACT_APP_API_URL}api/vinyl/${routes[i]}/`,
@@ -246,35 +192,25 @@ const AddReference = () => {
                 <input
                   name="image"
                   type="file"
-                  // defaultValue="default"
-                  // accept=".jpg"
                   ref={register({
                     // required: true
                   })}
                 />
                 <h2>Face A</h2>
-                {
-                 inputPreviewForm.map((insertForm)=>{
-                   count += 1
-                   
+                {listSongName.map((x, i)=>{ // obligation de deux arguments pour le map, x on ne l'utilise pas
                     return (
                       <>
-                        {count == 11 ? (
-                          <>
-                          <hr/>
-                          <h2>Face B</h2>
-                          </>
-                        ):(
-                          <></>
-                        )}
+                        {i == 10 ? (<><hr/><h2>Face B</h2></>):(<></>)}
                         <input
-                        name={insertForm.name}
+                        name="previewName"
+                        onChange={e=>{fillListSongNameHook(e.target.value, i, "name")}}
                         type="text"
-                        placeholder={"Preview " + count}
+                        placeholder={"Preview " + (i+1)}
                         ref={register({ })}
                 />
                         <input
-                        name={insertForm.audioRef}
+                        name='previewPath'
+                        onChange={e=>{fillListSongNameHook(e.target.files[0].name, i, "path"); songToMulter(e.target.files[0], i)}}
                         type="file"
                         ref={register({
                           // required: true

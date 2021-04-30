@@ -59,9 +59,9 @@ const vinylSchema = new mongoose.Schema(
             type: String, 
             default: 'default'
         },
-        audio:{
+        audio:[
         // ___________ FACE A_______________
-            preview1: {
+            {
                 name:{
                     type: String,
                     default: 'A1 Preview 1',
@@ -75,7 +75,7 @@ const vinylSchema = new mongoose.Schema(
                     default: true,
                 }
             },
-            preview2: {
+           {
                 name:{
                     type: String,
                     default: 'A2 Preview 2',
@@ -89,7 +89,7 @@ const vinylSchema = new mongoose.Schema(
                     default: true,
                 }
             },
-            preview3: {
+            {
                 name:{
                     type: String,
                     default: 'A3 Preview 3',
@@ -104,7 +104,7 @@ const vinylSchema = new mongoose.Schema(
                     default: true,
                 }
             },
-            preview4: {
+             {
                 name:{
                     type: String,
                     default: 'A4 Preview 4',  
@@ -118,7 +118,7 @@ const vinylSchema = new mongoose.Schema(
                     default: true,
                 }
             },
-            preview5: {
+             {
                 name:{
                     type: String,
                     default: 'A1 Preview 1',
@@ -132,7 +132,7 @@ const vinylSchema = new mongoose.Schema(
                     default: true,
                 }
             },
-            preview6: {
+             {
                 name:{
                     type: String,
                     default: 'A2 Preview 2',
@@ -147,7 +147,7 @@ const vinylSchema = new mongoose.Schema(
                     default: true,
                 }
             },
-            preview7: {
+             {
                 name:{
                     type: String,
                     default: 'A3 Preview 3',
@@ -162,7 +162,7 @@ const vinylSchema = new mongoose.Schema(
                     default: true,
                 }
             },
-            preview9: {
+             {
                 name:{
                     type: String,
                     default: 'A4 Preview 4',
@@ -177,7 +177,7 @@ const vinylSchema = new mongoose.Schema(
                     default: true,
                 }
             },
-            preview7: {
+             {
                 name:{
                     type: String,
                     default: 'A3 Preview 3',
@@ -191,7 +191,7 @@ const vinylSchema = new mongoose.Schema(
                     default: true,
                 }
             },
-            preview10: {
+             {
                 name:{
                     type: String,
                     default: 'A4 Preview 4',
@@ -207,7 +207,7 @@ const vinylSchema = new mongoose.Schema(
                 }
             },
             // ___________ FACE B_______________
-            preview11: {
+            {
                 name:{
                     type: String,
                     default: 'A1 Preview 1',
@@ -221,7 +221,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-            preview12: {
+           {
                 name:{
                     type: String,
                     default: 'A2 Preview 2',    
@@ -235,7 +235,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-            preview13: {
+           {
                 name:{
                     type: String,
                     default: 'A3 Preview 3',            
@@ -249,7 +249,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-            preview14: {
+            {
                 name:{
                     type: String,
                     default: 'A4 Preview 4',
@@ -264,7 +264,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-            preview15: {
+            {
                 name:{
                     type: String,
                     default: 'A1 Preview 1',
@@ -278,7 +278,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-            preview16: {
+            {
                 name:{
                     type: String,
                     default: 'A2 Preview 2',
@@ -293,7 +293,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-            preview17: {
+            {
                 name:{
                     type: String,
                     default: 'A3 Preview 3',
@@ -308,7 +308,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-            preview18: {
+            {
                 name:{
                     type: String,
                     default: 'A4 Preview 4',
@@ -323,7 +323,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-            preview19: {
+            {
                 name:{
                     type: String,
                     default: 'A3 Preview 3',
@@ -338,7 +338,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-            preview20: {
+            {
                 name:{
                     type: String,
                     default: 'A4 Preview 4',
@@ -353,7 +353,7 @@ const vinylSchema = new mongoose.Schema(
                     default: false,
                 }
             },
-        }
+        ]
     },
     {
         timestamps: true,

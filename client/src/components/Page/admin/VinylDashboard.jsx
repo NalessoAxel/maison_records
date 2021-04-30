@@ -11,7 +11,7 @@ import ModalVinylFormSong from './ModalVinylFormSong'
 const VinylDashboard = (props) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
-    const { products } = props
+    const { products, numberOfPreviews} = props
     const [uniqueVinyl, setuniqueVinyl]= useState({})       
 
     const deleteVinyl = async (id) =>{
@@ -176,7 +176,7 @@ const VinylDashboard = (props) => {
                                                    product={uniqueVinyl}
                                                 />
                                                 <ModalVinylFormSong
-                                                   product={uniqueVinyl}
+                                                   product={uniqueVinyl} numberOfPreviews={numberOfPreviews}
                                                 />
                                    
                                         </div>

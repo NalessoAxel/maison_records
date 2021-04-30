@@ -2,16 +2,14 @@ const VinylModel = require ('../models/vinyl.model');
 const ObjectID = require('mongoose').Types.ObjectId;
 const multer = require('multer');
 
-
 let nameOfFile 
 let numberOfPreviews = 20
 let nameOfFileSong = []
 
-const changenameOfFile = (x) =>{
+const changenameOfFile = () =>{
     let date = new Date()
     let change ="AT"+date.getMinutes()+"TO"+ date.getDate()+"d"+(date.getMonth()+1)+'m'+date.getFullYear()+'y'+Math.floor(Math.random()*1000000);
-    x = change
-    return x
+    return change
 }
 
 // module to create a new reference and create an image to stock in server
@@ -19,17 +17,16 @@ module.exports.addReference = async (req,res) => {
 
  const { product_type, title, artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
 
-    if (image !== "default") {nameOfFile= changenameOfFile(nameOfFile)}
+    if (image !== "default") {nameOfFile= changenameOfFile()}
     else{image == 'default'}
-
+    console.log(audio, "audio tu claquues Jo'")
+    
     for (let i = 0; i < numberOfPreviews; i++ ){
-        if (Object.entries(audio)[i][1].path !== "default") {
-            let fillingWithDumbVariable
-            nameOfFileSong.push({name: Object.entries(audio)[i][1].name, path: changenameOfFile(fillingWithDumbVariable)})           
+        if (audio[i].path !== "default") {
+            nameOfFileSong.push({name: audio[i].name, path: changenameOfFile()})           
         } else {
              nameOfFileSong.push({name: "default", path: "default"})
-            }
-        
+            }   
     }
     
         try {
@@ -45,28 +42,7 @@ module.exports.addReference = async (req,res) => {
             format,
             description,
             image:nameOfFile,
-            audio: {
-                preview1: nameOfFileSong[0],
-                preview2: nameOfFileSong[1],
-                preview3: nameOfFileSong[2],
-                preview4: nameOfFileSong[3],
-                preview5: nameOfFileSong[4],
-                preview6: nameOfFileSong[5],
-                preview7: nameOfFileSong[6],
-                preview8: nameOfFileSong[7],
-                preview9: nameOfFileSong[8],
-                preview10: nameOfFileSong[9],
-                preview11: nameOfFileSong[10],
-                preview12: nameOfFileSong[11],
-                preview13: nameOfFileSong[12],
-                preview14: nameOfFileSong[13],
-                preview15: nameOfFileSong[14],
-                preview16: nameOfFileSong[15],
-                preview17: nameOfFileSong[16],
-                preview18: nameOfFileSong[17],
-                preview19: nameOfFileSong[18],
-                preview20: nameOfFileSong[19],
-            },
+            audio: nameOfFileSong,
             quantity,
             price
             });
@@ -80,8 +56,6 @@ module.exports.addReference = async (req,res) => {
             })
         }
 }
-
-
 
 
 module.exports.getAllVinyls = async (req, res) =>{
@@ -171,7 +145,7 @@ module.exports.updateVinyl = async (req, res)=>{
 
 module.exports.updateVinylImage = async (req, res)=>{
 
-    nameOfFile = changenameOfFile(nameOfFile)
+    nameOfFile = changenameOfFile()
 
     console.log(nameOfFile,"change img")
 
@@ -207,7 +181,7 @@ module.exports.updateVinylSong= async (req, res)=>{
         console.log(Object.entries(req.body)[i][1], "testeur2")
 
         if (Object.entries(req.body)[i][1] == "changeName") {
-            nameOfFileSong[i] = changenameOfFile(nameOfFileSong[i])
+            nameOfFileSong[i] = changenameOfFile()
         } else {
             nameOfFileSong[i] =  nameOfFileSong[i]}
         console.log(nameOfFileSong, "tester resulting namefilesong")
@@ -294,5 +268,5 @@ for (let i = 0; i < numberOfPreviews; i++) {
     })
 }
 
-module.exports.addSong = filePreviewStorageEngines 
+module.exports.addSong = filePreviewStorageEngines
 // filePreviewStorageEngines = [{configMulter1},{configMulter2},{configMulter3},{configMulter4}]

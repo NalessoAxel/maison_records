@@ -88,7 +88,7 @@ const App = () => {
 
 
 const products = allVinyls
-
+const numberOfPreviews = 20
 
     const [ cartItems, setCartItems ] = useState([]) 
 
@@ -125,10 +125,10 @@ const products = allVinyls
     const LayoutUserDetails = () => <Layout><UserDetails/></Layout>
     const LayoutAdminHeader = () => <Layout><AdminHeader/></Layout>
     const LayoutAdminDashboard = () => <Layout><AdminDashboard/></Layout>
-    const LayoutAddReference = () => <Layout><AddReference/></Layout>
+    const LayoutAddReference = () => < Layout > < AddReference numberOfPreviews ={numberOfPreviews} /> </Layout>
     const LayoutAdminOrders = () => <Layout><AdminOrders/></Layout>
     const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
-    const LayoutVynilDashboard = () => <Layout><VinylDashboard products={products}/></Layout>
+    const LayoutVynilDashboard = () => <Layout><VinylDashboard products={products} numberOfPreviews ={numberOfPreviews}/></Layout>
     
     return (
       
