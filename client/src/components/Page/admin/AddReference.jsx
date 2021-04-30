@@ -20,7 +20,7 @@ const AddReference = (props) => {
   }
 
   const [listSongNameHook, setListSongNameHook] = useState(listSongName);
-  const [listOfFilesSongs, setListOfFilesSongs] = useState(listSongName);
+  const [listOfFilesSongs, setListOfFilesSongs] = useState(listSongFiles);
   
   // function for DB -> geré les noms dans la db 
   const fillListSongNameHook = (value, i, type) => {

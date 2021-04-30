@@ -2,7 +2,7 @@ const VinylModel = require ('../models/vinyl.model');
 const ObjectID = require('mongoose').Types.ObjectId;
 const multer = require('multer');
 
-let nameOfFile 
+let nameOfFileImage 
 let numberOfPreviews = 20
 let nameOfFileSong = []
 
@@ -14,11 +14,11 @@ const changenameOfFile = () =>{
 
 // module to create a new reference and create an image to stock in server
 module.exports.addReference = async (req,res) => {
-
+nameOfFileSong = [];
  const { product_type, title, artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
 
-    if (image !== "default") {nameOfFile= changenameOfFile()}
-    else{image == 'default'}
+    if (image !== "default") {nameOfFileImage= changenameOfFile()}
+    else{nameOfFileImage = 'default'}
     console.log(audio, "audio tu claquues Jo'")
     
     for (let i = 0; i < numberOfPreviews; i++ ){
@@ -28,7 +28,6 @@ module.exports.addReference = async (req,res) => {
              nameOfFileSong.push({name: "default", path: "default"})
             }   
     }
-    
         try {
             const vinylCreated = await VinylModel.create({
             product_type, 
@@ -41,7 +40,7 @@ module.exports.addReference = async (req,res) => {
             style,
             format,
             description,
-            image:nameOfFile,
+            image:nameOfFileImage,
             audio: nameOfFileSong,
             quantity,
             price
@@ -145,9 +144,9 @@ module.exports.updateVinyl = async (req, res)=>{
 
 module.exports.updateVinylImage = async (req, res)=>{
 
-    nameOfFile = changenameOfFile()
+    nameOfFileImage = changenameOfFile()
 
-    console.log(nameOfFile,"change img")
+    // console.log(nameOfFile,"change img")
 
     if(!ObjectID.isValid(req.params.id))
     return res.status(400).send('ID unknown : ' + req.params.id)
@@ -156,7 +155,7 @@ module.exports.updateVinylImage = async (req, res)=>{
         await VinylModel.findOneAndUpdate({_id: req.params.id},
             {
                 $set: {
-                    image : nameOfFile   
+                    image : nameOfFileImage   
                 }
             },
             {new: true, upsert: true, setDefaultsOnInsert: true},
@@ -241,7 +240,7 @@ const fileStorageEngine = multer.diskStorage({
         cb(null, "./images");  // send image to images folder
     },
     filename: (req, file, cb) => {
-        cb(null,nameOfFile+".png");
+        cb(null,nameOfFileImage+".png");
     }
 })
 

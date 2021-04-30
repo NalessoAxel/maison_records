@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
@@ -8,32 +8,56 @@ const ModalVinylFormSong = (props) => {
     const { product, numberOfPreviews} = props;
 
 
-const onSubmit = async (formAnswers) => {
-    const previews = [formAnswers.preview1[0], formAnswers.preview2[0], formAnswers.preview3[0], formAnswers.preview4[0]]
-    const routes =   ["uploadSong1", "uploadSong2", "uploadSong3", "uploadSong4"];
-    let path =      [product.audio.preview1.path, product.audio.preview2.path,product.audio.preview3.path,product.audio.preview4.path]
-
-    
- for(let i = 0 ; i < previews.length; i++){
-    if (previews[i] !== undefined){
-        if (path[i] === "default") {
-            path[i]="changeName"
-        } //ChangeName in VinylController
-      } 
+    let listSongName = [];
+    let listSongFiles =[];
+    for (let i = 0; i < numberOfPreviews; i++) {
+      listSongName.push({ name: product.audio[i].name, path: product.audio[i].path });
+      listSongFiles.push("");
     }
-      
-        const res = await axios({
+
+    const [listSongNameHook, setListSongNameHook] = useState(listSongName);
+    const [listOfFilesSongs, setListOfFilesSongs] = useState(listSongFiles); // array with files = multer
+    
+    // function for DB -> geré les noms dans la db 
+    const fillListSongNameHook = (value, i, type) => {
+        const newValues = [...listSongNameHook]
+        if (type == "name"){newValues[i].name = value}
+        else {newValues[i].path = "changeName"}
+        return setListSongNameHook(newValues)
+      }
+
+      // function for multer -> géré l'envoi de notre file 
+    const songToMulter = (file, i)=>{
+        const newValues = [...listOfFilesSongs];
+        newValues[i] = file
+        return setListOfFilesSongs(newValues)
+    }
+
+    console.log('listOfFilesSongs:', listOfFilesSongs)
+    console.log('listSongNameHook:', listSongNameHook)
+    
+
+  const onSubmit = async (formAnswers) => {
+    const previews = [formAnswers.preview1[0], formAnswers.preview2[0], formAnswers.preview3[0], formAnswers.preview4[0]]
+    
+    let routes =   [];
+    for (let i =0; i <numberOfPreviews; i++){
+      routes.push("uploadSong"+(i+1))
+    }
+    // let path =      [product.audio.preview1.path, product.audio.preview2.path,product.audio.preview3.path,product.audio.preview4.path]
+
+  
+      const res = await axios({
         method: "patch",
-        url: `${process.env.REACT_APP_API_URL}api/vinyl/updateSong/` + product._id,
+        url:
+          `${process.env.REACT_APP_API_URL}api/vinyl/updateSong/` + product._id,
         withCredentials: true,
-        data: path,  
-    }) 
+        data: listSongNameHook,
+      }); 
 
-
- 
-      for(let i = 0 ; i < previews.length; i++){
+      for(let i = 0 ; i < numberOfPreviews; i++){
         const songToUpload = new FormData();
-        songToUpload.append("song", previews[i])
+        songToUpload.append("song", listOfFilesSongs[i])
         const resUploadAudio = await axios({
           method: "post",
           url: `${process.env.REACT_APP_API_URL}api/vinyl/${routes[i]}/`,
@@ -55,43 +79,25 @@ const onSubmit = async (formAnswers) => {
          
         <div >
           <form onSubmit={handleSubmit(onSubmit)}>
-      
-            <div>{product.audio.preview1.name}</div>
-
-            <input
-              name="preview1"
-              type="file"
-              ref={register({
-              })}   
-            />
-
-         
-            <div>{product.audio.preview2.name}</div>
-            <input 
-              name="preview2"
-              type="file"
-              ref={register({
-              })}
-            />
-            <div>{product.audio.preview3.name}</div>
-
-            <input
-              name="preview3"
-              type="file"
-              placeholder="test"
-              ref={register({
-              })}
-            />
-            <div>
-            <div>{product.audio.preview4.name}</div>
-
-            <input
-              name="preview4"
-              type="file"
-              ref={register({
-              })}
-            />
-            </div>
+            {listSongName.map((x,i)=> { 
+              return (<>
+                  <input
+                    name="previewName"
+                    onChange={e=>{fillListSongNameHook(e.target.value, i, "name")}}
+                    type="text"
+                    placeholder={product.audio[i].name}
+                    ref={register({ })}
+                    />
+                  <input
+                    name='previewPath'
+                    onChange={e=>{fillListSongNameHook(e.target.files[0].name, i, "path"); songToMulter(e.target.files[0], i)}}
+                    type="file"
+                    ref={register({
+                      // required: true
+                    })} 
+                    />
+              </>)
+            })}
 
             <br />
             <input type="submit" value="Upload song"/>
