@@ -1,17 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {BrowserRouter as Router,Route, Link } from 'react-router-dom'
 
 const Vinyl = (props) => {
     const {product, onAdd} = props;
-    // console.log(onAdd)
-
+    
     return (
         <>
                         <div className="tile">
                             <div className="hover-effect">
-                                <img src={product.image} alt={product.name}></img>
+                                < img src = {`${process.env.REACT_APP_API_URL}images/${product.image}.png`} alt="VinylImage"></img>
                                     <div class="overlay">
-                                        <h2>Description of the records when hove the img</h2>
+                                        <h2>{product.description}</h2>
                                     </div>
                                     <div className="infos-record">
                                     <div className="artistAndTitlePrice">
@@ -20,18 +19,20 @@ const Vinyl = (props) => {
                                             </span>
                                         <p>
                                         <span>
-                                            <span>{product.subTitle}</span>
+                                            <span>{product.artist_name}</span>
                                         </span>   
                                         </p>
                                         <p>
                                         <span>
-                                            <span>{product.price}</span>
+                                            <span>{product.price} €</span>
                                         </span>  
                                     </p>
                                 </div>
+                                            
                             <span className="button">
-                                        <Link to='/ReleaseDetails'>
-                                        <button className="showMore" >Show More</button>
+                                        <Link to = {'/ReleaseDetails/'+ product._id}> 
+                                        <button className="showMore">Show More</button>
+                                        
                                         </Link>
                                         <button onClick={() => onAdd(product)} className="addToCart">Add to cart</button>
                                     </span>

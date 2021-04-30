@@ -25,6 +25,7 @@ import AdminDashboard from './components/Page/admin/AdminDashboard'
 import AddReference from './components/Page/admin/AddReference'
 import AdminOrders from './components/Page/admin/AdminOrders'
 import AdminVisitors from './components/Page/admin/AdminVisitors'
+import VinylDashboard from './components/Page/admin/VinylDashboard'
 
 // import TermAndCondition from './component/Footer/TermAndCondition'
 // import About from './component/Footer/About'
@@ -34,7 +35,7 @@ import AdminVisitors from './components/Page/admin/AdminVisitors'
 import './scss/main.scss'
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import data from './components/data/recordsData'
+// import AllVinyls from './components/data/recordsData'
 
 
 
@@ -45,24 +46,50 @@ const App = () => {
 
     const [uid,setUid] = useState(null);
     const [loading, setLoading] =  useState(true);
+    
 
   useEffect(()=>{  
     const fetchToken = async () =>{
-      
-      const res = await axios({
-        method: "get",
-        url: `${process.env.REACT_APP_API_URL}jwtid`,
-        withCredentials: true
-      })
-        setUid(res.data);
-        setLoading(false);
-      // .catch((err)=>console.log("No token"))
+      try{
+        const res = await axios({
+          method: "get",
+          url: `${process.env.REACT_APP_API_URL}jwtid`,
+          withCredentials: true
+        })
+          setUid(res.data);
+          setLoading(false);
+      }catch(err){
+        console.log("No token", err);
+      }
     };
     fetchToken();
   }, []); // no callback otherwise useEffect will loop [we take admin status]
 
 
-    const { products } = data
+    const [allVinyls, setAllVinyls] = useState({})
+    const [loadingVinyls, setLoadingVinyls] =  useState(true);
+
+  useEffect(()=>{
+    const getAllVinyls = async () => {
+      try{
+        const res = await axios ({
+          method: "get",
+          url: `${process.env.REACT_APP_API_URL}api/vinyl/New/`,
+          withCredentials: true, 
+      });
+      setAllVinyls(res.data); 
+      setLoadingVinyls(false);
+      } catch (err){
+        console.log(err);
+      }
+    }
+    getAllVinyls()
+  }, []);
+
+
+const products = allVinyls
+
+
     const [ cartItems, setCartItems ] = useState([]) 
 
     const onAdd = (product) => {
@@ -91,7 +118,7 @@ const App = () => {
     const LayoutLive = () => <Layout><Live/></Layout>
     const LayoutUserRegisterPage = () => <Layout><UserRegisterPage/></Layout>
     const LayoutAnimations = () => <Layout><Animations/></Layout>
-    const LayoutReleaseDetails = () => <Layout><ReleaseDetails/></Layout>
+    const LayoutReleaseDetails = () => < Layout > < ReleaseDetails products={products} onAdd={onAdd}/> </Layout>
     const LayoutCart = () => <Layout><Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} /></Layout>
     const LayoutOrders = () => <Layout><Orders /></Layout>
     const LayoutAdress = () => <Layout><Adress /></Layout>
@@ -101,6 +128,7 @@ const App = () => {
     const LayoutAddReference = () => <Layout><AddReference/></Layout>
     const LayoutAdminOrders = () => <Layout><AdminOrders/></Layout>
     const LayoutAdminVisitors = () => <Layout><AdminVisitors/></Layout>
+    const LayoutVynilDashboard = () => <Layout><VinylDashboard products={products}/></Layout>
     
     return (
       
@@ -114,6 +142,9 @@ const App = () => {
         <Router>
             
             <Switch>
+        {(loadingVinyls) ? (
+          <h1>Loading...</h1>
+        ):(<>
             <Route path="/" exact component={Home} />
             <Route path="/New" exact component={LayoutNew} />
             <Route path="/Animations" exact component={LayoutAnimations} />
@@ -124,15 +155,8 @@ const App = () => {
             <Route path="/Live"  exact component={LayoutLive} />
             <Route path="/UserRegisterPage" exact component={LayoutUserRegisterPage} />
             <Route path="/LogIn"  exact component={LayoutUserRegisterPage} />
-            <>
-      
-      {(loading) ? (
-        <h1>Loading...</h1>
-        ):(
-          
-          <>
+            <Route path="/ReleaseDetails/:id"  exact component={LayoutReleaseDetails} />
             <Route path="/Profile"  exact component={LayoutAdress} />
-            <Route path="/ReleaseDetails"  exact component={LayoutReleaseDetails} />
             <Route path="/Cart"  exact component={LayoutCart} />
             <Route path="/Orders" exact component={LayoutOrders} />
             <Route path="/Adress" exact component={LayoutAdress} />
@@ -143,10 +167,10 @@ const App = () => {
             <Route path="/AddReference" exact component={LayoutAddReference} />
             <Route path="/AdminOrders" exact component={LayoutAdminOrders} />
             <Route path="/AdminVisitors" exact component={LayoutAdminVisitors} />
-            
+            <Route path="/VinylDashboard" exact component={LayoutVynilDashboard} />
             </>
         )}
-      </>
+    
             </Switch> 
             
             

@@ -1,17 +1,66 @@
-# Showcase Website: Maison Records
-## What is this project about ?
+# Pour afficher les images
 
-We were contacted by *Maison Records* to make their showcase website. Through this project, we implemented an interface for any user to browse through both new and second hand records sold by Maison Records. Moreover, we included a restricted interface for the administrator and registered users. From there, the administrator is able to check his inventory, add new records, track orders, see how sales fluctuate with time, and more. Registered users are able to follow their orders, check their receipts, etc.
+## 1. faire un appel dans server.js
 
-## What did we use ?
-- React.js
-- Sass
-- Node.js
-- Express.js
-- MongoDB/Mongoose
-- Axios
-- REST APIs
-- Postman
-- Heroku 
-- etc.
 
+-  Haut de page     
+
+        app.use('/images', express.static('images'))
+
+ ## 2. Créer un module dans le Controllers qui stock l'image dans le server
+
+- Haut de page
+   
+         const multer = require('multer');
+
+
+- On créer la function qui va récupérer l'image, la stocker, et lui donner un title 
+
+        const fileStorageEngine = multer.diskStorage({  
+        destination: (req, file, cb) => { 
+            cb(null, "./images");  // send image to images folder
+        },
+        filename: (req, file, cb) => {
+            cb(null,nameOfImage+".png");
+        }
+        })
+
+> Notre fichier ira dans un répertoire que nous avons créé  /images
+
+- Module export
+
+        module.exports.addImage = multer({
+        storage: fileStorageEngine
+        })
+
+## 3. On créer une route dans notre models
+
+- Création de la route
+
+        router.post('/upload', vinylController.addImage.single("image"), (req,res) => {
+        res.send("single file upload success")
+        })
+        
+## 4. Il nous reste plus qu'a faire un fetch coté vue
+
+- Fetch post
+
+        const onSubmit = async (formAnswers) => {           
+        try {
+
+        const imageToUpload = new FormData();
+        imageToUpload.append("image",formAnswers.image[0])
+
+        const resUploadImage = await axios({
+            method: "post",
+            url: `${process.env.REACT_APP_API_URL}api/vinyl/upload/`,
+            withCredentials: true,
+            headers: { "Content-Type": "multipart/form-data" },
+            data: imageToUpload
+        });
+            
+        } catch (err) {
+            console.log(err);
+        }
+        window.location = ''
+        }
