@@ -46,7 +46,9 @@ const App = () => {
 
     const [uid,setUid] = useState(null);
     const [loading, setLoading] =  useState(true);
-    
+    const [numberOfPreviews, setNumberOfPreviews] = useState();
+    const [allVinyls, setAllVinyls] = useState({})
+    const [loadingVinyls, setLoadingVinyls] =  useState(true);
 
   useEffect(()=>{  
     const fetchToken = async () =>{
@@ -66,9 +68,6 @@ const App = () => {
   }, []); // no callback otherwise useEffect will loop [we take admin status]
 
 
-    const [allVinyls, setAllVinyls] = useState({})
-    const [loadingVinyls, setLoadingVinyls] =  useState(true);
-
   useEffect(()=>{
     const getAllVinyls = async () => {
       try{
@@ -86,9 +85,25 @@ const App = () => {
     getAllVinyls()
   }, []);
 
+  
+  useEffect(() => {
+        const getNumberOfPreviews = async () => {
+          try {
+            const res = await axios({
+              method: "get",
+              url: `${process.env.REACT_APP_API_URL}api/vinyl/numberOfPreviews`,
+              withCredentials: true,
+            });
+            setNumberOfPreviews(res.data);
+          } catch (err) {
+            console.log(err);
+          }
+        }
+        getNumberOfPreviews()
+      }, []);
+
 
 const products = allVinyls
-const numberOfPreviews = 20
 
     const [ cartItems, setCartItems ] = useState([]) 
 

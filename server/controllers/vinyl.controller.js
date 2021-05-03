@@ -12,6 +12,10 @@ const changenameOfFile = () =>{
     return change
 }
 
+module.exports.numberOfPreviews = async (req, res) => {
+     res.status(200).json(numberOfPreviews)
+}
+
 // module to create a new reference and create an image to stock in server
 module.exports.addReference = async (req,res) => {
 nameOfFileSong = [];
@@ -143,10 +147,7 @@ module.exports.updateVinyl = async (req, res)=>{
 } 
 
 module.exports.updateVinylImage = async (req, res)=>{
-
     nameOfFileImage = changenameOfFile()
-
-    // console.log(nameOfFile,"change img")
 
     if(!ObjectID.isValid(req.params.id))
     return res.status(400).send('ID unknown : ' + req.params.id)
@@ -187,8 +188,7 @@ for (let i = 0; i < numberOfPreviews; i++) {
 try{
         await VinylModel.findOneAndUpdate({_id: req.params.id},
             {
-                $set: {audio:nameOfFileSong   
-                }
+                $set: {audio:nameOfFileSong}
             },
             {new: true, upsert: true, setDefaultsOnInsert: true},
             (err, docs)=>{
