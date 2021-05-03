@@ -64,153 +64,106 @@ const vinylSchema = new mongoose.Schema(
             {
                 name:{
                     type: String,
-                    default: 'A1 Preview 1',
                 },
                 path: {
                     type: String,
                     default:'default',
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
             },
            {
                 name:{
                     type: String,
-                    default: 'A2 Preview 2',
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
+                
             },
             {
                 name:{
                     type: String,
-                    default: 'A3 Preview 3',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
+                
             },
              {
                 name:{
-                    type: String,
-                    default: 'A4 Preview 4',  
+                    type: String, 
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
+                
             },
              {
                 name:{
                     type: String,
-                    default: 'A1 Preview 1',
                 },
                 path: {
                     type: String,
                     default:'default',
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
+                
             },
              {
                 name:{
                     type: String,
-                    default: 'A2 Preview 2',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
+                
             },
              {
                 name:{
                     type: String,
-                    default: 'A3 Preview 3',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
+                
             },
              {
                 name:{
                     type: String,
-                    default: 'A4 Preview 4',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
+                
             },
              {
                 name:{
                     type: String,
-                    default: 'A3 Preview 3',
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
+                
             },
              {
                 name:{
                     type: String,
-                    default: 'A4 Preview 4',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: true,
-                }
+                
             },
             // ___________ FACE B_______________
             {
                 name:{
                     type: String,
-                    default: 'A1 Preview 1',
                 },
                 path: {
                     type: String,
@@ -223,8 +176,7 @@ const vinylSchema = new mongoose.Schema(
             },
            {
                 name:{
-                    type: String,
-                    default: 'A2 Preview 2',    
+                    type: String,   
                 },
                 path: {
                     type: String,
@@ -237,121 +189,75 @@ const vinylSchema = new mongoose.Schema(
             },
            {
                 name:{
-                    type: String,
-                    default: 'A3 Preview 3',            
+                    type: String,            
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
             },
             {
                 name:{
                     type: String,
-                    default: 'A4 Preview 4',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
             },
             {
                 name:{
                     type: String,
-                    default: 'A1 Preview 1',
                 },
                 path: {
                     type: String,
                     default:'default',
                 },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
             },
             {
                 name:{
-                    type: String,
-                    default: 'A2 Preview 2',
-                    
+                    type: String,   
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
             },
             {
                 name:{
                     type: String,
-                    default: 'A3 Preview 3',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
             },
             {
                 name:{
                     type: String,
-                    default: 'A4 Preview 4',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
             },
             {
                 name:{
                     type: String,
-                    default: 'A3 Preview 3',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
             },
             {
                 name:{
                     type: String,
-                    default: 'A4 Preview 4',
-                    
                 },
                 path: {
                     type: String,
                     default:'default'
                 },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
             },
         ]
     },

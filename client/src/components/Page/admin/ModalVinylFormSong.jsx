@@ -7,9 +7,9 @@ const ModalVinylFormSong = (props) => {
     const { register, handleSubmit, errors } = useForm();
     const { product, numberOfPreviews} = props;
 
-
     let listSongName = [];
     let listSongFiles =[];
+   
     for (let i = 0; i < numberOfPreviews; i++) {
       listSongName.push({ name: product.audio[i].name, path: product.audio[i].path });
       listSongFiles.push("");
@@ -49,8 +49,7 @@ const ModalVinylFormSong = (props) => {
   
       const res = await axios({
         method: "patch",
-        url:
-          `${process.env.REACT_APP_API_URL}api/vinyl/updateSong/` + product._id,
+        url:`${process.env.REACT_APP_API_URL}api/vinyl/updateSong/` + product._id,
         withCredentials: true,
         data: listSongNameHook,
       }); 

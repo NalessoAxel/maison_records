@@ -196,11 +196,10 @@ const AddReference = (props) => {
                     // required: true
                   })}
                 />
-                <h2>Face A</h2>
+                <h2>Previews of the vinyl</h2>
                 {listSongName.map((x, i)=>{ // obligation de deux arguments pour le map, x on ne l'utilise pas
                     return (
                       <>
-                        {i == 10 ? (<><hr/><h2>Face B</h2></>):(<></>)}
                         <input
                         name="previewName"
                         onChange={e=>{fillListSongNameHook(e.target.value, i, "name")}}

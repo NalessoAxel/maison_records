@@ -142,7 +142,6 @@ module.exports.updateVinyl = async (req, res)=>{
             return res.status(403).json({message : 'Update error', err})
         }
     }
-    
     request();
 } 
 
@@ -170,7 +169,6 @@ module.exports.updateVinylImage = async (req, res)=>{
     } catch (err) {
         return res.status(403).json({message : 'Update image error', err})
     }
-    
 }
 
 //Song Update Name/Path In DB
@@ -201,7 +199,6 @@ try{
     } catch (err) {
         return res.status(403).json({message : 'Update image error', err})
     }
-    
 }
 
 
@@ -219,8 +216,8 @@ module.exports.addImage = multer({
     storage: fileStorageEngine
 })
 
-// SONGS STORAGE
 
+// SONGS STORAGE
 let filePreviewStorageEngines = [];
 for (let i = 0; i < numberOfPreviews; i++) {
     filePreviewStorageEngines.push({ multerConfig : multer({ storage: multer.diskStorage({
