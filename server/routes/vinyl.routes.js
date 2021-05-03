@@ -14,13 +14,6 @@ router.post('/upload', vinylController.addImage.single("image"), (req,res) => {
 })
 router.patch('/updateImage/:id', vinylController.updateVinylImage)
 
-// router.patch('/updateImage/:id', vinylController.addImage.single("image"), (req,res) => {
-    //     res.send("single file update success")
-    // })
-    // vinylController.addImage = multer in vynilController
-    //single image = search one file with image name
-    
-
     
 // ROUTE FOR SONGS
 router.patch('/updateSong/:id', vinylController.updateVinylSong)

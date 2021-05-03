@@ -38,11 +38,11 @@ const ModalVinylFormSong = (props) => {
     
 
   const onSubmit = async (formAnswers) => {
-    const previews = [formAnswers.preview1[0], formAnswers.preview2[0], formAnswers.preview3[0], formAnswers.preview4[0]]
-    
+    // const previews = [formAnswers.preview1[0], formAnswers.preview2[0], formAnswers.preview3[0], formAnswers.preview4[0]]
+    // 
     let routes =   [];
-    for (let i =0; i <numberOfPreviews; i++){
-      routes.push("uploadSong"+(i+1))
+    for (let i =1; i <=numberOfPreviews; i++){
+      routes.push("uploadSong"+i)
     }
     // let path =      [product.audio.preview1.path, product.audio.preview2.path,product.audio.preview3.path,product.audio.preview4.path]
 

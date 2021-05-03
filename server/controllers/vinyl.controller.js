@@ -172,51 +172,22 @@ module.exports.updateVinylImage = async (req, res)=>{
     
 }
 
+//Song Update Name/Path In DB
 module.exports.updateVinylSong= async (req, res)=>{
+nameOfFileSong = [];
+ if (!ObjectID.isValid(req.params.id))
+     return res.status(400).send('ID unknown : ' + req.params.id)
 
-    for (let i = 0; i < numberOfPreviews; i++) {
-
-        // console.log(Object.entries(req.body)[i], "tester")
-        console.log(Object.entries(req.body)[i][1], "testeur2")
-
-        if (Object.entries(req.body)[i][1] == "changeName") {
-            nameOfFileSong[i] = changenameOfFile()
-        } else {
-            nameOfFileSong[i] =  nameOfFileSong[i]}
-        console.log(nameOfFileSong, "tester resulting namefilesong")
+for (let i = 0; i < numberOfPreviews; i++) {
+        if (req.body[i].path == "changeName") {
+            nameOfFileSong.push({name: req.body[i].name, path: changenameOfFile()})
+        } else { nameOfFileSong.push({name: req.body[i].name,path: req.body[i].path})}
     } 
-
-
-    if(!ObjectID.isValid(req.params.id))
-    return res.status(400).send('ID unknown : ' + req.params.id)
     
-    try{
+try{
         await VinylModel.findOneAndUpdate({_id: req.params.id},
             {
-                $set: {
-                    audio: {
-                        preview1:  {path: nameOfFileSong[0]},
-                        preview2:  {path: nameOfFileSong[1]},
-                        preview3:  {path: nameOfFileSong[2]},
-                        preview4:  {path: nameOfFileSong[3]},
-                        preview5:  {path: nameOfFileSong[4]},
-                        preview6:  {path: nameOfFileSong[5]},
-                        preview7:  {path: nameOfFileSong[6]},
-                        preview8:  {path: nameOfFileSong[7]},
-                        preview9:  {path: nameOfFileSong[8]},
-                        preview10: {path: nameOfFileSong[9]},
-                        preview11: {path: nameOfFileSong[10]},
-                        preview12: {path: nameOfFileSong[11]},
-                        preview13: {path: nameOfFileSong[12]},
-                        preview14: {path: nameOfFileSong[13]},
-                        preview15: {path: nameOfFileSong[14]},
-                        preview16: {path: nameOfFileSong[15]},
-                        preview17: {path: nameOfFileSong[16]},
-                        preview17: {path: nameOfFileSong[17]},
-                        preview18: {path: nameOfFileSong[18]},
-                        preview19: {path: nameOfFileSong[19]},
-                        preview20: {path: nameOfFileSong[20]}
-                    }, 
+                $set: {audio:nameOfFileSong   
                 }
             },
             {new: true, upsert: true, setDefaultsOnInsert: true},
@@ -247,7 +218,6 @@ const fileStorageEngine = multer.diskStorage({
 module.exports.addImage = multer({
     storage: fileStorageEngine
 })
-
 
 // SONGS STORAGE
 
