@@ -3,13 +3,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 50px;
+    padding-bottom: 180px;
+    @include media ("<=phone") {
+        padding-bottom: 40px;
+        }
+    @include media ("<=tablet") {
+        padding-bottom: 40px;
+        }
+   
     .formWrapper {
         display: flex;
+        
         form {
             display: flex;
             flex-direction: row;
             padding: 30px;
+            @include media ("<=phone") {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                
+                }
+            @include media ("<=tablet") {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    
+                }
             
             input {
                 padding: 10px;
@@ -19,10 +42,13 @@
               display: flex;
               flex-direction: column;
               margin-right: 20px;
+              
+              
           }
           .containerLeft {
               display: flex;
               flex-direction: column;
+              margin-right: 20px;
 
           }
         }
@@ -31,6 +57,13 @@
         text-align: center;
         padding: 10px;
         width: 300px;
-       
+        @include media ("<=phone") {
+           margin-bottom: 40px;
+           margin-right: 20px;
+            }
+        @include media ("<=tablet") {
+            margin-bottom: 60px;
+            margin-right: 20px;
     }
+}
 }

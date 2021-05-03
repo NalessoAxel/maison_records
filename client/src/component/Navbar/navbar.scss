@@ -8,68 +8,209 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .logo {
-      img {
-        margin: 0 50px;
-        background: $greymiddle;
-        height: 90px;
-        width: 90px;
+    .logo-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logo {
+        width: 75px;
+        height: 75px;
+        margin-left: 24px;
       }
     }
-    .link {
-          ul {
+    .nav-options {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
             list-style: none;
-                    li {
-                      font-size: 20px;
-                      margin-left: 24px;
-                      color: black;
-                      font-weight: $bold;
-                      position: relative;
-                      list-style: none;
-                      &::after {
-                          position: absolute;
-                          content: "";
-                          width: 100%;
-                          height: 3px;
-                          top: 100%;
-                          left: 0;
-                          background: #ffed00;
-                          transition: transform 0.5s;
-                          transform: scaleX(0);
-                          transform-origin: right;
-                      }
-                      &:hover::after {
-                          transform: scaleX(1);
-                          transform-origin: left;
-                }
-                @media screen and (min-width: 1200px) {
-                  font-size: 20px;
-                }
-                a{
+           
+            .options {
+              font-size: 20px;
+              margin-left: 24px;
+              color: black;
+              font-weight: $bold;
+              position: relative;
+              list-style: none;
+                  &::after {
+                    position: absolute;
+                    content: "";
+                    width: 100%;
+                    height: 3px;
+                    top: 100%;
+                    left: 0;
+                    background: #ffed00;
+                    transition: transform 0.5s;
+                    transform: scaleX(0);
+                    transform-origin: right;
+                  }
+                  &:hover::after {
+                    transform: scaleX(1);
+                    transform-origin: left;
+                  }
+                a {
                   text-decoration: none;  
-                  color: black; 
-              }
-            }          
-          }
-        }
-        .cart {
-          display: flex;
-          justify-content: flex-end;
-          
-          i {
-            display: flex;
-            flex-direction: row;
-            margin-right: 15px;
-          }
-          
-          #cart {
-            font-size: 30px;
-            margin-right: 50px;
-          }
-        }
-        }
+                  color: black;
+                }
+              }     
+    }
+    .cart {
+      display: flex;
+      margin-right: 30px;
+    }
+    // .iconNav {
+    //   display: none;
+    // }
+  }
+  @media (max-width: 375px) {
+    
+
+    .log {
+      display: flex;
+      justify-content: flex-end;
+      // margin-right: 30px;
+    }
+    .logo-container {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+    .logo {
+      width: 45px;
+      height: 45px;
+    }
+    .nav-options {
+      display: flex;
+      width: 100%;
+      height: 350px;
+      position: absolute;
+      top: 80px;
+      left: -100%;
+      opacity: 0;
+      transition: all 0.5s ease;
+      flex-direction: column;
+      list-style-type: none;
+      
+    }
+    .nav-options.active {
+      background: $greymiddle;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+      align-content: center;
+      padding-left: 0px;
+      flex-direction: column;
+    }
   
+    .menu-icon {
+      width: 45px;
+      height: 45px;
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30vw;
+      padding: 30px 0px;
+    }
+    
+    .signin-up {
+      display: none;
+    }
+    .iconNav {
+      display: block;
+      margin-right: 20px;
+    }
+  }
+  
+  
+  @media (max-width: 768px) {
+    
+    .header {
+      padding: 0px 10px;
+    }
+    
+    .logo-nav {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+    .log span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 5px;
+    }
+    .cart {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: row;
+      margin: 10px;
+    }
+    .logo {
+      width: 45px;
+      height: 45px;
+    }
+    .nav-options {
+      display: flex;
+      width: 100%;
+      height: 350px;
+      position: absolute;
+      top: 80px;
+      left: -100%;
+      opacity: 0;
+      transition: all 0.5s ease;
+      flex-direction: column;
+      list-style-type: none;
+      grid-gap: 0px;
+    }
+    .nav-options.active {
+      background: $greymiddle;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+      align-content: center;
+      padding-left: 0px;
+      flex-direction: column;
+      height: 90vh;
+    }
+  
+    .menu-icon {
+      width: 45px;
+      height: 45px;
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 10vw;
+      padding: 30px 0px;
+    }
+    .sign-up {
+      background: rgb(222, 9, 241);
+      border-radius: 3px;
+      color: white;
+      padding: 20px 0px;
+      width: 80%;
+      align-self: center;
+      border-radius: 3px;
+    }
+  
+    .signin-up {
+      display: none;
+    }
+    .iconNav i {
+      display: block;
+      margin-right: 20px;
+    } 
+  }
+ 
+

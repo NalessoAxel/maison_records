@@ -1,5 +1,13 @@
 #summaryShipping {
     margin-right: 50px;
+    @include media ("<=phone") {
+        margin: 0;
+        
+        }
+    @include media ("<=tablet") {
+        margin: 0;
+            
+        }
     #summary {
         h2 {
             border-bottom: 2px solid black;

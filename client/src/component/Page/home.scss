@@ -16,10 +16,20 @@
         transition-duration: 1s;
         will-change: transform;
         filter: invert(100%);
+        @include media ("<=phone") {
+            width: 200px;
+            height: 200px;
+            
+          }
             &:hover {
                 filter: invert(0);
                 width: 400px;
                 height: 400px;
+                @include media ("<=phone") {
+                    width: 270px;
+                    height: 270px;
+                    
+                  }
                 
             }
             @include mobile {

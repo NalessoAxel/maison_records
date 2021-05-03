@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const AdminHeader = () => {
     return (
         <>
-            <div className="userHeader">
+            <div className="adminHeader">
                 <h1>Hello Admin!</h1>
                    <div className="left">
                     <Link to="/AdminDashboard">Dashboard</Link>

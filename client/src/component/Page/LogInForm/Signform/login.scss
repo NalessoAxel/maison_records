@@ -9,6 +9,12 @@
     .loginGroup {
         display: flex;
         flex-direction: column;
+        @include media ("<=phone") {
+            
+          }
+          @include media ("<=tablet") {
+             
+          }
 
         label {
             display: flex;
@@ -21,6 +27,12 @@
             width: 400px;
             font-size: 15px;
             border: 1px solid $greymiddle;
+            @include media ("<=phone") {
+            width: 300px;
+            }
+            @include media ("<=tablet") {
+               
+            }
         }
     }
     .loginCheckbox {

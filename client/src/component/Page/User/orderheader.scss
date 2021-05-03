@@ -10,13 +10,26 @@
     
 }
 .orderItem {
-    
     display: grid;
-    grid-template-columns: 0.7fr 0.8fr 0.9fr 1.2fr 1.4fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 0.7fr 1fr 0.9fr 1.2fr 1.4fr 1fr;
+    grid-template-rows: 1fr 1fr;
     margin: 0 50px;
     align-items: center;
     padding: 10px 0;
+    @include media ("<=phone") {
+        
+        
+        }
+    @include media ("<=tablet") {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr 1.9fr 1.2fr 1.4fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        
+        
+        
+            
+        }
+
     .justify {
         margin: 20px 0;
         padding-bottom: 10px;

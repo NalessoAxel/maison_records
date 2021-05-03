@@ -1,9 +1,27 @@
 .adminWrapper {
     display: flex;
-    margin: 0 50px;
+    margin: 0;
     justify-content: center;
+    @include media ("<=phone") {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 50px;
+        }
+    @include media ("<=tablet") {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 100px;
+        }
     
     img {
         padding: 30px;
+        @include media ("<=phone") {
+            padding: 10px;
+            }
+            @include media ("<=tablet") {
+                padding: 20px;
+            }
     }
 }

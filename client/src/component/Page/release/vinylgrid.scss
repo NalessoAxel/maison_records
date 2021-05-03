@@ -2,15 +2,28 @@
 
 .header-container {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   margin: 50px 0;
+  @include media ("<=phone") {
+    justify-content: center; 
+    
+  }
+  @include media ("<=tablet") {
+    justify-content: center; 
+    
+  }
   
   h2 {
     margin: 0 50px;
     text-transform: uppercase;
     border-bottom: 2px solid $yellow;
     font-size: 32px;
+    @include media ("<=phone") {
+      font-size: 24px;
+      margin: 0; 
+      justify-content: center; 
+      
+    }
   }
 }
 
@@ -18,6 +31,13 @@
   max-width: 100%;
   max-height: 100%;
   margin: 0 50px;
+  @include media ("<=phone") {
+    margin: 0 10px;
+    
+  }@include media ("<=tablet") {
+    margin: 0 10px;
+    
+  }
   
   .playlist {
     margin-bottom: 2.3rem;
@@ -29,9 +49,37 @@
     grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 5.3rem;
     grid-column-gap: 3.9rem;
+    @include media ("<=phone") {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 50px;
+      
+    }
+    @include media ("<=tablet") {
+      display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 2.3rem;
+    grid-column-gap: 1.9rem;
+      padding-bottom: 90px;
+    }
     .tile {
       display: flex;
       flex-direction: column;
+      @include media ("<=phone") {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        
+      }
+      @include media ("<=tablet") {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+  
+      }
+      }
     }
     
   }
@@ -39,16 +87,38 @@
     position: relative;
     border: 2px solid #9A9999;
     width: 100%;
+    padding-bottom: 30px;
+    @include media ("<=phone") {
+      width: 150px;
+      height: 150px;
+      
+      
+      
+    }
+    
   }
+  
   .infos-record{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
+    @include media ("<=phone") {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+    }
+    @include media ("<=tablet") {
+      
 
-  .artistAndTitlePrice {
+    }
+
+  .artistAndTitlePrice span {
     display: flex;
     flex-direction: column;
+    
+    
   
     p{
       margin: 3px;
@@ -61,8 +131,7 @@
       align-items: center;
       width: 100px;
       height: 25px;
-      margin: 3px;
-      
+      margin: 3px;      
       font-size: 12px;
       outline: none;
       &.showMore {
@@ -133,4 +202,3 @@
     
 }
   
-} 

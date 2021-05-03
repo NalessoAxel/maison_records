@@ -40,14 +40,14 @@ const SummaryShipping = (props) => {
                     <h2>Delivery option</h2>
                     <form>
                         <div id="shippingAdress">
-                            <div className="option">
+                            <div className="cart-option">
                                 <label>
                                     <input type="radio" name="shippingOption" value="adress" checked />
                                     Home delivery
                                 </label>
                             </div>
                         </div>
-                        <div className="option">
+                        <div className="cart-option">
                                 <label>
                                     <input type="radio" name="shippingOption" value="collect"  />
                                     I collect in store

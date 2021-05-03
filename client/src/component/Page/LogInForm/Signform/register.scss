@@ -4,8 +4,15 @@
     justify-content: center;
     align-items: flex-start;
     margin: 0 30px;
+    
     h1 {
         padding-bottom: 20px;
+        @include media ("<=phone") {
+            margin-top: 30px;
+            }
+            @include media ("<=tablet") {
+                margin-top: 30px;
+            }
     }
     .userCreate {
         display: flex;
@@ -21,6 +28,12 @@
             width: 400px;
             font-size: 15px;
             border: 1px solid $greymiddle;
+            @include media ("<=phone") {
+                width: 300px;
+                }
+                @include media ("<=tablet") {
+                   
+                }
         }
     }
 }

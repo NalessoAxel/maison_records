@@ -1,6 +1,8 @@
 @import './function.scss';
 @import './animations.scss';
 @import './reset.scss';
+@import './breakpoints.scss';
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 @import '../component/Footer/footer.scss';
@@ -21,20 +23,36 @@
 @import '../component/Page/LogInForm/Signform/login.scss';
 @import '../component/Page/User/orderheader.scss';
 @import '../component/Page/User/useradress.scss';
+@import '../component/Page/User/userOrders.scss';
 @import '../component/Page/User/Modal/modal.scss';
 @import '../component/Page/User/Modal/ModalBilling/modalbilling.scss';
 @import '../component/Page/User/userdetails.scss';
+@import '../component/Page/User/userheader.scss';
 @import '../component/Page/admin/admindashboard.scss';
 @import '../component/Page/admin/addreference.scss';
 @import '../component/Page/admin/adminvistors.scss';
 @import '../component/Page/admin/adminorders.scss';
+@import '../component/Page/admin/adminheader.scss';
 @import '../component/Page/User/Modal/ModalShipping/modalshipping.scss';
 
 
 
+main {
+@include media ("<=phone") {
+    padding: 0;
+    margin: 0;
+    
 
+    
+  }
+  @include media ("<=tablet") {
+    padding: 0;
+    margin: 0;
+    
 
-
+    
+  }
+}
 
 
 

@@ -9,7 +9,8 @@ const Vinyl = (props) => {
         <>
                         <div className="tile">
                             <div className="hover-effect">
-                                <img src={product.image} alt={product.name}></img>
+                                {/* <img src={product.image} alt={product.name} /> */}
+                                <img src="/client/src/img/sellimg1.jpg" alt=""></img>
                                     <div class="overlay">
                                         <h2>Description of the records when hove the img</h2>
                                     </div>

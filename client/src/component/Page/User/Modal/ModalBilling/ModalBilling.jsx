@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-modal'
 import ModalBillingform from './ModalBillingform'
 const ModalShipping = () => {

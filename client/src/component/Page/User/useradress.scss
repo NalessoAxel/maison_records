@@ -1,12 +1,33 @@
 .adress {
     display: flex;
     justify-content: center;
+    @include media ("<=phone") {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        padding-bottom: 100px;
+        
+        }
+    @include media ("<=tablet") {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        padding-bottom: 100px;
+        }
     .billingAdress {
         background-color: #BDBDBD ;
         width: 434px;
         height: 235px;
         margin: 30px 50px;
         padding: 10px;
+        @include media ("<=phone") {
+            width: 234px;
+            height: 235px;
+            
+            }
+        @include media ("<=tablet") {
+            
+            }
         .title {
             display: flex;
             flex-direction: row;
@@ -26,6 +47,14 @@
         height: 235px;
         margin: 30px 50px;
         padding: 10px;
+        @include media ("<=phone") {
+            width: 234px;
+            height: 235px;
+            
+            }
+        @include media ("<=tablet") {
+            
+            }
         .title {
             display: flex;
             flex-direction: row;
