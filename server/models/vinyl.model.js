@@ -1,4 +1,20 @@
+
+const vinylController = require('../controllers/vinyl.controller');
 const mongoose = require('mongoose');
+
+let audioModel = []
+for (let i=0; i < vinylController.numberOfPreviews ; i++){
+    audioModel.push({
+        name: {
+            type: String,
+            default: 'default',
+        },
+        path: {
+            type: String,
+            default: 'default',
+        },
+    })
+}
 
 const vinylSchema = new mongoose.Schema(
     {
@@ -59,207 +75,7 @@ const vinylSchema = new mongoose.Schema(
             type: String, 
             default: 'default'
         },
-        audio:[
-        // ___________ FACE A_______________
-            {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default',
-                },
-            },
-           {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-                
-            },
-            {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-                
-            },
-             {
-                name:{
-                    type: String, 
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-                
-            },
-             {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default',
-                },
-                
-            },
-             {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-                
-            },
-             {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-                
-            },
-             {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-                
-            },
-             {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-                
-            },
-             {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-                
-            },
-            // ___________ FACE B_______________
-            {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default',
-                },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
-            },
-           {
-                name:{
-                    type: String,   
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-                faceA: {
-                    type: Boolean,
-                    default: false,
-                }
-            },
-           {
-                name:{
-                    type: String,            
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-            },
-            {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-            },
-            {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default',
-                },
-            },
-            {
-                name:{
-                    type: String,   
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-            },
-            {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-            },
-            {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-            },
-            {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-            },
-            {
-                name:{
-                    type: String,
-                },
-                path: {
-                    type: String,
-                    default:'default'
-                },
-            },
-        ]
+        audio: audioModel
     },
     {
         timestamps: true,

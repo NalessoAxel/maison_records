@@ -9,15 +9,14 @@ import { Link,useParams} from "react-router-dom";
     let { id } = useParams();
     const {products, onAdd} = props
     let countSuggestion = 0
- 
-    let tabSuggestion = []
 
     return (   
         <>
-        
         {Object.entries(products).map((vinylInfos) => {
+            
+           if (vinylInfos[1]._id === id) {
 
-         if (vinylInfos[1]._id === id) {
+            const detailsReferenceModel = ["label","catNumber","format", "country","year","style","price","product_type","description"]
 
             return (
                 <div className="contentWrapper">
@@ -27,37 +26,25 @@ import { Link,useParams} from "react-router-dom";
                                 <div className="left">
                                     <img src={`${process.env.REACT_APP_API_URL}images/${vinylInfos[1].image}.png`}  alt="VinylImage"></img>
                                 </div>
-                                <div className="center">                                  
-                                    <h2>{vinylInfos[1].title}</h2>
-                                    <h1>{vinylInfos[1].artist_name}</h1>
+                                <div className="center">
+                                                         
+                                    {(vinylInfos[1].title == "default") ? (<></>) : ( <><h1> {vinylInfos[1].title} </h1></>)} 
+                                   
+                                    {(vinylInfos[1].artist_name == "default") ? (<></>) : (<><h2>{vinylInfos[1].artist_name}</h2></>)}
+                                    
                                     <div id="releaseInfo">
-                                        <p className="releaseInfo">Label:
-                                            <span>{vinylInfos[1].label}</span>
-                                        </p>
-                                        <p className="releaseInfo">Catno:
-                                            <span>{vinylInfos[1].catNumber}</span>
-                                        </p>
-                                        <p className="releaseInfo">Format:
-                                            <span>{vinylInfos[1].format}</span>
-                                        </p>
-                                        <p className="releaseInfo">Country:
-                                            <span>{vinylInfos[1].country}</span>
-                                        </p>
-                                        <p className="releaseInfo">Release Date: 
-                                            <span>{vinylInfos[1].year }</span>
-                                        </p>
-                                        <p className="releaseInfo">Style: 
-                                            <span>{vinylInfos[1].style}</span>
-                                        </p>
-                                        <p className="releaseInfo">Price: 
-                                            <span>{vinylInfos[1].price}€</span>
-                                        </p>
-                                        <p className="releaseInfo">Type: 
-                                            <span>{vinylInfos[1].product_type}</span>
-                                        </p>
-                                        <p className="releaseInfo">Description: 
-                                            <span>{vinylInfos[1].description}</span>
-                                        </p>
+                                         {detailsReferenceModel.map((element)=>{
+                                         if (element == "product_type") {element = "type";
+                                             vinylInfos[1][element] = vinylInfos[1]["product_type"]}
+                                        else if (element == "catNumber") {element = "catNo";
+                                             vinylInfos[1][element] = vinylInfos[1]["catNumber"]}
+                                        if (vinylInfos[1][element] != "default" && vinylInfos[1][element] != 1000){
+                                        return(
+                                            <p className = "releaseInfo" > {element} 
+                                            <span>: {vinylInfos[1][element]} 
+                                            </span></p>
+                                            )}})}
+
                                     </div>
                                 </div>
                                     <div className="right">

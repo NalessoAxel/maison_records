@@ -12,6 +12,8 @@ const changenameOfFile = () =>{
     return change
 }
 
+module.exports.numberOfPreviews = numberOfPreviews
+
 module.exports.numberOfPreviews = async (req, res) => {
      res.status(200).json(numberOfPreviews)
 }
