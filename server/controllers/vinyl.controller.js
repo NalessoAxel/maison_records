@@ -21,7 +21,7 @@ module.exports.numberOfPreviews = async (req, res) => {
 // module to create a new reference and create an image to stock in server
 module.exports.addReference = async (req,res) => {
 nameOfFileSong = [];
- const { product_type, title, artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
+ const { product_type, title, size ,artist_name, label, catNumber, year, country, style, format, description, image, quantity, price, audio } = req.body
 
     if (image !== "default") {nameOfFileImage= changenameOfFile()}
     else{nameOfFileImage = 'default'}
@@ -37,6 +37,7 @@ nameOfFileSong = [];
         try {
             const vinylCreated = await VinylModel.create({
             product_type, 
+            size,
             title, 
             artist_name, 
             label, 
@@ -101,6 +102,7 @@ module.exports.updateVinyl = async (req, res)=>{
 
     const {
         product_type,
+        size,
         title,
         artist_name,
         label,
@@ -119,6 +121,7 @@ module.exports.updateVinyl = async (req, res)=>{
             await VinylModel.findOneAndUpdate({_id: req.params.id},
                 {
                     $set: {product_type,
+                            size,
                             title,
                             artist_name,
                             label,

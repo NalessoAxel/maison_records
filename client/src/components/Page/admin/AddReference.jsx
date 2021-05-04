@@ -37,7 +37,7 @@ const AddReference = (props) => {
       return setListOfFilesSongs(newValues)
   }
  
-  const onSubmit = async (formAnswers) => {
+  const onSubmit = async ( formAnswers) => {
 
     let imageName    
     // console.log(listSongNameHook,'state evolution');
@@ -52,6 +52,7 @@ const AddReference = (props) => {
           withCredentials: true,
           data: {
             product_type: formAnswers.product_type,
+            size: formAnswers.size,
             title: formAnswers.title,
             artist_name: formAnswers.artist_name,
             label: formAnswers.label,
@@ -102,13 +103,16 @@ const AddReference = (props) => {
           window.location = ''
     }
 
-  const [hiding,setHiding] = useState();
-
+    const [seeVinylForm,setSeeVinylForm] = useState("block");
+    const [seeMerchForm,setSeeMerchForm] = useState("none");
+    
   const merchForm = (value) => {
     if (value == "Merch") {
-      setHiding("none")
-    } else{ 
-      setHiding("block")
+      setSeeMerchForm("block")
+      setSeeVinylForm("none")
+    }else{ 
+      setSeeMerchForm("none")
+      setSeeVinylForm("block");
     }
   }  
 
@@ -138,63 +142,76 @@ const AddReference = (props) => {
                   placeholder="Title"
                   ref={register({ })}
                   />
-                <label>Artist name</label>
+                <label style={{display: seeMerchForm}}>Choose a size</label>
+                <select name="size" ref={register({ })} style={{display: seeMerchForm}}>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                </select>
+                <label style={{display: seeVinylForm}}>Artist name</label>
                 <input
                   name="artist_name"
                   type="text"
                   defaultValue="default"
                   placeholder="Artiste name"
                   ref={register({ })}
-                  style={{display: hiding}}
+                  style={{display: seeVinylForm}}
+                  
                 />
-                <label>label</label>
+                <label style={{display: seeVinylForm}}>label</label>
                 <input
                   name="label"
                   type="text"
                   defaultValue="default"
                   placeholder="label"
                   ref={register({ })}
+                  style={{display: seeVinylForm}}
                 />
-                <label>Cat number</label>
+                <label style={{display: seeVinylForm}}>Cat number</label>
                 <input
                   name="catNumber"
                   type="text"
                   ref={register({ })}
                   defaultValue="default"
                   placeholder="CatNumber"
+                  style={{display: seeVinylForm}}
                   
                 />
-                <label>Year</label>
+                <label style={{display: seeVinylForm}}>Year</label>
                 <input
                   name="year"
                   type="text"
                   ref={register({ })}
                   defaultValue="1000"
                   placeholder="1990"
+                  style={{display: seeVinylForm}}
                 />
-                <label>Country</label>
+                <label style={{display: seeVinylForm}}>Country</label>
                 <input
                   name="country"
                   type="text"
                   ref={register({ })}
                   defaultValue="default"
                   placeholder="Country"
+                  style={{display: seeVinylForm}}
                 />
-                <label>Style</label>
+                <label style={{display: seeVinylForm}}>Style</label>
                 <input
                   name="style"
                   type="text"
                   ref={register({ })}
                   defaultValue="default"
                   placeholder="Style"
+                  style={{display: seeVinylForm}}
                 />
-                <label>Format</label>
+                <label style={{display: seeVinylForm}}>Format</label>
                 <input
                   name="format"
                   type="text"
                   ref={register({ })}
                   defaultValue="default"
                   placeholder="Format"
+                  style={{display: seeVinylForm}}
                 />
                 <label>Description</label>
                 <input
@@ -228,8 +245,9 @@ const AddReference = (props) => {
                   type="file"
                   ref={register({})}
                 />
-                <h2>Previews of the vinyl</h2>
-                {listSongName.map((x, i)=>{ // obligation de deux arguments pour le map, x on ne l'utilise pas
+                <h2 style={{display: seeVinylForm}}>Previews of the vinyl</h2>
+                {(seeVinylForm=="block")?(
+                listSongName.map((x, i)=>{ // obligation de deux arguments pour le map, x on ne l'utilise pas
                     return (
                       <>
                         <input
@@ -250,7 +268,7 @@ const AddReference = (props) => {
                       </>
                     )
                 })
-                }
+                ):(<></>)}
 
               </div>
               <input

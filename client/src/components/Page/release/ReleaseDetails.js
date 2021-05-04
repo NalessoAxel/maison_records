@@ -16,7 +16,7 @@ import { Link,useParams} from "react-router-dom";
             
            if (vinylInfos[1]._id === id) {
 
-            const detailsReferenceModel = ["label","catNumber","format", "country","year","style","price","product_type","description"]
+            const detailsReferenceModel = ["label","size", "catNumber","format", "country","year","style","price","product_type","description"]
 
             return (
                 <div className="contentWrapper">
@@ -38,37 +38,43 @@ import { Link,useParams} from "react-router-dom";
                                              vinylInfos[1][element] = vinylInfos[1]["product_type"]}
                                         else if (element == "catNumber") {element = "catNo";
                                              vinylInfos[1][element] = vinylInfos[1]["catNumber"]}
+                                        else if (element == "price") {
+                                             vinylInfos[1][element] = vinylInfos[1][element]}
+                                             
                                         if (vinylInfos[1][element] != "default" && vinylInfos[1][element] != 1000){
                                         return(
                                             <p className = "releaseInfo" > {element} 
                                             <span>: {vinylInfos[1][element]} 
                                             </span></p>
                                             )}})}
-
                                     </div>
                                 </div>
+
+                                {(vinylInfos[1].product_type != 'Merch') ? (
                                     <div className="right">
-                                        <h1>Tracklist</h1>
-                                        <div className="audioPlayer">
-                                        {Object.entries(vinylInfos[1].audio).map((preview)=> {  
-                                            if (preview[1].path !== "default") {
-                                                return (
-                                                    <>
-                                                    <span>{preview[1].name}</span>
-                                                    <ReactPlayer
-                                                            config={{ file: { attributes: { controlsList: 'nodownload' } } }}
-                                                            url = {`${process.env.REACT_APP_API_URL}songs/${preview[1].path}.mp3`}
-                                                            width="400px"
-                                                            height="50px"
-                                                            playing={false}
-                                                            controls={true}       
-                                                    />
-                                                    </>
-                                                )
-                                            }}) 
-                                        }
-                                        </div>
-                                    </div>           
+                                    <h1>Tracklist</h1>
+                                    <div className="audioPlayer">
+                                    {Object.entries(vinylInfos[1].audio).map((preview)=> {  
+                                        if (preview[1].path !== "default") {
+                                            return (
+                                                <>
+                                                <span>{preview[1].name}</span>
+                                                <ReactPlayer
+                                                    config={{ file: { attributes: { controlsList: 'nodownload' } } }}
+                                                    url = {`${process.env.REACT_APP_API_URL}songs/${preview[1].path}.mp3`}
+                                                    width="400px"
+                                                    height="50px"
+                                                    playing={false}
+                                                    controls={true}       
+                                                />
+                                                </>
+                                            )
+                                        }}) 
+                                    }
+                                    </div>
+                                </div> 
+                                ) : (<></>)}
+                                              
                             </div>
                         </div> 
                             

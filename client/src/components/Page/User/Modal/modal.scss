@@ -10,9 +10,10 @@
     
     .wrapperModal {
         display: flex;
-        flex-direction: column;
-        width: 306px;
-        height: 650px;
+        
+        // flex-direction: row;
+        width: 90vw;
+        height: 90vh;
         background-color: #C4C4C4;
         position: absolute;
         top: 50%;
@@ -20,5 +21,10 @@
         transform: translate(-50%, -50%);
         overflow: auto;
         
+    .modal{
+            display: flex;
+            flex-direction: row;
+            
+        }
     }
 }

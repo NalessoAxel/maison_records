@@ -128,7 +128,7 @@ const products = allVinyls
     const LayoutNew = () => <Layout><New products={products} onAdd={onAdd}/></Layout>
     const LayoutSecondHand = () => <Layout><SecondHand products={products} onAdd={onAdd}/></Layout>
     const LayoutSellCollection = () => <Layout><SellCollection/></Layout>
-    const LayoutMerch = () => <Layout><Merch/></Layout>
+    const LayoutMerch = () => <Layout><Merch products={products} onAdd={onAdd}/></Layout>
     const LayoutAccessories = () => <Layout><Accessories/></Layout>
     const LayoutLive = () => <Layout><Live/></Layout>
     const LayoutUserRegisterPage = () => <Layout><UserRegisterPage/></Layout>

@@ -27,6 +27,10 @@ const vinylSchema = new mongoose.Schema(
             trim: false,
             default: 'Title'
         },
+        size:{
+            type: String,
+            default: 'S'
+        },
         artist_name:{
             type: String,
             default:'Artiste name'

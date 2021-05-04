@@ -35,7 +35,7 @@ const AdminHeader = () => {
                    <Link to="/AddReference">Add a reference</Link>
                    <Link to="/AdminOrders">Orders</Link>
                    <Link to="/AdminVisitors">Visitors</Link>
-                   <Link to='/VinylDashboard'>Vinyls edition</Link>
+                   <Link to='/VinylDashboard'>Products edition</Link>
                    </div>
             </div>
         </>

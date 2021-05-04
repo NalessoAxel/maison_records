@@ -3,12 +3,18 @@
 }
 
 .modalBillingForm {
+    margin: 0 auto;
+    width: 30%;
+    display: flex;
+    flex-direction: column; 
+    
     .modalInput {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         padding: 0 41px;
         form {
-            display: flex;
-            flex-direction: column;
-            
+        
             input {
                 width: 100%;
                 height: 30px;

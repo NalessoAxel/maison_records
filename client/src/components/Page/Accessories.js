@@ -4,7 +4,7 @@ import React from 'react';
 const Accessories = () => {
     return (
         <>
-    <h1>Comming soon</h1>            
+    <h1>Comming soon...</h1>            
         </>
     );
 }

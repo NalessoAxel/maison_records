@@ -34,6 +34,48 @@ const VinylDashboard = (props) => {
         <>
            <AdminHeader />
             <div className="boardVinylBox">
+
+            <div>
+                    <h4>Merch</h4>
+                    <table>
+                        <tr className="tr0">
+                            <td>Title</td>
+                            <td>Size</td>
+                            <td>Description</td> 
+                            <td>Price</td> 
+                            <td>Quantity</td>
+                            <td>EDIT</td>
+                            <td>Delete</td>
+
+                        </tr>
+                        
+                    {products.map((product)=>(
+                    <tr>
+                        {product.product_type == "Merch" ? (
+                            <>
+                            <td>{product.title}</td>    
+                            <td>{product.size}</td>    
+                            <td>{product.description}</td> 
+                            <td>{product.price}€</td>
+                            <td>{product.quantity}</td>
+                            <td>                            
+                            <button onClick={()=>{
+                                setuniqueVinyl(product);
+                                setModalIsOpen(true)
+                            }}>Edit</button>         
+                            </td>
+                            <td><button onClick={()=>{deleteVinyl(product._id)}}>DELETE</button></td>
+                            
+                            </>
+                        ) : (
+                            <>
+                            </>
+                        )}
+                    </tr>
+                        ))}
+                    </table>
+                </div>
+
             <div>
                     <h4>New</h4>
                     <table>
@@ -134,6 +176,10 @@ const VinylDashboard = (props) => {
                     <Modal 
             
                             style={{
+                                // modal:{
+                                //     display : "flex",
+                                //     flexDirection: 'row'
+                                // },
                                 overlay: {
                                     backgroundColor: 'rgba(0,0,0,0.5)',
                                     position: 'absolute',
@@ -148,16 +194,15 @@ const VinylDashboard = (props) => {
                                     height : "50px",
                                 },
                                 content: {
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    width: '500px',
-                                    height: '650px',
+                                    width: '100vw',
+                                    height: '90vh',
                                     backgroundColor: '#C4C4C4',
                                     position: 'absolute',
                                     top: '50%',
                                     left: '50%',
                                     transform: 'translate(-50%, -50%)',
                                     overflow: 'hidden',
+
                                     
                                 }
                               }}
@@ -169,16 +214,18 @@ const VinylDashboard = (props) => {
                                                     <button type="button" onClick={() => setModalIsOpen(false)}>
                                                         <span>&times;</span>
                                                     </button>
-                                                <ModalVinylForm 
-                                                   product={uniqueVinyl}
-                                                />
-                                               <ModalVinylFormImage
-                                                   product={uniqueVinyl}
-                                                />
-                                                <ModalVinylFormSong
-                                                   product={uniqueVinyl} numberOfPreviews={numberOfPreviews}
-                                                />
-                                   
+                                               
+                                                        <ModalVinylForm 
+                                                            product={uniqueVinyl}
+                                                        />
+                                                        <ModalVinylFormImage
+                                                            product={uniqueVinyl}
+                                                        />
+                                                       
+                                                        <ModalVinylFormSong
+                                                            product={uniqueVinyl} numberOfPreviews={numberOfPreviews}
+                                                        />
+                                                  
                                         </div>
                                     </div>
                                 </div>

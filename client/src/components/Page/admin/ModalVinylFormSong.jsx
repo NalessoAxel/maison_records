@@ -9,6 +9,7 @@ const ModalVinylFormSong = (props) => {
 
     let listSongName = [];
     let listSongFiles =[];
+
    
     for (let i = 0; i < numberOfPreviews; i++) {
       listSongName.push({ name: product.audio[i].name, path: product.audio[i].path });
@@ -71,6 +72,7 @@ const ModalVinylFormSong = (props) => {
 
     return(
       <>
+      {product.product_type !== "Merch" ? (<>
         <div className="modalBillingForm">
         <h1 style={{textAlign: "center"}}>EDIT SONG </h1>
         <div style={{display:'flex', justifyContent:"center"}}>
@@ -103,6 +105,9 @@ const ModalVinylFormSong = (props) => {
           </form>
         </div>
       </div>
+
+      </>) : (<></>)}
+
       </>
     )
 }
