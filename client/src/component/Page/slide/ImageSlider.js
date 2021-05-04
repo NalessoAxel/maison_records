@@ -24,9 +24,9 @@ const ImageSlider = () => {
       
       
         
-  {sliderData.map((slider) => (
+  {sliderData.map((slider, index) => (
     <SwiperSlide>
-    <img src={slider} alt="" className="sliderImage"></img>
+    <img src={slider} key={index} alt="" className="sliderImage"></img>
     </SwiperSlide>
   ))}
 

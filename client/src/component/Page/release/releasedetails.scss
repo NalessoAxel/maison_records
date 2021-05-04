@@ -7,19 +7,63 @@
             padding: 50px;
             max-width: 100%;
             max-height: 100%;
+            @include media ("<=phone") {
+                display: flex;
+                flex-direction: column;
+              }
+              @include media ("<=tablet") {
+                display: flex;
+                flex-direction: column;
+              }
             .informations  {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 grid-row-gap: 5.3rem;
                 grid-column-gap: 3.9rem;
+                @include media ("<=phone") {
+                    display: grid;
+                    grid-template-columns: repeat(1, 1fr);
+                    grid-row-gap: 2.3rem;
+                    grid-column-gap: 1.9rem;
+                  }
+                  @include media ("<=tablet") {
+                    display: grid;
+                    grid-template-columns: repeat(1, 1fr);
+                    grid-row-gap: 2.3rem;
+                    grid-column-gap: 1.9rem;
+                  }
                 .left img{
                     width: 100%;
+                    @include media ("<=phone") {
+                        width: 300px;
+                        height: 300px;
+                        margin: 0;
+                        padding: 0;
+                        
+                        
+                      }
+                      @include media ("<=tablet") {
+                        
+                        
+                      }
+                    
                 }
                 .center {
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
+                    @include media ("<=phone") {
+                        width: 300px;
+                        height: 300px;
+                        margin: 0;
+                        padding: 0; 
+                      }
+                      @include media ("<=tablet") {
+                        
+                        
+                      }
+
                     h1{
                         font-weight: 600;
                         font-size: 40px;
@@ -49,15 +93,26 @@
                         text-transform: uppercase;
                         line-height: 40px;
                         margin-bottom: 10px;
+                        
                     }
                     .audioPlayer {
-                        
+                        position: relative;
+                        padding-top: 0;
+                        @include media ("<=phone") {
+                            
+                        }
+                        @include media ("<=tablet") {
+                            
+                        }
                         p {
                             margin: 10px;
                         }
-                        audio {
-                            outline: none;
+                        .react-player {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
                         }
+                        
                     }
                 }
             }
@@ -78,6 +133,20 @@
                 grid-template-columns: repeat(6,minmax(100px,1fr));
                 grid-row-gap: 1.3rem;
                 grid-gap: 1.3rem;
+                @include media ("<=phone") {
+                    display: grid;
+                    grid-template-columns: repeat(2,minmax(100px,1fr));
+                    grid-row-gap: 1.3rem;
+                    grid-gap: 1.3rem;
+                    
+                  }
+                  @include media ("<=tablet") {
+                    display: grid;
+                    grid-template-columns: repeat(2,minmax(100px,1fr));
+                    grid-row-gap: 1.3rem;
+                    grid-gap: 1.3rem;
+              
+                  }
 
                 .hover-effect {
                     width: 100%;
@@ -136,16 +205,38 @@
                 }
                 .tile img {
                     width: 100%;
+                    height: auto;
                     position: relative;
                     border: 2px solid #9A9999;
                 }
                 .infos-record{
                     margin: 5px 0;
+                    display: flex;
+                    flex-direction: column;
+                    @include media ("<=phone") {
+                        
+                         
+                       }
+                       @include media ("<=tablet") {
+                        
+                       }
                 }
                 .button {
                     display: flex;
                     justify-content: space-between;
                     margin: 10px 0;
+                    @include media ("<=phone") {
+                       display: flex;
+                       flex-direction: column;
+                       align-items: center;
+                        
+                      }
+                      @include media ("<=tablet") {
+                        display: flex;
+                       flex-direction: column;
+                        align-items: center;
+                        
+                      }
                     
                 }
             }

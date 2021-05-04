@@ -61,7 +61,9 @@ nav {
     }
     .cart {
       display: flex;
-      margin-right: 30px;
+      flex-direction: row;
+      justify-content: center;
+      
     }
     // .iconNav {
     //   display: none;
@@ -73,7 +75,7 @@ nav {
     .log {
       display: flex;
       justify-content: flex-end;
-      // margin-right: 30px;
+      flex-direction: row;
     }
     .logo-container {
       display: flex;
@@ -127,6 +129,10 @@ nav {
       display: block;
       margin-right: 20px;
     }
+    .cart {
+      display: flex;
+      flex-direction: row;
+    }
   }
   
   
@@ -147,13 +153,7 @@ nav {
       align-items: center;
       margin: 0 5px;
     }
-    .cart {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      flex-direction: row;
-      margin: 10px;
-    }
+   
     .logo {
       width: 45px;
       height: 45px;

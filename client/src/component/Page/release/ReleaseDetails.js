@@ -46,10 +46,11 @@ import { Link } from 'react-router-dom'
                                 <ReactPlayer
                                 config={{ file: { attributes: { controlsList: 'nodownload' } } }}
                                        url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                       width="400px"
-                                       height="50px"
-                                       playing={false}
-                                       controls={true}
+                                       width="100%"
+                                       height="100%"
+                                        playing={false}
+                                        controls={true}
+                                        className="react-player"
                                 />
                                     <p>
                                         <span>A1 - Bright Light Fading</span>
@@ -57,33 +58,36 @@ import { Link } from 'react-router-dom'
                                 <ReactPlayer
                                 config={{ file: { attributes: { controlsList: 'nodownload' } } }}
                                        url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                       width="400px"
-                                       height="50px"
+                                       width="100%"
+                                        height="100%"
                                        playing={false}
                                        controls={true}
+                                       className="react-player"
                                 />
                                     <p>
                                         <span>A1 - Bright Light Fading</span>
                                     </p>
-                                <ReactPlayer
+                                {/* <ReactPlayer
                                 config={{ file: { attributes: { controlsList: 'nodownload' } } }}
                                        url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                       width="400px"
-                                       height="50px"
+                                       width="100%"
+                                        height="100%"
                                        playing={false}
                                        controls={true}
-                                />
+                                       className="react-player"
+                                /> */}
                                     <p>
                                         <span>A1 - Bright Light Fading</span>
                                     </p>
-                                <ReactPlayer
+                                {/* <ReactPlayer
                                 config={{ file: { attributes: { controlsList: 'nodownload' } } }}
                                        url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                       width="400px"
-                                       height="50px"
+                                       width="100%"
+                                        height="100%"
                                        playing={false}
                                        controls={true}
-                                />
+                                       className="react-player"
+                                /> */}
                                 </div>
                             </div>
                         </div>
