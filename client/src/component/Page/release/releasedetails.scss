@@ -87,6 +87,9 @@
                     }
                 }
                 .right {
+                    display: flex;
+                    align-items: flex-start;
+                    flex-direction: column;
                     h1{
                         font-weight: 600;
                         font-size: 40px;
@@ -95,9 +98,9 @@
                         margin-bottom: 10px;
                         
                     }
-                    .audioPlayer {
-                        position: relative;
-                        padding-top: 0;
+                    .player {
+                        display: flex;
+                        align-items: flex-start;
                         @include media ("<=phone") {
                             
                         }
@@ -105,13 +108,9 @@
                             
                         }
                         p {
-                            margin: 10px;
+                            margin: 20px;
                         }
-                        .react-player {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                        }
+                        
                         
                     }
                 }
@@ -201,7 +200,9 @@
                     color: #fff;
                     
                     filter: alpha(opacity=0);
-                    
+                    @include media ("<=phone") {
+                        font-size: 12px;
+                      }
                 }
                 .tile img {
                     width: 100%;

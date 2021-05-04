@@ -89,17 +89,12 @@
     width: 100%;
     padding-bottom: 30px;
     @include media ("<=phone") {
-      width: 150px;
-      height: 150px;
       display: flex;
       align-items: center;
       justify-content: center;
       
     }
     @include media ("<=tablet") {
-      
-      width: 150px;
-      height: 150px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -176,6 +171,16 @@
     -webkit-transform: scale(0, 1);
     -ms-transform: scale(0, 1);
     transform: scale(0, 1);
+    @include media ("<=phone") {
+      width: 80%;
+      height: 50%;
+      left: 10%;
+      top: 10%;
+      
+    }@include media ("<=tablet") {
+      margin: 0 10px;
+      
+    }
 }
 
 .hover-effect:hover .overlay {

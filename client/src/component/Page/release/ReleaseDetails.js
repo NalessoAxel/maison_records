@@ -39,18 +39,18 @@ import { Link } from 'react-router-dom'
                             </div>
                             <div className="right">
                                 <h1>Tracklist</h1>
-                                <div className="audioPlayer">
-                                    <p>
+                                
+                                <div className="player">
+                                <p>
                                         <span>A1 - Bright Light Fading</span>
                                     </p>
                                 <ReactPlayer
                                 config={{ file: { attributes: { controlsList: 'nodownload' } } }}
                                        url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                       width="100%"
-                                       height="100%"
                                         playing={false}
                                         controls={true}
-                                        className="react-player"
+                                        width="300px"
+                                       height="50px" 
                                 />
                                     <p>
                                         <span>A1 - Bright Light Fading</span>
@@ -58,36 +58,34 @@ import { Link } from 'react-router-dom'
                                 <ReactPlayer
                                 config={{ file: { attributes: { controlsList: 'nodownload' } } }}
                                        url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                       width="100%"
-                                        height="100%"
                                        playing={false}
                                        controls={true}
-                                       className="react-player"
+                                       width="300px"
+                                       height="50px" 
+                                />
+                                    <p>
+                                        <span>A1 - Bright Light Fading</span>
+                                    </p>   
+                                <ReactPlayer
+                                config={{ file: { attributes: { controlsList: 'nodownload' } } }}
+                                       url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
+                                       playing={false}
+                                       controls={true}
+                                       width="300px"
+                                       height="50px" 
                                 />
                                     <p>
                                         <span>A1 - Bright Light Fading</span>
                                     </p>
-                                {/* <ReactPlayer
+                                <ReactPlayer
                                 config={{ file: { attributes: { controlsList: 'nodownload' } } }}
                                        url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                       width="100%"
-                                        height="100%"
                                        playing={false}
                                        controls={true}
-                                       className="react-player"
-                                /> */}
-                                    <p>
-                                        <span>A1 - Bright Light Fading</span>
-                                    </p>
-                                {/* <ReactPlayer
-                                config={{ file: { attributes: { controlsList: 'nodownload' } } }}
-                                       url="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
-                                       width="100%"
-                                        height="100%"
-                                       playing={false}
-                                       controls={true}
-                                       className="react-player"
-                                /> */}
+                                       width="300px"
+                                       height="50px" 
+                                />
+                                
                                 </div>
                             </div>
                         </div>
