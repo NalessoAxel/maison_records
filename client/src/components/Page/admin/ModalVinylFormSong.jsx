@@ -34,8 +34,8 @@ const ModalVinylFormSong = (props) => {
         return setListOfFilesSongs(newValues)
     }
 
-    console.log('listOfFilesSongs:', listOfFilesSongs)
-    console.log('listSongNameHook:', listSongNameHook)
+    // console.log('listOfFilesSongs:', listOfFilesSongs)
+    // console.log('listSongNameHook:', listSongNameHook)
     
 
   const onSubmit = async (formAnswers) => {

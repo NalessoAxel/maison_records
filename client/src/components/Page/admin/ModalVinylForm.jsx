@@ -23,25 +23,72 @@ const ModalVinylForm = (props) => {
 
 
  let productTypeLabel = ''
+ let productTypeLabel2 = ''
+
+
     const decide = () => {
       if (product.product_type == "New") {
             productTypeLabel="Second hand"
-            return productTypeLabel
+            productTypeLabel2="Merch"
+
       } else {
-        productTypeLabel="New"
-          return productTypeLabel
-      }             
+            productTypeLabel="New"
+            productTypeLabel2 ="Merch"
+      }    
     }
+
+    let sizeB = ''
+    let sizeC = ''
+
+    const decideSize = () =>{
+      
+      if (product.size == "S"){
+        sizeB = "M"
+        sizeC = "L"
+      }
+      else if(product.size == "M"){
+        sizeB = "S"
+        sizeC = "L"
+      }else{
+        sizeB = "M"
+        sizeC = "S"
+      }
+    }
+    
+
     
     return (
       <>
 
         <div  className="modalBillingForm">
-          <h1 style={{textAlign: "center"}}>EDIT VINYL</h1>
+          
+            {product.product_type === "Merch" ?
+             (<>
+             <h1 style={{textAlign: "center"}}>EDIT MERCH</h1>
+            </>) : 
+            (<>
+            <h1 style={{textAlign: "center"}}>EDIT VINYL</h1>
+            </>)}
+
           <div className="modalInput">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div>
-                        <label>Product Type</label>
+              {product.product_type === "Merch" ? 
+              (<> 
+              <select name="product_type" ref={register({ required: true })}>         
+              <option value="Merch"> Merch </option>
+              </select>
+              <br/>
+              <label>Size</label>
+              <br/>      
+              <select name="size" ref={register({ required: true })}>         
+                 <option value={decideSize()}>{product.size}</option>
+                 <option> {sizeB} </option>
+                 <option> {sizeC} </option>
+              </select>
+              <br/>
+              </>) : (<>
+                <label>Product Type</label>
                         <select name="product_type" ref={register({ required: true })}>
                           <option value={product.product_type}>
                             {product.product_type}
@@ -52,74 +99,11 @@ const ModalVinylForm = (props) => {
                             {productTypeLabel}
                           </option>
                         </select>
-
-                        <label>Title</label>
+              </>)}
+              <label>Title</label>
                         <input
                           name="title"
                           defaultValue={product.title}
-                          type="text"
-                          ref={register({
-                            required: true,
-                          })}
-                        />
-                        <label>Artist Name</label>
-                        <input
-                          name="artist_name"
-                          defaultValue={product.artist_name}
-                          type="text"
-                          ref={register({
-                            required: true,
-                          })}
-                        />
-                        <label>Year</label>
-                        <input
-                          name="year"
-                          defaultValue={product.year}
-                          type="text"
-                          ref={register({
-                            required: true,
-                          })}
-                        />
-                        <label>Label</label>
-                        <input
-                          name="label"
-                          defaultValue={product.label}
-                          type="text"
-                          ref={register({
-                            required: true,
-                          })}
-                        />
-                        <label>Format</label>
-                        <input
-                          name="format"
-                          defaultValue={product.format}
-                          type="text"
-                          ref={register({
-                            required: true,
-                          })}
-                        />
-                        <label>CatNumber</label>
-                        <input
-                          name="catNumber"
-                          defaultValue={product.catNumber}
-                          type="text"
-                          ref={register({
-                            required: true,
-                          })}
-                        />
-                        <label>Country</label>
-                        <input
-                          name="country"
-                          defaultValue={product.country}
-                          type="text"
-                          ref={register({
-                            required: true,
-                          })}
-                        />
-                        <label>Style</label>
-                        <input
-                          name="style"
-                          defaultValue={product.style}
                           type="text"
                           ref={register({
                             required: true,
@@ -152,18 +136,79 @@ const ModalVinylForm = (props) => {
                             required: true,
                           })}
                         />
-
-                        <br />
+              {product.product_type === "Merch" ?
+             (<></>) : (<>
+                        <label>Artist Name</label>
+                        <input
+                          name="artist_name"
+                          defaultValue={product.artist_name}
+                          type="text"
+                          ref={register({
+                            required: true,
+                          })}
+                        />
+                        <label>Year</label>
+                        <input
+                          name="year"
+                          defaultValue={product.year}
+                          type="text"
+                          ref={register({
+                            required: true,
+                          })}
+                        />
+                        <label>Label</label>
+                        <input
+                          name="label"
+                          defaultValue={product.label}
+                          type="text"
+                          ref={register({
+                            required: true,
+                          })}
+                        />
+                        <label>CatNumber</label>
+                        <input
+                          name="catNumber"
+                          defaultValue={product.catNumber}
+                          type="text"
+                          ref={register({
+                            required: true,
+                          })}
+                        />
+                        <label>Format</label>
+                        <input
+                          name="format"
+                          defaultValue={product.format}
+                          type="text"
+                          ref={register({
+                            required: true,
+                          })}
+                        />
+                        <label>Country</label>
+                        <input
+                          name="country"
+                          defaultValue={product.country}
+                          type="text"
+                          ref={register({
+                            required: true,
+                          })}
+                        />
+                        <label>Style</label>
+                        <input
+                          name="style"
+                          defaultValue={product.style}
+                          type="text"
+                          ref={register({
+                            required: true,
+                          })}
+                        />
+            </>)}
+            <br />
             </div>
-
             <div>
-                      <input type="submit" />
+              <input type="submit" />
             </div>
-
             </form>
           </div>
- 
-          
         </div>
       </>
     );
