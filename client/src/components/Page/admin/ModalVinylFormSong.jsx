@@ -18,6 +18,7 @@ const ModalVinylFormSong = (props) => {
 
     const [listSongNameHook, setListSongNameHook] = useState(listSongName);
     const [listOfFilesSongs, setListOfFilesSongs] = useState(listSongFiles); // array with files = multer
+    const [checkSubmit, setCheckSubmit] = useState("")
     
     // function for DB -> geré les noms dans la db 
     const fillListSongNameHook = (value, i, type) => {
@@ -67,8 +68,8 @@ const ModalVinylFormSong = (props) => {
         });
         console.log(resUploadAudio, "song to upload");
     }
-    window.location =""
-};
+    setCheckSubmit("Successfully")
+  };
 
     return(
       <>
@@ -103,6 +104,7 @@ const ModalVinylFormSong = (props) => {
             <br />
             <input type="submit" value="Upload song"/>
           </form>
+          <div>{checkSubmit}</div>
         </div>
       </div>
 

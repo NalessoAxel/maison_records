@@ -1,10 +1,12 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import axios from "axios"
 
 const ModalVinylForm = (props) => {
     const {register, handleSubmit, errors} = useForm()
     const {product} = props
+    const [checkSubmit, setCheckSubmit] = useState("")
+
     // const [valueProductType, setvalueProductType]=useState()
     
     const onSubmit = async (formAnswers) => {
@@ -15,7 +17,8 @@ const ModalVinylForm = (props) => {
           withCredentials: true,
           data: formAnswers,
         });
-        window.location =""
+        setCheckSubmit("Successfully")
+
       } catch (err) {
         console.log(err);
       }
@@ -45,18 +48,16 @@ const ModalVinylForm = (props) => {
       if (product.size == "S"){
         sizeB = "M"
         sizeC = "L"
-      }
-      else if(product.size == "M"){
+      }else if(product.size == "M"){
         sizeB = "S"
         sizeC = "L"
       }else{
         sizeB = "M"
         sizeC = "S"
       }
-    }
+    } 
     
-
-    
+   
     return (
       <>
 
@@ -64,7 +65,7 @@ const ModalVinylForm = (props) => {
           
             {product.product_type === "Merch" ?
              (<>
-             <h1 style={{textAlign: "center"}}>EDIT MERCH</h1>
+            <h1 style={{textAlign: "center"}}>EDIT MERCH</h1>
             </>) : 
             (<>
             <h1 style={{textAlign: "center"}}>EDIT VINYL</h1>
@@ -205,8 +206,10 @@ const ModalVinylForm = (props) => {
             <br />
             </div>
             <div>
-              <input type="submit" />
+              <input type="submit" value="Upload infos" />
             </div>
+          <div>{checkSubmit}</div>
+
             </form>
           </div>
         </div>
