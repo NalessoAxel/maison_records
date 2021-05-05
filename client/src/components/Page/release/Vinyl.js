@@ -7,7 +7,9 @@ const Vinyl = (props) => {
 
     const { uid } = useContext(UidContext)
 
-    const 
+    const test = () =>{
+
+    }
 
     console.log(uid)
     
@@ -50,6 +52,7 @@ const Vinyl = (props) => {
                                         ) : (
                                             <>
                                             {uid.admin ? (<></>):(<><button onClick={() => onAdd(product)} className="addToCart">Add to cart</button></>) }
+                                            {/* {uid.admin ? (<></>):(<><button onClick={() => onAdd(product)} className="addToCart">Add to cart</button></>) } */}
                                             </>
                                         )}
                                     </span>
