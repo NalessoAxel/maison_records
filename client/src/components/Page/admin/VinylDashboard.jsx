@@ -1,4 +1,4 @@
-    import React,{ useState} from 'react'
+import React,{ useState} from 'react'
 import AdminHeader from './AdminHeader'
 import Modal from 'react-modal'
 import axios from 'axios'
@@ -225,7 +225,6 @@ const VinylDashboard = (props) => {
                                                         <ModalVinylFormSong
                                                             product={uniqueVinyl} numberOfPreviews={numberOfPreviews}
                                                         />
-                                                  
                                         </div>
                                     </div>
                                 </div>

@@ -40,15 +40,12 @@ const ModalVinylFormSong = (props) => {
     
 
   const onSubmit = async (formAnswers) => {
-    // const previews = [formAnswers.preview1[0], formAnswers.preview2[0], formAnswers.preview3[0], formAnswers.preview4[0]]
-    // 
+    
     let routes =   [];
     for (let i =1; i <=numberOfPreviews; i++){
       routes.push("uploadSong"+i)
     }
-    // let path =      [product.audio.preview1.path, product.audio.preview2.path,product.audio.preview3.path,product.audio.preview4.path]
 
-  
       const res = await axios({
         method: "patch",
         url:`${process.env.REACT_APP_API_URL}api/vinyl/updateSong/` + product._id,
@@ -66,7 +63,7 @@ const ModalVinylFormSong = (props) => {
           headers: { "Content-Type": "multipart/form-data" },
           data: songToUpload,
         });
-        console.log(resUploadAudio, "song to upload");
+        // console.log(resUploadAudio, "song to upload");
     }
     setCheckSubmit("Successfully")
   };

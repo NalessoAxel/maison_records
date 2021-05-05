@@ -38,8 +38,8 @@ import { Link,useParams} from "react-router-dom";
                                              vinylInfos[1][element] = vinylInfos[1]["product_type"]}
                                         else if (element == "catNumber") {element = "catNo";
                                              vinylInfos[1][element] = vinylInfos[1]["catNumber"]}
-                                        else if (element == "price") {
-                                             vinylInfos[1][element] = vinylInfos[1][element]}
+                                        // else if (element == "price") {
+                                        //      vinylInfos[1][element] = vinylInfos[1][element]}
                                              
                                         if (vinylInfos[1][element] != "default" && vinylInfos[1][element] != 1000){
                                         return(

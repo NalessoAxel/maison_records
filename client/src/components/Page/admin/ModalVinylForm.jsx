@@ -7,7 +7,6 @@ const ModalVinylForm = (props) => {
     const {product} = props
     const [checkSubmit, setCheckSubmit] = useState("")
 
-    // const [valueProductType, setvalueProductType]=useState()
     
     const onSubmit = async (formAnswers) => {
       try{
