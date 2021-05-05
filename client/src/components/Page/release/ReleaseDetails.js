@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactPlayer from 'react-player'
-
+import { UidContext } from '../../AppContext'
 import { Link,useParams} from "react-router-dom";
 
  const ReleaseDetails = (props) => {
@@ -9,12 +9,15 @@ import { Link,useParams} from "react-router-dom";
     let { id } = useParams();
     const {products, onAdd} = props
     let countSuggestion = 0
+    
+    const { uid } = useContext(UidContext)
 
     return (   
         <>
         {Object.entries(products).map((vinylInfos) => {
             
            if (vinylInfos[1]._id === id) {
+               
 
             const detailsReferenceModel = ["label","size", "catNumber","format", "country","year","style","price","product_type","description"]
 
@@ -41,7 +44,7 @@ import { Link,useParams} from "react-router-dom";
                                         // else if (element == "price") {
                                         //      vinylInfos[1][element] = vinylInfos[1][element]}
                                              
-                                        if (vinylInfos[1][element] != "default" && vinylInfos[1][element] != 1000){
+                                        if (vinylInfos[1][element] != "default" && vinylInfos[1][element] != 1000 && vinylInfos[1][element] != null){
                                         return(
                                             <p className = "releaseInfo" > {element} 
                                             <span>: {vinylInfos[1][element]} 
@@ -82,7 +85,7 @@ import { Link,useParams} from "react-router-dom";
                         <h2>Suggestion</h2>
                         <div className="suggestionEntries">
                             {Object.entries(products).map((suggestion) => {
-                                if (suggestion[1].style === vinylInfos[1].style) {
+                                if (suggestion[1].style === vinylInfos[1].style || suggestion[1].product_type === vinylInfos[1].product_type){
                                         countSuggestion++
                                         if(countSuggestion <= 21){ // show 20
                                             if (suggestion[1]._id !== vinylInfos[1]._id) {
@@ -109,7 +112,19 @@ import { Link,useParams} from "react-router-dom";
                                                                 <Link to = {'/ReleaseDetails/'+ suggestion[1]._id}> 
                                                                 <button className="showMore" >Show More</button>                                                                         
                                                                 </Link>
-                                                                <button onClick={() => onAdd(suggestion[1])} className="addToCart">Add to cart</button>
+                                                                {!uid ? (
+                                                                    <>
+                                                                    <Link to = {'/UserRegisterPage'}>
+                                                                    <button onClick={() => onAdd(suggestion[1])} className="addToCart">Add to cart</button>
+                                                                    </Link>
+                                                                    </>
+                                                                ) : (
+                                                                    <> 
+                                                                    {uid.admin ? (<></>) : (
+                                                                        <button onClick={() => onAdd(suggestion[1])} className="addToCart">Add to cart</button>
+                                                                        )}
+                                                                    </>
+                                                                )}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -117,7 +132,6 @@ import { Link,useParams} from "react-router-dom";
                                             }
                                         }
                                     }
-                                
                                     })}        
                                 </div>
                             </div>

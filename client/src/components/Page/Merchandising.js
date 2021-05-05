@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {BrowserRouter as Router,Route, Link } from 'react-router-dom'
+import { UidContext } from '../AppContext'
+
 
 const Merchandising = (props) => {
     const {product, onAdd} = props;
+    const { uid } = useContext(UidContext)
     
     return (
         <>
@@ -29,14 +32,26 @@ const Merchandising = (props) => {
                                     </p>
                                 </div>
                                             
-                            <span className="button">
+                                <span className="button">
                                         <Link to = {'/ReleaseDetails/'+ product._id}> 
                                         <button className="showMore">Show More</button>
-                                        
                                         </Link>
-                                        <button onClick={() => onAdd(product)} className="addToCart">Add to cart</button>
+
+                                        {!uid ? (
+                                            <>
+                                            <Link to = {'/UserRegisterPage'}>
+                                            <button onClick={() => onAdd(product)} className="addToCart">Add to cart</button>
+                                            </Link>
+                                            </>
+                                        ) : (
+                                            <>
+                                            {uid.admin ? (<></>):(<><button onClick={() => onAdd(product)} className="addToCart">Add to cart</button></>) }
+                                            </>
+                                        )}
                                     </span>
                             </div>
+
+                            
                         </div>
                     </div>
                 

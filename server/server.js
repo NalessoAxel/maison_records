@@ -4,6 +4,7 @@ require('./config/db')
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
 const vinylRoutes = require('./routes/vinyl.routes');
+const orderRoutes = require('./routes/order.routes');
 const {checkUser, requireAuth} = require('./middleware/auth.middleware');
 const cors = require('cors');
 // const multer = require('multer');
@@ -67,6 +68,7 @@ app.get('/jwtid', requireAuth, (req, res) => {
 //routes
 app.use('/api/user', userRoutes);
 app.use('/api/vinyl', vinylRoutes);
+app.use('/api/order', orderRoutes);
 app.use('/images', express.static('images'))
 // express => if url /images go to images in server   <- Jean: "C'est une sorte de route..."" https://expressjs.com/en/starter/static-files.html
 app.use('/songs', express.static('songs'))

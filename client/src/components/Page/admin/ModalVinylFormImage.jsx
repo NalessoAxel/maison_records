@@ -9,7 +9,7 @@ const ModalVinylFormImage = (props) => {
   
   const onSubmit = async (formAnswers) => {
     
-    console.log(checkSubmit)
+    // console.log(checkSubmit)
     
     try {
       const res = await axios({

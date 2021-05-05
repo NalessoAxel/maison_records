@@ -43,7 +43,7 @@ const AddReference = (props) => {
     // console.log(listSongNameHook,'state evolution');
     
     {(formAnswers.image[0]==undefined) ? (imageName="default") : (imageName =formAnswers.image[0].name)}
-    console.log(formAnswers , "ici");
+    // console.log(formAnswers , "ici");
 
       try {
         const resAddRef = await axios({

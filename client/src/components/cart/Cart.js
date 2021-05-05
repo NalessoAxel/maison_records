@@ -6,7 +6,7 @@ import SummaryShipping from './summaryshipping/SummaryShipping'
  const Cart = (props) => {
      const { cartItems, onAdd, onRemove } = props
     
-    console.log(cartItems)
+    // console.log(cartItems)
     
     return (
         <>

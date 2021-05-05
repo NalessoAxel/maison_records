@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Merchandising from './Merchandising'
+
 
 
 
 const Merch = (props) => {
     const { products, onAdd } = props
+
+   
 
         return (
               <>
