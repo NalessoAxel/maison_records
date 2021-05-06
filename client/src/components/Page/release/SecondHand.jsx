@@ -3,9 +3,9 @@ import Vinyl from './Vinyl'
 
 
 const SecondHand = (props) => {
-    const { products, onAdd } = props
+    const { products, onAdd, addProduct} = props
 
-            
+
         return (
               <>
                 <main products={products}>
@@ -18,7 +18,7 @@ const SecondHand = (props) => {
                     <>
                     {product.product_type == "Second hand" ? (
                         <>
-                        <Vinyl key={product._id} product={product} onAdd={onAdd}></Vinyl> 
+                                <Vinyl key={product._id} product={product} onAdd={onAdd} addProduct={addProduct}></Vinyl> 
                         </>
                         ) : (
                         <>

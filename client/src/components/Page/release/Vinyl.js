@@ -3,19 +3,16 @@ import {BrowserRouter as Router,Route, Link } from 'react-router-dom'
 import { UidContext } from '../../AppContext'
 
 const Vinyl = (props) => {
-    const {product, onAdd} = props;
+    const {product, onAdd, addProduct} = props;
 
     const { uid } = useContext(UidContext)
 
-    const test = () =>{
 
-    }
 
-    console.log(uid)
-    
     return (
         <>
                         <div className="tile">
+                          
                             <div className="hover-effect">
                                 < img src = {`${process.env.REACT_APP_API_URL}images/${product.image}.png`} alt="VinylImage"></img>
                                     <div class="overlay">
@@ -51,7 +48,7 @@ const Vinyl = (props) => {
                                             </>
                                         ) : (
                                             <>
-                                            {uid.admin ? (<></>):(<><button onClick={() => onAdd(product)} className="addToCart">Add to cart</button></>) }
+                                            {uid.admin ? (<></>):(<><button onClick={() => addProduct( product._id, product)} className="addToCart">Add to cart</button></>) }
                                             {/* {uid.admin ? (<></>):(<><button onClick={() => onAdd(product)} className="addToCart">Add to cart</button></>) } */}
                                             </>
                                         )}

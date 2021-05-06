@@ -4,7 +4,7 @@ import { UidContext } from '../AppContext'
 
 
 const Merchandising = (props) => {
-    const {product, onAdd} = props;
+    const {product, onAdd, addProduct} = props;
     const { uid } = useContext(UidContext)
     
     return (
@@ -45,7 +45,7 @@ const Merchandising = (props) => {
                                             </>
                                         ) : (
                                             <>
-                                            {uid.admin ? (<></>):(<><button onClick={() => onAdd(product)} className="addToCart">Add to cart</button></>) }
+                                            {uid.admin ? (<></>):(<><button onClick={() => addProduct( product._id, product)} className="addToCart">Add to cart</button></>) }
                                             </>
                                         )}
                                     </span>

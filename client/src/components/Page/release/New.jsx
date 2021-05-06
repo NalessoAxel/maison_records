@@ -4,34 +4,38 @@ import Vinyl from './Vinyl'
 
 
 const New = (props) => {
-    const { products, onAdd } = props
+    const { products, onAdd, addProduct } = props;
            
             
         return (
-              <>
-                <main products={products}>
-                <div className="header-container">
-                    <h2>NEW</h2>
-                </div>
-            <div className="container">
+          <>
+            <main products={products}>
+              <div className="header-container">
+                <h2>NEW</h2>
+              </div>
+              <div className="container">
                 <div className="entries">
-                {products.map((product) =>(
+                  {products.map((product) => (
                     <>
-                    {product.product_type == "New" ? (
+                      {product.product_type == "New" ? (
                         <>
-                        <Vinyl key={product._id} product={product} onAdd={onAdd}></Vinyl> 
+                          <Vinyl
+                            key={product._id}
+                            product={product}
+                            onAdd={onAdd}
+                            addProduct={addProduct}
+                          ></Vinyl>
                         </>
-                        ) : (
-                        <>
-                        </>
-                    )}
-                </>
-                ))}
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  ))}
                 </div>
-            </div>
+              </div>
             </main>
-            </>
-            )
+          </>
+        );
         
 }
 

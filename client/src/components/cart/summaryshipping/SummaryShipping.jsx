@@ -1,17 +1,28 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
+import { UidContext } from '../../AppContext'
+
+
 
 const SummaryShipping = (props) => {
+
+    const { uid, order } = useContext(UidContext)
+
+
     const { cartItems } = props
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0)
     const shippingPrice = itemsPrice > 100 ? 0 : 15;
     const totalPrice = itemsPrice + shippingPrice
+
+
+
     return (
         <>
             <div id='summaryShipping'>
                 <div id="summary">
                 <h2>Order overview</h2>
                 <p className="justify">
+
                     <span>Quantity</span>
                     <span>
                        {cartItems.length} 
@@ -64,4 +75,6 @@ const SummaryShipping = (props) => {
         </>
     )
 }
+
+
 export default SummaryShipping

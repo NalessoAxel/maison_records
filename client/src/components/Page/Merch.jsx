@@ -5,7 +5,7 @@ import Merchandising from './Merchandising'
 
 
 const Merch = (props) => {
-    const { products, onAdd } = props
+    const { products, onAdd, addProduct } = props
 
    
 
@@ -21,7 +21,7 @@ const Merch = (props) => {
                     <>
                     {product.product_type == "Merch" ? (
                         <>
-                        <Merchandising key={product._id} product={product} onAdd={onAdd}></Merchandising> 
+                        <Merchandising key={product._id} product={product} onAdd={onAdd} addProduct={addProduct}></Merchandising> 
                         </>
                         ) : (
                         <>

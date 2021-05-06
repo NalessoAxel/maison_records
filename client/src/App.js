@@ -49,7 +49,12 @@ const App = () => {
     const [numberOfPreviews, setNumberOfPreviews] = useState();
     const [allVinyls, setAllVinyls] = useState({})
     const [loadingVinyls, setLoadingVinyls] =  useState(true);
+    const [order, setOrder] = useState({}) 
+    // const order = {}
 
+
+
+    
   useEffect(()=>{  
     const fetchToken = async () =>{
       try{
@@ -105,30 +110,45 @@ const App = () => {
 
 const products = allVinyls
 
+
+ const addProduct = (id, values) =>{
+        if (!order[id]){
+            // order[id] = values
+            
+            setOrder({...order,[id] : values})
+            console.log('ordeeeeer:', order)
+            // setOrder(...order, { ...[id], quantityPurchased:1)
+            // order[id].quantityPurchased = 1
+        } else {order[id].quantityPurchased++}
+       
+        console.log(order, "yolo")
+    }
+      
     const [ cartItems, setCartItems ] = useState([]) 
 
+    // a virer peut être
     const onAdd = (product) => {
-        const exist = cartItems.find(x => x.id === product.id)
+        const exist = cartItems.find(x => x.id === product._id)
         if(exist) {
-            setCartItems(cartItems.map(x => x.id === product.id ? {...exist, quantity: exist.quantity + 1 } : x))
+            setCartItems(cartItems.map(x => x.id === product._id ? {...exist, quantity: exist.quantity + 1 } : x))
     } else  {
             setCartItems([...cartItems, {...product, quantity: 1}])
         }
     }
     
-    const onRemove = (product) => {
-        const exist = cartItems.find(x => x.id === product.id)
-        if(exist.quantity === 1) {
-            setCartItems(cartItems.filter(x => x.id !== product.id))
-        } else {
-            setCartItems(cartItems.map(x => x.id === product.id ? {...exist, quantity: exist.quantity - 1 } : x))
-        }
+    const onRemove = (productIdToRemove) => {
+        // const exist = cartItems.find(x => x.id === product.id)
+        // if(exist.quantity === 1) {
+        //     setCartItems(cartItems.filter(x => x.id !== product.id))
+        // } else {
+        //     setCartItems(cartItems.map(x => x.id === product.id ? {...exist, quantity: exist.quantity - 1 } : x))
+        // }
     }
     
-    const LayoutNew = () => <Layout><New products={products} onAdd={onAdd}/></Layout>
-    const LayoutSecondHand = () => <Layout><SecondHand products={products} onAdd={onAdd}/></Layout>
+    const LayoutNew = () => <Layout><New products={products} onAdd={onAdd} addProduct={addProduct}/></Layout>
+    const LayoutSecondHand = () => <Layout><SecondHand products={products} onAdd={onAdd} addProduct={addProduct}/></Layout>
     const LayoutSellCollection = () => <Layout><SellCollection/></Layout>
-    const LayoutMerch = () => <Layout><Merch products={products} onAdd={onAdd}/></Layout>
+    const LayoutMerch = () => <Layout><Merch products={products} onAdd={onAdd} addProduct={addProduct}/></Layout>
     const LayoutAccessories = () => <Layout><Accessories/></Layout>
     const LayoutLive = () => <Layout><Live/></Layout>
     const LayoutUserRegisterPage = () => <Layout><UserRegisterPage/></Layout>
@@ -149,9 +169,8 @@ const products = allVinyls
       
 
     
-      <UidContext.Provider value={{uid, loading}}> 
-           {/* // we place the UID at the top of our app so we don't have to put it in every page */}
-          
+      <UidContext.Provider value={{uid, order, loading}}> 
+     
           <div id="App">
 
         <Router>
